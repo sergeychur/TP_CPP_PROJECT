@@ -6,8 +6,22 @@
 #define TP_CPP_PROJECT_OBJECT_H
 
 
-class Object {
+#include <SFML/Graphics.hpp>
 
+class Object
+{
+public:
+    explicit Object(sf::RenderWindow & w, unsigned int s);
+    void drawObject();
+    void move();
+
+
+private:
+    sf::RenderWindow &window;
+    sf::Vector2f coordinates;
+    sf::Color colorBody;
+    sf::CircleShape body;
+    unsigned int size;
 };
 
 

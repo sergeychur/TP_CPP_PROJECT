@@ -5,9 +5,19 @@
 #ifndef TP_CPP_PROJECT_GAME_H
 #define TP_CPP_PROJECT_GAME_H
 
+#include "Object.h"
 
-class Game {
+class Game
+{
+public:
+    explicit Game(sf::RenderWindow &window);
+    void start();
 
+private:
+    void gameLoop();
+    void drawFrame();
+    sf::RenderWindow &screen;
+    Object ball;
 };
 
 
