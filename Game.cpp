@@ -6,9 +6,10 @@
 
 Game::Game(sf::RenderWindow &window):
         ball(window, 50),
-        screen(window)
+        screen(window),
+        ml("/Users/sergejaparin/Documents/TP_CPP_PROJECT/XML")
 {
-
+    ml.load("dd.tmx");
 }
 
 void Game::drawFrame()
@@ -30,7 +31,20 @@ void Game::gameLoop()
             {
                 exit(0);
             }
+            if (event.type == sf::Event::KeyPressed)
+            {
+                if (event.key.code == sf::Keyboard::W)
+                {
+                    ball.move(sf::Vector2f(0, 2));
+                }
+                if (event.key.code == sf::Keyboard::S)
+                {
+                    ball.move(sf::Vector2f(0, -2));
+                }
+            }
         }
+        const auto& layers = ml.getLayers();
+
         screen.display();
     }
 }

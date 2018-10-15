@@ -5,7 +5,11 @@
 #ifndef TP_CPP_PROJECT_GAME_H
 #define TP_CPP_PROJECT_GAME_H
 
-#include "Object.h"
+#include "MapObject.h"
+#include <tmx/MapLoader.hpp>
+#include <SFML/Graphics/RenderTarget.hpp>
+#include <tmx>
+
 
 class Game
 {
@@ -17,7 +21,8 @@ private:
     void gameLoop();
     void drawFrame();
     sf::RenderWindow &screen;
-    Object ball;
+    GameObject ball;
+    tmx::MapLoader ml;
 };
 
 

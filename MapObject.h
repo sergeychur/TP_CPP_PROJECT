@@ -8,12 +8,12 @@
 
 #include <SFML/Graphics.hpp>
 
-class Object
+class GameObject
 {
 public:
-    explicit Object(sf::RenderWindow & w, unsigned int s);
+    explicit GameObject(sf::RenderWindow & w, unsigned int s);
     void drawObject();
-    void move();
+    void move(sf::Vector2f);
 
 
 private:

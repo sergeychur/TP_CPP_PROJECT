@@ -1,9 +1,9 @@
 //
 // Created by Сергей Апарин on 13.10.2018.
 //
-#include "Object.h"
+#include "MapObject.h"
 
-Object::Object(sf::RenderWindow &window, unsigned int size):
+GameObject::GameObject(sf::RenderWindow &window, unsigned int size):
             window(window),
             coordinates(1, 1),
             colorBody(sf::Color::Green),
@@ -14,7 +14,13 @@ Object::Object(sf::RenderWindow &window, unsigned int size):
     body.setFillColor(colorBody);
 }
 
-void Object::drawObject()
+void GameObject::drawObject()
 {
     window.draw(body);
+}
+
+void GameObject::move(sf::Vector2f d)
+{
+    coordinates += d;
+    body.setPosition(coordinates);
 }
