@@ -4,12 +4,17 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/main.cpp" "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/server.dir/main.cpp.o"
+  "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/game.cpp" "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/server.dir/src/game.cpp.o"
+  "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/main.cpp" "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/server.dir/src/main.cpp.o"
+  "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/map.cpp" "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/server.dir/src/map.cpp.o"
+  "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/player.cpp" "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/server.dir/src/player.cpp.o"
+  "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/update_maker.cpp" "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/server.dir/src/update_maker.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../include"
   )
 
 # Targets to which this target links.

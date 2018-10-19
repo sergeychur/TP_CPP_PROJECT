@@ -123,32 +123,140 @@ server/fast:
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
 .PHONY : server/fast
 
-main.o: main.cpp.o
+src/game.o: src/game.cpp.o
 
-.PHONY : main.o
+.PHONY : src/game.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/game.cpp.o:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/game.cpp.o
+.PHONY : src/game.cpp.o
 
-main.i: main.cpp.i
+src/game.i: src/game.cpp.i
 
-.PHONY : main.i
+.PHONY : src/game.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/game.cpp.i:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/game.cpp.i
+.PHONY : src/game.cpp.i
 
-main.s: main.cpp.s
+src/game.s: src/game.cpp.s
 
-.PHONY : main.s
+.PHONY : src/game.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/game.cpp.s:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/game.cpp.s
+.PHONY : src/game.cpp.s
+
+src/main.o: src/main.cpp.o
+
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
+
+src/map.o: src/map.cpp.o
+
+.PHONY : src/map.o
+
+# target to build an object file
+src/map.cpp.o:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/map.cpp.o
+.PHONY : src/map.cpp.o
+
+src/map.i: src/map.cpp.i
+
+.PHONY : src/map.i
+
+# target to preprocess a source file
+src/map.cpp.i:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/map.cpp.i
+.PHONY : src/map.cpp.i
+
+src/map.s: src/map.cpp.s
+
+.PHONY : src/map.s
+
+# target to generate assembly for a file
+src/map.cpp.s:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/map.cpp.s
+.PHONY : src/map.cpp.s
+
+src/player.o: src/player.cpp.o
+
+.PHONY : src/player.o
+
+# target to build an object file
+src/player.cpp.o:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/player.cpp.o
+.PHONY : src/player.cpp.o
+
+src/player.i: src/player.cpp.i
+
+.PHONY : src/player.i
+
+# target to preprocess a source file
+src/player.cpp.i:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/player.cpp.i
+.PHONY : src/player.cpp.i
+
+src/player.s: src/player.cpp.s
+
+.PHONY : src/player.s
+
+# target to generate assembly for a file
+src/player.cpp.s:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/player.cpp.s
+.PHONY : src/player.cpp.s
+
+src/update_maker.o: src/update_maker.cpp.o
+
+.PHONY : src/update_maker.o
+
+# target to build an object file
+src/update_maker.cpp.o:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/update_maker.cpp.o
+.PHONY : src/update_maker.cpp.o
+
+src/update_maker.i: src/update_maker.cpp.i
+
+.PHONY : src/update_maker.i
+
+# target to preprocess a source file
+src/update_maker.cpp.i:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/update_maker.cpp.i
+.PHONY : src/update_maker.cpp.i
+
+src/update_maker.s: src/update_maker.cpp.s
+
+.PHONY : src/update_maker.s
+
+# target to generate assembly for a file
+src/update_maker.cpp.s:
+	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/update_maker.cpp.s
+.PHONY : src/update_maker.cpp.s
 
 # Help Target
 help:
@@ -159,9 +267,21 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... server"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/game.o"
+	@echo "... src/game.i"
+	@echo "... src/game.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/map.o"
+	@echo "... src/map.i"
+	@echo "... src/map.s"
+	@echo "... src/player.o"
+	@echo "... src/player.i"
+	@echo "... src/player.s"
+	@echo "... src/update_maker.o"
+	@echo "... src/update_maker.i"
+	@echo "... src/update_maker.s"
 .PHONY : help
 
 

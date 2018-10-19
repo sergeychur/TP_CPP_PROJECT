@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/include"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -67,6 +68,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/include"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -84,7 +86,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/main.cpp">
+		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/game.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/main.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/map.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/player.cpp">
+			<Option target="server"/>
+		</Unit>
+		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/update_maker.cpp">
 			<Option target="server"/>
 		</Unit>
 		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/CMakeLists.txt">
