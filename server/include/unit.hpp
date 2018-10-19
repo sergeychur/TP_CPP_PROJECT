@@ -29,6 +29,9 @@ class Unit : public NewsMaker, public Colleague {
         Unit(const Unit&) = delete;
         Unit& operator=(Unit&) = delete;
         Unit&& operator=(Unit&&);
+        void add(NewsTaker* news_taker) override;
+        void remove() override;
+        void notify() override;
         int act(const std::string& command, std::vector<Parameter>);    // interact with the world using skills
 
     private:
