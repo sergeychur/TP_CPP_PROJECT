@@ -6,15 +6,15 @@
 
 Game::Game(sf::RenderWindow &window):
         ball(window, 50),
-        screen(window),
-        ml("/Users/sergejaparin/Documents/TP_CPP_PROJECT/XML")
+        screen(window)
 {
-    ml.load("dd.tmx");
+    lvl.LoadFromFile("/Users/sergejaparin/Documents/TP_CPP_PROJECT/xmlmap.tmx");
 }
 
 void Game::drawFrame()
 {
     screen.clear();
+    lvl.Draw(screen);
     ball.drawObject();
 }
 
@@ -35,15 +35,22 @@ void Game::gameLoop()
             {
                 if (event.key.code == sf::Keyboard::W)
                 {
-                    ball.move(sf::Vector2f(0, 2));
+                    ball.move(sf::Vector2f(0, -10));
                 }
                 if (event.key.code == sf::Keyboard::S)
                 {
-                    ball.move(sf::Vector2f(0, -2));
+                    ball.move(sf::Vector2f(0, 10));
+                }
+                if (event.key.code == sf::Keyboard::D)
+                {
+                    ball.move(sf::Vector2f(10, 0));
+                }
+                if (event.key.code == sf::Keyboard::A)
+                {
+                    ball.move(sf::Vector2f(-10, 0));
                 }
             }
         }
-        const auto& layers = ml.getLayers();
 
         screen.display();
     }

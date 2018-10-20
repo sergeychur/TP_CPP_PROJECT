@@ -2,7 +2,7 @@
 
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1250, 800), "RTS");
+    sf::RenderWindow window(sf::VideoMode(720, 440), "RTS");
     window.setVerticalSyncEnabled(true);
 
     Game game(window);
