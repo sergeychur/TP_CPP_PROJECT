@@ -12,6 +12,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "tinyXML/tinyxml.h"
+#include <cstdlib>
 
 struct Object
 {

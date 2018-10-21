@@ -19,20 +19,20 @@ public:
 
  //   virtual void destroyObject();
 
-    virtual void control(sf::Event event, sf::Vector2f cursor_pos) = 0;
+    virtual void control(sf::Event event) = 0;
 
   //  virtual void checkCollisionWithMap();
 
   //  virtual void attack();
 
-    virtual void update(float time) = 0;
+    virtual void update(double time) = 0;
 
     virtual float getXcoord();
 
     virtual float getYcoord();
 
    // virtual ~GameObject();
-
+   bool isMove{false};
 
 protected:
     sf::RenderWindow &window;
@@ -44,9 +44,8 @@ protected:
     std::string File;
     float width;
     float height;
-    bool isAlive{true};
-    bool isMove{false};
-    bool isSelect{false};
+    bool isAlive;
+    bool isSelect;
 
     float health;
     unsigned int id;

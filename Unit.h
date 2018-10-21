@@ -6,7 +6,7 @@
 #define TP_CPP_PROJECT_UNIT_H
 
 #include "GameObject.h"
-#include <cmath>
+#include <math.h>
 
 class Unit : public GameObject
 {
@@ -14,13 +14,13 @@ public:
     explicit Unit(sf::RenderWindow &window, Player* player, std::string file, float w, float h, sf::Vector2f pos,
                         float speed);
 
-    void control(sf::Event event, sf::Vector2f cursor_pos) override ;
+    void control(sf::Event event) override ;
 
    // virtual void checkCollisionWithMap(float Dx, float Dy);
 
   //  virtual void attack(GameObject &obj);
 
-    void update(float time) override ;
+    void update(double time) override ;
 
     enum
     {
