@@ -5,32 +5,39 @@
 #ifndef TP_CPP_PROJECT_UNIT_H
 #define TP_CPP_PROJECT_UNIT_H
 
-
 #include "GameObject.h"
+#include <cmath>
 
-class Unit : public GameObject {
+class Unit : public GameObject
+{
 public:
-    explicit Unit(sf::RenderWindow &w, std::vector<int> stats) : GameObject(w) {};
+    explicit Unit(sf::RenderWindow &window, Player* player, std::string file, float w, float h, sf::Vector2f pos,
+                        float speed);
 
-    void control();
+    void control(sf::Event event, sf::Vector2f cursor_pos) override ;
 
-    void checkCollisionWithMap(float Dx, float Dy);
+   // virtual void checkCollisionWithMap(float Dx, float Dy);
 
-    void attack(GameObject &obj);
+  //  virtual void attack(GameObject &obj);
 
-    void update(float time);
+    void update(float time) override ;
 
-    enum {
+    enum
+    {
         left, right, up, down, stay
-    } state;
+    }       state;
 
-    virtual ~Unit();
+   // ~Unit();
 
 protected:
     float speed;
     float attackRate;
     int dx;
     int dy;
+    double tempX;
+    double tempY;
+    double distance = 0;//это расстояние от объекта до тыка курсора
+    int direction;
 };
 
 

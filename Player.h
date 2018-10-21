@@ -5,25 +5,25 @@
 #ifndef TP_CPP_PROJECT_PLAYER_H
 #define TP_CPP_PROJECT_PLAYER_H
 
+class GameObject;
 
-#include "Unit.h"
+#include <SFML/Graphics.hpp>
 
 class Player {
 public:
-    Player();
+    Player(std::string name, sf::Vector2f spPoint);
 
-    static void encode_udp();
+    void addUnit(GameObject* unit);
 
-    static void decode_udp();
+    const std::vector<GameObject *> getUnits();
 
     ~Player();
 
 private:
     std::string nickName;
-    bool isAlive;
+    bool isAlive{true};
     sf::Vector2f spawnPoint;
-    std::vector<GameObject &> units;
-
+    std::vector<GameObject*> units;
 };
 
 

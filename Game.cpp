@@ -3,58 +3,60 @@
 //
 
 #include "Game.h"
+#include "Player.h"
+#include "Unit.h"
 
-Game::Game(sf::RenderWindow &window):
-        ball(window, 50),
-        screen(window)
+Game::Game(sf::RenderWindow &w):
+        window(w)
 {
-    lvl.LoadFromFile("/Users/sergejaparin/Documents/TP_CPP_PROJECT/xmlmap.tmx");
+    map.LoadFromFile("/Users/sergejaparin/Documents/TP_CPP_PROJECT/xmlmap.tmx");
+}
+
+void Game::gameInit()
+{
+    player = new Player("ser", sf::Vector2f(30, 30));
+    Unit* unit = new Unit(window, player, "qrosh.png", 50, 50, sf::Vector2f(30, 30), 1);
+    player->addUnit(unit);
 }
 
 void Game::drawFrame()
 {
-    screen.clear();
-    lvl.Draw(screen);
-    ball.drawObject();
+    window.clear();
+    map.Draw(window);
+//    for (auto p : player->getUnits())
+//    {
+//        p->drawObject();
+//    }
+
 }
 
 void Game::gameLoop()
 {
-    bool loopRun = true;
-    while (loopRun)
+    //gameInit();
+    //sf::Clock clock;
+    while (true)
     {
-        drawFrame();
+       // sf::Time elapsed = clock.restart();
+        //sf::Vector2i pixelPos = sf::Mouse::getPosition(window);//забираем коорд курсора
+      //  sf::Vector2f pos = window.mapPixelToCoords(pixelPos);//переводим их в игровые (уходим от коорд окна)
         sf::Event event;
-        while (screen.pollEvent(event))
+        while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed)
-            {
                 exit(0);
-            }
-            if (event.type == sf::Event::KeyPressed)
-            {
-                if (event.key.code == sf::Keyboard::W)
-                {
-                    ball.move(sf::Vector2f(0, -10));
-                }
-                if (event.key.code == sf::Keyboard::S)
-                {
-                    ball.move(sf::Vector2f(0, 10));
-                }
-                if (event.key.code == sf::Keyboard::D)
-                {
-                    ball.move(sf::Vector2f(10, 0));
-                }
-                if (event.key.code == sf::Keyboard::A)
-                {
-                    ball.move(sf::Vector2f(-10, 0));
-                }
-            }
-        }
+//            for (auto p : player->getUnits())
+//            {
+//                p->control(event, pos);
+//                p->update(elapsed.asMilliseconds());
+//            }
 
-        screen.display();
+        }
+        drawFrame();
     }
-}
+
+        window.display();
+    }
+
 
 void Game::start()
 {
