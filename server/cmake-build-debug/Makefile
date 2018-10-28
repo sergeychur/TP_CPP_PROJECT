@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named game_lib
+
+# Build rule for target.
+game_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 game_lib
+.PHONY : game_lib
+
+# fast build rule for target.
+game_lib/fast:
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/build
+.PHONY : game_lib/fast
+
+#=============================================================================
 # Target rules for targets named server
 
 # Build rule for target.
@@ -123,13 +136,26 @@ server/fast:
 	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/build
 .PHONY : server/fast
 
+#=============================================================================
+# Target rules for targets named tests
+
+# Build rule for target.
+tests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tests
+.PHONY : tests
+
+# fast build rule for target.
+tests/fast:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
+.PHONY : tests/fast
+
 src/game.o: src/game.cpp.o
 
 .PHONY : src/game.o
 
 # target to build an object file
 src/game.cpp.o:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/game.cpp.o
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/game.cpp.o
 .PHONY : src/game.cpp.o
 
 src/game.i: src/game.cpp.i
@@ -138,7 +164,7 @@ src/game.i: src/game.cpp.i
 
 # target to preprocess a source file
 src/game.cpp.i:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/game.cpp.i
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/game.cpp.i
 .PHONY : src/game.cpp.i
 
 src/game.s: src/game.cpp.s
@@ -147,7 +173,7 @@ src/game.s: src/game.cpp.s
 
 # target to generate assembly for a file
 src/game.cpp.s:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/game.cpp.s
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/game.cpp.s
 .PHONY : src/game.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -183,7 +209,7 @@ src/map.o: src/map.cpp.o
 
 # target to build an object file
 src/map.cpp.o:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/map.cpp.o
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/map.cpp.o
 .PHONY : src/map.cpp.o
 
 src/map.i: src/map.cpp.i
@@ -192,7 +218,7 @@ src/map.i: src/map.cpp.i
 
 # target to preprocess a source file
 src/map.cpp.i:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/map.cpp.i
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/map.cpp.i
 .PHONY : src/map.cpp.i
 
 src/map.s: src/map.cpp.s
@@ -201,7 +227,7 @@ src/map.s: src/map.cpp.s
 
 # target to generate assembly for a file
 src/map.cpp.s:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/map.cpp.s
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/map.cpp.s
 .PHONY : src/map.cpp.s
 
 src/player.o: src/player.cpp.o
@@ -210,7 +236,7 @@ src/player.o: src/player.cpp.o
 
 # target to build an object file
 src/player.cpp.o:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/player.cpp.o
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/player.cpp.o
 .PHONY : src/player.cpp.o
 
 src/player.i: src/player.cpp.i
@@ -219,7 +245,7 @@ src/player.i: src/player.cpp.i
 
 # target to preprocess a source file
 src/player.cpp.i:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/player.cpp.i
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/player.cpp.i
 .PHONY : src/player.cpp.i
 
 src/player.s: src/player.cpp.s
@@ -228,7 +254,7 @@ src/player.s: src/player.cpp.s
 
 # target to generate assembly for a file
 src/player.cpp.s:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/player.cpp.s
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/player.cpp.s
 .PHONY : src/player.cpp.s
 
 src/update_maker.o: src/update_maker.cpp.o
@@ -237,7 +263,7 @@ src/update_maker.o: src/update_maker.cpp.o
 
 # target to build an object file
 src/update_maker.cpp.o:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/update_maker.cpp.o
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/update_maker.cpp.o
 .PHONY : src/update_maker.cpp.o
 
 src/update_maker.i: src/update_maker.cpp.i
@@ -246,7 +272,7 @@ src/update_maker.i: src/update_maker.cpp.i
 
 # target to preprocess a source file
 src/update_maker.cpp.i:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/update_maker.cpp.i
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/update_maker.cpp.i
 .PHONY : src/update_maker.cpp.i
 
 src/update_maker.s: src/update_maker.cpp.s
@@ -255,8 +281,38 @@ src/update_maker.s: src/update_maker.cpp.s
 
 # target to generate assembly for a file
 src/update_maker.cpp.s:
-	$(MAKE) -f CMakeFiles/server.dir/build.make CMakeFiles/server.dir/src/update_maker.cpp.s
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/update_maker.cpp.s
 .PHONY : src/update_maker.cpp.s
+
+test/gtest.o: test/gtest.cpp.o
+
+.PHONY : test/gtest.o
+
+# target to build an object file
+test/gtest.cpp.o:
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/test/gtest.cpp.o
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/gtest.cpp.o
+.PHONY : test/gtest.cpp.o
+
+test/gtest.i: test/gtest.cpp.i
+
+.PHONY : test/gtest.i
+
+# target to preprocess a source file
+test/gtest.cpp.i:
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/test/gtest.cpp.i
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/gtest.cpp.i
+.PHONY : test/gtest.cpp.i
+
+test/gtest.s: test/gtest.cpp.s
+
+.PHONY : test/gtest.s
+
+# target to generate assembly for a file
+test/gtest.cpp.s:
+	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/test/gtest.cpp.s
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/gtest.cpp.s
+.PHONY : test/gtest.cpp.s
 
 # Help Target
 help:
@@ -265,8 +321,10 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
+	@echo "... game_lib"
 	@echo "... server"
+	@echo "... edit_cache"
+	@echo "... tests"
 	@echo "... src/game.o"
 	@echo "... src/game.i"
 	@echo "... src/game.s"
@@ -282,6 +340,9 @@ help:
 	@echo "... src/update_maker.o"
 	@echo "... src/update_maker.i"
 	@echo "... src/update_maker.s"
+	@echo "... test/gtest.o"
+	@echo "... test/gtest.i"
+	@echo "... test/gtest.s"
 .PHONY : help
 
 

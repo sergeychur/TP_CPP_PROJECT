@@ -19,9 +19,10 @@
 #include "update.hpp"
 #include "parameter.hpp"
 #include "abstract_unit.hpp"
+#include "real_unit.hpp"
 #include "command.hpp"
 
-class Unit : public AbstractUnit {
+class Unit : public AbstractUnit, public RealUnit {
     public:
         Unit(const int& _id, const int& _HP, const int _unit_x, const int& _unit_y, const int& damage,
                 const int& speed, const int& look_angle, Mediator* mediator);
@@ -41,10 +42,10 @@ class Unit : public AbstractUnit {
         std::queue<Command> commands;
         int change_state(const std::string state_name, const std::vector<int> changes);
         NewsTaker* updater;
-        int id;
-        int HP;     // consider removing this to skill get_kicked
-        int unit_x;
-        int unit_y;
+        // int id;
+        // int HP;     // consider removing this to skill get_kicked
+        // int unit_x;
+        // int unit_y;
         int damage;
         // int damage_radius;   // make later if long strike is available
         int speed;

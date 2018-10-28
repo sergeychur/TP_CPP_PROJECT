@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/gtest.cpp
+gmock/gmock.h
+/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/gmock/gmock.h
+gtest/gtest.h
+/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/gtest/gtest.h
+

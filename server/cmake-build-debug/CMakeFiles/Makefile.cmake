@@ -21,10 +21,18 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/CMakeLanguageInformation.cmake"
   "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/CMakeSystemSpecificInformation.cmake"
   "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/CMakeSystemSpecificInitialize.cmake"
+  "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/CheckIncludeFile.cmake"
+  "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/CheckLibraryExists.cmake"
+  "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/CheckSymbolExists.cmake"
   "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/Compiler/GNU-C.cmake"
   "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/Compiler/GNU-CXX.cmake"
   "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/Compiler/GNU.cmake"
+  "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/FindGTest.cmake"
+  "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/FindPackageHandleStandardArgs.cmake"
+  "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/FindPackageMessage.cmake"
+  "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/FindThreads.cmake"
+  "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/GoogleTest.cmake"
   "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/Platform/Linux-GNU-C.cmake"
   "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/Platform/Linux-GNU-CXX.cmake"
   "/home/sergey/Загрузки/clion-2018.2.4/bin/cmake/linux/share/cmake-3.12/Modules/Platform/Linux-GNU.cmake"
@@ -46,5 +54,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/game_lib.dir/DependInfo.cmake"
   "CMakeFiles/server.dir/DependInfo.cmake"
+  "CMakeFiles/tests.dir/DependInfo.cmake"
   )

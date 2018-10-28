@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++17 -Wall -Wextra -Werror -g   CMakeFiles/tests.dir/test/gtest.cpp.o  -o tests /usr/lib/libgtest.a libgame_lib.a -lpthread 
