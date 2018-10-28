@@ -70,19 +70,94 @@ CMakeFiles/tests.dir/test/gtest.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tests.dir/test/gtest.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/gtest.cpp -o CMakeFiles/tests.dir/test/gtest.cpp.s
 
+CMakeFiles/tests.dir/test/map_tests.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/test/map_tests.cpp.o: ../test/map_tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/tests.dir/test/map_tests.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/test/map_tests.cpp.o -c /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/map_tests.cpp
+
+CMakeFiles/tests.dir/test/map_tests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tests.dir/test/map_tests.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/map_tests.cpp > CMakeFiles/tests.dir/test/map_tests.cpp.i
+
+CMakeFiles/tests.dir/test/map_tests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tests.dir/test/map_tests.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/map_tests.cpp -o CMakeFiles/tests.dir/test/map_tests.cpp.s
+
+CMakeFiles/tests.dir/test/base_tests.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/test/base_tests.cpp.o: ../test/base_tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/tests.dir/test/base_tests.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/test/base_tests.cpp.o -c /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/base_tests.cpp
+
+CMakeFiles/tests.dir/test/base_tests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tests.dir/test/base_tests.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/base_tests.cpp > CMakeFiles/tests.dir/test/base_tests.cpp.i
+
+CMakeFiles/tests.dir/test/base_tests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tests.dir/test/base_tests.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/base_tests.cpp -o CMakeFiles/tests.dir/test/base_tests.cpp.s
+
+CMakeFiles/tests.dir/test/unit_tests.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/test/unit_tests.cpp.o: ../test/unit_tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/tests.dir/test/unit_tests.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/test/unit_tests.cpp.o -c /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/unit_tests.cpp
+
+CMakeFiles/tests.dir/test/unit_tests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tests.dir/test/unit_tests.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/unit_tests.cpp > CMakeFiles/tests.dir/test/unit_tests.cpp.i
+
+CMakeFiles/tests.dir/test/unit_tests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tests.dir/test/unit_tests.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/unit_tests.cpp -o CMakeFiles/tests.dir/test/unit_tests.cpp.s
+
+CMakeFiles/tests.dir/test/update_maker_tests.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/test/update_maker_tests.cpp.o: ../test/update_maker_tests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/tests.dir/test/update_maker_tests.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/test/update_maker_tests.cpp.o -c /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/update_maker_tests.cpp
+
+CMakeFiles/tests.dir/test/update_maker_tests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tests.dir/test/update_maker_tests.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/update_maker_tests.cpp > CMakeFiles/tests.dir/test/update_maker_tests.cpp.i
+
+CMakeFiles/tests.dir/test/update_maker_tests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tests.dir/test/update_maker_tests.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/update_maker_tests.cpp -o CMakeFiles/tests.dir/test/update_maker_tests.cpp.s
+
+CMakeFiles/tests.dir/test/player_test.cpp.o: CMakeFiles/tests.dir/flags.make
+CMakeFiles/tests.dir/test/player_test.cpp.o: ../test/player_test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/tests.dir/test/player_test.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/tests.dir/test/player_test.cpp.o -c /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/player_test.cpp
+
+CMakeFiles/tests.dir/test/player_test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tests.dir/test/player_test.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/player_test.cpp > CMakeFiles/tests.dir/test/player_test.cpp.i
+
+CMakeFiles/tests.dir/test/player_test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tests.dir/test/player_test.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/player_test.cpp -o CMakeFiles/tests.dir/test/player_test.cpp.s
+
 # Object files for target tests
 tests_OBJECTS = \
-"CMakeFiles/tests.dir/test/gtest.cpp.o"
+"CMakeFiles/tests.dir/test/gtest.cpp.o" \
+"CMakeFiles/tests.dir/test/map_tests.cpp.o" \
+"CMakeFiles/tests.dir/test/base_tests.cpp.o" \
+"CMakeFiles/tests.dir/test/unit_tests.cpp.o" \
+"CMakeFiles/tests.dir/test/update_maker_tests.cpp.o" \
+"CMakeFiles/tests.dir/test/player_test.cpp.o"
 
 # External object files for target tests
 tests_EXTERNAL_OBJECTS =
 
 tests: CMakeFiles/tests.dir/test/gtest.cpp.o
+tests: CMakeFiles/tests.dir/test/map_tests.cpp.o
+tests: CMakeFiles/tests.dir/test/base_tests.cpp.o
+tests: CMakeFiles/tests.dir/test/unit_tests.cpp.o
+tests: CMakeFiles/tests.dir/test/update_maker_tests.cpp.o
+tests: CMakeFiles/tests.dir/test/player_test.cpp.o
 tests: CMakeFiles/tests.dir/build.make
 tests: /usr/lib/libgtest.a
 tests: libgame_lib.a
 tests: CMakeFiles/tests.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable tests"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable tests"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tests.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

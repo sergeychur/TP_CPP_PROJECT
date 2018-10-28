@@ -16,7 +16,7 @@
 
 struct Command {
     public:
-        Command(const int& unit_id, const std::string& _command_name, std::vector<Parameter>& _parameters);
+        Command(const int& unit_id, const std::string& _command_name, std::vector<int>& _parameters);
         Command() = delete;
         Command(const Command&) = delete;
         Command(const Command&&) = delete;
@@ -24,8 +24,8 @@ struct Command {
         Command&& operator=(const Command&&) = delete;
 
         int unit_id;
-        std::string command_name;
-        std::vector<int> parameters;
+        std::string command_name;   // add_unit, move, kick etc.
+        std::vector<int> parameters;    // args
 };
 
 #endif //SERVER_COMMAND_HPP

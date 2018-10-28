@@ -28,7 +28,6 @@ class Map : public Mediator {
         ~Map() override;
 
     private:
-        // std::map<std::pair<int, int>, Unit*> unit_map;  // something that gets unit by coordinates
         std::vector<std::vector<Colleague*>> unit_map;
         // std::vector<std::vector<AbstractBuilding*>> buildings; // dunno if necessary, no
 };

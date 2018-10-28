@@ -14,16 +14,13 @@ set(SRC_LIST src/game.cpp src/map.cpp src/player.cpp src/update_maker.cpp test/g
 add_library(game_lib STATIC ${SRC_LIST})
 
 add_executable(${PROJECT_NAME} src/main.cpp)
-add_executable(tests test/gtest.cpp)
+add_executable(tests test/gtest.cpp test/map_tests.cpp test/base_tests.cpp test/unit_tests.cpp test/update_maker_tests.cpp test/player_test.cpp)
 
 find_package( GTest REQUIRED )
-
 find_package(Threads)
-
-target_link_libraries(tests Threads::Threads)
 
 include_directories(${GTEST_INCLUDE_DIRS})
 
-# links gtest
 target_link_libraries(tests ${GTEST_LIBRARIES})
 target_link_libraries(tests game_lib)
+target_link_libraries(tests Threads::Threads)

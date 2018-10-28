@@ -197,8 +197,23 @@
 		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/update_maker.cpp">
 			<Option target="game_lib"/>
 		</Unit>
+		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/base_tests.cpp">
+			<Option target="tests"/>
+		</Unit>
 		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/gtest.cpp">
 			<Option target="game_lib"/>
+			<Option target="tests"/>
+		</Unit>
+		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/map_tests.cpp">
+			<Option target="tests"/>
+		</Unit>
+		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/player_test.cpp">
+			<Option target="tests"/>
+		</Unit>
+		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/unit_tests.cpp">
+			<Option target="tests"/>
+		</Unit>
+		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/update_maker_tests.cpp">
 			<Option target="tests"/>
 		</Unit>
 		<Unit filename="/home/sergey/CLionProjects/TP_CPP_PROJECT/server/CMakeLists.txt">

@@ -3,8 +3,7 @@
 //
 
 /*
-    class, made to specify in some way the parameters of skill's act methods,
-    remove in case of inventing smth cleverer
+    Unnecessary, remove
 */
 
 #ifndef SERVER_PARAMETER_HPP

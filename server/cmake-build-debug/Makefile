@@ -284,6 +284,33 @@ src/update_maker.cpp.s:
 	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/update_maker.cpp.s
 .PHONY : src/update_maker.cpp.s
 
+test/base_tests.o: test/base_tests.cpp.o
+
+.PHONY : test/base_tests.o
+
+# target to build an object file
+test/base_tests.cpp.o:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/base_tests.cpp.o
+.PHONY : test/base_tests.cpp.o
+
+test/base_tests.i: test/base_tests.cpp.i
+
+.PHONY : test/base_tests.i
+
+# target to preprocess a source file
+test/base_tests.cpp.i:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/base_tests.cpp.i
+.PHONY : test/base_tests.cpp.i
+
+test/base_tests.s: test/base_tests.cpp.s
+
+.PHONY : test/base_tests.s
+
+# target to generate assembly for a file
+test/base_tests.cpp.s:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/base_tests.cpp.s
+.PHONY : test/base_tests.cpp.s
+
 test/gtest.o: test/gtest.cpp.o
 
 .PHONY : test/gtest.o
@@ -314,6 +341,114 @@ test/gtest.cpp.s:
 	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/gtest.cpp.s
 .PHONY : test/gtest.cpp.s
 
+test/map_tests.o: test/map_tests.cpp.o
+
+.PHONY : test/map_tests.o
+
+# target to build an object file
+test/map_tests.cpp.o:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/map_tests.cpp.o
+.PHONY : test/map_tests.cpp.o
+
+test/map_tests.i: test/map_tests.cpp.i
+
+.PHONY : test/map_tests.i
+
+# target to preprocess a source file
+test/map_tests.cpp.i:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/map_tests.cpp.i
+.PHONY : test/map_tests.cpp.i
+
+test/map_tests.s: test/map_tests.cpp.s
+
+.PHONY : test/map_tests.s
+
+# target to generate assembly for a file
+test/map_tests.cpp.s:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/map_tests.cpp.s
+.PHONY : test/map_tests.cpp.s
+
+test/player_test.o: test/player_test.cpp.o
+
+.PHONY : test/player_test.o
+
+# target to build an object file
+test/player_test.cpp.o:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/player_test.cpp.o
+.PHONY : test/player_test.cpp.o
+
+test/player_test.i: test/player_test.cpp.i
+
+.PHONY : test/player_test.i
+
+# target to preprocess a source file
+test/player_test.cpp.i:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/player_test.cpp.i
+.PHONY : test/player_test.cpp.i
+
+test/player_test.s: test/player_test.cpp.s
+
+.PHONY : test/player_test.s
+
+# target to generate assembly for a file
+test/player_test.cpp.s:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/player_test.cpp.s
+.PHONY : test/player_test.cpp.s
+
+test/unit_tests.o: test/unit_tests.cpp.o
+
+.PHONY : test/unit_tests.o
+
+# target to build an object file
+test/unit_tests.cpp.o:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/unit_tests.cpp.o
+.PHONY : test/unit_tests.cpp.o
+
+test/unit_tests.i: test/unit_tests.cpp.i
+
+.PHONY : test/unit_tests.i
+
+# target to preprocess a source file
+test/unit_tests.cpp.i:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/unit_tests.cpp.i
+.PHONY : test/unit_tests.cpp.i
+
+test/unit_tests.s: test/unit_tests.cpp.s
+
+.PHONY : test/unit_tests.s
+
+# target to generate assembly for a file
+test/unit_tests.cpp.s:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/unit_tests.cpp.s
+.PHONY : test/unit_tests.cpp.s
+
+test/update_maker_tests.o: test/update_maker_tests.cpp.o
+
+.PHONY : test/update_maker_tests.o
+
+# target to build an object file
+test/update_maker_tests.cpp.o:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/update_maker_tests.cpp.o
+.PHONY : test/update_maker_tests.cpp.o
+
+test/update_maker_tests.i: test/update_maker_tests.cpp.i
+
+.PHONY : test/update_maker_tests.i
+
+# target to preprocess a source file
+test/update_maker_tests.cpp.i:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/update_maker_tests.cpp.i
+.PHONY : test/update_maker_tests.cpp.i
+
+test/update_maker_tests.s: test/update_maker_tests.cpp.s
+
+.PHONY : test/update_maker_tests.s
+
+# target to generate assembly for a file
+test/update_maker_tests.cpp.s:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/update_maker_tests.cpp.s
+.PHONY : test/update_maker_tests.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -340,9 +475,24 @@ help:
 	@echo "... src/update_maker.o"
 	@echo "... src/update_maker.i"
 	@echo "... src/update_maker.s"
+	@echo "... test/base_tests.o"
+	@echo "... test/base_tests.i"
+	@echo "... test/base_tests.s"
 	@echo "... test/gtest.o"
 	@echo "... test/gtest.i"
 	@echo "... test/gtest.s"
+	@echo "... test/map_tests.o"
+	@echo "... test/map_tests.i"
+	@echo "... test/map_tests.s"
+	@echo "... test/player_test.o"
+	@echo "... test/player_test.i"
+	@echo "... test/player_test.s"
+	@echo "... test/unit_tests.o"
+	@echo "... test/unit_tests.i"
+	@echo "... test/unit_tests.s"
+	@echo "... test/update_maker_tests.o"
+	@echo "... test/update_maker_tests.i"
+	@echo "... test/update_maker_tests.s"
 .PHONY : help
 
 

@@ -2,6 +2,10 @@
 // Created by sergey on 28.10.18.
 //
 
+/*
+     look abstract_building.hpp
+*/
+
 #ifndef SERVER_BUILDING_HPP
 #define SERVER_BUILDING_HPP
 

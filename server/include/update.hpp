@@ -3,8 +3,8 @@
 //
 
 /*
- Have to talk with guys in order to discuss the inner structure of update
- */
+    here are necessary things to know for all the clients
+*/
 
 #ifndef SERVER_UPDATE_HPP
 #define SERVER_UPDATE_HPP

@@ -2,6 +2,10 @@
 // Created by sergey on 28.10.18.
 //
 
+/*
+    Class, that makes new units
+*/
+
 #ifndef SERVER_BASE_HPP
 #define SERVER_BASE_HPP
 
@@ -12,10 +16,10 @@
 class Base : public RealUnit{
     public:
         Base(Mediator* med, const int& HP, const int& _x,const int& _y, const int& id = 0);
-        bool is_ready();
+        bool is_ready();    // checks if unit is ready to be born
         void start_making(const int& x, const int& y, const int& HP, const int& damage,
-                const int& speed, const bool& if_start);
-        Unit* get_unit();
+                const int& speed, const bool& if_start);    // init the making process
+        Unit* get_unit();   // this returns Unit, when it's made
     private:
         std::chrono::time_point<std::chrono::system_clock> start, end;
         bool is_ready_for_time(const int& elapsed_time);

@@ -4,7 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/base_tests.cpp" "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/tests.dir/test/base_tests.cpp.o"
   "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/gtest.cpp" "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/tests.dir/test/gtest.cpp.o"
+  "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/map_tests.cpp" "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/tests.dir/test/map_tests.cpp.o"
+  "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/player_test.cpp" "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/tests.dir/test/player_test.cpp.o"
+  "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/unit_tests.cpp" "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/tests.dir/test/unit_tests.cpp.o"
+  "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/update_maker_tests.cpp" "/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/tests.dir/test/update_maker_tests.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

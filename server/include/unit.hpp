@@ -32,20 +32,20 @@ class Unit : public AbstractUnit, public RealUnit {
         Unit& operator=(Unit&) = delete;
         Unit&& operator=(Unit&&);
         ~Unit() override;
-        void add(NewsTaker* news_taker) override;
+        void add(NewsTaker* news_taker) override;   // adds UpdateMaker
         void remove() override;
         void notify() override;
-        int add_command(const std::string& command, std::vector<int>) override;
-        bool virtual check_trurh(const int& x, const int& y, const int& look_angle, const int& HP) override;
-        int interact(std::vector<int>&) override;
+        int act(Command order) override;     // here the command is parsed
+                                    // it can be either real command or check command
+
     private:
-        std::queue<Command> commands;
+        int add_command(const std::string& command, std::vector<int>);
+        int check_truth(const int& x, const int& y, const int& look_angle, const int& HP);
+        int interact(std::vector<int>&) override;   // take some damage from other units
         int change_state(const std::string state_name, const std::vector<int> changes);
+
+        std::queue<Command> commands;
         NewsTaker* updater;
-        // int id;
-        // int HP;     // consider removing this to skill get_kicked
-        // int unit_x;
-        // int unit_y;
         int damage;
         // int damage_radius;   // make later if long strike is available
         int speed;

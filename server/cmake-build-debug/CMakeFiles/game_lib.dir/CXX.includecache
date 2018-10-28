@@ -166,13 +166,3 @@ game.hpp
 player.hpp
 /home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/player.hpp
 
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/update_maker.cpp
-update_maker.hpp
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/update_maker.hpp
-
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/gtest.cpp
-gmock/gmock.h
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/gmock/gmock.h
-gtest/gtest.h
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/gtest/gtest.h
-

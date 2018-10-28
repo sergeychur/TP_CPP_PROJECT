@@ -38,7 +38,7 @@ class Game {
         Game& operator=(const Game&&) = delete;
 
         // void add_player(Player* player);
-        int act(std::vector<std::vector<Command>>);     // function making one iteration of game loop
+        int act(std::vector<std::vector<Command>>);
         Update* get_update();    // returns the update to send to clients
 
 };

@@ -2,6 +2,11 @@
 // Created by sergey on 28.10.18.
 //
 
+
+/*
+    probably the check of collisions
+    will be made on client, so is unnecessary
+*/
 #ifndef SERVER_ABSTRACT_BUILDING_HPP
 #define SERVER_ABSTRACT_BUILDING_HPP
 
