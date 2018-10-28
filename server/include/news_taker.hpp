@@ -9,10 +9,14 @@
 #ifndef SERVER_NEWS_TAKER_HPP
 #define SERVER_NEWS_TAKER_HPP
 
+#include "update.hpp"
+
 class NewsTaker {
     // handle with happened event on changing side
 public:
-    virtual void handle_event() = 0;
+    virtual void handle_event(UpdateLine&) = 0;
+    virtual Update* get_update() = 0;
+    virtual void delete_update() = 0;
     virtual ~NewsTaker() = default;
 };
 

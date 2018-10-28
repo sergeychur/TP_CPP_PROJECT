@@ -16,8 +16,9 @@
 
 #include "unit.hpp"
 #include "command.hpp"
+#include "base.hpp"
 
-enum constants {
+enum Constants {
     WIN = 1,
     STILL_ACT = 0
 };
@@ -28,11 +29,15 @@ enum Units {
 
 class Player {
     private:
-        std::vector<Unit*> unit_arr;     // the array of player's units
-        // Base base; in constructor write unit_arr[0] - base;
+        int id;
+        std::vector<AbstractUnit*> unit_arr;     // the array of player's units
+        int add_unit(Unit*);
+        int remove_unit(const int& id);
+        Base base;
 
     public:
-    int act(std::vector<std::queue<Command>>& commands_arr);    // giving the orders to units
+    int add_commands(std::vector<Command>& commands_arr);    // giving the orders to units
+    int check_truth(std::vector<std::vector<int>>& params);    // here the params to check(at first coordinates of units) come, change for some checker struct
 };
 
 #endif //SERVER_PLAYER_HPP

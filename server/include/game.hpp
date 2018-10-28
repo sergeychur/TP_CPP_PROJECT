@@ -22,9 +22,9 @@
 
 class Game {
     private:
-        Map* map;    // map of the world
+        Mediator* map;    // map of the world
         std::vector<Player*> player_arr;     // the array of the players(the models of clients)
-        UpdateMaker* update_maker;       // this gets the updates from all the changing objects
+        NewsTaker* update_maker;       // this gets the updates from all the changing objects
         int stat;   // the status of the game, updating every iteration of the loop
         int player_num;
 
@@ -37,8 +37,8 @@ class Game {
         Game& operator=(const Game&) = delete;
         Game& operator=(const Game&&) = delete;
 
-
-        int act(std::vector<std::vector<std::queue<Command>>>);     // function making one iteration of game loop
+        // void add_player(Player* player);
+        int act(std::vector<std::vector<Command>>);     // function making one iteration of game loop
         Update* get_update();    // returns the update to send to clients
 
 };

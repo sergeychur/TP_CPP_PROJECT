@@ -12,32 +12,43 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <queue>
 #include <utility>
 #include <memory>
 
-#include "news_maker.hpp"
 #include "update.hpp"
-#include "skill.hpp"
 #include "parameter.hpp"
-#include "colleague.hpp"
+#include "abstract_unit.hpp"
+#include "command.hpp"
 
-class Unit : public NewsMaker, public Colleague {
+class Unit : public AbstractUnit {
     public:
-        Unit(const int& _HP, std::vector<std::pair<std::string, Skill>>, Mediator* mediator);
+        Unit(const int& _id, const int& _HP, const int _unit_x, const int& _unit_y, const int& damage,
+                const int& speed, const int& look_angle, Mediator* mediator);
         Unit() = delete;
         Unit(const Unit&&);
         Unit(const Unit&) = delete;
         Unit& operator=(Unit&) = delete;
         Unit&& operator=(Unit&&);
+        ~Unit() override;
         void add(NewsTaker* news_taker) override;
         void remove() override;
         void notify() override;
-        int act(const std::string& command, std::vector<Parameter>);    // interact with the world using skills
-
+        int add_command(const std::string& command, std::vector<int>) override;
+        bool virtual check_trurh(const int& x, const int& y, const int& look_angle, const int& HP) override;
+        int interact(std::vector<int>&) override;
     private:
-        std::map<std::string, Skill*> skills;
-        std::vector<NewsTaker*> news_takers_arr;
+        std::queue<Command> commands;
+        int change_state(const std::string state_name, const std::vector<int> changes);
+        NewsTaker* updater;
+        int id;
         int HP;     // consider removing this to skill get_kicked
+        int unit_x;
+        int unit_y;
+        int damage;
+        // int damage_radius;   // make later if long strike is available
+        int speed;
+        int look_angle;
 };
 
 #endif //SERVER_UNIT_HPP

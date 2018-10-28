@@ -14,9 +14,8 @@ Map::~Map() {
 
 }
 
-void Map::make_interaction(std::vector<Parameter*>& param_vector) {
-    if(param_vector[0]) {       // remove in future
+void Map::make_interaction(std::vector<int>& param_vector) {
+    if(param_vector.size() != 0) {
         return;
     }
-
 }

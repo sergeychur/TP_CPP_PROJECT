@@ -13,9 +13,10 @@
 
 #include "parameter.hpp"
 
+
 class Mediator {
     public:
-        virtual void make_interaction(std::vector<Parameter*>& param_vector) = 0;
+        virtual void make_interaction(std::vector<int>& param_vector) = 0;
         virtual ~Mediator() = default;
 };
 

@@ -10,9 +10,11 @@
 #define SERVER_MAP_HPP
 
 #include <string>
+#include <vector>
 
 #include "mediator.hpp"
 #include "unit.hpp"
+#include "building.hpp"
 
 class Map : public Mediator {
     public:
@@ -22,11 +24,13 @@ class Map : public Mediator {
         Map& operator=(const Map&) = delete;
         Map&& operator=(const Map&&) = delete;
 
-        void make_interaction(std::vector<Parameter*>& param_vector) override;      // gets the vector of parameters and by them calls the alter methods of influenced objects
+        void make_interaction(std::vector<int>& param_vector) override;      // gets the vector of parameters and by them calls the alter methods of influenced objects
         ~Map() override;
 
     private:
-        std::map<std::pair<int, int>, Unit*> unit_map;  // something that gets unit by coordinates
+        // std::map<std::pair<int, int>, Unit*> unit_map;  // something that gets unit by coordinates
+        std::vector<std::vector<Colleague*>> unit_map;
+        // std::vector<std::vector<AbstractBuilding*>> buildings; // dunno if necessary, no
 };
 
 #endif //SERVER_MAP_HPP

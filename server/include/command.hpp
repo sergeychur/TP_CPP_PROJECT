@@ -16,15 +16,16 @@
 
 struct Command {
     public:
-        Command(const std::string& _command_name, std::vector<Parameter>& _parameters);
+        Command(const int& unit_id, const std::string& _command_name, std::vector<Parameter>& _parameters);
         Command() = delete;
         Command(const Command&) = delete;
         Command(const Command&&) = delete;
         Command& operator=(const Command&) = delete;
         Command&& operator=(const Command&&) = delete;
 
+        int unit_id;
         std::string command_name;
-        std::vector<Parameter> parameters;
+        std::vector<int> parameters;
 };
 
 #endif //SERVER_COMMAND_HPP

@@ -13,12 +13,13 @@
 class Parameter {
     public:
         explicit Parameter(void* _data) : data(_data) {}
-        Parameter() = delete;
+        Parameter() = default;
         Parameter(const Parameter&) = delete;
         Parameter(const Parameter&&) = delete;
         Parameter& operator=(const Parameter&) = delete;
         Parameter&& operator=(const Parameter&&) = delete;
 
+        bool IsEmpty() const {return !data;}
         inline void* get_data() {return data;};
 
     private:

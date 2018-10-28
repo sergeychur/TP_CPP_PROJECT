@@ -6,6 +6,28 @@
 
 #IncludeRegexTransform: 
 
+../include/abstract_building.hpp
+vertex.hpp
+../include/vertex.hpp
+
+../include/abstract_unit.hpp
+string
+-
+vector
+-
+news_maker.hpp
+../include/news_maker.hpp
+colleague.hpp
+../include/colleague.hpp
+parameter.hpp
+../include/parameter.hpp
+
+../include/building.hpp
+vector
+-
+abstract_building.hpp
+../include/abstract_building.hpp
+
 ../include/colleague.hpp
 mediator.hpp
 ../include/mediator.hpp
@@ -18,33 +40,17 @@ vector
 parameter.hpp
 ../include/parameter.hpp
 
-../include/game.hpp
-memory
--
-queue
--
-vector
--
-iostream
--
-map.hpp
-../include/map.hpp
-player.hpp
-../include/player.hpp
-update.hpp
-../include/update.hpp
-command.hpp
-../include/command.hpp
-update_maker.hpp
-../include/update_maker.hpp
-
 ../include/map.hpp
 string
+-
+vector
 -
 mediator.hpp
 ../include/mediator.hpp
 unit.hpp
 ../include/unit.hpp
+building.hpp
+../include/building.hpp
 
 ../include/mediator.hpp
 vector
@@ -57,24 +63,10 @@ news_taker.hpp
 ../include/news_taker.hpp
 
 ../include/news_taker.hpp
+update.hpp
+../include/update.hpp
 
 ../include/parameter.hpp
-
-../include/player.hpp
-memory
--
-queue
--
-vector
--
-iostream
--
-unit.hpp
-../include/unit.hpp
-command.hpp
-../include/command.hpp
-
-../include/skill.hpp
 
 ../include/unit.hpp
 string
@@ -83,46 +75,32 @@ map
 -
 vector
 -
+queue
+-
 utility
 -
 memory
 -
-news_maker.hpp
-../include/news_maker.hpp
 update.hpp
 ../include/update.hpp
-skill.hpp
-../include/skill.hpp
 parameter.hpp
 ../include/parameter.hpp
-colleague.hpp
-../include/colleague.hpp
+abstract_unit.hpp
+../include/abstract_unit.hpp
+command.hpp
+../include/command.hpp
 
 ../include/update.hpp
+vector
+-
 
-../include/update_maker.hpp
-news_taker.hpp
-../include/news_taker.hpp
-update.hpp
-../include/update.hpp
-
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/game.cpp
-game.hpp
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/game.hpp
+../include/vertex.hpp
+vector
+-
 
 /home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/map.cpp
 iostream
 -
 map.hpp
 /home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/map.hpp
-
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/player.cpp
-game.hpp
--
-player.hpp
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/player.hpp
-
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/update_maker.cpp
-update_maker.hpp
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/update_maker.hpp
 

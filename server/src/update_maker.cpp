@@ -4,10 +4,18 @@
 
 #include "update_maker.hpp"
 
-void UpdateMaker::handle_event() {
+UpdateMaker::~UpdateMaker() {
+
+}
+
+void UpdateMaker::handle_event(UpdateLine&) {
 
 }
 
 Update* UpdateMaker::get_update() {
     return update;
+}
+
+void UpdateMaker::delete_update() {
+
 }

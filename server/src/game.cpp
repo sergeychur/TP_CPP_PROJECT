@@ -12,12 +12,12 @@ Game::~Game() {
 
 }
 
-int Game::act(std::vector<std::vector<std::queue<Command>>> commands_arr) {
+/*int Game::act(std::vector<std::vector<std::queue<Command>>> commands_arr) {
     for(size_t i = 0; i < commands_arr.size() && stat == STILL_ACT; ++i) {
         stat = player_arr[i]->act(commands_arr[i]);
     }
     return stat;
-}
+}*/
 
 Update* Game::get_update() {
     return update_maker->get_update();   // check later

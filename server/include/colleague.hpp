@@ -16,6 +16,7 @@ class Colleague {
         Mediator* mediator;
     public:
         explicit Colleague(Mediator* _mediator) : mediator(_mediator) {}
+        int virtual interact(std::vector<int>&) = 0;
         virtual ~Colleague() = default;
 };
 
