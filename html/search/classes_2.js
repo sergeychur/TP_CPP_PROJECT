@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['colleague',['Colleague',['../class_colleague.html',1,'']]],
-  ['command',['Command',['../struct_command.html',1,'']]]
+  ['servernetobject',['ServerNetObject',['../class_server_net_object.html',1,'']]]
 ];

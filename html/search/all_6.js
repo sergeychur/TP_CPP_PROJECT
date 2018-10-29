@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['handle_5fevent',['handle_event',['../class_news_taker.html#ad9f3a887aecc619badcd33935cda3767',1,'NewsTaker::handle_event()'],['../class_update_maker.html#a15881a90b10dca5cd902de63bf9d9151',1,'UpdateMaker::handle_event()']]],
-  ['hp',['HP',['../class_real_unit.html#a7ea551db7454a11ceee7917292f63799',1,'RealUnit']]]
+  ['operator_3d',['operator=',['../class_net_object.html#ab90f7d509397e873841f8bac7ea85976',1,'NetObject::operator=(NetObject &amp;)=delete'],['../class_net_object.html#a2491d61c8279d8a6b75ce095286c5781',1,'NetObject::operator=(NetObject &amp;&amp;)=delete']]]
 ];

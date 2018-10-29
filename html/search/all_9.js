@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['make_5finteraction',['make_interaction',['../class_map.html#a5da69b500a02743f025947e9130aa942',1,'Map::make_interaction()'],['../class_mediator.html#ab84245f676d11d556ba4cd49e1fc3668',1,'Mediator::make_interaction()']]],
-  ['map',['Map',['../class_map.html',1,'Map'],['../class_map.html#a4c5b917536edadf3c349829e8d798498',1,'Map::Map(const std::string &amp;path_to_file)'],['../class_map.html#a994beb2f9cf1e0e447653d77cfafa77d',1,'Map::Map(const Map &amp;)=delete'],['../class_map.html#ae12b9ffdf5006c937bcd33427773aa8f',1,'Map::Map(const Map &amp;&amp;)=delete'],['../class_game.html#a45b0ee8e4b08c952f29a9bac0a83e278',1,'Game::map()']]],
-  ['map_2ehpp',['map.hpp',['../map_8hpp.html',1,'']]],
-  ['mediator',['Mediator',['../class_mediator.html',1,'Mediator'],['../class_colleague.html#a1f2794ce2658d64993f30b60fcad664e',1,'Colleague::mediator()']]],
-  ['mediator_2ehpp',['mediator.hpp',['../mediator_8hpp.html',1,'']]]
+  ['send',['send',['../class_net_object.html#ac652f7bba736e095c33098654c4a6717',1,'NetObject::send()'],['../class_server_net_object.html#a461035c05ca4f32f0595b78bdcc99270',1,'ServerNetObject::send()']]],
+  ['servernetobject',['ServerNetObject',['../class_server_net_object.html',1,'ServerNetObject'],['../class_server_net_object.html#a7710e5d69599325930380236fc3fa7e2',1,'ServerNetObject::ServerNetObject()']]],
+  ['servernetobject_2ecpp',['ServerNetObject.cpp',['../_server_net_object_8cpp.html',1,'']]],
+  ['servernetobject_2eh',['ServerNetObject.h',['../_server_net_object_8h.html',1,'']]],
+  ['set_5fplayer',['set_player',['../class_server_net_object.html#a1f2374e02ecb63594c2f4d0f175e744d',1,'ServerNetObject']]],
+  ['set_5fplayer_5fnumber',['set_player_number',['../class_server_net_object.html#a0c2ac447af83c886202f39b37b15b5d1',1,'ServerNetObject']]],
+  ['set_5fport',['set_port',['../class_net_object.html#a400682f2401f918bb67189d794401791',1,'NetObject']]]
 ];

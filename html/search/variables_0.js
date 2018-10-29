@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['base',['base',['../class_player.html#a28a3f2f56797e7c1b962e8d3bc766b8b',1,'Player']]]
+  ['buf_5fsize',['BUF_SIZE',['../class_net_object.html#a12cb2db58ccc8fe7ebaf0db7a9a64f1a',1,'NetObject']]]
 ];

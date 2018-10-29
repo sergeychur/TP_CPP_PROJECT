@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dead',['DEAD',['../player_8hpp.html#a198b8c2c77ea9f9815a181ddeda1c320a11fd9ca455f92c69c084484d5cd803c2',1,'player.hpp']]]
+  ['update',['Update',['../class_packet.html#a31ff1b024f7b399a4020151eadf2e1c2a97012fa3c20bdad8a45884f7480a2d2a',1,'Packet']]]
 ];
