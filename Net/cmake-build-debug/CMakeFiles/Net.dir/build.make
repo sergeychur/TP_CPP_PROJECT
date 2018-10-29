@@ -105,42 +105,42 @@ CMakeFiles/Net.dir/ServerNetObject.cpp.o.provides: CMakeFiles/Net.dir/ServerNetO
 CMakeFiles/Net.dir/ServerNetObject.cpp.o.provides.build: CMakeFiles/Net.dir/ServerNetObject.cpp.o
 
 
-CMakeFiles/Net.dir/ClientNetObject.cpp.o: CMakeFiles/Net.dir/flags.make
-CMakeFiles/Net.dir/ClientNetObject.cpp.o: ../ClientNetObject.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alex/TP-MAIL/CPP1/PROJ/Net/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Net.dir/ClientNetObject.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Net.dir/ClientNetObject.cpp.o -c /home/alex/TP-MAIL/CPP1/PROJ/Net/ClientNetObject.cpp
+CMakeFiles/Net.dir/Packet.cpp.o: CMakeFiles/Net.dir/flags.make
+CMakeFiles/Net.dir/Packet.cpp.o: ../Packet.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/alex/TP-MAIL/CPP1/PROJ/Net/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Net.dir/Packet.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Net.dir/Packet.cpp.o -c /home/alex/TP-MAIL/CPP1/PROJ/Net/Packet.cpp
 
-CMakeFiles/Net.dir/ClientNetObject.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Net.dir/ClientNetObject.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/TP-MAIL/CPP1/PROJ/Net/ClientNetObject.cpp > CMakeFiles/Net.dir/ClientNetObject.cpp.i
+CMakeFiles/Net.dir/Packet.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Net.dir/Packet.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alex/TP-MAIL/CPP1/PROJ/Net/Packet.cpp > CMakeFiles/Net.dir/Packet.cpp.i
 
-CMakeFiles/Net.dir/ClientNetObject.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Net.dir/ClientNetObject.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/TP-MAIL/CPP1/PROJ/Net/ClientNetObject.cpp -o CMakeFiles/Net.dir/ClientNetObject.cpp.s
+CMakeFiles/Net.dir/Packet.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Net.dir/Packet.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alex/TP-MAIL/CPP1/PROJ/Net/Packet.cpp -o CMakeFiles/Net.dir/Packet.cpp.s
 
-CMakeFiles/Net.dir/ClientNetObject.cpp.o.requires:
+CMakeFiles/Net.dir/Packet.cpp.o.requires:
 
-.PHONY : CMakeFiles/Net.dir/ClientNetObject.cpp.o.requires
+.PHONY : CMakeFiles/Net.dir/Packet.cpp.o.requires
 
-CMakeFiles/Net.dir/ClientNetObject.cpp.o.provides: CMakeFiles/Net.dir/ClientNetObject.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Net.dir/build.make CMakeFiles/Net.dir/ClientNetObject.cpp.o.provides.build
-.PHONY : CMakeFiles/Net.dir/ClientNetObject.cpp.o.provides
+CMakeFiles/Net.dir/Packet.cpp.o.provides: CMakeFiles/Net.dir/Packet.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Net.dir/build.make CMakeFiles/Net.dir/Packet.cpp.o.provides.build
+.PHONY : CMakeFiles/Net.dir/Packet.cpp.o.provides
 
-CMakeFiles/Net.dir/ClientNetObject.cpp.o.provides.build: CMakeFiles/Net.dir/ClientNetObject.cpp.o
+CMakeFiles/Net.dir/Packet.cpp.o.provides.build: CMakeFiles/Net.dir/Packet.cpp.o
 
 
 # Object files for target Net
 Net_OBJECTS = \
 "CMakeFiles/Net.dir/NetObject.cpp.o" \
 "CMakeFiles/Net.dir/ServerNetObject.cpp.o" \
-"CMakeFiles/Net.dir/ClientNetObject.cpp.o"
+"CMakeFiles/Net.dir/Packet.cpp.o"
 
 # External object files for target Net
 Net_EXTERNAL_OBJECTS =
 
 libNet.a: CMakeFiles/Net.dir/NetObject.cpp.o
 libNet.a: CMakeFiles/Net.dir/ServerNetObject.cpp.o
-libNet.a: CMakeFiles/Net.dir/ClientNetObject.cpp.o
+libNet.a: CMakeFiles/Net.dir/Packet.cpp.o
 libNet.a: CMakeFiles/Net.dir/build.make
 libNet.a: CMakeFiles/Net.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/alex/TP-MAIL/CPP1/PROJ/Net/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libNet.a"
@@ -154,7 +154,7 @@ CMakeFiles/Net.dir/build: libNet.a
 
 CMakeFiles/Net.dir/requires: CMakeFiles/Net.dir/NetObject.cpp.o.requires
 CMakeFiles/Net.dir/requires: CMakeFiles/Net.dir/ServerNetObject.cpp.o.requires
-CMakeFiles/Net.dir/requires: CMakeFiles/Net.dir/ClientNetObject.cpp.o.requires
+CMakeFiles/Net.dir/requires: CMakeFiles/Net.dir/Packet.cpp.o.requires
 
 .PHONY : CMakeFiles/Net.dir/requires
 

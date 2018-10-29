@@ -5,15 +5,32 @@
 #ifndef NET_NETOBJECT_H
 #define NET_NETOBJECT_H
 
+#include <thread>
+#include "Packet.h"
 
-
-virtual class NetObject
+class NetObject
 {
 public:
-    virtual void connect() = 0;
+    NetObject();
+    NetObject(int port, std::string& ip);
+    NetObject(NetObject&)=delete;
+    NetObject(NetObject&&)=delete;
+    NetObject& operator=(NetObject&)=delete;
+    NetObject& operator=(NetObject&&)=delete;
+    ~NetObject();
+    
+    void set_port(int port);
+    void send(Packet packet);
+    Packet* receive();
+    void connect();
 protected:
-    void send(void* data);
-    void* receive();
+    static short const BUF_SIZE=1024;
+    static void read_sock();
+    Packet recv_buf[BUF_SIZE];
+private:
+    int port;
+    std::string ip;
+    std::thread* thread;
 };
 
 

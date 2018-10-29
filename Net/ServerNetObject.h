@@ -6,19 +6,21 @@
 #define NET_SERVERNETOBJECT_H
 
 
-#include <queue>
+#include <vector>
 #include "NetObject.h"
 
-class ServerNetObject: public NetObject
+class ServerNetObject
 {
 public:
-    void set_player_num();
-    void send(Update update);
-    std::vector<std::queue<Command>> receive_all();
+    explicit ServerNetObject(short player_number);
+    void set_player_number(short player_number);
+    void set_player(int port,std::string& ip);
+    void connect();
+    std::vector<Packet*> recieve();
+    void send(Packet packet);
+    ~ServerNetObject();
 private:
-    std::queue<Command> receive();
-    void* update_to_data(Update);
-    std::queue<Command> data_to_command_queue();
+    std::vector<NetObject*> players;
     short player_number;
 };
 

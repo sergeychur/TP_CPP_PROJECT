@@ -1,2 +1,2 @@
-/usr/bin/ar qc libNet.a  CMakeFiles/Net.dir/NetObject.cpp.o CMakeFiles/Net.dir/ServerNetObject.cpp.o CMakeFiles/Net.dir/ClientNetObject.cpp.o
+/usr/bin/ar qc libNet.a  CMakeFiles/Net.dir/NetObject.cpp.o CMakeFiles/Net.dir/ServerNetObject.cpp.o CMakeFiles/Net.dir/Packet.cpp.o
 /usr/bin/ranlib libNet.a

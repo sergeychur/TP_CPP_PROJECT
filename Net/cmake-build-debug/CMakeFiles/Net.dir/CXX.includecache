@@ -6,19 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/alex/TP-MAIL/CPP1/PROJ/Net/ClientNetObject.cpp
-ClientNetObject.h
-/home/alex/TP-MAIL/CPP1/PROJ/Net/ClientNetObject.h
-
-/home/alex/TP-MAIL/CPP1/PROJ/Net/ClientNetObject.h
-NetObject.h
-/home/alex/TP-MAIL/CPP1/PROJ/Net/NetObject.h
-
 /home/alex/TP-MAIL/CPP1/PROJ/Net/NetObject.cpp
 NetObject.h
 /home/alex/TP-MAIL/CPP1/PROJ/Net/NetObject.h
 
 /home/alex/TP-MAIL/CPP1/PROJ/Net/NetObject.h
+thread
+-
 Packet.h
 /home/alex/TP-MAIL/CPP1/PROJ/Net/Packet.h
 
@@ -27,14 +21,14 @@ Packet.h
 /home/alex/TP-MAIL/CPP1/PROJ/Net/Packet.h
 
 /home/alex/TP-MAIL/CPP1/PROJ/Net/Packet.h
-queue
--
 
 /home/alex/TP-MAIL/CPP1/PROJ/Net/ServerNetObject.cpp
 ServerNetObject.h
 /home/alex/TP-MAIL/CPP1/PROJ/Net/ServerNetObject.h
 
 /home/alex/TP-MAIL/CPP1/PROJ/Net/ServerNetObject.h
+vector
+-
 NetObject.h
 /home/alex/TP-MAIL/CPP1/PROJ/Net/NetObject.h
 

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Net.dir/NetObject.cpp.o"
   "CMakeFiles/Net.dir/ServerNetObject.cpp.o"
-  "CMakeFiles/Net.dir/ClientNetObject.cpp.o"
+  "CMakeFiles/Net.dir/Packet.cpp.o"
   "libNet.pdb"
   "libNet.a"
 )

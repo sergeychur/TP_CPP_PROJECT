@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named tests
+
+# Build rule for target.
+tests: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 tests
+.PHONY : tests
+
+# fast build rule for target.
+tests/fast:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/build
+.PHONY : tests/fast
+
+#=============================================================================
 # Target rules for targets named Net
 
 # Build rule for target.
@@ -122,33 +135,6 @@ Net: cmake_check_build_system
 Net/fast:
 	$(MAKE) -f CMakeFiles/Net.dir/build.make CMakeFiles/Net.dir/build
 .PHONY : Net/fast
-
-ClientNetObject.o: ClientNetObject.cpp.o
-
-.PHONY : ClientNetObject.o
-
-# target to build an object file
-ClientNetObject.cpp.o:
-	$(MAKE) -f CMakeFiles/Net.dir/build.make CMakeFiles/Net.dir/ClientNetObject.cpp.o
-.PHONY : ClientNetObject.cpp.o
-
-ClientNetObject.i: ClientNetObject.cpp.i
-
-.PHONY : ClientNetObject.i
-
-# target to preprocess a source file
-ClientNetObject.cpp.i:
-	$(MAKE) -f CMakeFiles/Net.dir/build.make CMakeFiles/Net.dir/ClientNetObject.cpp.i
-.PHONY : ClientNetObject.cpp.i
-
-ClientNetObject.s: ClientNetObject.cpp.s
-
-.PHONY : ClientNetObject.s
-
-# target to generate assembly for a file
-ClientNetObject.cpp.s:
-	$(MAKE) -f CMakeFiles/Net.dir/build.make CMakeFiles/Net.dir/ClientNetObject.cpp.s
-.PHONY : ClientNetObject.cpp.s
 
 NetObject.o: NetObject.cpp.o
 
@@ -177,6 +163,33 @@ NetObject.cpp.s:
 	$(MAKE) -f CMakeFiles/Net.dir/build.make CMakeFiles/Net.dir/NetObject.cpp.s
 .PHONY : NetObject.cpp.s
 
+Packet.o: Packet.cpp.o
+
+.PHONY : Packet.o
+
+# target to build an object file
+Packet.cpp.o:
+	$(MAKE) -f CMakeFiles/Net.dir/build.make CMakeFiles/Net.dir/Packet.cpp.o
+.PHONY : Packet.cpp.o
+
+Packet.i: Packet.cpp.i
+
+.PHONY : Packet.i
+
+# target to preprocess a source file
+Packet.cpp.i:
+	$(MAKE) -f CMakeFiles/Net.dir/build.make CMakeFiles/Net.dir/Packet.cpp.i
+.PHONY : Packet.cpp.i
+
+Packet.s: Packet.cpp.s
+
+.PHONY : Packet.s
+
+# target to generate assembly for a file
+Packet.cpp.s:
+	$(MAKE) -f CMakeFiles/Net.dir/build.make CMakeFiles/Net.dir/Packet.cpp.s
+.PHONY : Packet.cpp.s
+
 ServerNetObject.o: ServerNetObject.cpp.o
 
 .PHONY : ServerNetObject.o
@@ -204,6 +217,60 @@ ServerNetObject.cpp.s:
 	$(MAKE) -f CMakeFiles/Net.dir/build.make CMakeFiles/Net.dir/ServerNetObject.cpp.s
 .PHONY : ServerNetObject.cpp.s
 
+test/gtest.o: test/gtest.cpp.o
+
+.PHONY : test/gtest.o
+
+# target to build an object file
+test/gtest.cpp.o:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/gtest.cpp.o
+.PHONY : test/gtest.cpp.o
+
+test/gtest.i: test/gtest.cpp.i
+
+.PHONY : test/gtest.i
+
+# target to preprocess a source file
+test/gtest.cpp.i:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/gtest.cpp.i
+.PHONY : test/gtest.cpp.i
+
+test/gtest.s: test/gtest.cpp.s
+
+.PHONY : test/gtest.s
+
+# target to generate assembly for a file
+test/gtest.cpp.s:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/gtest.cpp.s
+.PHONY : test/gtest.cpp.s
+
+test/packet_tests.o: test/packet_tests.cpp.o
+
+.PHONY : test/packet_tests.o
+
+# target to build an object file
+test/packet_tests.cpp.o:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/packet_tests.cpp.o
+.PHONY : test/packet_tests.cpp.o
+
+test/packet_tests.i: test/packet_tests.cpp.i
+
+.PHONY : test/packet_tests.i
+
+# target to preprocess a source file
+test/packet_tests.cpp.i:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/packet_tests.cpp.i
+.PHONY : test/packet_tests.cpp.i
+
+test/packet_tests.s: test/packet_tests.cpp.s
+
+.PHONY : test/packet_tests.s
+
+# target to generate assembly for a file
+test/packet_tests.cpp.s:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/packet_tests.cpp.s
+.PHONY : test/packet_tests.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -211,17 +278,24 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... tests"
 	@echo "... rebuild_cache"
 	@echo "... Net"
-	@echo "... ClientNetObject.o"
-	@echo "... ClientNetObject.i"
-	@echo "... ClientNetObject.s"
 	@echo "... NetObject.o"
 	@echo "... NetObject.i"
 	@echo "... NetObject.s"
+	@echo "... Packet.o"
+	@echo "... Packet.i"
+	@echo "... Packet.s"
 	@echo "... ServerNetObject.o"
 	@echo "... ServerNetObject.i"
 	@echo "... ServerNetObject.s"
+	@echo "... test/gtest.o"
+	@echo "... test/gtest.i"
+	@echo "... test/gtest.s"
+	@echo "... test/packet_tests.o"
+	@echo "... test/packet_tests.i"
+	@echo "... test/packet_tests.s"
 .PHONY : help
 
 
