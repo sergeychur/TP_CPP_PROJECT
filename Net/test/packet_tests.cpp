@@ -6,10 +6,20 @@
 #include "gmock/gmock.h"
 #include "../Packet.h"
 
+//to delete after taking real commands and updates!
+struct Update {
+
+};
+
+struct Command {
+
+};
+//
+
 TEST(packet_update_test, convert_extract)
 {
     Packet packet;
-    Update before();
+    Update before;
     packet.convert<Update>(before);
     Update after=packet.extract<Update>();
     EXPECT_EQ(before, after);
@@ -18,7 +28,7 @@ TEST(packet_update_test, convert_extract)
 TEST(packet_command_test, convert_extract)
 {
     Packet packet;
-    Command before();
+    Command before;
     packet.convert<Command>(before);
     Command after=packet.extract<Command>();
     EXPECT_EQ(before, after);
