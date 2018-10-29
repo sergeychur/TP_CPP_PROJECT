@@ -35,7 +35,7 @@ class Unit : public AbstractUnit, public RealUnit {
         void add(NewsTaker* news_taker) override;   // adds UpdateMaker
         void remove() override;
         void notify() override;
-        int act(Command order) override;     // here the command is parsed
+        int act(Command& order) override;     // here the command is parsed
                                     // it can be either real command or check command
 
     private:

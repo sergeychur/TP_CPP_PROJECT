@@ -27,7 +27,7 @@ public:
 class Mediator {
     public:
         virtual void add_colleague(Colleague*,
-                const int& player_id, const int& unit_id);
+                const int& player_id, const int& unit_id) = 0;
         virtual bool make_interaction(std::vector<int>& param_vector) = 0;
         virtual ~Mediator() = default;
 };
