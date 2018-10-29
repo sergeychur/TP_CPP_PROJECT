@@ -5,6 +5,7 @@
       <config projectName="server" targetName="game_lib" />
       <config projectName="server" targetName="server" />
       <config projectName="server" targetName="tests" />
+      <config projectName="server" targetName="test_lib" />
     </generated>
   </component>
   <component name="CMakeSettings" AUTO_RELOAD="true">
@@ -14,41 +15,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="34f12d58-ce38-4981-b9b6-b79a14846408" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/base_tests.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/map_tests.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/player_test.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/unit_tests.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/update_maker_tests.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/include/base_tests.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/include/map_tests.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/include/player_tests.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/include/unit_tests.hpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/include/update_maker.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/depend.internal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/game_lib.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/server.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/DependInfo.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/build.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/link.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/tests.dir/progress.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/server.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/server.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/tests" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/tests" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/abstract_building.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/abstract_building.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/tests" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/include/abstract_unit.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/abstract_unit.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/base.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/base.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/building.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/building.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/command.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/command.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/game.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/game.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/colleague.hpp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/include/map.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/map.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/parameter.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/parameter.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/player.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/player.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/real_unit.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/real_unit.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/mediator.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/mediator.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/include/unit.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/unit.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/update.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/update.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/include/vertex.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/include/vertex.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/gtest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/gtest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/base_tests.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/gtest.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/map_tests.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/player_test.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/unit_tests.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/update_maker_tests.cpp" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,39 +75,41 @@
     <session id="-1001211528">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.19" value="1" />
+          <entry key="project.open.time.19" value="2" />
           <entry key="project.open.time.20" value="2" />
           <entry key="project.open.time.21" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.22" value="1" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="cmake" value="2" />
-          <entry key="cpp" value="49" />
-          <entry key="hpp" value="298" />
-          <entry key="txt" value="6" />
+          <entry key="cpp" value="54" />
+          <entry key="h" value="1" />
+          <entry key="hpp" value="318" />
+          <entry key="txt" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CMakeLists.txt" value="8" />
-          <entry key="ObjectiveC" value="347" />
+          <entry key="CMakeLists.txt" value="10" />
+          <entry key="ObjectiveC" value="373" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="cpp" value="1302" />
-          <entry key="hpp" value="12462" />
-          <entry key="txt" value="435" />
+          <entry key="cpp" value="2375" />
+          <entry key="hpp" value="13678" />
+          <entry key="txt" value="551" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CMakeLists.txt" value="435" />
-          <entry key="ObjectiveC" value="13764" />
+          <entry key="CMakeLists.txt" value="551" />
+          <entry key="ObjectiveC" value="16053" />
         </counts>
       </usages-collector>
     </session>
@@ -104,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/include/unit.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="50" column="8" lean-forward="true" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
+            <state relative-caret-position="443">
+              <caret line="54" column="41" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
               <folding>
                 <element signature="e#173#190#0" expanded="true" />
               </folding>
@@ -114,28 +129,37 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/update_maker.hpp">
+        <entry file="file://$PROJECT_DIR$/include/base.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/include/vertex.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="345">
+              <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+              <folding>
+                <element signature="e#129#146#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/update.hpp">
+        <entry file="file://$PROJECT_DIR$/test/include/base_tests.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="14" column="57" lean-forward="true" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+            <state relative-caret-position="195">
+              <caret line="13" selection-start-line="13" selection-end-line="20" selection-end-column="2" />
+              <folding>
+                <element signature="e#103#127#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/include/map_tests.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+              <folding>
+                <element signature="e#100#124#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -144,55 +168,55 @@
         <entry file="file://$PROJECT_DIR$/include/abstract_unit.hpp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+              <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/news_maker.hpp">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="32" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+            <state relative-caret-position="435">
+              <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/news_taker.hpp">
+        <entry file="file://$PROJECT_DIR$/include/mediator.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+            <state relative-caret-position="208">
+              <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/src/base_tests.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="58">
+              <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/parameter.hpp">
+        <entry file="file://$PROJECT_DIR$/test/src/map_tests.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="2" selection-start-line="4" selection-start-column="2" selection-end-line="4" selection-end-column="2" />
+            <state relative-caret-position="375">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/player.hpp">
+        <entry file="file://$PROJECT_DIR$/include/map.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
+            <state relative-caret-position="373">
+              <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
               <folding>
-                <element signature="e#148#165#0" expanded="true" />
+                <element signature="e#195#212#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/include/real_unit.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -232,31 +256,37 @@
         <option value="$PROJECT_DIR$/src/game.cpp" />
         <option value="$PROJECT_DIR$/src/player.cpp" />
         <option value="$PROJECT_DIR$/src/update_maker.cpp" />
-        <option value="$PROJECT_DIR$/include/mediator.hpp" />
-        <option value="$PROJECT_DIR$/include/colleague.hpp" />
         <option value="$PROJECT_DIR$/src/map.cpp" />
         <option value="$PROJECT_DIR$/test/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/test/gtest.cpp" />
         <option value="$PROJECT_DIR$/test/update_maker_tests.cpp" />
         <option value="$PROJECT_DIR$/test/map_tests.cpp" />
         <option value="$PROJECT_DIR$/test/unit_tests.cpp" />
-        <option value="$PROJECT_DIR$/include/map.hpp" />
-        <option value="$PROJECT_DIR$/test/base_tests.cpp" />
         <option value="$PROJECT_DIR$/test/player_test.cpp" />
         <option value="$PROJECT_DIR$/include/package.hpp" />
         <option value="$PROJECT_DIR$/include/game.hpp" />
         <option value="$PROJECT_DIR$/include/abstract_building.hpp" />
-        <option value="$PROJECT_DIR$/include/base.hpp" />
         <option value="$PROJECT_DIR$/include/building.hpp" />
         <option value="$PROJECT_DIR$/include/command.hpp" />
         <option value="$PROJECT_DIR$/include/parameter.hpp" />
         <option value="$PROJECT_DIR$/include/player.hpp" />
         <option value="$PROJECT_DIR$/include/real_unit.hpp" />
-        <option value="$PROJECT_DIR$/include/abstract_unit.hpp" />
-        <option value="$PROJECT_DIR$/include/unit.hpp" />
         <option value="$PROJECT_DIR$/include/update.hpp" />
         <option value="$PROJECT_DIR$/include/vertex.hpp" />
+        <option value="$PROJECT_DIR$/test/base_tests.cpp" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
+        <option value="$PROJECT_DIR$/test/src/gtest.cpp" />
+        <option value="$PROJECT_DIR$/include/unit.hpp" />
+        <option value="$PROJECT_DIR$/test/include/base_tests.hpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/include/base.hpp" />
+        <option value="$PROJECT_DIR$/include/colleague.hpp" />
+        <option value="$PROJECT_DIR$/include/abstract_unit.hpp" />
+        <option value="$PROJECT_DIR$/test/include/map_tests.hpp" />
+        <option value="$PROJECT_DIR$/include/mediator.hpp" />
+        <option value="$PROJECT_DIR$/include/map.hpp" />
+        <option value="$PROJECT_DIR$/test/src/map_tests.cpp" />
+        <option value="$PROJECT_DIR$/test/src/base_tests.cpp" />
       </list>
     </option>
   </component>
@@ -269,7 +299,7 @@
   <component name="ProjectFrameBounds" extendedState="4">
     <option name="x" value="67" />
     <option name="y" value="25" />
-    <option name="width" value="926" />
+    <option name="width" value="927" />
     <option name="height" value="1055" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -301,6 +331,18 @@
               <item name="server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="include" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="server" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="test" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -346,7 +388,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.server">
+  <component name="RunManager" selected="Application.Build All">
     <configuration name="tests" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" PASS_PARENT_ENVS_2="true" PROJECT_NAME="server" TARGET_NAME="tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="server" RUN_TARGET_NAME="tests" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -367,6 +409,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test_lib" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="server" TARGET_NAME="test_lib" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="tests" type="CMakeRunConfiguration" factoryName="Application" temporary="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="server" TARGET_NAME="tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="server" RUN_TARGET_NAME="tests">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -376,6 +423,7 @@
       <item itemvalue="Application.Build All" />
       <item itemvalue="Application.game_lib" />
       <item itemvalue="Application.server" />
+      <item itemvalue="Application.test_lib" />
       <item itemvalue="Google Test.tests" />
       <item itemvalue="Application.tests" />
     </list>
@@ -399,25 +447,27 @@
       <workItem from="1540034050201" duration="601000" />
       <workItem from="1540146142088" duration="599000" />
       <workItem from="1540228154647" duration="599000" />
-      <workItem from="1540715794377" duration="36343000" />
+      <workItem from="1540715794377" duration="43416000" />
+      <workItem from="1540770557187" duration="376000" />
+      <workItem from="1540795000107" duration="4464000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70535000" />
+    <option name="totallyTimeSpent" value="82448000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="926" height="1055" extended-state="4" />
+    <frame x="67" y="25" width="927" height="1055" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.44204545" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.46424517" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="CMake" order="0" weight="0.32972974" />
       <window_info anchor="bottom" id="Terminal" order="1" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5002767" side_tool="true" weight="0.32864866" />
       <window_info anchor="bottom" id="Version Control" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="4" sideWeight="0.4997233" visible="true" weight="0.46054053" />
+      <window_info anchor="bottom" id="Messages" order="4" sideWeight="0.4997233" visible="true" weight="0.45945945" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" weight="0.32972974" />
       <window_info anchor="bottom" id="Run" order="7" weight="0.32972974" />
@@ -431,28 +481,6 @@
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.21527393" />
-      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="CMake" order="0" weight="0.32972974" />
-      <window_info anchor="bottom" id="Terminal" order="1" />
-      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.5002767" side_tool="true" weight="0.32864866" />
-      <window_info anchor="bottom" id="Version Control" order="3" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="4" sideWeight="0.4997233" visible="true" weight="0.32864866" />
-      <window_info anchor="bottom" id="Message" order="5" />
-      <window_info anchor="bottom" id="Find" order="6" />
-      <window_info anchor="bottom" id="Run" order="7" weight="0.32972974" />
-      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="12" />
-      <window_info anchor="right" id="Database" order="0" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -460,24 +488,23 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/include/base.hpp</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/observer.hpp" />
-    <entry file="file://$PROJECT_DIR$/src/observable.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/observer.cpp" />
-    <entry file="file://$PROJECT_DIR$/include/observable.hpp" />
-    <entry file="file://$PROJECT_DIR$/include/observer.hpp" />
-    <entry file="file://$PROJECT_DIR$/src/command.hpp" />
-    <entry file="file://$PROJECT_DIR$/src/command.cpp" />
-    <entry file="file://$PROJECT_DIR$/include/update_taker.hpp" />
-    <entry file="file://$PROJECT_DIR$/src/order.cpp" />
     <entry file="file://$PROJECT_DIR$/include/order.hpp" />
     <entry file="file://$PROJECT_DIR$/src/update.cpp" />
     <entry file="file://$PROJECT_DIR$/include/mediato.cpp" />
     <entry file="file://$PROJECT_DIR$/include/mediato.hpp" />
     <entry file="file://$PROJECT_DIR$/include/mediator.cpp" />
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/mediator.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -506,20 +533,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/skill.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="8" lean-forward="true" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/Movable.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/include/skill.hpp" />
+    <entry file="file://$PROJECT_DIR$/include/Movable.hpp" />
     <entry file="file://$PROJECT_DIR$/src/map.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -541,72 +556,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="3" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/gtest.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="24" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="24" />
-          <folding>
-            <element signature="e#42#66#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/map_tests.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/unit_tests.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/update_maker_tests.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/base_tests.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/player_test.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/package.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/CMakeLists.txt" />
+    <entry file="file://$PROJECT_DIR$/test/gtest.cpp" />
+    <entry file="file://$PROJECT_DIR$/test/map_tests.cpp" />
+    <entry file="file://$PROJECT_DIR$/test/unit_tests.cpp" />
+    <entry file="file://$PROJECT_DIR$/test/update_maker_tests.cpp" />
+    <entry file="file://$PROJECT_DIR$/test/player_test.cpp" />
+    <entry file="file://$PROJECT_DIR$/include/package.hpp" />
     <entry file="file://$PROJECT_DIR$/include/abstract_building.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -614,30 +570,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/base.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="63" selection-start-line="25" selection-start-column="63" selection-end-line="25" selection-end-column="63" />
-          <folding>
-            <element signature="e#102#119#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/building.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
-          <folding>
-            <element signature="e#110#127#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/colleague.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -654,23 +590,6 @@
           <folding>
             <element signature="e#188#205#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/map.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-          <folding>
-            <element signature="e#195#212#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/mediator.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="18" column="55" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -695,44 +614,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/player.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="e#148#165#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/real_unit.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/abstract_unit.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/unit.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="50" column="8" lean-forward="true" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
-          <folding>
-            <element signature="e#173#190#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/include/update.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
-          <caret line="14" column="57" lean-forward="true" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+          <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
         </state>
       </provider>
     </entry>
@@ -743,10 +628,157 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/include/vertex.hpp">
+    <entry file="file://$PROJECT_DIR$/include/real_unit.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/base_tests.cpp" />
+    <entry file="file://$PROJECT_DIR$/include/vertex.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="2" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/include/player_tests.hpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/include/update_maker.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/include/unit_tests.hpp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/player.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="e#148#165#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/gtest.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="e#42#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/base.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
+          <folding>
+            <element signature="e#129#146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/colleague.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/gtest/gtest.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="429" column="15" selection-start-line="429" selection-start-column="15" selection-end-line="429" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/abstract_unit.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/unit.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="54" column="41" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+          <folding>
+            <element signature="e#173#190#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/include/base_tests.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" selection-start-line="13" selection-end-line="20" selection-end-column="2" />
+          <folding>
+            <element signature="e#103#127#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/mediator.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="26" column="16" lean-forward="true" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/include/map.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+          <folding>
+            <element signature="e#195#212#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/map_tests.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/include/map_tests.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+          <folding>
+            <element signature="e#100#124#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/src/base_tests.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
         </state>
       </provider>
     </entry>

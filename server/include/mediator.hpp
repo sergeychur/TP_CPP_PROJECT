@@ -13,10 +13,22 @@
 
 #include "parameter.hpp"
 
+class Mediator;
+
+class Colleague {
+protected:
+    Mediator* mediator;
+public:
+    explicit Colleague(Mediator* _mediator) : mediator(_mediator) {}
+    int virtual interact(std::vector<int>&) = 0;
+    virtual ~Colleague() = default;
+};
 
 class Mediator {
     public:
-        virtual void make_interaction(std::vector<int>& param_vector) = 0;
+        virtual void add_colleague(Colleague*,
+                const int& player_id, const int& unit_id);
+        virtual bool make_interaction(std::vector<int>& param_vector) = 0;
         virtual ~Mediator() = default;
 };
 

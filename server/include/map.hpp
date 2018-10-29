@@ -24,7 +24,9 @@ class Map : public Mediator {
         Map& operator=(const Map&) = delete;
         Map&& operator=(const Map&&) = delete;
 
-        void make_interaction(std::vector<int>& param_vector) override;      // gets the vector of parameters and by them calls the alter methods of influenced objects
+        void add_colleague(Colleague*, const int& player_id,
+                const int& unit_id) override;
+        bool make_interaction(std::vector<int>& param_vector) override;      // gets the vector of parameters and by them calls the alter methods of influenced objects
         ~Map() override;
 
     private:

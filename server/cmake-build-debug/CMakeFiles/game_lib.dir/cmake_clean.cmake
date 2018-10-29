@@ -3,7 +3,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/game_lib.dir/src/map.cpp.o"
   "CMakeFiles/game_lib.dir/src/player.cpp.o"
   "CMakeFiles/game_lib.dir/src/update_maker.cpp.o"
-  "CMakeFiles/game_lib.dir/test/gtest.cpp.o"
   "libgame_lib.pdb"
   "libgame_lib.a"
 )

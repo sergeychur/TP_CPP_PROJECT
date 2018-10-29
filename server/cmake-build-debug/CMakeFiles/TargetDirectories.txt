@@ -1,5 +1,6 @@
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/game_lib.dir
+/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/test_lib.dir
 /home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/server.dir
 /home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/edit_cache.dir
 /home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles/tests.dir

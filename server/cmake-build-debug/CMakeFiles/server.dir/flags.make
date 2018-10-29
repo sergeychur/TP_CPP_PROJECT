@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++17 -Wall -Wextra -Werror -g   -std=gnu++1z
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/sergey/CLionProjects/TP_CPP_PROJECT/server/include 
+CXX_INCLUDES = -I/home/sergey/CLionProjects/TP_CPP_PROJECT/server/include -I/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/include 
 

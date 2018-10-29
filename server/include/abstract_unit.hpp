@@ -14,7 +14,7 @@
 #include <vector>
 
 #include "news_maker.hpp"
-#include "colleague.hpp"
+#include "mediator.hpp"
 #include "command.hpp"
 
 class AbstractUnit : public NewsMaker, public Colleague {

@@ -52,4 +52,6 @@ class Unit : public AbstractUnit, public RealUnit {
         int look_angle;
 };
 
+bool operator== (const Unit&, const Unit&);
+
 #endif //SERVER_UNIT_HPP

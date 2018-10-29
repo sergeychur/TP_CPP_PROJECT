@@ -109,26 +109,12 @@ CMakeFiles/game_lib.dir/src/update_maker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/game_lib.dir/src/update_maker.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sergey/CLionProjects/TP_CPP_PROJECT/server/src/update_maker.cpp -o CMakeFiles/game_lib.dir/src/update_maker.cpp.s
 
-CMakeFiles/game_lib.dir/test/gtest.cpp.o: CMakeFiles/game_lib.dir/flags.make
-CMakeFiles/game_lib.dir/test/gtest.cpp.o: ../test/gtest.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/game_lib.dir/test/gtest.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/game_lib.dir/test/gtest.cpp.o -c /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/gtest.cpp
-
-CMakeFiles/game_lib.dir/test/gtest.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/game_lib.dir/test/gtest.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/gtest.cpp > CMakeFiles/game_lib.dir/test/gtest.cpp.i
-
-CMakeFiles/game_lib.dir/test/gtest.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/game_lib.dir/test/gtest.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/gtest.cpp -o CMakeFiles/game_lib.dir/test/gtest.cpp.s
-
 # Object files for target game_lib
 game_lib_OBJECTS = \
 "CMakeFiles/game_lib.dir/src/game.cpp.o" \
 "CMakeFiles/game_lib.dir/src/map.cpp.o" \
 "CMakeFiles/game_lib.dir/src/player.cpp.o" \
-"CMakeFiles/game_lib.dir/src/update_maker.cpp.o" \
-"CMakeFiles/game_lib.dir/test/gtest.cpp.o"
+"CMakeFiles/game_lib.dir/src/update_maker.cpp.o"
 
 # External object files for target game_lib
 game_lib_EXTERNAL_OBJECTS =
@@ -137,10 +123,9 @@ libgame_lib.a: CMakeFiles/game_lib.dir/src/game.cpp.o
 libgame_lib.a: CMakeFiles/game_lib.dir/src/map.cpp.o
 libgame_lib.a: CMakeFiles/game_lib.dir/src/player.cpp.o
 libgame_lib.a: CMakeFiles/game_lib.dir/src/update_maker.cpp.o
-libgame_lib.a: CMakeFiles/game_lib.dir/test/gtest.cpp.o
 libgame_lib.a: CMakeFiles/game_lib.dir/build.make
 libgame_lib.a: CMakeFiles/game_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libgame_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libgame_lib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/game_lib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/game_lib.dir/link.txt --verbose=$(VERBOSE)
 

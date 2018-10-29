@@ -124,6 +124,19 @@ game_lib/fast:
 .PHONY : game_lib/fast
 
 #=============================================================================
+# Target rules for targets named test_lib
+
+# Build rule for target.
+test_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_lib
+.PHONY : test_lib
+
+# fast build rule for target.
+test_lib/fast:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/build
+.PHONY : test_lib/fast
+
+#=============================================================================
 # Target rules for targets named server
 
 # Build rule for target.
@@ -284,170 +297,167 @@ src/update_maker.cpp.s:
 	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/src/update_maker.cpp.s
 .PHONY : src/update_maker.cpp.s
 
-test/base_tests.o: test/base_tests.cpp.o
+test/src/base_tests.o: test/src/base_tests.cpp.o
 
-.PHONY : test/base_tests.o
-
-# target to build an object file
-test/base_tests.cpp.o:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/base_tests.cpp.o
-.PHONY : test/base_tests.cpp.o
-
-test/base_tests.i: test/base_tests.cpp.i
-
-.PHONY : test/base_tests.i
-
-# target to preprocess a source file
-test/base_tests.cpp.i:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/base_tests.cpp.i
-.PHONY : test/base_tests.cpp.i
-
-test/base_tests.s: test/base_tests.cpp.s
-
-.PHONY : test/base_tests.s
-
-# target to generate assembly for a file
-test/base_tests.cpp.s:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/base_tests.cpp.s
-.PHONY : test/base_tests.cpp.s
-
-test/gtest.o: test/gtest.cpp.o
-
-.PHONY : test/gtest.o
+.PHONY : test/src/base_tests.o
 
 # target to build an object file
-test/gtest.cpp.o:
-	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/test/gtest.cpp.o
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/gtest.cpp.o
-.PHONY : test/gtest.cpp.o
+test/src/base_tests.cpp.o:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/base_tests.cpp.o
+.PHONY : test/src/base_tests.cpp.o
 
-test/gtest.i: test/gtest.cpp.i
+test/src/base_tests.i: test/src/base_tests.cpp.i
 
-.PHONY : test/gtest.i
+.PHONY : test/src/base_tests.i
 
 # target to preprocess a source file
-test/gtest.cpp.i:
-	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/test/gtest.cpp.i
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/gtest.cpp.i
-.PHONY : test/gtest.cpp.i
+test/src/base_tests.cpp.i:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/base_tests.cpp.i
+.PHONY : test/src/base_tests.cpp.i
 
-test/gtest.s: test/gtest.cpp.s
+test/src/base_tests.s: test/src/base_tests.cpp.s
 
-.PHONY : test/gtest.s
+.PHONY : test/src/base_tests.s
 
 # target to generate assembly for a file
-test/gtest.cpp.s:
-	$(MAKE) -f CMakeFiles/game_lib.dir/build.make CMakeFiles/game_lib.dir/test/gtest.cpp.s
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/gtest.cpp.s
-.PHONY : test/gtest.cpp.s
+test/src/base_tests.cpp.s:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/base_tests.cpp.s
+.PHONY : test/src/base_tests.cpp.s
 
-test/map_tests.o: test/map_tests.cpp.o
+test/src/gtest.o: test/src/gtest.cpp.o
 
-.PHONY : test/map_tests.o
+.PHONY : test/src/gtest.o
 
 # target to build an object file
-test/map_tests.cpp.o:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/map_tests.cpp.o
-.PHONY : test/map_tests.cpp.o
+test/src/gtest.cpp.o:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/src/gtest.cpp.o
+.PHONY : test/src/gtest.cpp.o
 
-test/map_tests.i: test/map_tests.cpp.i
+test/src/gtest.i: test/src/gtest.cpp.i
 
-.PHONY : test/map_tests.i
+.PHONY : test/src/gtest.i
 
 # target to preprocess a source file
-test/map_tests.cpp.i:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/map_tests.cpp.i
-.PHONY : test/map_tests.cpp.i
+test/src/gtest.cpp.i:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/src/gtest.cpp.i
+.PHONY : test/src/gtest.cpp.i
 
-test/map_tests.s: test/map_tests.cpp.s
+test/src/gtest.s: test/src/gtest.cpp.s
 
-.PHONY : test/map_tests.s
+.PHONY : test/src/gtest.s
 
 # target to generate assembly for a file
-test/map_tests.cpp.s:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/map_tests.cpp.s
-.PHONY : test/map_tests.cpp.s
+test/src/gtest.cpp.s:
+	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/src/gtest.cpp.s
+.PHONY : test/src/gtest.cpp.s
 
-test/player_test.o: test/player_test.cpp.o
+test/src/map_tests.o: test/src/map_tests.cpp.o
 
-.PHONY : test/player_test.o
+.PHONY : test/src/map_tests.o
 
 # target to build an object file
-test/player_test.cpp.o:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/player_test.cpp.o
-.PHONY : test/player_test.cpp.o
+test/src/map_tests.cpp.o:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o
+.PHONY : test/src/map_tests.cpp.o
 
-test/player_test.i: test/player_test.cpp.i
+test/src/map_tests.i: test/src/map_tests.cpp.i
 
-.PHONY : test/player_test.i
+.PHONY : test/src/map_tests.i
 
 # target to preprocess a source file
-test/player_test.cpp.i:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/player_test.cpp.i
-.PHONY : test/player_test.cpp.i
+test/src/map_tests.cpp.i:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/map_tests.cpp.i
+.PHONY : test/src/map_tests.cpp.i
 
-test/player_test.s: test/player_test.cpp.s
+test/src/map_tests.s: test/src/map_tests.cpp.s
 
-.PHONY : test/player_test.s
+.PHONY : test/src/map_tests.s
 
 # target to generate assembly for a file
-test/player_test.cpp.s:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/player_test.cpp.s
-.PHONY : test/player_test.cpp.s
+test/src/map_tests.cpp.s:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/map_tests.cpp.s
+.PHONY : test/src/map_tests.cpp.s
 
-test/unit_tests.o: test/unit_tests.cpp.o
+test/src/player_test.o: test/src/player_test.cpp.o
 
-.PHONY : test/unit_tests.o
+.PHONY : test/src/player_test.o
 
 # target to build an object file
-test/unit_tests.cpp.o:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/unit_tests.cpp.o
-.PHONY : test/unit_tests.cpp.o
+test/src/player_test.cpp.o:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/player_test.cpp.o
+.PHONY : test/src/player_test.cpp.o
 
-test/unit_tests.i: test/unit_tests.cpp.i
+test/src/player_test.i: test/src/player_test.cpp.i
 
-.PHONY : test/unit_tests.i
+.PHONY : test/src/player_test.i
 
 # target to preprocess a source file
-test/unit_tests.cpp.i:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/unit_tests.cpp.i
-.PHONY : test/unit_tests.cpp.i
+test/src/player_test.cpp.i:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/player_test.cpp.i
+.PHONY : test/src/player_test.cpp.i
 
-test/unit_tests.s: test/unit_tests.cpp.s
+test/src/player_test.s: test/src/player_test.cpp.s
 
-.PHONY : test/unit_tests.s
+.PHONY : test/src/player_test.s
 
 # target to generate assembly for a file
-test/unit_tests.cpp.s:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/unit_tests.cpp.s
-.PHONY : test/unit_tests.cpp.s
+test/src/player_test.cpp.s:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/player_test.cpp.s
+.PHONY : test/src/player_test.cpp.s
 
-test/update_maker_tests.o: test/update_maker_tests.cpp.o
+test/src/unit_tests.o: test/src/unit_tests.cpp.o
 
-.PHONY : test/update_maker_tests.o
+.PHONY : test/src/unit_tests.o
 
 # target to build an object file
-test/update_maker_tests.cpp.o:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/update_maker_tests.cpp.o
-.PHONY : test/update_maker_tests.cpp.o
+test/src/unit_tests.cpp.o:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.o
+.PHONY : test/src/unit_tests.cpp.o
 
-test/update_maker_tests.i: test/update_maker_tests.cpp.i
+test/src/unit_tests.i: test/src/unit_tests.cpp.i
 
-.PHONY : test/update_maker_tests.i
+.PHONY : test/src/unit_tests.i
 
 # target to preprocess a source file
-test/update_maker_tests.cpp.i:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/update_maker_tests.cpp.i
-.PHONY : test/update_maker_tests.cpp.i
+test/src/unit_tests.cpp.i:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.i
+.PHONY : test/src/unit_tests.cpp.i
 
-test/update_maker_tests.s: test/update_maker_tests.cpp.s
+test/src/unit_tests.s: test/src/unit_tests.cpp.s
 
-.PHONY : test/update_maker_tests.s
+.PHONY : test/src/unit_tests.s
 
 # target to generate assembly for a file
-test/update_maker_tests.cpp.s:
-	$(MAKE) -f CMakeFiles/tests.dir/build.make CMakeFiles/tests.dir/test/update_maker_tests.cpp.s
-.PHONY : test/update_maker_tests.cpp.s
+test/src/unit_tests.cpp.s:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.s
+.PHONY : test/src/unit_tests.cpp.s
+
+test/src/update_maker_tests.o: test/src/update_maker_tests.cpp.o
+
+.PHONY : test/src/update_maker_tests.o
+
+# target to build an object file
+test/src/update_maker_tests.cpp.o:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o
+.PHONY : test/src/update_maker_tests.cpp.o
+
+test/src/update_maker_tests.i: test/src/update_maker_tests.cpp.i
+
+.PHONY : test/src/update_maker_tests.i
+
+# target to preprocess a source file
+test/src/update_maker_tests.cpp.i:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.i
+.PHONY : test/src/update_maker_tests.cpp.i
+
+test/src/update_maker_tests.s: test/src/update_maker_tests.cpp.s
+
+.PHONY : test/src/update_maker_tests.s
+
+# target to generate assembly for a file
+test/src/update_maker_tests.cpp.s:
+	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.s
+.PHONY : test/src/update_maker_tests.cpp.s
 
 # Help Target
 help:
@@ -455,8 +465,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... game_lib"
+	@echo "... rebuild_cache"
+	@echo "... test_lib"
 	@echo "... server"
 	@echo "... edit_cache"
 	@echo "... tests"
@@ -475,24 +486,24 @@ help:
 	@echo "... src/update_maker.o"
 	@echo "... src/update_maker.i"
 	@echo "... src/update_maker.s"
-	@echo "... test/base_tests.o"
-	@echo "... test/base_tests.i"
-	@echo "... test/base_tests.s"
-	@echo "... test/gtest.o"
-	@echo "... test/gtest.i"
-	@echo "... test/gtest.s"
-	@echo "... test/map_tests.o"
-	@echo "... test/map_tests.i"
-	@echo "... test/map_tests.s"
-	@echo "... test/player_test.o"
-	@echo "... test/player_test.i"
-	@echo "... test/player_test.s"
-	@echo "... test/unit_tests.o"
-	@echo "... test/unit_tests.i"
-	@echo "... test/unit_tests.s"
-	@echo "... test/update_maker_tests.o"
-	@echo "... test/update_maker_tests.i"
-	@echo "... test/update_maker_tests.s"
+	@echo "... test/src/base_tests.o"
+	@echo "... test/src/base_tests.i"
+	@echo "... test/src/base_tests.s"
+	@echo "... test/src/gtest.o"
+	@echo "... test/src/gtest.i"
+	@echo "... test/src/gtest.s"
+	@echo "... test/src/map_tests.o"
+	@echo "... test/src/map_tests.i"
+	@echo "... test/src/map_tests.s"
+	@echo "... test/src/player_test.o"
+	@echo "... test/src/player_test.i"
+	@echo "... test/src/player_test.s"
+	@echo "... test/src/unit_tests.o"
+	@echo "... test/src/unit_tests.i"
+	@echo "... test/src/unit_tests.s"
+	@echo "... test/src/update_maker_tests.o"
+	@echo "... test/src/update_maker_tests.i"
+	@echo "... test/src/update_maker_tests.s"
 .PHONY : help
 
 
