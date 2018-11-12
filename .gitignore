@@ -34,3 +34,6 @@
 CMakeLists.txt
 
 server/cmake-build-debug*
+server/Doxyfile
+server/html*
+server/latex*
