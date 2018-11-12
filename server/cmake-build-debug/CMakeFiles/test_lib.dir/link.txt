@@ -1,2 +1,0 @@
-/usr/bin/ar qc libtest_lib.a  CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o CMakeFiles/test_lib.dir/test/src/base_tests.cpp.o CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.o CMakeFiles/test_lib.dir/test/src/player_test.cpp.o
-/usr/bin/ranlib libtest_lib.a
