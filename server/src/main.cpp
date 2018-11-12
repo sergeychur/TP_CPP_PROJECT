@@ -24,6 +24,7 @@ int main(void) {
         Update update = game.get_update();
         // here should be some sending to clients
     }
+    std::cout << winner << std::endl;   // remove later
     // here should be sending the result to clients and destroying the connection
     return 0;
 }

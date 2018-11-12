@@ -17,7 +17,7 @@
 
 class Map : public Mediator {
     public:
-        Map(const std::string& path_to_file);
+        Map() = default;
         Map(const Map&) = delete;
         Map(const Map&&) = delete;
         Map& operator=(const Map&) = delete;
@@ -30,7 +30,6 @@ class Map : public Mediator {
 
     private:
         std::vector<std::vector<Colleague*>> unit_map;
-        // std::vector<std::vector<AbstractBuilding*>> buildings; // dunno if necessary, no
 };
 
 #endif //SERVER_MAP_HPP

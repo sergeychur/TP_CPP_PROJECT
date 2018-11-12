@@ -20,7 +20,7 @@
 
 enum Constants {
     DEAD = 1,
-    STILL_ACT = 0,
+    STILL_ACT = -1,
     BASE_HP = 100
 };
 

@@ -29,7 +29,7 @@ class Game {
         size_t player_num;
 
     public:
-        explicit Game(/*std::string file_name,*/ const size_t& _player_num);
+        explicit Game(const size_t& _player_num);
         ~Game();
         Game() = delete;
         Game(const Game&) = delete;

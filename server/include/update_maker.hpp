@@ -17,7 +17,7 @@ class UpdateMaker : public NewsTaker {
         UpdateMaker&& operator=(UpdateMaker&&) = delete;
 
         void handle_event(UpdateLine&) override;
-        Update* get_update() override;
+        Update get_update() override;
         void delete_update() override;
         ~UpdateMaker() override;
     private:
