@@ -16,9 +16,7 @@ CMakeFiles/test_lib.dir/test/src/base_tests.cpp.o
  ../test/include/base_tests.hpp
  /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/base_tests.cpp
 CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o
- ../include/abstract_building.hpp
  ../include/abstract_unit.hpp
- ../include/building.hpp
  ../include/command.hpp
  ../include/map.hpp
  ../include/mediator.hpp
@@ -28,7 +26,6 @@ CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o
  ../include/real_unit.hpp
  ../include/unit.hpp
  ../include/update.hpp
- ../include/vertex.hpp
  ../test/include/map_tests.hpp
  /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/map_tests.cpp
 CMakeFiles/test_lib.dir/test/src/player_test.cpp.o
@@ -56,9 +53,5 @@ CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.o
  ../include/real_unit.hpp
  ../include/unit.hpp
  ../include/update.hpp
+ ../test/include/unit_tests.hpp
  /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/unit_tests.cpp
-CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o
- ../include/news_taker.hpp
- ../include/update.hpp
- ../include/update_maker.hpp
- /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/update_maker_tests.cpp

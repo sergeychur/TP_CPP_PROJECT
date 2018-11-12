@@ -96,22 +96,9 @@ CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/unit_tests.cpp -o CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.s
 
-CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o: CMakeFiles/test_lib.dir/flags.make
-CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o: ../test/src/update_maker_tests.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o -c /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/update_maker_tests.cpp
-
-CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/update_maker_tests.cpp > CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.i
-
-CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/update_maker_tests.cpp -o CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.s
-
 CMakeFiles/test_lib.dir/test/src/player_test.cpp.o: CMakeFiles/test_lib.dir/flags.make
 CMakeFiles/test_lib.dir/test/src/player_test.cpp.o: ../test/src/player_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/test_lib.dir/test/src/player_test.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test_lib.dir/test/src/player_test.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_lib.dir/test/src/player_test.cpp.o -c /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/player_test.cpp
 
 CMakeFiles/test_lib.dir/test/src/player_test.cpp.i: cmake_force
@@ -127,7 +114,6 @@ test_lib_OBJECTS = \
 "CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o" \
 "CMakeFiles/test_lib.dir/test/src/base_tests.cpp.o" \
 "CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.o" \
-"CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o" \
 "CMakeFiles/test_lib.dir/test/src/player_test.cpp.o"
 
 # External object files for target test_lib
@@ -136,11 +122,10 @@ test_lib_EXTERNAL_OBJECTS =
 libtest_lib.a: CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o
 libtest_lib.a: CMakeFiles/test_lib.dir/test/src/base_tests.cpp.o
 libtest_lib.a: CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.o
-libtest_lib.a: CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o
 libtest_lib.a: CMakeFiles/test_lib.dir/test/src/player_test.cpp.o
 libtest_lib.a: CMakeFiles/test_lib.dir/build.make
 libtest_lib.a: CMakeFiles/test_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libtest_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sergey/CLionProjects/TP_CPP_PROJECT/server/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libtest_lib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/test_lib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_lib.dir/link.txt --verbose=$(VERBOSE)
 

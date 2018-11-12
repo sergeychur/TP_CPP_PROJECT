@@ -14,7 +14,6 @@
 
 #include "mediator.hpp"
 #include "unit.hpp"
-#include "building.hpp"
 
 class Map : public Mediator {
     public:

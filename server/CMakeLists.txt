@@ -11,7 +11,7 @@ include_directories("include/")
 
 set(SRC_LIST src/game.cpp src/map.cpp src/player.cpp src/update_maker.cpp)
 
-set(TEST_SRC test/src/map_tests.cpp test/src/base_tests.cpp test/src/unit_tests.cpp test/src/update_maker_tests.cpp test/src/player_test.cpp)
+set(TEST_SRC test/src/map_tests.cpp test/src/base_tests.cpp test/src/unit_tests.cpp test/src/player_test.cpp)
 
 add_library(game_lib STATIC ${SRC_LIST})
 add_library(test_lib STATIC ${TEST_SRC})
@@ -29,3 +29,4 @@ target_link_libraries(tests ${GTEST_LIBRARIES})
 target_link_libraries(tests game_lib)
 target_link_libraries(tests test_lib)
 target_link_libraries(tests Threads::Threads)
+target_link_libraries(${PROJECT_NAME} game_lib)

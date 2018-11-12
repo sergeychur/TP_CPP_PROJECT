@@ -432,33 +432,6 @@ test/src/unit_tests.cpp.s:
 	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.s
 .PHONY : test/src/unit_tests.cpp.s
 
-test/src/update_maker_tests.o: test/src/update_maker_tests.cpp.o
-
-.PHONY : test/src/update_maker_tests.o
-
-# target to build an object file
-test/src/update_maker_tests.cpp.o:
-	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o
-.PHONY : test/src/update_maker_tests.cpp.o
-
-test/src/update_maker_tests.i: test/src/update_maker_tests.cpp.i
-
-.PHONY : test/src/update_maker_tests.i
-
-# target to preprocess a source file
-test/src/update_maker_tests.cpp.i:
-	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.i
-.PHONY : test/src/update_maker_tests.cpp.i
-
-test/src/update_maker_tests.s: test/src/update_maker_tests.cpp.s
-
-.PHONY : test/src/update_maker_tests.s
-
-# target to generate assembly for a file
-test/src/update_maker_tests.cpp.s:
-	$(MAKE) -f CMakeFiles/test_lib.dir/build.make CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.s
-.PHONY : test/src/update_maker_tests.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -501,9 +474,6 @@ help:
 	@echo "... test/src/unit_tests.o"
 	@echo "... test/src/unit_tests.i"
 	@echo "... test/src/unit_tests.s"
-	@echo "... test/src/update_maker_tests.o"
-	@echo "... test/src/update_maker_tests.i"
-	@echo "... test/src/update_maker_tests.s"
 .PHONY : help
 
 

@@ -30,15 +30,16 @@ enum Units {
 
 class Player {
     private:
-        int id;
+        size_t id;
         std::vector<AbstractUnit*> unit_arr;     // the array of player's units
-        int add_unit(Unit*);    // adds new unit after it is made
+        int add_unit(AbstractUnit*);    // adds new unit after it is made
         int remove_unit(const int& id); // removes unit by id when it is dead
+        int add_base(const int& base_x, const int& base_y);
         AbstractBase* base;
 
     public:
-        Player(Mediator* med, const int& _x, const int& _y, const int& player_id); /*: id(player_id),  base(med, BASE_HP, _x,_y, 0) */
-        Player(const int& player_id, AbstractUnit*, AbstractBase*);
+        Player(Mediator* med, const int& _x, const int& _y, const size_t& player_id); /*: id(player_id),  base(med, BASE_HP, _x,_y, 0) */
+        Player(const int& player_id, AbstractUnit*, AbstractBase*); // rewrite, it's bad, in tests change for add_unit, add_base
         int act(std::vector<Command>);
 };
 

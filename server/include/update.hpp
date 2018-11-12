@@ -24,6 +24,8 @@ struct UpdateLine {
     int new_angle;
 };
 
+bool operator== (const UpdateLine&, const UpdateLine&);
+
 struct Update {
     std::vector<UpdateLine> updates;
 };

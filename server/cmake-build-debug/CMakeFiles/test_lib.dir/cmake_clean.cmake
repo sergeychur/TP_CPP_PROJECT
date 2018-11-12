@@ -2,7 +2,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o"
   "CMakeFiles/test_lib.dir/test/src/base_tests.cpp.o"
   "CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.o"
-  "CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o"
   "CMakeFiles/test_lib.dir/test/src/player_test.cpp.o"
   "libtest_lib.pdb"
   "libtest_lib.a"

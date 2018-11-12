@@ -12,10 +12,6 @@ chrono
 unit.hpp
 ../include/unit.hpp
 
-../include/abstract_building.hpp
-vertex.hpp
-../include/vertex.hpp
-
 ../include/abstract_unit.hpp
 string
 -
@@ -34,12 +30,6 @@ chrono
 abstract_base.hpp
 ../include/abstract_base.hpp
 
-../include/building.hpp
-vector
--
-abstract_building.hpp
-../include/abstract_building.hpp
-
 ../include/command.hpp
 string
 -
@@ -47,18 +37,6 @@ vector
 -
 parameter.hpp
 ../include/parameter.hpp
-
-../include/map.hpp
-string
--
-vector
--
-mediator.hpp
-../include/mediator.hpp
-unit.hpp
-../include/unit.hpp
-building.hpp
-../include/building.hpp
 
 ../include/mediator.hpp
 vector
@@ -122,10 +100,6 @@ command.hpp
 vector
 -
 
-../include/vertex.hpp
-vector
--
-
 ../test/include/base_tests.hpp
 gtest/gtest.h
 -
@@ -135,14 +109,6 @@ base.hpp
 ../test/include/base.hpp
 mediator.hpp
 ../test/include/mediator.hpp
-
-../test/include/map_tests.hpp
-gtest/gtest.h
-../test/include/gtest/gtest.h
-gmock/gmock.h
-../test/include/gmock/gmock.h
-map.hpp
-../test/include/map.hpp
 
 ../test/include/player_tests.hpp
 gtest/gtest.h
@@ -156,17 +122,7 @@ player.hpp
 base_tests.hpp
 /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/base_tests.hpp
 
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/map_tests.cpp
-map.hpp
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/map.hpp
-map_tests.hpp
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/map_tests.hpp
-
 /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/player_test.cpp
 player_tests.hpp
 /home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/player_tests.hpp
-
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/unit_tests.cpp
-unit.hpp
-/home/sergey/CLionProjects/TP_CPP_PROJECT/server/test/src/unit.hpp
 

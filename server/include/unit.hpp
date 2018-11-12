@@ -24,7 +24,7 @@
 
 class Unit : public AbstractUnit, public RealUnit {
     public:
-        Unit(const int& _id, const int& _HP, const int _unit_x, const int& _unit_y, const int& damage,
+        Unit(const int& _player_id_, const int& _unit_id, const int& _HP, const int _unit_x, const int& _unit_y, const int& damage,
                 const int& speed, const int& look_angle, Mediator* mediator);
         Unit() = delete;
         Unit(const Unit&&);
@@ -35,6 +35,7 @@ class Unit : public AbstractUnit, public RealUnit {
         void add(NewsTaker* news_taker) override;   // adds UpdateMaker
         void remove() override;
         void notify() override;
+        bool is_alive();
         int act(Command& order) override;     // here the command is parsed
                                     // it can be either real command or check command
 
@@ -46,6 +47,9 @@ class Unit : public AbstractUnit, public RealUnit {
 
         std::queue<Command> commands;
         NewsTaker* updater;
+
+        int player_id;
+        int unit_id;
         int damage;
         // int damage_radius;   // make later if long strike is available
         int speed;

@@ -15,9 +15,7 @@ CMakeFiles/test_lib.dir/test/src/base_tests.cpp.o: ../include/update.hpp
 CMakeFiles/test_lib.dir/test/src/base_tests.cpp.o: ../test/include/base_tests.hpp
 CMakeFiles/test_lib.dir/test/src/base_tests.cpp.o: ../test/src/base_tests.cpp
 
-CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../include/abstract_building.hpp
 CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../include/abstract_unit.hpp
-CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../include/building.hpp
 CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../include/command.hpp
 CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../include/map.hpp
 CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../include/mediator.hpp
@@ -27,7 +25,6 @@ CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../include/parameter.hpp
 CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../include/real_unit.hpp
 CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../include/unit.hpp
 CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../include/update.hpp
-CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../include/vertex.hpp
 CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../test/include/map_tests.hpp
 CMakeFiles/test_lib.dir/test/src/map_tests.cpp.o: ../test/src/map_tests.cpp
 
@@ -55,10 +52,6 @@ CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.o: ../include/parameter.hpp
 CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.o: ../include/real_unit.hpp
 CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.o: ../include/unit.hpp
 CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.o: ../include/update.hpp
+CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.o: ../test/include/unit_tests.hpp
 CMakeFiles/test_lib.dir/test/src/unit_tests.cpp.o: ../test/src/unit_tests.cpp
-
-CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o: ../include/news_taker.hpp
-CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o: ../include/update.hpp
-CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o: ../include/update_maker.hpp
-CMakeFiles/test_lib.dir/test/src/update_maker_tests.cpp.o: ../test/src/update_maker_tests.cpp
 

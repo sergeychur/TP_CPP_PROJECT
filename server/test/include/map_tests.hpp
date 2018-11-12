@@ -5,14 +5,14 @@
 #ifndef SERVER_MAP_TESTS_HPP
 #define SERVER_MAP_TESTS_HPP
 
-#include "gtest/gtest.h"
-#include "gmock/gmock.h"
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
 #include "map.hpp"
 
 class MockColleague : public Colleague {
     public:
-        MockColleague(Mediator* mediator1) : Colleague(mediator1) {}
+        explicit MockColleague(Mediator* mediator1) : Colleague(mediator1) {}
         MOCK_METHOD1(interact, int(std::vector<int>&));
 };
 
@@ -22,8 +22,8 @@ public:
 protected:
     Map map;
 
-    void SetUp() {}
-    void TearDown() {}
+    void SetUp() final {}
+    void TearDown() final {}
 };
 
 #endif //SERVER_MAP_TESTS_HPP

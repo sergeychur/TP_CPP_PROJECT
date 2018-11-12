@@ -9,7 +9,7 @@ TEST_F(BaseTests, building_new_unit1) {
     std::chrono::time_point<std::chrono::high_resolution_clock> time_point_4_seconds(duration_4_seconds);
     base.start_making(0, 0, 100, 78, 23, true); // x y hp damage speed
     Unit* new_unit = base.get_unit(time_point_4_seconds);
-    Unit new_real_unit(0, 100, 0, 0, 78, 23, 0, nullptr);
+    Unit new_real_unit(0, 0, 100, 0, 0, 78, 23, 0, nullptr);
     EXPECT_EQ(*new_unit, new_real_unit);
 }
 

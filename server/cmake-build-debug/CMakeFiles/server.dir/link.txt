@@ -1,1 +1,1 @@
-/usr/bin/c++   -std=c++17 -Wall -Wextra -Werror -g   CMakeFiles/server.dir/src/main.cpp.o  -o server 
+/usr/bin/c++   -std=c++17 -Wall -Wextra -Werror -g   CMakeFiles/server.dir/src/main.cpp.o  -o server libgame_lib.a 

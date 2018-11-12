@@ -26,10 +26,10 @@ class Game {
         std::vector<Player*> player_arr;     // the array of the players(the models of clients)
         NewsTaker* update_maker;       // this gets the updates from all the changing objects
         int stat;   // the status of the game, updating every iteration of the loop
-        int player_num;
+        size_t player_num;
 
     public:
-        Game(std::string file_name, const int& _player_num);
+        explicit Game(/*std::string file_name,*/ const size_t& _player_num);
         ~Game();
         Game() = delete;
         Game(const Game&) = delete;
@@ -37,9 +37,10 @@ class Game {
         Game& operator=(const Game&) = delete;
         Game& operator=(const Game&&) = delete;
 
-        // void add_player(Player* player);
+        void add_player(const int& _x, const int& _y, const size_t& player_id);
+        bool is_win() const {return stat != -1;}
         int act(std::vector<std::vector<Command>>);
-        Update* get_update();    // returns the update to send to clients
+        Update get_update();    // returns the update to send to clients
 
 };
 
