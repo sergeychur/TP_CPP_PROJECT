@@ -9,7 +9,6 @@
 #ifndef SERVER_MAP_HPP
 #define SERVER_MAP_HPP
 
-#include <string>
 #include <vector>
 
 #include "mediator.hpp"
@@ -17,7 +16,7 @@
 
 class Map : public Mediator {
     public:
-        Map() = default;
+        Map() : Mediator() {}
         Map(const Map&) = delete;
         Map(const Map&&) = delete;
         Map& operator=(const Map&) = delete;
@@ -30,6 +29,7 @@ class Map : public Mediator {
 
     private:
         std::vector<std::vector<Colleague*>> unit_map;
+        // std::vector<std::vector<AbstractBuilding*>> buildings; // dunno if necessary, no
 };
 
 #endif //SERVER_MAP_HPP

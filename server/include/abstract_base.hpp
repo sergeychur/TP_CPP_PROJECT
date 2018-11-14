@@ -17,7 +17,7 @@ public:
                       const int& speed, const bool& if_start) = 0;    // init the making process
     virtual Unit* get_unit(std::chrono::time_point<std::chrono::system_clock> time) = 0;   // this returns Unit, when it's made
     // int interact(std::vector<int>&) override;   // to get kicked
-    // ~AbstractBase();
+    ~AbstractBase() override;
 };
 
 #endif //SERVER_ABSTRACT_BASE_HPP

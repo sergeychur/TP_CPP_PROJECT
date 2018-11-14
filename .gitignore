@@ -31,7 +31,16 @@
 *.out
 *.app
 
-CMakeLists.txt
+
+*CMake*
+
+*Make*
+
+*cmake*
+
+*.cbp
+
+*.idea*
 
 server/cmake-build-debug*
 server/Doxyfile

@@ -21,10 +21,11 @@ int main(void) {
         std::vector<std::vector<Command>> clients_data;
         // here should be getting params from clients
         winner = game.act(clients_data);
-        Update update = game.get_update();
+        Update* update = game.get_update();
+        std::cout << update << std::endl;   // remove later
         // here should be some sending to clients
     }
-    std::cout << winner << std::endl;   // remove later
+    std::cout << winner << std::endl;
     // here should be sending the result to clients and destroying the connection
     return 0;
 }

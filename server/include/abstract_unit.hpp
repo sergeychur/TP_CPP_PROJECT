@@ -10,9 +10,6 @@
 #ifndef SERVER_ABSTRACT_UNIT_HPP
 #define SERVER_ABSTRACT_UNIT_HPP
 
-#include <string>
-#include <vector>
-
 #include "news_maker.hpp"
 #include "mediator.hpp"
 #include "command.hpp"

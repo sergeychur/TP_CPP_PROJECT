@@ -9,10 +9,7 @@
 #ifndef SERVER_PLAYER_HPP
 #define SERVER_PLAYER_HPP
 
-#include <memory>
-#include <queue>
 #include <vector>
-#include <iostream>
 
 #include "unit.hpp"
 #include "command.hpp"
@@ -20,7 +17,7 @@
 
 enum Constants {
     DEAD = 1,
-    STILL_ACT = -1,
+    STILL_ACT = 0,
     BASE_HP = 100
 };
 
@@ -38,9 +35,9 @@ class Player {
         AbstractBase* base;
 
     public:
-        Player(Mediator* med, const int& _x, const int& _y, const size_t& player_id); /*: id(player_id),  base(med, BASE_HP, _x,_y, 0) */
+        Player(Mediator* med, const int& _x, const int& _y, const size_t& player_id);
         Player(const int& player_id, AbstractUnit*, AbstractBase*); // rewrite, it's bad, in tests change for add_unit, add_base
-        int act(std::vector<Command>);
+        int act(std::vector<Command>&);
 };
 
 #endif //SERVER_PLAYER_HPP

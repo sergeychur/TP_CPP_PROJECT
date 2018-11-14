@@ -6,16 +6,20 @@
 
 #include "map.hpp"
 
-Map::Map(const std::string &path_to_file) {
-    std::cout << path_to_file << std::endl;
-}
+
 
 Map::~Map() {
 
 }
 
-void Map::make_interaction(std::vector<int>& param_vector) {
+bool Map::make_interaction(std::vector<int>& param_vector) {
     if(param_vector.size() != 0) {
-        return;
+        return true;
     }
+    return false;
+}
+
+void Map::add_colleague(Colleague* colleague, const int& player_id,
+                   const int& unit_id) {
+    std::cout << colleague << player_id << unit_id << std::endl;
 }

@@ -9,15 +9,10 @@
 #ifndef SERVER_UNIT_HPP
 #define SERVER_UNIT_HPP
 
-#include <string>
-#include <map>
 #include <vector>
 #include <queue>
-#include <utility>
-#include <memory>
 
 #include "update.hpp"
-#include "parameter.hpp"
 #include "abstract_unit.hpp"
 #include "real_unit.hpp"
 #include "command.hpp"
