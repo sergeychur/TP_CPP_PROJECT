@@ -15,9 +15,9 @@ public:
     virtual bool is_alive() = 0;
     virtual void start_making(const int& x, const int& y, const int& HP, const int& damage,
                       const int& speed, const bool& if_start) = 0;    // init the making process
-    virtual Unit* get_unit(std::chrono::time_point<std::chrono::system_clock> time) = 0;   // this returns Unit, when it's made
+    virtual Unit* get_unit(std::chrono::time_point<std::chrono::system_clock>& time) = 0;   // this returns Unit, when it's made
     // int interact(std::vector<int>&) override;   // to get kicked
-    ~AbstractBase() override;
+    ~AbstractBase() override = default;
 };
 
 #endif //SERVER_ABSTRACT_BASE_HPP

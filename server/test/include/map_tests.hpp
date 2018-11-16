@@ -18,7 +18,7 @@ class MockColleague : public Colleague {
 
 class MapTests : public ::testing::Test {
 public:
-    MapTests(): map("some_path") {} // add when map exists
+    MapTests() = default; // add when map exists
 protected:
     Map map;
 

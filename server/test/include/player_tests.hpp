@@ -32,7 +32,7 @@ class MockBase : public AbstractBase {
         MockBase() : AbstractBase(nullptr, 100, 0, 0, 0) {};
         MOCK_METHOD6(start_making, void(const int&, const int&, const int&, const int&, const int&, const bool&));
         MOCK_METHOD0(is_alive, bool());
-        MOCK_METHOD1(get_unit, Unit*(std::chrono::time_point<std::chrono::system_clock>));
+        MOCK_METHOD1(get_unit, Unit*(std::chrono::time_point<std::chrono::system_clock>&));
         MOCK_METHOD1(interact, int(std::vector<int>&));
 
 };
@@ -40,7 +40,7 @@ class MockBase : public AbstractBase {
 class PlayerTests : public ::testing::Test {
 public:
     PlayerTests();
-    ~PlayerTests();
+    ~PlayerTests() override;
 protected:
     Player* player;
     void SetUp() {}

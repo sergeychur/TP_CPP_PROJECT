@@ -14,12 +14,12 @@
 class Base : public AbstractBase{
 public:
     Base(Mediator* med, const int& HP, const int& _x,const int& _y, const int& id = 0) : AbstractBase(med, HP, _x, _y, id) {};
-    bool is_alive() override;
+    bool is_alive() override {return true;}    // change for smth normal, like HP != 0
     void start_making(const int& x, const int& y, const int& HP, const int& damage,
                       const int& speed, const bool& if_start) override;    // init the making process
-    Unit* get_unit(std::chrono::time_point<std::chrono::system_clock> time) override;   // this returns Unit, when it's made
+    Unit* get_unit(std::chrono::time_point<std::chrono::system_clock>& time) override;
     int interact(std::vector<int>&) override;   // to get kicked
-    ~Base() override;
+    ~Base() override = default;
 private:
     std::chrono::time_point<std::chrono::system_clock> start, end;
     bool is_ready_for_time(const int& elapsed_time);

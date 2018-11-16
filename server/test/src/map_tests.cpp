@@ -9,7 +9,7 @@ TEST_F(MapTests, makes_interaction) {
     MockColleague colleague(&map);
     std::vector<int> params;
     params = {0, 0, -10};
-    map.add_colleague(dynamic_cast<Colleague*>(&colleague), 0, 0);
+    map.add_colleague(&colleague, 0, 0);
     map.make_interaction(params);
     EXPECT_CALL(colleague, interact(params))
             .Times(1);
