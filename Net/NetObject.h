@@ -1,36 +1,22 @@
 //
-// Created by alex on 09.10.18.
+// Created by alex on 12.11.18.
 //
 
 #ifndef NET_NETOBJECT_H
 #define NET_NETOBJECT_H
 
-#include <thread>
-#include "Packet.h"
+
+#include <vector>
+#include "Serializable.h"
 
 class NetObject
 {
 public:
-    NetObject();
-    NetObject(int port, std::string& ip);
-    NetObject(NetObject&)=delete;
-    NetObject(NetObject&&)=delete;
-    NetObject& operator=(NetObject&)=delete;
-    NetObject& operator=(NetObject&&)=delete;
-    ~NetObject();
-    
-    void set_port(int port);
-    void send(Packet packet);
-    Packet* receive();
-    void connect();
-protected:
-    static short const BUF_SIZE=1024;
-    static void read_sock();
-    Packet recv_buf[BUF_SIZE];
+	virtual void connect()=0;
+	virtual void send(Serializable*)=0;
+	virtual std::vector<Serializable*> receive()=0;
 private:
-    int port;
-    std::string ip;
-    std::thread* thread;
+	std::vector<Serializable*> buf;
 };
 
 

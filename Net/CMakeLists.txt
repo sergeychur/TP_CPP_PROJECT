@@ -3,8 +3,8 @@ project(Net)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_library(Net NetObject.cpp NetObject.h ServerNetObject.cpp ServerNetObject.h Packet.cpp Packet.h)
+add_library(Net NetObject.cpp NetObject.h Serializable.cpp Serializable.h AbstractClientNetObject.cpp AbstractClientNetObject.h AbstractServerNetObject.cpp AbstractServerNetObject.h ServerNetObject.cpp ServerNetObject.h ClientNetObject.cpp ClientNetObject.h)
 
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-add_executable(tests test/gtest.cpp test/packet_tests.cpp)
+add_executable(tests test/gtest.cpp)
