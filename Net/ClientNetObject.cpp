@@ -16,7 +16,7 @@ void ClientNetObject::send(Serializable *serializable)
 
 std::vector<Serializable *> ClientNetObject::receive()
 {
-	return nullptr;
+
 }
 
 ClientNetObject::ClientNetObject(uint _port, std::string& _ip)

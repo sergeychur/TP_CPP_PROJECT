@@ -16,7 +16,7 @@ void ServerNetObject::send(Serializable *serializable)
 
 std::vector<Serializable *> ServerNetObject::receive()
 {
-	return nullptr;
+
 }
 
 void ServerNetObject::set_player_number(short player_number)

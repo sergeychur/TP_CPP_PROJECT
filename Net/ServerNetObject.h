@@ -12,7 +12,7 @@
 class ServerNetObject:public AbstractServerNetObject
 {
 public:
-	ServerNetObject(uint _port=50000,const std::string& _ip, short _player_number);
+	ServerNetObject(uint _port,const std::string& _ip, short _player_number);
 	void connect() override;
 	void send(Serializable *serializable) override;
 	std::vector<Serializable *> receive() override;
