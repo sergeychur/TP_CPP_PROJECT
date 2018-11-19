@@ -3,6 +3,7 @@
 //
 
 #include "base_tests.hpp"
+#include "mock_mediator.hpp"
 
 TEST_F(BaseTests, building_new_unit1) {
     const std::chrono::high_resolution_clock::duration duration_4_seconds = std::chrono::seconds(4);

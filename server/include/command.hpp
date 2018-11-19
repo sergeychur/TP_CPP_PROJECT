@@ -15,15 +15,18 @@
 
 struct Command {
     public:
-        Command(const int& unit_id, const std::string& _command_name, std::vector<int>& _parameters);
+        Command(const size_t& _player_id, const size_t& _unit_id,
+                const std::string& _command_name, std::vector<int>& _parameters) :
+                player_id(_player_id),
+                unit_id(_unit_id), command_name(_command_name), parameters(_parameters) {};
         Command() = delete;
         // Command(const Command&) = delete;
         // Command(const Command&&) = delete;
         // Command& operator=(const Command&) = delete;
         // Command&& operator=(const Command&&) = delete;
 
-        // int player_id;
-        int unit_id;
+        size_t player_id;
+        size_t unit_id;
         std::string command_name;   // add_unit, move, kick etc.
         std::vector<int> parameters;    // args
 };

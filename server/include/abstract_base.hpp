@@ -6,17 +6,19 @@
 #define SERVER_ABSTRACT_BASE_HPP
 
 #include <chrono>
+#include<tuple>
 
 #include "unit.hpp"
 
-class AbstractBase : public Colleague, RealUnit{
+class AbstractBase : public Colleague {
 public:
-    AbstractBase(Mediator* med, const int& HP, const int& _x,const int& _y, const int& id = 0) : Colleague(med), RealUnit(id, HP, _x, _y) {};
+    explicit AbstractBase(Mediator* med) : Colleague(med) {}
     virtual bool is_alive() = 0;
-    virtual void start_making(const int& x, const int& y, const int& HP, const int& damage,
-                      const int& speed, const bool& if_start) = 0;    // init the making process
-    virtual Unit* get_unit(std::chrono::time_point<std::chrono::system_clock>& time) = 0;   // this returns Unit, when it's made
-    // int interact(std::vector<int>&) override;   // to get kicked
+    virtual bool is_ready() = 0;
+    virtual void start_making(std::vector<int>&) = 0;    // init the making process
+    /*const int& x, const int& y, const int& HP, const int& damage,
+                      const int& speed, const bool& if_start*/
+    virtual Unit* get_unit() = 0;   // this returns Unit, when it's made
     ~AbstractBase() override = default;
 };
 

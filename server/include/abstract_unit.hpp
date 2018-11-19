@@ -17,7 +17,7 @@
 class AbstractUnit : public NewsMaker, public Colleague {
     public:
         AbstractUnit(Mediator* med) : NewsMaker(), Colleague(med) {}
-        int virtual act(Command& order) = 0;
+        virtual int act(Command& order) = 0;
         ~AbstractUnit() override = default;
 };
 

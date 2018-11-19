@@ -2,7 +2,8 @@
 // Created by sergey on 28.10.18.
 //
 
-#include "unit_tests.hpp"
+#include "mock_news_taker.hpp"
+#include "mock_mediator.hpp"
 
 /*MOCK_METHOD1(handle_event, void(UpdateLine&))
 MOCK_METHOD0(get_update, Update*());
@@ -20,7 +21,7 @@ TEST(Unit, sending_to_news_taker) {
     MockNewsTaker updater;
     // Command(const int& unit_id, const std::string& _command_name, std::vector<int>& _parameters);
     std::vector<int> params = {1, 5};
-    Command order(0, "move", params);
+    Command order(0, 0, "move", params);
     unit.act(order);
     // UpdateLine(const int&_player_id, const int&_unit_id, const int& _new_HP, const int& _new_x, const int& _new_y,
     // const int& _new_angle):

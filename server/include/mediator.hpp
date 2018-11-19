@@ -10,7 +10,7 @@
 #define SERVER_MEDIATOR_HPP
 
 #include <vector>
-
+#include <string>
 
 
 class Mediator;
@@ -20,7 +20,7 @@ protected:
     Mediator* mediator;
 public:
     explicit Colleague(Mediator* _mediator) : mediator(_mediator) {}
-    int virtual interact(std::vector<int>&) = 0;
+    int virtual interact(const std::string&, std::vector<int>&) = 0;
     virtual ~Colleague() = default;
 };
 

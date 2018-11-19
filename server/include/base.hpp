@@ -11,20 +11,30 @@
 
 #include "abstract_base.hpp"
 
-class Base : public AbstractBase{
+class Base : public AbstractBase, RealUnit{
 public:
-    Base(Mediator* med, const int& HP, const int& _x,const int& _y, const int& id = 0) : AbstractBase(med, HP, _x, _y, id) {};
-    bool is_alive() override {return true;}    // change for smth normal, like HP != 0
-    void start_making(const int& x, const int& y, const int& HP, const int& damage,
-                      const int& speed, const bool& if_start) override;    // init the making process
-    Unit* get_unit(std::chrono::time_point<std::chrono::system_clock>& time) override;
-    int interact(std::vector<int>&) override;   // to get kicked
+    Base(Mediator* med, const int& HP, const int& _x,
+            const int& _y, const size_t& player_id) : AbstractBase(med), RealUnit(player_id, 0, HP, _x, _y), map(med),
+            unit_to_return(nullptr),  units_made(0), is_making(false) {};
+    bool is_alive() override {return HP > 0;}    // change for smth normal, like HP != 0
+    bool is_ready() override;
+    void start_making(std::vector<int>&) override;    // init the making process
+    /*const int& x, const int& y, const int& HP, const int& damage,
+                      const int& speed, const bool& if_start*/
+    Unit* get_unit() override;
+    int interact(const std::string&, std::vector<int>&) override;   // to get kicked
     ~Base() override = default;
 private:
-    std::chrono::time_point<std::chrono::system_clock> start, end;
-    bool is_ready_for_time(const int& elapsed_time);
-    static const int time_to_build = 1;     // change later
+    std::chrono::time_point<std::chrono::system_clock> start;
+    Mediator* map;
+    double time_to_build;     // change later
+    static constexpr double default_time_to_build = 8.0;     // change later
+    Unit* unit_to_return;
+    size_t units_made;
+    bool is_making;
 
+    bool is_ready_for_time(const double& elapsed_time);
+    void get_kicked(std::vector<int> params);   // probably take to abstract base, but... it is pure virtual
 };
 
 #endif //SERVER_BASE_HPP

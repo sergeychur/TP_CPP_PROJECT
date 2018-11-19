@@ -20,11 +20,5 @@ class MockNewsTaker : public NewsTaker {
         MOCK_METHOD0(delete_update, void());
 };
 
-class MockMediator : public Mediator {
-    public:
-        MockMediator() = default;
-        MOCK_METHOD3(add_colleague, void(Colleague*, const int&, const int&));
-        MOCK_METHOD1(make_interaction, bool(std::vector<int>&));
-};
 
 #endif //SERVER_UNIT_TESTS_HPP

@@ -17,16 +17,18 @@
 #include "real_unit.hpp"
 #include "command.hpp"
 
+
+
 class Unit : public AbstractUnit, public RealUnit {
     public:
-        Unit(const int& _player_id_, const int& _unit_id, const int& _HP, const int _unit_x, const int& _unit_y, const int& damage,
+        Unit(const size_t& _player_id_, const size_t& _unit_id, const int& _HP, const int _unit_x, const int& _unit_y, const int& damage,
                 const int& speed, const int& look_angle, Mediator* mediator);
         Unit() = delete;
-        Unit(const Unit&&);
+        Unit(const Unit&&) = delete;
         Unit(const Unit&) = delete;
         Unit& operator=(Unit&) = delete;
-        Unit&& operator=(Unit&&);
-        ~Unit() override;
+        Unit&& operator=(Unit&&) = delete;
+        ~Unit() override = default;
         void add(NewsTaker* news_taker) override;   // adds UpdateMaker
         void remove() override;
         void notify() override;
@@ -37,16 +39,13 @@ class Unit : public AbstractUnit, public RealUnit {
     private:
         int add_command(const std::string& command, std::vector<int>);
         int check_truth(const int& x, const int& y, const int& look_angle, const int& HP);
-        int interact(std::vector<int>&) override;   // take some damage from other units
+        int interact(const std::string&, std::vector<int>&) override;   // take some damage from other units
         int change_state(const std::string state_name, const std::vector<int> changes);
 
         std::queue<Command> commands;
         NewsTaker* updater;
 
-        int player_id;
-        int unit_id;
         int damage;
-        // int damage_radius;   // make later if long strike is available
         int speed;
         int look_angle;
 };

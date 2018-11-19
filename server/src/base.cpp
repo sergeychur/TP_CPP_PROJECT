@@ -3,26 +3,50 @@
 //
 
 #include <iostream>
+#include <map>
+
 
 #include "base.hpp"
 
-void Base::start_making(const int& x, const int& y, const int& HP, const int& damage,
-                  const int& speed, const bool& if_start) {
-    std::cout << x << y << HP << damage << speed << if_start << std::endl;
-}
+typedef void (*func)(const std::vector<int>& params);
 
-Unit* Base::get_unit(std::chrono::time_point<std::chrono::system_clock>& time) {
-    std::cout << "hours since epoch: "
-              << std::chrono::duration_cast<std::chrono::hours>(
-                      time.time_since_epoch()).count()
-              << '\n';      // remove
-    return nullptr;
-}
-
-int Base::interact(std::vector<int>& params) {
-    for(auto it = params.begin(); it != params.end(); ++it) {
-        std::cout << *it << std::endl;
+bool Base::is_ready() {
+    auto now = std::chrono::system_clock::now();
+    if(is_making) {
+        return is_ready_for_time((now - start).count());
     }
+    return false;
+}
+
+bool Base::is_ready_for_time(const double& elapsed_time) {
+    return elapsed_time > time_to_build;
+}
+
+void Base::start_making(std::vector<int>& params) {
+    enum indices {
+        x = 0,
+        y,
+        HP,
+        damage,
+        speed,
+        if_start
+    };
+    time_to_build = (params[if_start]) ? 0 : default_time_to_build;
+    params.erase(params.begin() + if_start);
+    unit_to_return = new Unit(player_id, ++units_made, params[HP], params[x], params[y], params[damage], params[speed], 0, map);
+}
+
+Unit* Base::get_unit() {
+    return unit_to_return;
+}
+
+void Base::get_kicked(std::vector<int> params) {
+    std::cout << params.size();
+}
+
+int Base::interact(const std::string& command, std::vector<int>& params) {
+    std::map<std::string, func> func_map;
+    std::cout << command << params.size();
     return 0;
 }
 

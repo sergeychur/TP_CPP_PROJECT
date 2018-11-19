@@ -3,25 +3,17 @@
 //
 
 #include "player_tests.hpp"
+#include "mock_base.hpp"
+#include "mock_unit.hpp"
 
-
-
-
-PlayerTests::PlayerTests() {
-    AbstractBase* base = new  MockBase();
-    AbstractUnit* unit = new MockUnit();
-    player = new Player(0, unit, base);
-}
-
-PlayerTests::~PlayerTests() {
-    delete player;
-}
 
 TEST(Player, creating_new) {
     MockBase base;
-    Player player(0, nullptr, &base);
+    // Player player(0, nullptr, &base);
+    Player player(0);
+    player.add_base(&base);
     std::vector<int> params = {0, 100, 0, 0, 30, 45, 20};
-    Command command(0, "create", params);
+    Command command(0, 0, "create", params);
     std::vector<Command> commands;
     commands.push_back(command);
     player.act(commands);
@@ -32,9 +24,11 @@ TEST(Player, creating_new) {
 TEST(Player, moving_unit) {
     MockUnit unit;
     MockBase base;
-    Player player(0, &unit, &base);
+    Player player(0);
+    player.add_base(&base);
+    player.add_unit(&unit);
     std::vector<int> params = {20, 30};
-    Command command(0, "move", params);
+    Command command(0, 0, "move", params);
     std::vector<Command> commands;
     commands.push_back(command);
     player.act(commands);
@@ -44,9 +38,11 @@ TEST(Player, moving_unit) {
 TEST(Player, kicking_other) {
     MockUnit unit;
     MockBase base;
-    Player player(0, &unit, &base);
+    Player player(0);
+    player.add_base(&base);
+    player.add_unit(&unit);
     std::vector<int> params = {0, 0};   // player_id, unit_id
-    Command command(0, "kick", params);
+    Command command(0, 0, "kick", params);
     std::vector<Command> commands;
     commands.push_back(command);
     player.act(commands);

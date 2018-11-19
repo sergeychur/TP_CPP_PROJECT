@@ -10,11 +10,7 @@
 
 #include "map.hpp"
 
-class MockColleague : public Colleague {
-    public:
-        explicit MockColleague(Mediator* mediator1) : Colleague(mediator1) {}
-        MOCK_METHOD1(interact, int(std::vector<int>&));
-};
+
 
 class MapTests : public ::testing::Test {
 public:

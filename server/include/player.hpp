@@ -18,7 +18,9 @@
 enum Constants {
     DEAD = 1,
     STILL_ACT = 0,
-    BASE_HP = 100
+    BASE_HP = 100,
+    ALREADY_EXISTS = -1,
+    ERR_ALLOC = -2
 };
 
 enum Units {
@@ -29,15 +31,15 @@ class Player {
     private:
         size_t id;
         std::vector<AbstractUnit*> unit_arr;     // the array of player's units
-        int add_unit(AbstractUnit*);    // adds new unit after it is made
-        int remove_unit(const int& id); // removes unit by id when it is dead
-        int add_base(const int& base_x, const int& base_y);
+        void remove_unit(const int& id); // removes unit by id when it is dead
         AbstractBase* base;
 
     public:
-        Player(Mediator* med, const int& _x, const int& _y, const size_t& player_id);
-        Player(const int& player_id, AbstractUnit*, AbstractBase*); // rewrite, it's bad, in tests change for add_unit, add_base
+        explicit Player(const size_t& player_id) : id(player_id) {}
         int act(std::vector<Command>&);
+        int add_base(Mediator* med, const int& base_x, const int& base_y);
+        void add_base(AbstractBase*);
+        void add_unit(AbstractUnit*);    // adds new unit after it is made
 };
 
 #endif //SERVER_PLAYER_HPP
