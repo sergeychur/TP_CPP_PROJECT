@@ -12,19 +12,22 @@
 class ServerNetObject:public AbstractServerNetObject
 {
 public:
-	ServerNetObject(uint _port,const std::string& _ip, short _player_number);
-	void connect() override;
+	ServerNetObject(uint _port,const std::string& _ip);
 	void send(Serializable *serializable) override;
 	std::vector<Serializable *> receive() override;
-	
-	void set_player_number(short player_number);
-	void set_ip(const std::string &ip);
-	void set_port(uint port);
+	void work(short player_number);
+	~ServerNetObject();
 private:
+	
+	void connect() override;
+	static void read_client_socks();
+	
+	static std::vector<Serializable*> buf;
+	static bool stop;
 	uint port;
 	std::string ip;
-	short player_number;
-	std::vector<AbstractClientNetObject> players;
+	static short player_num;
+	std::thread** thread;
 };
 
 

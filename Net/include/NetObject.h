@@ -15,8 +15,6 @@ public:
 	virtual void connect()=0;
 	virtual void send(Serializable*)=0;
 	virtual std::vector<Serializable*> receive()=0;
-private:
-	std::vector<Serializable*> buf;
 };
 
 
