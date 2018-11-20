@@ -7,7 +7,7 @@
 #include "player.hpp"
 
 int Player::act(std::vector<Command>& command_arr) {
-    int status = STILL_ACT;
+    int status = DEAD;
     if(base->is_ready()) {
         add_unit(base->get_unit());
     }
@@ -16,7 +16,10 @@ int Player::act(std::vector<Command>& command_arr) {
             base->start_making(it.parameters);
         }
         if(unit_arr[it.unit_id] && id == it.player_id) {
-            status = unit_arr[it.unit_id]->act(it);
+            if(unit_arr[it.unit_id]->act(it)) {
+                remove_unit(it.unit_id);
+            }
+
         }
     }
     return status;
@@ -28,12 +31,14 @@ void Player::add_unit(AbstractUnit* unit) {
     }
     unit_arr.push_back(unit);
 }
-void Player::remove_unit(const int& id) {
+
+void Player::remove_unit(const size_t& id) {
     if(unit_arr[id]) {
         delete(unit_arr[id]);
         unit_arr[id] = nullptr;
     }
 }
+
 int Player::add_base(Mediator* map, const int& base_x, const int& base_y) {
     if(base != nullptr) {
         return ALREADY_EXISTS;

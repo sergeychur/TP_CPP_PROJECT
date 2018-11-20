@@ -5,11 +5,11 @@
 #include "update_maker.hpp"
 
 UpdateMaker::~UpdateMaker() {
-
+    delete update;
 }
 
-void UpdateMaker::handle_event(UpdateLine&) {
-
+void UpdateMaker::handle_event(UpdateLine& line) {
+    update->updates.push_back(line);
 }
 
 Update* UpdateMaker::get_update() {
@@ -17,5 +17,6 @@ Update* UpdateMaker::get_update() {
 }
 
 void UpdateMaker::delete_update() {
-
+    update->updates.clear();
+    delete update;
 }

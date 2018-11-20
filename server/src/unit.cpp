@@ -3,37 +3,104 @@
 //
 
 #include <iostream>
+#include <exception>
+#include <map>
+#include <cmath>
+
+
 
 #include "unit.hpp"
 
-Unit::Unit(const size_t& _player_id, const size_t& _unit_id, const int& _HP, const int _unit_x, const int& _unit_y, const int& _damage,
+Unit::Unit(const size_t& _player_id, const size_t& _unit_id, const int& _HP, const int& _unit_x, const int& _unit_y, const int& _damage,
      const int& _speed, const int& _look_angle, Mediator* mediator) : AbstractUnit(mediator), RealUnit(_player_id,
              _unit_id, _HP, _unit_x, _unit_y), damage(_damage), speed(_speed), look_angle(_look_angle) {
 }
 
 void Unit::add(NewsTaker* news_taker) {
-    std::cout << news_taker;
-}
-void Unit::remove() {}
-void Unit::notify() {};
-bool Unit::is_alive() {return true;}
-int Unit::act(Command& order) {
-    return order.parameters[0];
+    if(!news_taker) {
+        throw std::invalid_argument("No news_taker to add");
+    }
+    updater = news_taker;
 }
 
-int Unit::add_command(const std::string& command, std::vector<int> params) {
-    std::cout << command << params.size();
-    return 0;
+void Unit::remove() {
+    updater = nullptr;
 }
-int Unit::check_truth(const int& x, const int& y, const int& look_angle, const int& HP) {
-    std::cout << x << y << look_angle << HP;
-    return 0;
+
+void Unit::notify() {
+    UpdateLine line(player_id, unit_id, HP, unit_x, unit_y, look_angle, is_alive());
+    updater->handle_event(line);
+}
+
+bool Unit::is_alive() const {
+    return HP > 0;
+
+}
+
+bool Unit::move(std::vector<int>& dest) {
+    std::cout << dest.size();
+    enum {
+        x = 0,
+        y
+    };
+    auto now = std::chrono::system_clock::now();
+    const double time_passed = (now - prev_time).count();
+    unit_x += static_cast<int>((dest[x] - unit_x) / sqrt((dest[x] - unit_x) * (dest[x] - unit_x) + (dest[y] - unit_y) * (dest[y] - unit_y)) * time_passed); // deal with doubles and ints
+    unit_y += static_cast<int>((dest[y] - unit_y) / sqrt((dest[x] - unit_x) * (dest[x] - unit_x) + (dest[y] - unit_y) * (dest[y] - unit_y)) * time_passed); // deal with doubles and ints
+    return (unit_x - dest[x]) < ALLOWED_DELTA && (unit_y - dest[y]) < ALLOWED_DELTA;
+}
+
+bool Unit::kick(std::vector<int>& params) {
+    std::cout << params.size();     // remove and implement
+    return false;
+}
+
+typedef bool (Unit::*UnitMethod)(std::vector<int>&);
+
+void Unit::perform_existing_commands() {
+    std::map<std::string, UnitMethod> funcs = {
+            {"move", &Unit::move},
+            {"kick", &Unit::kick}
+    };
+    auto it = funcs.find(commands.front().command_name);
+    if(it != funcs.end()) {
+        bool finished = (this->*it->second)(commands.front().parameters);
+        if(finished) {
+            commands.pop();
+        }
+    }
+}
+
+bool Unit::act(Command& order) {
+    if(order.command_name == "pop_command") {
+        commands.pop();
+    }
+    perform_existing_commands();
+    if(order.command_name == "check") {
+        correct_state(order.parameters);
+    } else {
+        add_command(order);
+    }
+    return is_alive();
+}
+
+void Unit::add_command(Command& command) {
+    commands.push(command);
+}
+
+void Unit::correct_state(std::vector<int>& parameters) {
+    enum {
+        x,
+        y
+    };
+    if(abs(unit_x - parameters[x]) < ALLOWED_DELTA) {
+        unit_x = parameters[x];
+    }
+    if(abs(unit_y - parameters[y]) < ALLOWED_DELTA) {
+        unit_y = parameters[y];
+    }
+    notify();
 }
 int Unit::interact(const std::string& command, std::vector<int>& params) {
-    std::cout << command << params.size();
-    return 0;
-}
-int Unit::change_state(const std::string state_name, const std::vector<int> changes) {
-    std::cout << state_name << changes.size();
-    return 0;
+    return react_on_command(command, params);
 }

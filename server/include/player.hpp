@@ -31,11 +31,11 @@ class Player {
     private:
         size_t id;
         std::vector<AbstractUnit*> unit_arr;     // the array of player's units
-        void remove_unit(const int& id); // removes unit by id when it is dead
+        void remove_unit(const size_t& id); // removes unit by id when it is dead
         AbstractBase* base;
 
     public:
-        explicit Player(const size_t& player_id) : id(player_id) {}
+        explicit Player(const size_t& player_id) : id(player_id), base(nullptr) {}
         int act(std::vector<Command>&);
         int add_base(Mediator* med, const int& base_x, const int& base_y);
         void add_base(AbstractBase*);

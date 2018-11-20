@@ -8,8 +8,6 @@
 
 #include "base.hpp"
 
-typedef void (*func)(const std::vector<int>& params);
-
 bool Base::is_ready() {
     auto now = std::chrono::system_clock::now();
     if(is_making) {
@@ -33,20 +31,14 @@ void Base::start_making(std::vector<int>& params) {
     };
     time_to_build = (params[if_start]) ? 0 : default_time_to_build;
     params.erase(params.begin() + if_start);
-    unit_to_return = new Unit(player_id, ++units_made, params[HP], params[x], params[y], params[damage], params[speed], 0, map);
+    unit_to_return = new Unit(player_id, ++units_made, params[HP], params[x], params[y], params[damage], params[speed], 0, mediator);
 }
 
 Unit* Base::get_unit() {
     return unit_to_return;
 }
 
-void Base::get_kicked(std::vector<int> params) {
-    std::cout << params.size();
-}
-
 int Base::interact(const std::string& command, std::vector<int>& params) {
-    std::map<std::string, func> func_map;
-    std::cout << command << params.size();
-    return 0;
+    return react_on_command(command, params);
 }
 

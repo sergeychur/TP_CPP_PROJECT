@@ -22,14 +22,14 @@ class Map : public Mediator {
         Map& operator=(const Map&) = delete;
         Map&& operator=(const Map&&) = delete;
 
-        void add_colleague(Colleague*, const int& player_id,
-                const int& unit_id) override;
-        bool make_interaction(std::vector<int>& param_vector) override;      // gets the vector of parameters and by them calls the alter methods of influenced objects
+        void add_colleague(Colleague*, const size_t& player_id,
+                const size_t& unit_id) override;
+        int make_interaction(const size_t&, const size_t&,
+                            const std::string&, std::vector<int>& param_vector) override;
         ~Map() override;
 
     private:
-        std::vector<std::vector<Colleague*>> unit_map;
-        // std::vector<std::vector<AbstractBuilding*>> buildings; // dunno if necessary, no
+        std::vector<std::vector<Colleague*>> unit_matrix;
 };
 
 #endif //SERVER_MAP_HPP

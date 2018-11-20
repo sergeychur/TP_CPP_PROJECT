@@ -11,9 +11,9 @@ int main(void) {
     // here should be installing the connection with clients
     Game game(player_num);
     for(size_t i = 0; i < player_num; ++i) {
-        // here should be getting params from clients
         int x = 0;
         int y = 0;
+        // here should be getting params from clients
         game.add_player(x, y, i);
     }
     int winner = -1;

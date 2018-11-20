@@ -11,17 +11,20 @@
 
 #include <vector>
 #include <queue>
+#include <chrono>
 
 #include "update.hpp"
 #include "abstract_unit.hpp"
 #include "real_unit.hpp"
 #include "command.hpp"
 
-
+enum {
+    ALLOWED_DELTA = 5
+};
 
 class Unit : public AbstractUnit, public RealUnit {
     public:
-        Unit(const size_t& _player_id_, const size_t& _unit_id, const int& _HP, const int _unit_x, const int& _unit_y, const int& damage,
+        Unit(const size_t& _player_id_, const size_t& _unit_id, const int& _HP, const int& _unit_x, const int& _unit_y, const int& damage,
                 const int& speed, const int& look_angle, Mediator* mediator);
         Unit() = delete;
         Unit(const Unit&&) = delete;
@@ -29,18 +32,19 @@ class Unit : public AbstractUnit, public RealUnit {
         Unit& operator=(Unit&) = delete;
         Unit&& operator=(Unit&&) = delete;
         ~Unit() override = default;
-        void add(NewsTaker* news_taker) override;   // adds UpdateMaker
+        void add(NewsTaker* news_taker) override;
         void remove() override;
         void notify() override;
-        bool is_alive();
-        int act(Command& order) override;     // here the command is parsed
-                                    // it can be either real command or check command
+        bool act(Command& order) override;
 
     private:
-        int add_command(const std::string& command, std::vector<int>);
-        int check_truth(const int& x, const int& y, const int& look_angle, const int& HP);
-        int interact(const std::string&, std::vector<int>&) override;   // take some damage from other units
-        int change_state(const std::string state_name, const std::vector<int> changes);
+        void add_command(Command&);
+        void correct_state(std::vector<int>&);
+        int interact(const std::string&, std::vector<int>&) override;
+        void perform_existing_commands();
+        bool move(std::vector<int>&);
+        bool kick(std::vector<int>&);
+        bool is_alive() const;
 
         std::queue<Command> commands;
         NewsTaker* updater;
@@ -48,6 +52,8 @@ class Unit : public AbstractUnit, public RealUnit {
         int damage;
         int speed;
         int look_angle;
+
+        std::chrono::time_point<std::chrono::system_clock> prev_time;
 };
 
 bool operator== (const Unit&, const Unit&);
