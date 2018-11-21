@@ -11,9 +11,10 @@
 
 #include "unit.hpp"
 
-Unit::Unit(const size_t& _player_id, const size_t& _unit_id, const int& _HP, const int& _unit_x, const int& _unit_y, const int& _damage,
+Unit::Unit(const size_t& _player_id, const size_t& _unit_id, const int& _HP, const int& _unit_x,
+        const int& _unit_y, const int& _damage, const int& _radius,
      const int& _speed, const int& _look_angle, Mediator* mediator) : AbstractUnit(mediator), RealUnit(_player_id,
-             _unit_id, _HP, _unit_x, _unit_y), damage(_damage), speed(_speed), look_angle(_look_angle) {
+             _unit_id, _HP, _unit_x, _unit_y), damage(_damage), radius(_radius), speed(_speed), look_angle(_look_angle) {
 }
 
 void Unit::add(NewsTaker* news_taker) {
@@ -38,20 +39,30 @@ bool Unit::is_alive() const {
 }
 
 bool Unit::move(std::vector<int>& dest) {
-    std::cout << dest.size();
     enum {
         x = 0,
         y
     };
     auto now = std::chrono::system_clock::now();
     const double time_passed = (now - prev_time).count();
-    unit_x += static_cast<int>((dest[x] - unit_x) / sqrt((dest[x] - unit_x) * (dest[x] - unit_x) + (dest[y] - unit_y) * (dest[y] - unit_y)) * time_passed); // deal with doubles and ints
-    unit_y += static_cast<int>((dest[y] - unit_y) / sqrt((dest[x] - unit_x) * (dest[x] - unit_x) + (dest[y] - unit_y) * (dest[y] - unit_y)) * time_passed); // deal with doubles and ints
+    unit_x += speed * static_cast<int>((dest[x] - unit_x) / sqrt((dest[x] - unit_x) *
+            (dest[x] - unit_x) + (dest[y] - unit_y) * (dest[y] - unit_y)) * time_passed);
+    unit_y += speed * static_cast<int>((dest[y] - unit_y) / sqrt((dest[x] - unit_x) *
+            (dest[x] - unit_x) + (dest[y] - unit_y) * (dest[y] - unit_y)) * time_passed);
     return (unit_x - dest[x]) < ALLOWED_DELTA && (unit_y - dest[y]) < ALLOWED_DELTA;
 }
 
-bool Unit::kick(std::vector<int>& params) {
-    std::cout << params.size();     // remove and implement
+bool Unit::kick(std::vector<int>& target_params) {
+    enum {
+        player_id,
+        unit_id
+    };
+    std::vector<int> kick_params;
+    kick_params.push_back(damage);
+    kick_params.push_back(radius);
+    kick_params.push_back(unit_x);
+    kick_params.push_back(unit_y);
+    mediator->make_interaction(static_cast<size_t >(target_params[player_id]), static_cast<size_t>(target_params[unit_id]), "get_kicked", kick_params);
     return false;
 }
 

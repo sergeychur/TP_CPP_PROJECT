@@ -11,8 +11,6 @@ int RealUnit::get_kicked(std::vector<int>&) {
     return 0;
 }
 
-// using UnitMethod = int(RealUnit::*)(std::vector<int>&);
-
 typedef int (RealUnit::*UnitMethod)(std::vector<int>&);
 
 int RealUnit::react_on_command(const std::string& func_name, std::vector<int>& params) {

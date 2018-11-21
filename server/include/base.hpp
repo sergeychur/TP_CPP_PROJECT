@@ -19,6 +19,7 @@ public:
             unit_to_return(nullptr),  units_made(0), is_making(false) {};
     bool is_alive() override {return HP > 0;}    // change for smth normal, like HP != 0
     bool is_ready() override;
+    bool is_ready_for_time(const double& elapsed_time);
     void start_making(std::vector<int>&) override;    // init the making process
     /*const int& x, const int& y, const int& HP, const int& damage,
                       const int& speed, const bool& if_start*/
@@ -32,8 +33,6 @@ private:
     Unit* unit_to_return;
     size_t units_made;
     bool is_making;
-
-    bool is_ready_for_time(const double& elapsed_time);
 };
 
 #endif //SERVER_BASE_HPP

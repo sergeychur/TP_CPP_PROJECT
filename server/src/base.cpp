@@ -26,12 +26,14 @@ void Base::start_making(std::vector<int>& params) {
         y,
         HP,
         damage,
+        radius,
         speed,
         if_start
     };
     time_to_build = (params[if_start]) ? 0 : default_time_to_build;
     params.erase(params.begin() + if_start);
-    unit_to_return = new Unit(player_id, ++units_made, params[HP], params[x], params[y], params[damage], params[speed], 0, mediator);
+    unit_to_return = new Unit(player_id, ++units_made, params[HP], params[x], params[y], params[damage],
+            params[radius], params[speed], 0, mediator);
 }
 
 Unit* Base::get_unit() {

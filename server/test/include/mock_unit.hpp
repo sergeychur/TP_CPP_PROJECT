@@ -13,10 +13,10 @@
 class MockUnit : public AbstractUnit {
 public:
     MockUnit() : AbstractUnit(nullptr){};
-    MOCK_METHOD1(act, int(Command&));
+    MOCK_METHOD1(act, bool(Command&));
     MOCK_METHOD0(remove, void());
     MOCK_METHOD0(notify, void());
-    MOCK_METHOD1(interact, int(std::vector<int>&));
+    MOCK_METHOD2(interact, int(const std::string&, std::vector<int>&));
     MOCK_METHOD1(add, void(NewsTaker*));
 };
 

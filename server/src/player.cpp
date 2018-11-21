@@ -6,21 +6,19 @@
 
 #include "player.hpp"
 
-int Player::act(std::vector<Command>& command_arr) {
+int Player::act(Command& command) {
     int status = DEAD;
     if(base->is_ready()) {
         add_unit(base->get_unit());
     }
-    for(auto& it : command_arr) {
-        if(it.unit_id == BASE) {
-            base->start_making(it.parameters);
+    if(command.unit_id == BASE) {
+        base->start_making(command.parameters);
+    }
+    if(unit_arr[command.unit_id] && id == command.player_id) {
+        if(unit_arr[command.unit_id]->act(command)) {
+            remove_unit(command.unit_id);
         }
-        if(unit_arr[it.unit_id] && id == it.player_id) {
-            if(unit_arr[it.unit_id]->act(it)) {
-                remove_unit(it.unit_id);
-            }
 
-        }
     }
     return status;
 }

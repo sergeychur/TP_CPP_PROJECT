@@ -24,8 +24,9 @@ enum {
 
 class Unit : public AbstractUnit, public RealUnit {
     public:
-        Unit(const size_t& _player_id_, const size_t& _unit_id, const int& _HP, const int& _unit_x, const int& _unit_y, const int& damage,
-                const int& speed, const int& look_angle, Mediator* mediator);
+        Unit(const size_t& _player_id_, const size_t& _unit_id, const int& _HP, const int& _unit_x,
+                const int& _unit_y, const int& damage,
+                const int& radius, const int& speed, const int& look_angle, Mediator* mediator);
         Unit() = delete;
         Unit(const Unit&&) = delete;
         Unit(const Unit&) = delete;
@@ -50,6 +51,7 @@ class Unit : public AbstractUnit, public RealUnit {
         NewsTaker* updater;
 
         int damage;
+        int radius;
         int speed;
         int look_angle;
 

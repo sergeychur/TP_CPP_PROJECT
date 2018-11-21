@@ -8,12 +8,13 @@
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+
 #include "base.hpp"
-#include "mediator.hpp"
+#include "mock_mediator.hpp"
 
 class BaseTests : public ::testing::Test {
     public:
-        BaseTests(): base(nullptr, 100, 5, 7) {}
+        BaseTests(): base(nullptr, 100, 5, 7, 0) {}
     protected:
         Base base;
         void SetUp() {}

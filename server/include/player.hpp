@@ -36,7 +36,7 @@ class Player {
 
     public:
         explicit Player(const size_t& player_id) : id(player_id), base(nullptr) {}
-        int act(std::vector<Command>&);
+        int act(Command&);
         int add_base(Mediator* med, const int& base_x, const int& base_y);
         void add_base(AbstractBase*);
         void add_unit(AbstractUnit*);    // adds new unit after it is made

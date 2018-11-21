@@ -18,11 +18,11 @@ int main(void) {
     }
     int winner = -1;
     while(!game.is_win()) {
-        std::vector<std::vector<Command>> clients_data;
+        std::vector<Command> clients_data;
         // here should be getting params from clients
         winner = game.act(clients_data);
-        Update* update = game.get_update();
-        std::cout << update << std::endl;   // remove later
+        Update update = game.get_update();
+        std::cout << &update << std::endl;   // remove later
         // here should be some sending to clients
     }
     std::cout << winner << std::endl;

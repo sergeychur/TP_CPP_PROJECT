@@ -36,8 +36,8 @@ class Game {
 
         void add_player(const int& _x, const int& _y, const size_t& player_id);
         bool is_win() const {return stat != -1;}
-        int act(std::vector<std::vector<Command>>&);
-        Update* get_update();    // returns the update to send to clients
+        int act(std::vector<Command>&);
+        Update get_update();    // returns the update to send to clients
 
 };
 

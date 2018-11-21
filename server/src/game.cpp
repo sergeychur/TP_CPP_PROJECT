@@ -24,17 +24,15 @@ void Game::add_player(const int& _x, const int& _y, const size_t& player_id) {
     player_arr[player_id].add_base(map, _x, _y);
 }
 
-int Game::act(std::vector<std::vector<Command>>& commands_arr) {
+int Game::act(std::vector<Command>& commands_arr) {
     update_maker->delete_update();
-    for(size_t i = 0; i < commands_arr.size() && stat == STILL_ACT; ++i) {
-        if(!commands_arr[i].empty()) {
-            stat = player_arr[i].act(commands_arr[i]);
-        }
+    for(auto& command : commands_arr) {
+        stat = player_arr[command.player_id].act(command);
     }
-    return stat;
+    return (player_arr.size() == 1) ? stat : STILL_ACT;
 }
 
-Update* Game::get_update() {
+Update Game::get_update() {
     return update_maker->get_update();   // check later
 }
 

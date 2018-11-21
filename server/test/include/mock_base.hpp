@@ -10,13 +10,16 @@
 
 #include "abstract_base.hpp"
 
+
+
 class MockBase : public AbstractBase {
 public:
-    MockBase() : AbstractBase(nullptr, 100, 0, 0, 0) {};
-    MOCK_METHOD6(start_making, void(const int&, const int&, const int&, const int&, const int&, const bool&));
+    MockBase() : AbstractBase(nullptr) {};
+    MOCK_METHOD1(start_making, void(std::vector<int>&));
     MOCK_METHOD0(is_alive, bool());
-    MOCK_METHOD1(get_unit, Unit*(std::chrono::time_point<std::chrono::system_clock>&));
-    MOCK_METHOD1(interact, int(std::vector<int>&));
+    MOCK_METHOD0(is_ready, bool());
+    MOCK_METHOD0(get_unit, Unit*());
+    MOCK_METHOD2(interact, int(const std::string&, std::vector<int>&));
 
 };
 
