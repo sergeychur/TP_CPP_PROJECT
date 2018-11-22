@@ -6,12 +6,14 @@
 #define NET_SERIALIZABLE_H
 
 #include <string>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/archive/text_oarchive.hpp>
 
 struct Serializable
 {
 public:
-	virtual std::string serialize()=0;
-	virtual void deserialize(std::string)=0;
+	virtual void serialize(boost::archive::text_iarchive& ar, const unsigned int version)=0;
+	virtual void serialize(boost::archive::text_oarchive& ar, const unsigned int version)=0;
 };
 
 

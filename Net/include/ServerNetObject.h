@@ -14,15 +14,15 @@ class ServerNetObject:public AbstractServerNetObject
 public:
 	ServerNetObject(uint _port,const std::string& _ip);
 	void send(Serializable *serializable) override;
-	std::vector<Serializable *> receive() override;
+	std::vector<std::shared_ptr<Serializable>> receive();
 	void work(short player_number);
 	~ServerNetObject();
 private:
 	
-	void connect() override;
+	void connect();
 	static void read_client_socks();
 	
-	static std::vector<Serializable*> buf;
+	static std::vector<std::shared_ptr<Serializable>> buf;
 	static bool stop;
 	uint port;
 	std::string ip;

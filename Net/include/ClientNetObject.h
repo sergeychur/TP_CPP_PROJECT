@@ -15,12 +15,12 @@ public:
 	//make it singleton
 	ClientNetObject(uint _port, std::string& _ip);
 	void send(Serializable *serializable) override;
-	std::vector<Serializable *> receive() override;
+	std::vector<Serializable *> receive();
 	void work();
 	~ClientNetObject();
 private:
 	static std::vector<Serializable*> buf;
-	void connect() override;
+	void connect();
 	static void read_sock();
 	static bool stop;
 	uint port;

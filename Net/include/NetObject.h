@@ -7,14 +7,13 @@
 
 
 #include <vector>
+#include <boost/asio.hpp>
 #include "Serializable.h"
 
 class NetObject
 {
 public:
-	virtual void connect()=0;
 	virtual void send(Serializable*)=0;
-	virtual std::vector<Serializable*> receive()=0;
 };
 
 

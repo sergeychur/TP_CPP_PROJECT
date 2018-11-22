@@ -14,10 +14,10 @@ void ServerNetObject::send(Serializable *serializable)
 
 }
 
-std::vector<Serializable *> ServerNetObject::receive()
+std::vector<std::shared_ptr<Serializable>> ServerNetObject::receive()
 {
 	//mutex take
-	auto temp=buf;
+	auto temp=std::move(buf);
 	buf.clear();
 	//mutex free
 	return temp;
@@ -53,12 +53,12 @@ void ServerNetObject::work(short player_number=player_num)
 
 ServerNetObject::~ServerNetObject()
 {
-	for(int i = 0; i < player_num; ++i)
-	{
-		stop=true; //set something to let threads know when to join
-		thread[i]->join();
-		delete thread[i];
-		
-	}
+	if(thread) // check if work() was called
+		for(int i = 0; i < player_num; ++i)
+		{
+			stop=true; //set something to let threads know when to join
+			thread[i]->join();
+			delete thread[i];
+		}
 	delete[] thread;
 }
