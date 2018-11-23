@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>s_w_torso_move_0000.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{0.5,-7}</string>
+                <key>spriteSize</key>
+                <string>{57,92}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,847},{57,92}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>6 7 8 0 5 6 3 4 5 5 0 1 5 2 3 5 1 2 0 6 8</string>
+                <key>vertices</key>
+                <string>59 48 76 53 93 67 85 88 64 117 63 80 55 78 44 104 36 25</string>
+                <key>verticesUV</key>
+                <string>24 870 41 875 58 889 50 910 29 939 28 902 20 900 9 926 1 847</string>
+            </dict>
+            <key>s_w_torso_move_0002.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{1.5,-11.5}</string>
+                <key>spriteSize</key>
+                <string>{59,95}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,707},{59,95}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>5 6 7 0 4 5 2 3 4 1 2 4 0 1 4 0 5 7</string>
+                <key>vertices</key>
+                <string>61 53 85 53 95 71 65 116 60 80 51 86 51 123 36 28</string>
+                <key>verticesUV</key>
+                <string>26 732 50 732 60 750 30 795 25 759 16 765 16 802 1 707</string>
+            </dict>
+            <key>s_w_torso_move_0004.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{1,-11.5}</string>
+                <key>spriteSize</key>
+                <string>{58,75}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{25,1271},{58,75}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>4 5 6 4 6 7 3 4 7 1 2 3 0 1 3 0 3 7</string>
+                <key>vertices</key>
+                <string>94 58 85 85 67 113 64 80 54 80 57 106 52 106 36 38</string>
+                <key>verticesUV</key>
+                <string>83 1291 74 1318 56 1346 53 1313 43 1313 46 1339 41 1339 25 1271</string>
+            </dict>
+            <key>s_w_torso_move_0006.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{3,-23.5}</string>
+                <key>spriteSize</key>
+                <string>{60,77}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,1128},{60,77}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 3 4 0 1 2 4 0 2</string>
+                <key>vertices</key>
+                <string>97 54 71 106 64 92 63 126 37 49</string>
+                <key>verticesUV</key>
+                <string>61 1133 35 1185 28 1171 27 1205 1 1128</string>
+            </dict>
+            <key>s_w_torso_move_0008.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{0,-20.5}</string>
+                <key>spriteSize</key>
+                <string>{54,69}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{47,709},{54,69}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>3 4 5 3 5 6 2 6 7 2 3 6 0 2 7 0 1 2</string>
+                <key>vertices</key>
+                <string>81 91 73 99 70 83 62 91 71 118 65 119 37 56 91 50</string>
+                <key>verticesUV</key>
+                <string>91 750 83 758 80 742 72 750 81 777 75 778 47 715 101 709</string>
+            </dict>
+            <key>s_w_torso_move_0010.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{2,-19.5}</string>
+                <key>spriteSize</key>
+                <string>{50,85}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{49,172},{50,85}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 5 6 1 2 3 1 3 4 1 4 5 0 1 6</string>
+                <key>vertices</key>
+                <string>82 94 62 89 77 115 77 126 41 72 47 59 91 41</string>
+                <key>verticesUV</key>
+                <string>90 225 70 220 85 246 85 257 49 203 55 190 99 172</string>
+            </dict>
+            <key>s_w_torso_move_0012.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{2,-13.5}</string>
+                <key>spriteSize</key>
+                <string>{48,99}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{44,603},{48,99}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 4 5 0 5 6 1 2 3 1 3 4 0 1 5</string>
+                <key>vertices</key>
+                <string>85 86 70 85 90 127 47 87 42 63 73 47 90 28</string>
+                <key>verticesUV</key>
+                <string>87 661 72 660 92 702 49 662 44 638 75 622 92 603</string>
+            </dict>
+            <key>s_w_torso_move_0014.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{7,3.5}</string>
+                <key>spriteSize</key>
+                <string>{50,99}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{12,912},{50,99}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 5 6 1 2 3 1 3 4 1 4 5 0 1 6 7 0 6</string>
+                <key>vertices</key>
+                <string>90 77 62 89 96 110 84 110 46 95 46 60 78 50 86 11</string>
+                <key>verticesUV</key>
+                <string>56 978 28 990 62 1011 50 1011 12 996 12 961 44 951 52 912</string>
+            </dict>
+            <key>s_w_torso_move_0016.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{13,4.5}</string>
+                <key>spriteSize</key>
+                <string>{70,89}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,187},{70,89}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 5 6 2 3 4 2 4 5 1 2 6 0 1 6 0 6 7</string>
+                <key>vertices</key>
+                <string>88 33 94 69 69 88 112 104 51 101 42 58 77 53 81 15</string>
+                <key>verticesUV</key>
+                <string>47 205 53 241 28 260 71 276 10 273 1 230 36 225 40 187</string>
+            </dict>
+            <key>s_w_torso_move_0018.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{8,6.5}</string>
+                <key>spriteSize</key>
+                <string>{60,103}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,91},{60,103}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 5 6 2 3 4 2 4 5 0 1 6 1 2 6 0 6 7</string>
+                <key>vertices</key>
+                <string>92 38 92 68 78 83 102 92 52 109 42 59 77 52 79 6</string>
+                <key>verticesUV</key>
+                <string>51 123 51 153 37 168 61 177 11 194 1 144 36 137 38 91</string>
+            </dict>
+            <key>s_w_torso_move_0020.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{11,1.5}</string>
+                <key>spriteSize</key>
+                <string>{64,93}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,378},{64,93}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 5 6 2 3 4 2 4 5 1 2 6 0 1 6 0 6 7</string>
+                <key>vertices</key>
+                <string>94 22 94 63 81 78 107 84 53 109 43 59 75 56 76 16</string>
+                <key>verticesUV</key>
+                <string>52 384 52 425 39 440 65 446 11 471 1 421 33 418 34 378</string>
+            </dict>
+            <key>s_w_torso_move_0022.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{10,0.5}</string>
+                <key>spriteSize</key>
+                <string>{62,95}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,463},{62,95}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 5 6 2 3 4 2 4 5 1 2 6 0 1 6 0 6 7</string>
+                <key>vertices</key>
+                <string>94 21 94 62 82 74 105 82 53 111 43 61 75 49 77 16</string>
+                <key>verticesUV</key>
+                <string>52 468 52 509 40 521 63 529 11 558 1 508 33 496 35 463</string>
+            </dict>
+            <key>s_w_torso_move_0024.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{15,4}</string>
+                <key>spriteSize</key>
+                <string>{80,98}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{80,98}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 3 6 3 4 5 3 5 6 2 6 7 1 2 7 0 1 7 0 7 8</string>
+                <key>vertices</key>
+                <string>92 24 98 65 80 68 81 85 119 77 55 109 39 58 76 56 77 11</string>
+                <key>verticesUV</key>
+                <string>54 14 60 55 42 58 43 75 81 67 17 99 1 48 38 46 39 1</string>
+            </dict>
+            <key>s_w_torso_move_0026.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{14.5,2.5}</string>
+                <key>spriteSize</key>
+                <string>{63,89}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{18,772},{63,89}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 6 7 2 5 6 2 3 4 2 4 5 1 2 7 0 1 7 0 7 8</string>
+                <key>vertices</key>
+                <string>91 23 96 63 79 89 110 89 53 106 47 84 47 60 77 50 77 17</string>
+                <key>verticesUV</key>
+                <string>62 778 67 818 50 844 81 844 24 861 18 839 18 815 48 805 48 772</string>
+            </dict>
+            <key>s_w_torso_move_0028.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{15.5,2.5}</string>
+                <key>spriteSize</key>
+                <string>{65,77}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{19,1050},{65,77}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>5 6 7 1 4 5 1 2 3 1 3 4 0 5 7 0 1 5</string>
+                <key>vertices</key>
+                <string>95 66 74 91 112 100 47 100 47 58 76 54 79 24 90 23</string>
+                <key>verticesUV</key>
+                <string>67 1093 46 1118 84 1127 19 1127 19 1085 48 1081 51 1051 62 1050</string>
+            </dict>
+            <key>s_w_torso_move_0030.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{8,1.5}</string>
+                <key>spriteSize</key>
+                <string>{52,105}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,277},{52,105}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 4 5 1 2 3 1 3 4 0 1 5 6 0 5</string>
+                <key>vertices</key>
+                <string>96 73 73 83 98 115 47 94 46 60 78 48 82 10</string>
+                <key>verticesUV</key>
+                <string>51 340 28 350 53 382 2 361 1 327 33 315 37 277</string>
+            </dict>
+            <key>s_w_torso_move_0032.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{1.5,0.5}</string>
+                <key>spriteSize</key>
+                <string>{43,109}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{34,496},{43,109}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 6 7 2 3 4 2 4 5 5 6 1 0 7 8 5 1 2 0 1 7</string>
+                <key>vertices</key>
+                <string>87 83 76 78 70 94 84 110 84 118 44 83 47 59 78 50 87 9</string>
+                <key>verticesUV</key>
+                <string>77 570 66 565 60 581 74 597 74 605 34 570 37 546 68 537 77 496</string>
+            </dict>
+            <key>s_w_torso_move_0034.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{0,-7.5}</string>
+                <key>spriteSize</key>
+                <string>{46,105}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{41,307},{46,105}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 5 6 1 2 3 1 3 4 1 4 5 0 6 7 0 1 6</string>
+                <key>vertices</key>
+                <string>87 86 67 94 78 113 78 124 41 71 48 57 77 55 87 19</string>
+                <key>verticesUV</key>
+                <string>87 374 67 382 78 401 78 412 41 359 48 345 77 343 87 307</string>
+            </dict>
+            <key>s_w_torso_move_0036.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{-1,-18}</string>
+                <key>spriteSize</key>
+                <string>{56,84}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{40,75},{56,84}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 2 3 1 3 4 1 4 5 0 5 6 0 1 5</string>
+                <key>vertices</key>
+                <string>83 95 61 89 71 111 71 124 35 55 77 54 91 40</string>
+                <key>verticesUV</key>
+                <string>88 130 66 124 76 146 76 159 40 90 82 89 96 75</string>
+            </dict>
+            <key>s_w_torso_move_0038.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{-0.5,-21}</string>
+                <key>spriteSize</key>
+                <string>{55,76}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{44,1172},{55,76}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 3 4 0 1 2 0 2 4</string>
+                <key>vertices</key>
+                <string>91 53 77 108 64 93 64 123 36 47</string>
+                <key>verticesUV</key>
+                <string>99 1178 85 1233 72 1218 72 1248 44 1172</string>
+            </dict>
+            <key>s_w_torso_move_0040.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{0,-12}</string>
+                <key>spriteSize</key>
+                <string>{58,76}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,1201},{58,76}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 3 4 0 1 2 4 0 2</string>
+                <key>vertices</key>
+                <string>93 57 73 109 61 85 55 114 35 38</string>
+                <key>verticesUV</key>
+                <string>59 1220 39 1272 27 1248 21 1277 1 1201</string>
+            </dict>
+            <key>s_w_torso_move_0042.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{1,-12}</string>
+                <key>spriteSize</key>
+                <string>{58,90}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,993},{58,90}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>3 4 5 2 3 5 0 1 2 5 0 2</string>
+                <key>vertices</key>
+                <string>94 63 67 116 65 80 52 82 52 121 36 31</string>
+                <key>verticesUV</key>
+                <string>59 1025 32 1078 30 1042 17 1044 17 1083 1 993</string>
+            </dict>
+            <key>s_w_torso_move_0044.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{2,-7.5}</string>
+                <key>spriteSize</key>
+                <string>{60,95}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,632},{60,95}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>5 6 7 0 4 5 2 3 4 1 2 4 0 1 4 0 5 7</string>
+                <key>vertices</key>
+                <string>69 54 77 54 96 68 66 119 62 80 55 77 45 100 36 24</string>
+                <key>verticesUV</key>
+                <string>34 662 42 662 61 676 31 727 27 688 20 685 10 708 1 632</string>
+            </dict>
+            <key>s_w_torso_move_0046.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>anchor</key>
+                <string>{0.5,0.5}</string>
+                <key>spriteOffset</key>
+                <string>{2.5,-9}</string>
+                <key>spriteSize</key>
+                <string>{59,98}</string>
+                <key>spriteSourceSize</key>
+                <string>{128,128}</string>
+                <key>textureRect</key>
+                <string>{{1,552},{59,98}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>5 6 7 0 4 5 2 3 4 1 2 4 0 1 4 0 5 7</string>
+                <key>vertices</key>
+                <string>68 54 77 54 96 68 64 122 62 80 55 78 43 99 37 24</string>
+                <key>verticesUV</key>
+                <string>32 582 41 582 60 596 28 650 26 608 19 606 7 627 1 552</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>warriorAnim.png</string>
+            <key>size</key>
+            <string>{102,1347}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:606d93ea40724f2a67b06f6071c45ff1:a7ec5b8dda3e65bfbe3c8ca3c781c16e:54b1ed731dfab45cebd6ce24322cd417$</string>
+            <key>textureFileName</key>
+            <string>warriorAnim.png</string>
+        </dict>
+    </dict>
+</plist>
