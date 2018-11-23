@@ -1,21 +1,25 @@
 #include <iostream>
+#include <fstream>
 #include <climits>
 
 #include "game.hpp"
 #include "utils.hpp"
 
+
+
 int main(void) {
     size_t player_num = 0;
     std::string greeting("Enter the number of players");
     input(&player_num, greeting);
+    // std::ifstream input_file();
     // here should be installing the connection with clients
     Game game(player_num);
     for(size_t i = 0; i < player_num; ++i) {
-        int x = 0;
-        int y = 0;
+        int x[2] = {0, 100};
+        int y[2] = {0, 100};
         // here should be getting params from clients
         try {
-            game.add_player(x, y, i);
+            game.add_player(x[i], y[i], i);
         } catch(std::invalid_argument& e) {
             std::cerr << "Cannot add player, because of" << e.what() << std::endl;
             return ERR_ADD;

@@ -7,7 +7,7 @@
 #include <map>
 #include <cmath>
 
-
+#include <boost/container_hash/hash.hpp>
 
 #include "unit.hpp"
 
@@ -145,10 +145,11 @@ void Unit::interact(const std::string& command, std::vector<int>& params) {
 }
 
 size_t Unit::hash_self() const {
-    size_t hash = std::hash<int>()(damage);
-    hash ^= (std::hash<int>()(radius) << 1);
-    hash ^= (std::hash<int>()(speed) << 1);
-    hash ^= (std::hash<int>()(look_angle) << 1);
+    size_t hash = 0;
+    boost::hash_combine(hash, damage);
+    boost::hash_combine(hash, radius);
+    boost::hash_combine(hash, speed);
+    boost::hash_combine(hash, look_angle);
     return hash;
 }
 

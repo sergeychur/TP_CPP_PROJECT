@@ -13,13 +13,17 @@
 #include <vector>
 
 
+#include <boost/serialization/vector.hpp>
+#include <boost/serialization/string.hpp>
+#include <boost/serialization/access.hpp>
+
 struct Command {
     public:
         Command(const size_t _player_id, const size_t _unit_id,
                 const std::string& _command_name, std::vector<int>& _parameters) :
                 player_id(_player_id),
                 unit_id(_unit_id), command_name(_command_name), parameters(_parameters) {};
-        Command() = delete;
+        Command() = default;
         // Command(const Command&) = delete;
         // Command(const Command&&) = delete;
         // Command& operator=(const Command&) = delete;
@@ -29,6 +33,12 @@ struct Command {
         size_t unit_id;
         std::string command_name;   // add_unit, move, kick etc.
         std::vector<int> parameters;    // args
+
+        friend class boost::serialization::access;
+        template<class Archive>
+        inline void serialize(Archive& ar, const unsigned int file_version) {
+            ar & player_id & unit_id & command_name & parameters;
+        }
 };
 
 bool operator== (const Command& first, const Command& second);

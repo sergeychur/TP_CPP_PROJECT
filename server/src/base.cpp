@@ -5,7 +5,6 @@
 #include <iostream>
 #include <map>
 
-
 #include "base.hpp"
 
 Base::~Base() {

@@ -12,3 +12,5 @@ bool operator== (const UpdateLine& first, const UpdateLine& second) {
            first.new_angle == second.new_angle &&
            first.is_alive == second.is_alive;
 }
+
+

@@ -10,4 +10,3 @@ bool operator== (const Command& first, const Command& second) {
            first.command_name == second.command_name &&
            first.parameters == second.parameters;
 }
-
