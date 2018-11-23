@@ -19,6 +19,11 @@ class AbstractUnit : public NewsMaker, public Colleague {
         explicit AbstractUnit(Mediator* med) : NewsMaker(), Colleague(med) {}
         virtual bool act(Command& order) = 0;
         ~AbstractUnit() override = default;
+        enum states {
+            NONE = 0,
+            MOVING = 1,
+            FIGHTING = 2
+        };
 };
 
 #endif //SERVER_ABSTRACT_UNIT_HPP

@@ -13,10 +13,11 @@
 class MockUnit : public AbstractUnit {
 public:
     MockUnit() : AbstractUnit(nullptr){};
+    ~MockUnit() override = default;
     MOCK_METHOD1(act, bool(Command&));
     MOCK_METHOD0(remove, void());
     MOCK_METHOD0(notify, void());
-    MOCK_METHOD2(interact, int(const std::string&, std::vector<int>&));
+    MOCK_METHOD2(interact, void(const std::string&, std::vector<int>&));
     MOCK_METHOD1(add, void(NewsTaker*));
 };
 

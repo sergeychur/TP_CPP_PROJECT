@@ -14,15 +14,30 @@ int main(void) {
         int x = 0;
         int y = 0;
         // here should be getting params from clients
-        game.add_player(x, y, i);
+        try {
+            game.add_player(x, y, i);
+        } catch(std::invalid_argument& e) {
+            std::cerr << "Cannot add player, because of" << e.what() << std::endl;
+            return ERR_ADD;
+        }
     }
-    int winner = -1;
+    size_t winner = player_num;
     while(!game.is_win()) {
         std::vector<Command> clients_data;
         // here should be getting params from clients
-        winner = game.act(clients_data);
-        Update update = game.get_update();
-        std::cout << &update << std::endl;   // remove later
+        try {
+            winner = game.act(clients_data);
+        }
+        catch (std::exception& e) {
+            std::cerr << "Can't act because of "<< e.what() << std::endl;
+        }
+        Update update;
+        try {
+            update = game.get_update();
+        }
+        catch(std::invalid_argument& e) {
+            std::cerr << "Can't get update because of " << e.what() << std::endl;
+        }
         // here should be some sending to clients
     }
     std::cout << winner << std::endl;

@@ -15,7 +15,7 @@
 
 struct Command {
     public:
-        Command(const size_t& _player_id, const size_t& _unit_id,
+        Command(const size_t _player_id, const size_t _unit_id,
                 const std::string& _command_name, std::vector<int>& _parameters) :
                 player_id(_player_id),
                 unit_id(_unit_id), command_name(_command_name), parameters(_parameters) {};
@@ -31,6 +31,6 @@ struct Command {
         std::vector<int> parameters;    // args
 };
 
-bool operator== (const Command&, const Command&);
+bool operator== (const Command& first, const Command& second);
 
 #endif //SERVER_COMMAND_HPP

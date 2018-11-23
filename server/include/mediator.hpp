@@ -20,15 +20,15 @@ protected:
     Mediator* mediator;
 public:
     explicit Colleague(Mediator* _mediator) : mediator(_mediator) {}
-    virtual int interact(const std::string&, std::vector<int>&) = 0;
+    virtual void interact(const std::string&, std::vector<int>&) = 0;
     virtual ~Colleague() = default;
 };
 
 class Mediator {
     public:
         virtual void add_colleague(Colleague*,
-                const size_t& player_id, const size_t& unit_id) = 0;
-        virtual int make_interaction(const size_t&, const size_t&,
+                const size_t player_id, const size_t unit_id) = 0;
+        virtual bool make_interaction(const size_t, const size_t,
                 const std::string&, std::vector<int>& param_vector) = 0;
         virtual ~Mediator() = default;
 };

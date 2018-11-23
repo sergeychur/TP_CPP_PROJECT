@@ -13,13 +13,20 @@
 
 
 class MockBase : public AbstractBase {
-public:
-    MockBase() : AbstractBase(nullptr) {};
-    MOCK_METHOD1(start_making, void(std::vector<int>&));
-    MOCK_METHOD0(is_alive, bool());
-    MOCK_METHOD0(is_ready, bool());
-    MOCK_METHOD0(get_unit, Unit*());
-    MOCK_METHOD2(interact, int(const std::string&, std::vector<int>&));
+    public:
+        MockBase() : AbstractBase(nullptr) {};
+        ~MockBase() = default;
+        MOCK_METHOD1(start_making, void(std::vector<int>&));
+        MOCK_METHOD0(is_ready, bool());
+        MOCK_METHOD0(get_unit, Unit*());
+        MOCK_METHOD2(interact, void(const std::string&, std::vector<int>&));
+        MOCK_METHOD0(notify, void());
+        MOCK_METHOD1(add, void(NewsTaker*));
+        MOCK_METHOD0(remove, void());
+        MOCK_METHOD1(act, bool(Command&));
+    private:
+        MOCK_METHOD0(is_alive, bool());
+
 
 };
 

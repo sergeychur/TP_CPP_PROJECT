@@ -10,7 +10,7 @@
 
 class UpdateMaker : public NewsTaker {
     public:
-        UpdateMaker() : update(nullptr) {}
+        UpdateMaker();
         UpdateMaker(const UpdateMaker&) = delete;
         UpdateMaker(const UpdateMaker&&) = delete;
         UpdateMaker& operator=(UpdateMaker&) = delete;

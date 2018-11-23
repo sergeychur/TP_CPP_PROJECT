@@ -15,6 +15,7 @@
 class MockNewsTaker : public NewsTaker {
     public:
         MockNewsTaker() = default;
+        ~MockNewsTaker() override = default;
         MOCK_METHOD1(handle_event, void(UpdateLine&));
         MOCK_METHOD0(get_update, Update());
         MOCK_METHOD0(delete_update, void());

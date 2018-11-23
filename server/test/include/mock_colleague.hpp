@@ -13,7 +13,8 @@
 class MockColleague : public Colleague {
 public:
     explicit MockColleague(Mediator* mediator1) : Colleague(mediator1) {}
-    MOCK_METHOD2(interact, int(const std::string&, std::vector<int>&));
+    ~MockColleague() override = default;
+    MOCK_METHOD2(interact, void(const std::string&, std::vector<int>&));
 };
 
 #endif //SERVER_MOCK_COLLEAGUE_HPP

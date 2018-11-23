@@ -22,9 +22,9 @@ class Map : public Mediator {
         Map& operator=(const Map&) = delete;
         Map&& operator=(const Map&&) = delete;
 
-        void add_colleague(Colleague*, const size_t& player_id,
-                const size_t& unit_id) override;
-        int make_interaction(const size_t&, const size_t&,
+        void add_colleague(Colleague*, const size_t player_id,
+                const size_t unit_id) override;
+        bool make_interaction(const size_t, const size_t,
                             const std::string&, std::vector<int>& param_vector) override;
         ~Map() override;
 

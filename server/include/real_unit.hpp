@@ -17,10 +17,10 @@
 
 class RealUnit {
     public:
-        RealUnit(const size_t& _player_id, const size_t _unit_id, const int& _HP, const int _unit_x,
-                const int& _unit_y): player_id(_player_id), unit_id(_unit_id), HP(_HP),
+        RealUnit(const size_t _player_id, const size_t _unit_id, const int _HP, const int _unit_x,
+                const int _unit_y): player_id(_player_id), unit_id(_unit_id), HP(_HP),
                 unit_x(_unit_x), unit_y(_unit_y) {}
-        int react_on_command(const std::string&, std::vector<int>&);
+        void react_on_command(const std::string&, std::vector<int>&);
         virtual ~RealUnit() = default;
     protected:
         size_t player_id;
@@ -29,7 +29,7 @@ class RealUnit {
         int unit_x;
         int unit_y;
 
-        int get_kicked(std::vector<int>&);
+        void get_kicked(std::vector<int>&);
 };
 
 #endif //SERVER_REAL_UNIT_HPP
