@@ -7,7 +7,6 @@
 
 
 #include <vector>
-#include <boost/asio.hpp>
 #include "Serializable.h"
 
 class NetObject
