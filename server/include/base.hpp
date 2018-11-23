@@ -31,7 +31,7 @@ public:
     void remove() override;
 
 
-    ~Base() override = default;
+    ~Base() override;
 private:
     std::chrono::time_point<std::chrono::system_clock> start;
     double time_to_build;     // change later

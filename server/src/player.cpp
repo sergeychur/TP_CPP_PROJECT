@@ -7,9 +7,7 @@
 #include "player.hpp"
 
 Player::~Player() {
-    if(base) {
-        delete base;
-    }
+    delete base;
     for(auto& it :unit_arr) {
         delete it;
     }

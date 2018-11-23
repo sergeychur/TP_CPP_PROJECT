@@ -8,6 +8,10 @@
 
 #include "base.hpp"
 
+Base::~Base() {
+    delete unit_to_return;
+}
+
 bool Base::is_ready() {
     auto now = std::chrono::system_clock::now();
     if(is_making) {

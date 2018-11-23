@@ -24,7 +24,7 @@ enum errors {
 class Game {
     private:
         Mediator* map;    // map of the world
-        std::vector<Player> player_arr;     // the array of the players(the models of clients)
+        std::vector<Player*> player_arr;     // the array of the players(the models of clients)
         NewsTaker* update_maker;       // this gets the updates from all the changing objects
         // size_t stat;   // the status of the game, updating every iteration of the loop
         size_t player_num;

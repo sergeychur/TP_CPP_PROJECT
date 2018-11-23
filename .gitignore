@@ -32,9 +32,12 @@
 *.app
 
 
-*CMake*
 
-*Make*
+CMakeC*
+
+CMakeF*
+
+Makefile
 
 *cmake*
 
