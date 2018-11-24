@@ -33,3 +33,21 @@
 
 Net/cmake-build-debug*
 Net/.idea*
+
+
+CMakeC*
+
+CMakeF*
+
+Makefile
+
+*cmake*
+
+*.cbp
+
+*.idea*
+
+server/cmake-build-debug*
+server/Doxyfile
+server/html*
+server/latex*
