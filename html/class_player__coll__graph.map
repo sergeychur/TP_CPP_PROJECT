@@ -1,0 +1,7 @@
+<map id="Player" name="Player">
+<area shape="rect" id="node1" title=" " alt="" coords="84,517,195,657"/>
+<area shape="rect" id="node2" href="$class_abstract_base.html" title=" " alt="" coords="75,329,204,456"/>
+<area shape="rect" id="node3" href="$class_colleague.html" title=" " alt="" coords="22,173,132,273"/>
+<area shape="rect" id="node4" href="$class_mediator.html" title=" " alt="" coords="5,5,149,105"/>
+<area shape="rect" id="node5" href="$class_real_unit.html" title=" " alt="" coords="156,167,249,280"/>
+</map>
