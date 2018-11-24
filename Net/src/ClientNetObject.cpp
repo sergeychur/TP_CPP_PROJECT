@@ -18,7 +18,7 @@ void ClientNetObject::send(Serializable *serializable)
 	archive << serializable; // serialize
 	std::string send_buf, temp_buf;
 	stream >> temp_buf;
-	send_buf.append(std::string(typeid(*serializable).name()).substr(0,3)); // write object type
+	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
 	send_buf.append(temp_buf); // write buf
 	send_buf.append("endobj");
 	priority_sock_mutex.lock(); // lock socket mutex
@@ -39,7 +39,7 @@ std::vector<std::shared_ptr<Serializable>> ClientNetObject::receive()
 	return temp;
 }
 
-ClientNetObject::ClientNetObject(uint _port, std::string& _ip, std::map<std::string,DefaultAbstractFactory*> _map)
+ClientNetObject::ClientNetObject(uint _port, std::string _ip, std::map<std::string,DefaultAbstractFactory*> _map)
 	:
 	port(_port),
 	ip(_ip)
@@ -58,9 +58,12 @@ void ClientNetObject::work()
 
 ClientNetObject::~ClientNetObject()
 {
-	stop=true; //set something to let thread join
-	thread->join();
-	delete thread;
+	if(thread)
+	{
+		stop=true; // set something to let thread join
+		thread->join();
+		delete thread;
+	}
 }
 
 void ClientNetObject::read_sock()
@@ -78,10 +81,10 @@ void ClientNetObject::read_sock()
 		
 		recv_buf.erase(recv_buf.end()-6,recv_buf.end());
 		
-		std::shared_ptr<Serializable> serializable;// create pointer
+		std::shared_ptr<Serializable> serializable; // create pointer
 		
-		std::string type = recv_buf.substr(0,3); // read first N bytes to check which class object was sent
-		recv_buf.erase(0,3);
+		std::string type = recv_buf.substr(0,TYPE_LENGTH); // read first N bytes to check which class object was sent
+		recv_buf.erase(0,TYPE_LENGTH);
 		
 		serializable = map[type]->create(); // create empty object
 		

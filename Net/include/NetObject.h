@@ -13,6 +13,8 @@ class NetObject
 {
 public:
 	virtual void send(Serializable*)=0;
+protected:
+	static const short TYPE_LENGTH=3;
 };
 
 
