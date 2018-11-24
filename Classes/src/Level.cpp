@@ -11,7 +11,7 @@
 void Level::loadMap(std::string mapname){
     
     map = TMXTiledMap::create(mapname);
-    addChild(map);
+    //addChild(map);
     Globals::get_instance()->map = map;
     map->retain();
 }

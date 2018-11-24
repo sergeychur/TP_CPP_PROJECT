@@ -7,7 +7,7 @@
 #include <iostream>
 #include "GameObject.hpp"
 
-GameObject::GameObject(Vec2 pos, std::string plist, std::string format, int count) :
+GameObject::GameObject(Vec2 pos, bool isStatic, std::string plist, std::string format, int count) :
     position(pos),
     speed(75),
     isSelect(false),
@@ -15,7 +15,14 @@ GameObject::GameObject(Vec2 pos, std::string plist, std::string format, int coun
     minDistance(2),
     initRotation(-90)
 {
-    animationInit(plist, format, count);
+    if (!isStatic)
+    {
+        animationInit(plist, format, count);
+    }
+    else
+    {
+        sprite = Sprite::create("house.png");
+    }
     sprite->setPosition(position);
     sprite->setAnchorPoint(Vec2(0.5, 0.75));
     addChild(sprite);

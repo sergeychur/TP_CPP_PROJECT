@@ -11,9 +11,9 @@
 #include "Player.hpp"
 USING_NS_CC;
 
-class EnemyPlayer : public Player
+class EnemyPlayer : public Node
 {
-    EnemyPlayer();
+    EnemyPlayer(unsigned int id, Vec2 spawnPoint);
 };
 
 

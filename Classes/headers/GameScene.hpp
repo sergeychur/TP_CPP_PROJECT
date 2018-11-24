@@ -13,6 +13,8 @@
 #include "Player.hpp"
 #include "EnemyPlayer.hpp"
 #include "ui/CocosGUI.h"
+#include <vector>
+#include <map>
 
 
 class GameScene : public cocos2d::Layer
@@ -27,12 +29,16 @@ public:
 private:
     Level* level;
     Player* player;
-    std::vector<EnemyPlayer*> enemies;
-    std::vector<GameObject*> units;
+    std::map<unsigned int, EnemyPlayer*> enemies;
+    //std::vector<GameObject*> units;
+    std::vector<EventKeyboard::KeyCode> heldKeys;
     bool gameStarted;
+    void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event) override ;
+    void onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event) override ;
     bool sendInitInfoToServer();
     bool getInitInfoFromServer();
-    void update(float time) override ;
+    void moveCamera(float delta);
+    void update(float time) override;
 };
 
 #endif /* GameScene_hpp */

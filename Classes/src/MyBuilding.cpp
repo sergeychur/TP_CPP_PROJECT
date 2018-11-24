@@ -6,3 +6,8 @@
 //
 
 #include "MyBuilding.hpp"
+
+MyBuilding::MyBuilding(Vec2 pos, std::string img, unsigned int id) : GameObject(pos, true, img)
+{
+
+}

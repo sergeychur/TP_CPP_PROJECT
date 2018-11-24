@@ -9,14 +9,17 @@
 #include "MyUnit.hpp"
 #include "Globals.h"
 
-MyUnit::MyUnit(Vec2 pos, unsigned int id) : GameObject(pos, "warriorAnim.plist", "s_w_torso_move_%04d.tga", 23), id(id)
+MyUnit::MyUnit(Vec2 pos, unsigned int id) : GameObject(pos)
 {
+    GameObject::id = id;
     auto eventListener = EventListenerMouse::create();
     eventListener->onMouseDown = CC_CALLBACK_1(MyUnit::onMouseDown, this);
     onMap = Globals::get_instance()->positionToTileCoordinate(sprite->getPosition());
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(eventListener, sprite);
     mainLayer = Globals::get_instance()->map->getLayer("Background");
     obstacles = Globals::get_instance()->map->getLayer("Walls");
+    mainLayer->getTileAt(onMap)->setColor(Color3B::GREEN);
+    setAnchorPoint(Globals::get_instance()->map->getAnchorPoint());
     if (obstacles)
         obstacles->setVisible(false);
     scheduleUpdate();
@@ -26,7 +29,11 @@ MyUnit::MyUnit(Vec2 pos, unsigned int id) : GameObject(pos, "warriorAnim.plist",
 void MyUnit::onMouseDown(cocos2d::Event *event)
 {
     EventMouse* mouseEvent = dynamic_cast<EventMouse*>(event);
-    auto y = Director::getInstance()->getWinSize().height + mouseEvent->getLocationInView().y;
+    Point clickPos = Point(mouseEvent->getLocationInView().x,
+            Director::getInstance()->getWinSize().height + mouseEvent->getLocationInView().y);
+    clickPos -= Globals::get_instance()->mapOffset;
+    CCLOG("%f %f", sprite->getPosition().x, sprite->getPosition().y);
+    //CCLOG("click %f %f", x, y);
     if (isSelect && mouseEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
     {
         isSelect = false;
@@ -35,7 +42,7 @@ void MyUnit::onMouseDown(cocos2d::Event *event)
     if (!isSelect && mouseEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
     {
         Point onmap = Globals::get_instance()->positionToTileCoordinate(sprite->getPosition());
-        if(mainLayer->getTileAt(onmap)->getBoundingBox().containsPoint(Vec2(mouseEvent->getLocationInView().x, y)))
+        if(mainLayer->getTileAt(onmap)->getBoundingBox().containsPoint(clickPos))
         {
             isSelect = true;
             sprite->setColor(Color3B::GREEN);
@@ -44,19 +51,15 @@ void MyUnit::onMouseDown(cocos2d::Event *event)
     if (isSelect && mouseEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_RIGHT)
     {
         isSelect = false;
-        isMove = true;
+        startMoving();
         sprite->setColor(Color3B::WHITE);
-        target = Vec2(mouseEvent->getCursorX(), y);
+        target = clickPos;
         velocity = (target - position).getNormalized();
     }
 }
 
 void MyUnit::update(float time)
 {
-    if (!isMove)
-        mainLayer->getTileAt(onMap)->setColor(Color3B::GREEN);
-    else
-        mainLayer->getTileAt(onMap)->setColor(Color3B::WHITE);
     updateSprite(time);
     updatePosition(time);
 }
@@ -74,7 +77,7 @@ void MyUnit::updatePosition(float time)
             newPos += (speed * time * velocity);
             if (obstacles->getTileAt(Globals::get_instance()->positionToTileCoordinate(newPos)))
             {
-                isMove = false;
+                stopMoving();
                 return;
             }
 
@@ -96,7 +99,7 @@ void MyUnit::updatePosition(float time)
         }
         else
         {
-            isMove = false;
+            stopMoving();
         }
     }
 }
@@ -115,6 +118,18 @@ void MyUnit::updateSprite(float time)
     {
         sprite->setSpriteFrame(Sprite::createWithSpriteFrameName("s_w_torso_move_0004.tga")->getSpriteFrame());
     }
+}
+
+void MyUnit::startMoving()
+{
+    mainLayer->getTileAt(onMap)->setColor(Color3B::WHITE);
+    isMove = true;
+}
+
+void MyUnit::stopMoving()
+{
+    mainLayer->getTileAt(onMap)->setColor(Color3B::GREEN);
+    isMove = false;
 }
 
 bool MyUnit::sendUnitInfoUDP()

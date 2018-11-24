@@ -11,6 +11,7 @@
 #include "MyUnit.hpp"
 #include <vector>
 #include <string>
+#include <map>
 
 USING_NS_CC;
 
@@ -21,14 +22,15 @@ public:
     
     void addUnit(GameObject* unit);
     
-    const std::vector<GameObject *> getUnits();
+    const std::map<unsigned int, GameObject *> getUnits();
     
     
 protected:
     std::string login;
     bool isAlive;
     Vec2 spawnPoint;
-    std::vector<GameObject*> units;
+    unsigned int id;
+    std::map<unsigned int, GameObject*> units;
     void update(float time);
     bool sendNewUnitTCP();
 };

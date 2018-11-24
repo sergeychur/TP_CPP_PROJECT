@@ -10,8 +10,11 @@
 Globals* Globals::instance = 0;
 
 Globals::Globals():
-        requiredPlayersCount(1)
-{}
+        requiredPlayersCount(1),
+        mapMoveSpeed(150)
+{
+    mapOffset = Point(0, 0);
+}
 
 Point Globals::positionToTileCoordinate(Point position)
 {

@@ -13,13 +13,14 @@
 class MyUnit : public GameObject
 {
 public:
-    MyUnit(Vec2 pos, unsigned int id = 0);
+    explicit MyUnit(Vec2 pos, unsigned int id);
 private:
-    unsigned int id;
-    void update(float time);
+    void update(float time) override;
     void onMouseDown(Event *event) ;
     void updateSprite(float time);
     void updatePosition(float time);
+    void startMoving();
+    void stopMoving();
     bool sendUnitInfoUDP();
 };
 
