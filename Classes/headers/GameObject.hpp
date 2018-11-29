@@ -23,6 +23,10 @@ public:
     Vec2 onMap;
     enum State { Move, Fight, Death};
     unsigned int id;
+    GameObject* AttackedBy;
+    GameObject* attackedObj;
+    unsigned int hp;
+    unsigned int dmg;
 protected:
     Animate* runAnim;
     Animate* fightAnim;
@@ -32,7 +36,6 @@ protected:
     int initRotation;
     unsigned int speed;
     Vec2 velocity;
-    unsigned int hp;
     Vec2 target;
     float distanceToTarget;
     bool isAlive;
@@ -42,7 +45,7 @@ protected:
     TMXLayer *mainLayer;
     TMXLayer *obstacles;
 private:
-    void animationInit(Animate*& Anim, std::string plist, std::string format, int count);
+    void animationInit(Animate*& Anim, std::string plist, std::string format, int count, bool);
     Vector<SpriteFrame *> frames;
 };
 

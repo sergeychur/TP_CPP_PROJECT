@@ -59,6 +59,7 @@ void MyUnit::update(float time)
 {
     updateSprite(time);
     updatePosition(time);
+    updateAttack(time);
 }
 
 void MyUnit::updatePosition(float time)
@@ -102,6 +103,14 @@ void MyUnit::updateSprite(float time)
         }
         runAnim->step(time);
     }
+    else if (attackedObj)
+    {
+        if (fightAnim->isDone())
+        {
+            fightAnim->startWithTarget(sprite);
+        }
+        fightAnim->step(time);
+    }
     else
     {
         sprite->setSpriteFrame(Sprite::createWithSpriteFrameName("s_w_torso_move_0004.tga")->getSpriteFrame());
@@ -139,10 +148,28 @@ bool MyUnit::checkCollisionWithObject(Vec2 checkPos)
         if (id != object->id && checkOnmap == objOnmap)
         {
             stopMoving();
+            attackedObj = object;
+            attackedObj->AttackedBy = this;
             return true;
         }
     }
     return false;
+}
+
+void MyUnit::updateAttack(float time)
+{
+    CCLOG("%d %d", hp, id);
+    if (AttackedBy != nullptr)
+    {
+        hp -= AttackedBy->dmg * time;
+    }
+    if (hp <= 0)
+    {
+        mainLayer->getTileAt(onMap)->setColor(Color3B::WHITE);
+        Globals::get_instance()->player->removeChild(this);
+        AttackedBy->attackedObj = nullptr;
+
+    }
 }
 
 bool MyUnit::sendUnitInfoUDP()

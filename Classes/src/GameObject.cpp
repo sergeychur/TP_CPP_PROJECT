@@ -12,14 +12,18 @@ GameObject::GameObject(Vec2 pos, bool isStatic, std::string plist, std::string f
     speed(75),
     isSelect(false),
     isMove(false),
+    AttackedBy(nullptr),
+    attackedObj(nullptr),
     minDistance(2),
     initRotation(-90),
     newPos(pos),
-    hp(100)
+    hp(100),
+    dmg(7)
 {
     if (!isStatic)
     {
-        animationInit(runAnim, plist, format, count);
+        animationInit(runAnim, plist, format, count, true);
+        animationInit(fightAnim, "f.plist", "s_w_sw_attack_02_%04d.tga", 22, false);
     }
     else
     {
@@ -30,11 +34,12 @@ GameObject::GameObject(Vec2 pos, bool isStatic, std::string plist, std::string f
     addChild(sprite);
 }
 
-void GameObject::animationInit(Animate*& Anim, std::string plist, std::string format, int count)
+void GameObject::animationInit(Animate*& Anim, std::string plist, std::string format, int count, bool setSprite)
 {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile(plist);
     frames = getAnimation(format, count);
-    sprite = Sprite::createWithSpriteFrame(frames.front());
+    if (setSprite)
+        sprite = Sprite::createWithSpriteFrame(frames.front());
     Anim = Animate::create(Animation::createWithSpriteFrames(frames, 1.0f/30));
     Anim->getAnimation()->setRestoreOriginalFrame(true);
     Anim->setDuration(0.80f);
