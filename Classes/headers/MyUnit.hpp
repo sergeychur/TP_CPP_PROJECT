@@ -19,8 +19,11 @@ private:
     void onMouseDown(Event *event) ;
     void updateSprite(float time);
     void updatePosition(float time);
+    void updateAttack(float time);
     void startMoving();
     void stopMoving();
+    bool checkCollisionWithMap(Vec2 checkPos);
+    bool checkCollisionWithObject(Vec2 checkPos);
     bool sendUnitInfoUDP();
 };
 

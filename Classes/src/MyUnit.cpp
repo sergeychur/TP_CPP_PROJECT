@@ -19,7 +19,6 @@ MyUnit::MyUnit(Vec2 pos, unsigned int id) : GameObject(pos)
     mainLayer = Globals::get_instance()->map->getLayer("Background");
     obstacles = Globals::get_instance()->map->getLayer("Walls");
     mainLayer->getTileAt(onMap)->setColor(Color3B::GREEN);
-    setAnchorPoint(Globals::get_instance()->map->getAnchorPoint());
     if (obstacles)
         obstacles->setVisible(false);
     scheduleUpdate();
@@ -32,8 +31,6 @@ void MyUnit::onMouseDown(cocos2d::Event *event)
     Point clickPos = Point(mouseEvent->getLocationInView().x,
             Director::getInstance()->getWinSize().height + mouseEvent->getLocationInView().y);
     clickPos -= Globals::get_instance()->mapOffset;
-    CCLOG("%f %f", sprite->getPosition().x, sprite->getPosition().y);
-    //CCLOG("click %f %f", x, y);
     if (isSelect && mouseEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_LEFT)
     {
         isSelect = false;
@@ -70,31 +67,22 @@ void MyUnit::updatePosition(float time)
     {
         sprite->setRotation((target - position).getAngle() * (-57) + initRotation);
         distanceToTarget = position.distance(target);
-        Vec2 newPos = position;
+        newPos = position;
         
         if (distanceToTarget > minDistance)
         {
             newPos += (speed * time * velocity);
-            if (obstacles->getTileAt(Globals::get_instance()->positionToTileCoordinate(newPos)))
+            Vec2 checkPos = newPos + (14 * speed * time * velocity);
+            if (checkCollisionWithMap(checkPos))
             {
-                stopMoving();
                 return;
             }
-
+            if (checkCollisionWithObject(checkPos))
+            {
+                return;
+            }
             sprite->setPosition(newPos);
             onMap = Globals::get_instance()->positionToTileCoordinate(sprite->getPosition());
-            for (auto object : Globals::get_instance()->objects)
-            {
-                Point objOnmap = Globals::get_instance()->positionToTileCoordinate(object->getPos());
-                if (newPos != object->sprite->getPosition() && onMap == objOnmap)
-                {
-                    sprite->setPosition(position);
-                    onMap = Globals::get_instance()->positionToTileCoordinate(sprite->getPosition());
-                    target = mainLayer->getTileAt(onMap)->getBoundingBox().origin + Vec2(16, 16);
-                    velocity = (target - position).getNormalized();
-                    return;
-                }
-            }
             position = newPos;
         }
         else
@@ -130,6 +118,31 @@ void MyUnit::stopMoving()
 {
     mainLayer->getTileAt(onMap)->setColor(Color3B::GREEN);
     isMove = false;
+}
+
+bool MyUnit::checkCollisionWithMap(Vec2 checkPos)
+{
+    if (obstacles->getTileAt(Globals::get_instance()->positionToTileCoordinate(checkPos)))
+    {
+        stopMoving();
+        return true;
+    }
+    return false;
+}
+
+bool MyUnit::checkCollisionWithObject(Vec2 checkPos)
+{
+    for (auto object : Globals::get_instance()->objects)
+    {
+        Point checkOnmap = Globals::get_instance()->positionToTileCoordinate(checkPos);
+        Point objOnmap = Globals::get_instance()->positionToTileCoordinate(object->getPos());
+        if (id != object->id && checkOnmap == objOnmap)
+        {
+            stopMoving();
+            return true;
+        }
+    }
+    return false;
 }
 
 bool MyUnit::sendUnitInfoUDP()

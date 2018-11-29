@@ -28,6 +28,7 @@ protected:
     Animate* fightAnim;
     Animate* deathAnim;
     Vec2 position;
+    Vec2 newPos;
     int initRotation;
     unsigned int speed;
     Vec2 velocity;
@@ -41,7 +42,7 @@ protected:
     TMXLayer *mainLayer;
     TMXLayer *obstacles;
 private:
-    void animationInit(std::string plist, std::string format, int count);
+    void animationInit(Animate*& Anim, std::string plist, std::string format, int count);
     Vector<SpriteFrame *> frames;
 };
 

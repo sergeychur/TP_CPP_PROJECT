@@ -23,7 +23,6 @@ public:
     static Globals * instance;
     std::vector<GameObject*> objects;
     TMXTiledMap* map;
-    unsigned int globalId;
     size_t requiredPlayersCount;
     Point positionToTileCoordinate(Point point);
     Point mapOffset;

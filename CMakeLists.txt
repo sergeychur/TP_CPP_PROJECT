@@ -87,6 +87,7 @@ list(APPEND GAME_SOURCE
         Classes/src/Globals.cpp
         Classes/src/MyUnit.cpp
         Classes/src/MenuScene.cpp
+       # Classes/src/EnemyUnit.cpp
      )
 
 if(ANDROID)

@@ -13,11 +13,13 @@ GameObject::GameObject(Vec2 pos, bool isStatic, std::string plist, std::string f
     isSelect(false),
     isMove(false),
     minDistance(2),
-    initRotation(-90)
+    initRotation(-90),
+    newPos(pos),
+    hp(100)
 {
     if (!isStatic)
     {
-        animationInit(plist, format, count);
+        animationInit(runAnim, plist, format, count);
     }
     else
     {
@@ -28,16 +30,16 @@ GameObject::GameObject(Vec2 pos, bool isStatic, std::string plist, std::string f
     addChild(sprite);
 }
 
-void GameObject::animationInit(std::string plist, std::string format, int count)
+void GameObject::animationInit(Animate*& Anim, std::string plist, std::string format, int count)
 {
     SpriteFrameCache::getInstance()->addSpriteFramesWithFile(plist);
     frames = getAnimation(format, count);
     sprite = Sprite::createWithSpriteFrame(frames.front());
-    runAnim = Animate::create(Animation::createWithSpriteFrames(frames, 1.0f/30));
-    runAnim->getAnimation()->setRestoreOriginalFrame(true);
-    runAnim->setDuration(0.80f);
-    runAnim->setTarget(sprite);
-    runAnim->retain();
+    Anim = Animate::create(Animation::createWithSpriteFrames(frames, 1.0f/30));
+    Anim->getAnimation()->setRestoreOriginalFrame(true);
+    Anim->setDuration(0.80f);
+    Anim->setTarget(sprite);
+    Anim->retain();
 }
 
 Vector<SpriteFrame*> GameObject::getAnimation(std::string format, int count)

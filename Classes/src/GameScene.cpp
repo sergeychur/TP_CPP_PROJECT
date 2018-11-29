@@ -51,7 +51,6 @@ bool GameScene::init()
         player = new Player("ser", Vec2(1200, 1200));
         level->map->addChild(player);
         Globals::get_instance()->player = player;
-        CCLOG("%f %f", Director::getInstance()->getWinSize().width, Director::getInstance()->getWinSize().height);
     });
     addChild(startButton);
     return true;
