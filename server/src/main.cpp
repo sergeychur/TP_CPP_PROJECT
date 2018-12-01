@@ -36,7 +36,7 @@ int main(void) {
             std::cerr << "Cannot add player, because of" << e.what() << std::endl;
             throw e;
         }
-        Initialiser init(i, player_num);
+        Initialiser init(i, player_num, bases);
         server.send_to(&init, i);
     }
     size_t winner = player_num;
