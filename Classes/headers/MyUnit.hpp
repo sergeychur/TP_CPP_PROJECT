@@ -13,7 +13,7 @@
 class MyUnit : public GameObject
 {
 public:
-    explicit MyUnit(Vec2 pos, unsigned int id);
+    explicit MyUnit(Vec2 pos, unsigned int id, std::string plist, std::string format);
 private:
     void update(float time) override;
     void onMouseDown(Event *event) ;

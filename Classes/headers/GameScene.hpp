@@ -29,16 +29,17 @@ public:
 private:
     Level* level;
     Player* player;
-    std::map<unsigned int, EnemyPlayer*> enemies;
-    //std::vector<GameObject*> units;
+    Point spawnPos;
     std::vector<EventKeyboard::KeyCode> heldKeys;
     bool gameStarted;
     void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event) override ;
     void onKeyReleased(EventKeyboard::KeyCode keyCode, Event* event) override ;
     bool sendInitInfoToServer();
     bool getInitInfoFromServer();
+    void initGame();
     void moveCamera(float delta);
     void update(float time) override;
+    void dispatch();
 };
 
 #endif /* GameScene_hpp */

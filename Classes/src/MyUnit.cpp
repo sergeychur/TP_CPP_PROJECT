@@ -9,7 +9,7 @@
 #include "MyUnit.hpp"
 #include "Globals.h"
 
-MyUnit::MyUnit(Vec2 pos, unsigned int id) : GameObject(pos)
+MyUnit::MyUnit(Vec2 pos, unsigned int id, std::string plist, std::string format) : GameObject(pos, plist, format, 23)
 {
     GameObject::id = id;
     auto eventListener = EventListenerMouse::create();
@@ -64,7 +64,7 @@ void MyUnit::update(float time)
 
 void MyUnit::updatePosition(float time)
 {
-    if (isMove)
+    if (state == Move)
     {
         sprite->setRotation((target - position).getAngle() * (-57) + initRotation);
         distanceToTarget = position.distance(target);
@@ -95,7 +95,7 @@ void MyUnit::updatePosition(float time)
 
 void MyUnit::updateSprite(float time)
 {
-    if (isMove)
+    if (state == Move)
     {
         if(runAnim->isDone())
         {
@@ -103,7 +103,7 @@ void MyUnit::updateSprite(float time)
         }
         runAnim->step(time);
     }
-    else if (attackedObj)
+    else if (state == Fight)
     {
         if (fightAnim->isDone())
         {
@@ -120,13 +120,13 @@ void MyUnit::updateSprite(float time)
 void MyUnit::startMoving()
 {
     mainLayer->getTileAt(onMap)->setColor(Color3B::WHITE);
-    isMove = true;
+    state = Move;
 }
 
 void MyUnit::stopMoving()
 {
     mainLayer->getTileAt(onMap)->setColor(Color3B::GREEN);
-    isMove = false;
+    state = None;
 }
 
 bool MyUnit::checkCollisionWithMap(Vec2 checkPos)
@@ -141,16 +141,27 @@ bool MyUnit::checkCollisionWithMap(Vec2 checkPos)
 
 bool MyUnit::checkCollisionWithObject(Vec2 checkPos)
 {
-    for (auto object : Globals::get_instance()->objects)
-    {
+    for (auto object : Globals::get_instance()->player->getUnits()) {
         Point checkOnmap = Globals::get_instance()->positionToTileCoordinate(checkPos);
-        Point objOnmap = Globals::get_instance()->positionToTileCoordinate(object->getPos());
-        if (id != object->id && checkOnmap == objOnmap)
-        {
+        Point objOnmap = Globals::get_instance()->positionToTileCoordinate(object.second->getPos());
+        if (id != object.second->id && checkOnmap == objOnmap) {
             stopMoving();
-            attackedObj = object;
-            attackedObj->AttackedBy = this;
             return true;
+        }
+    }
+
+    for (auto enemy : Globals::get_instance()->enemies)
+    {
+        for (auto object : enemy.second->units)
+        {
+            Point checkOnmap = Globals::get_instance()->positionToTileCoordinate(checkPos);
+            Point objOnmap = Globals::get_instance()->positionToTileCoordinate(object.second->getPos());
+            if (id != object.second->id && checkOnmap == objOnmap) {
+                stopMoving();
+                attackedObj = object.second;
+                state = Fight;
+                return true;
+            }
         }
     }
     return false;
@@ -158,17 +169,29 @@ bool MyUnit::checkCollisionWithObject(Vec2 checkPos)
 
 void MyUnit::updateAttack(float time)
 {
-    CCLOG("%d %d", hp, id);
-    if (AttackedBy != nullptr)
+    //CCLOG("%d %d", hp, id);
+    if (state == Move)
     {
-        hp -= AttackedBy->dmg * time;
+        attackedObj = nullptr;
+    }
+    if (attackedObj && attackedObj->state == Move)
+    {
+        attackedObj = nullptr;
+        state = None;
+    }
+    if (attackedObj != nullptr)
+    {
+        attackedObj->hp -= dmg * time;
+    }
+    if (attackedObj && attackedObj->hp <= 0)
+    {
+        attackedObj = nullptr;
+        state = None;
     }
     if (hp <= 0)
     {
         mainLayer->getTileAt(onMap)->setColor(Color3B::WHITE);
         Globals::get_instance()->player->removeChild(this);
-        AttackedBy->attackedObj = nullptr;
-
     }
 }
 

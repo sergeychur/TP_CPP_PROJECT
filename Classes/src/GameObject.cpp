@@ -7,28 +7,21 @@
 #include <iostream>
 #include "GameObject.hpp"
 
-GameObject::GameObject(Vec2 pos, bool isStatic, std::string plist, std::string format, int count) :
+GameObject::GameObject(Vec2 pos, std::string plist, std::string format, int count) :
     position(pos),
     speed(75),
     isSelect(false),
-    isMove(false),
+    state(None),
     AttackedBy(nullptr),
     attackedObj(nullptr),
     minDistance(2),
     initRotation(-90),
     newPos(pos),
     hp(100),
-    dmg(7)
+    dmg(4)
 {
-    if (!isStatic)
-    {
-        animationInit(runAnim, plist, format, count, true);
-        animationInit(fightAnim, "f.plist", "s_w_sw_attack_02_%04d.tga", 22, false);
-    }
-    else
-    {
-        sprite = Sprite::create("house.png");
-    }
+    animationInit(runAnim, plist, format, count, true);
+    animationInit(fightAnim, "f.plist", "s_w_sw_attack_02_%04d.tga", 22, false);
     sprite->setPosition(position);
     sprite->setAnchorPoint(Vec2(0.5, 0.75));
     addChild(sprite);

@@ -18,7 +18,7 @@ USING_NS_CC;
 class Player : public cocos2d::Node
 {
 public:
-    Player(std::string name, Vec2 pos);
+    Player(unsigned int id, Vec2 pos);
     
     void addUnit(GameObject* unit);
     
@@ -26,10 +26,9 @@ public:
     
     
 protected:
-    std::string login;
+    unsigned int id;
     bool isAlive;
     Vec2 spawnPoint;
-    unsigned int id;
     std::map<unsigned int, GameObject*> units;
     void update(float time);
     bool sendNewUnitTCP();

@@ -9,6 +9,8 @@
 #include "MyUnit.hpp"
 #include "EnemyUnit.hpp"
 #include "Globals.h"
+#include "ClientNetObject.h"
+//#include "ClientNetObject.h"
 
 USING_NS_CC;
 
@@ -35,20 +37,19 @@ bool GameScene::init()
     auto listener = EventListenerKeyboard::create();
     listener->onKeyPressed = CC_CALLBACK_2(GameScene::onKeyPressed, this);
     listener->onKeyReleased = CC_CALLBACK_2(GameScene::onKeyReleased, this);
-
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     scheduleUpdate();
     auto startButton = ui::Button::create();
+    sendInitInfoToServer();
     startButton->setTitleText("Start Game");
-
     startButton->setPosition(Vec2(Director::getInstance()->getWinSize().width / 2, Director::getInstance()->getWinSize().height / 2));
+
     startButton->addClickEventListener([&](Ref* sender){
         sendInitInfoToServer();
-        removeAllChildren();
         level = new Level();
         level->loadMap("TileMap.tmx");
         addChild(level->map);
-        player = new Player("ser", Vec2(1200, 1200));
+        player = new Player(0, Vec2(1200, 1200));
         level->map->addChild(player);
         Globals::get_instance()->player = player;
     });
@@ -58,16 +59,9 @@ bool GameScene::init()
 
 void GameScene::update(float delta)
 {
-
+    dispatch();
     moveCamera(delta);
-    if (Globals::get_instance()->requiredPlayersCount == enemies.size())
-    {
-        level->addChild(player);
-    }
-    else
-    {
-        getInitInfoFromServer();
-    }
+
 }
 
 bool GameScene::sendInitInfoToServer()
@@ -113,6 +107,24 @@ void GameScene::moveCamera(float delta)
         Globals::get_instance()->mapOffset.y -= Globals::get_instance()->mapMoveSpeed * delta;
         level->map->setPosition(Globals::get_instance()->mapOffset);
     }
+}
+
+void GameScene::dispatch()
+{
+//    Command command;
+//    if (command.command_name == "")
+
+}
+
+void GameScene::initGame()
+{
+    removeAllChildren();
+    level = new Level();
+    level->loadMap("TileMap.tmx");
+    addChild(level->map);
+    player = new Player(0, Vec2(1200, 1200));
+    level->map->addChild(player);
+    Globals::get_instance()->player = player;
 }
 GameScene::~GameScene()
 {

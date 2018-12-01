@@ -9,18 +9,13 @@
 #include "Globals.h"
 #include "MyBuilding.hpp"
 
-Player::Player(std::string nick, Vec2 pos)
+Player::Player(unsigned int id, Vec2 pos)
 {
-    login = nick;
     spawnPoint = pos;
-    auto object = new MyUnit(spawnPoint - Vec2(100, 400), 0);
-    auto object2 = new MyUnit(spawnPoint -  Vec2(0, 400), 1);
-    auto base = new MyBuilding(spawnPoint, "house.png");
-    addUnit(base);
+    auto object = new MyUnit(spawnPoint - Vec2(100, 400), 0, WarriorPlist ,WarriorFormat);
+    auto object2 = new MyUnit(spawnPoint -  Vec2(0, 400), 1, WarriorPlist, WarriorFormat);
     addUnit(object);
     addUnit(object2);
-
-    
 }
 
 void Player::addUnit(GameObject *unit)

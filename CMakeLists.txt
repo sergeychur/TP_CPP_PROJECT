@@ -23,7 +23,7 @@
 # THE SOFTWARE.
 # ****************************************************************************/
 
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.12)
 
 set(APP_NAME RTSGame)
 set(TEST_NAME Tests)
@@ -87,7 +87,7 @@ list(APPEND GAME_SOURCE
         Classes/src/Globals.cpp
         Classes/src/MyUnit.cpp
         Classes/src/MenuScene.cpp
-       # Classes/src/EnemyUnit.cpp
+        Classes/src/EnemyUnit.cpp
      )
 
 if(ANDROID)
@@ -189,8 +189,11 @@ if(LINUX OR WINDOWS)
     cocos_copy_target_res(${APP_NAME} COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
 endif()
 
-
-
-find_package(GTest REQUIRED COMPONENTS gtest gtest_main)
-target_include_directories(${TEST_NAME} PUBLIC ${GTEST_INCLUDE_DIRS})
-target_link_libraries(${TEST_NAME} gtest)
+#include_directories(server/include)
+#find_package(Boost COMPONENTS REQUIRED system)
+include_directories(Net/include Net)
+add_subdirectory(Net)
+#add_subdirectory(server)
+target_link_libraries(RTSGame Net)
+target_include_directories(RTSGame PUBLIC ${BOOST_INCLUDE_DIRS})
+target_link_libraries(RTSGame system)
