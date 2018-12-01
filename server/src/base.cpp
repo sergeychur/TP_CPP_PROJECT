@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <map>
+#include <numeric>
 
 #include "base.hpp"
 
@@ -39,6 +40,13 @@ void Base::start_making(std::vector<int>& params) {
     }
     time_to_build = (params[if_start]) ? 0 : default_time_to_build;
     params.erase(params.begin() + if_start);
+    int sum = 0;
+    if(sum = std::accumulate(params.begin() + damage, params.end(), 0) > max_possible) {
+        params[HP] -= (sum - max_possible);
+        if(!params[HP]) {
+            params[HP] = 0;
+        }
+    }
     try {
         unit_to_return = new Unit(player_id, ++units_made, params[HP], params[x], params[y], params[damage],
                                   params[radius], params[speed], 0, mediator);

@@ -40,6 +40,7 @@ private:
     Unit* unit_to_return;
     size_t units_made;
     bool is_making;
+    const static int max_possible = 1000;
 
     bool act(Command& order) override { return order.command_name.empty();}
 };

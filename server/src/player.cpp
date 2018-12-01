@@ -34,8 +34,8 @@ size_t Player::act(Command& command) {
         }
         return unit_num;
     }
-    if(unit_arr[command.unit_id - 1] && id == command.player_id) {
-        if(unit_arr[command.unit_id - 1]->act(command)) {
+    if(unit_arr[command.unit_id] && id == command.player_id) {
+        if(unit_arr[command.unit_id]->act(command)) {
             remove_unit(command.unit_id);
         }
 
@@ -77,6 +77,7 @@ int Player::add_base(NewsTaker* updater, Mediator* map, const int base_x, const 
     if(!base) {
         return ERR_ALLOC;
     }
+    unit_arr.push_back(base);
     ++unit_num;
     return 0;
 }
