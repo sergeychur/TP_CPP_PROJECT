@@ -21,11 +21,11 @@ void UpdateMaker::handle_event(UpdateLine& line) {
     update->updates.push_back(line);
 }
 
-std::shared_ptr<Update> UpdateMaker::get_update() {
+std::shared_ptr<Update>&& UpdateMaker::get_update() {
     if(!update) {
         throw(std::runtime_error("No update"));
     }
-    return update;
+    return std::move(update);
 }
 
 void UpdateMaker::delete_update() {

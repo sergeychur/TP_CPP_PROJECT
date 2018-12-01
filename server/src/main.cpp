@@ -49,8 +49,7 @@ int main(void) {
             Command com;
             std::cout << "Enter next command" << std::endl;
             std::cin >> com;
-            std::shared_ptr<Command> ptr(&com);
-            clients_data.push_back(ptr);
+            clients_data.push_back(std::make_shared<Command>(com));
             ++i;
         }
         std::cin.clear();
@@ -60,18 +59,20 @@ int main(void) {
         catch (std::exception& e) {
             std::cerr << "Can't act because of "<< e.what() << std::endl;
         }
-        std::shared_ptr<Serializable> update = nullptr;
+        std::shared_ptr<Serializable> update;
         try {
             update = game.get_update();
         }
-        catch(std::invalid_argument& e) {
+        catch(std::exception& e) {
             std::cerr << "Can't get update because of " << e.what() << std::endl;
         }
-        std::cout << "Update to send is:" << std::endl;
-        std::cout << *(std::dynamic_pointer_cast<Update>(update)) << std::endl;       // in order to test, remove
-        // server.send(update);
+        if(update) {
+            std::cout << "Update to send is:" << std::endl;
+            std::cout << *(std::dynamic_pointer_cast<Update>(update)) << std::endl;       // in order to test, remove
+            // server.send(update);
+        }
     }
-    std::cout << winner << std::endl;
+    std::cout << "And the winner iiiiiiiis player nuuuuuuumberrrr " << winner << std::endl;
     // here should be sending the result to clients and destroying the connection
     return 0;
 }

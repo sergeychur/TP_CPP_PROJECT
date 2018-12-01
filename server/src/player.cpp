@@ -51,6 +51,7 @@ void Player::add_unit(std::shared_ptr<AbstractUnit> unit) {
         throw std::invalid_argument("No unit to add");
     }
     unit_arr.push_back(unit);
+    unit->notify();
     ++unit_num;
 }
 
@@ -78,6 +79,7 @@ int Player::add_base(std::shared_ptr<NewsTaker> updater,
         return ERR_ALLOC;
     }
     unit_arr.push_back(base);
+    base->notify();
     ++unit_num;
     return 0;
 }
@@ -87,5 +89,6 @@ void Player::add_base(std::shared_ptr<AbstractBase> _base) {
         throw std::invalid_argument("No base given");
     }
     base = _base;
+    base->notify();
     ++unit_num;
 }

@@ -32,7 +32,7 @@ void Game::add_player(const std::pair<int, int>& base_coords, const size_t playe
 }
 
 size_t Game::act(std::vector<std::shared_ptr<Serializable>>& commands_arr) {
-    update_maker->delete_update();
+    // update_maker->delete_update();
     size_t stat = STILL_ACT;
     for(auto& order : commands_arr) {
         Command command = *std::static_pointer_cast<Command>(order);
@@ -51,7 +51,7 @@ size_t Game::act(std::vector<std::shared_ptr<Serializable>>& commands_arr) {
     return (player_num == 1) ? stat : player_num;
 }
 
-std::shared_ptr<Update> Game::get_update() {
+std::shared_ptr<Update>&& Game::get_update() {
     try {
         return update_maker->get_update();
     }

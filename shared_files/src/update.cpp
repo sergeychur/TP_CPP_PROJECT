@@ -23,7 +23,7 @@ void Update::serialize(boost::archive::text_oarchive &ar, const unsigned int ver
 }
 
 std::ostream& operator<< (std::ostream& output, const UpdateLine& line) {
-    output << line.player_id << " " << line.unit_id << line.new_HP << " "
+    output << line.player_id << " " << line.unit_id << " "<< line.new_HP << " "
     << line.new_x << " " << line.new_y  << " " << line.new_angle << " "
     << line.is_alive;
     return output;
