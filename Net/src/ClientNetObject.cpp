@@ -4,6 +4,18 @@
 
 #include "../include/ClientNetObject.h"
 
+
+std::map<std::string, DefaultAbstractFactory*> ClientNetObject::map;
+std::vector<std::shared_ptr<Serializable>> ClientNetObject::buf;
+bool ClientNetObject::stop;
+
+boost::asio::io_context ClientNetObject::context;
+tcp::socket ClientNetObject::sock(context);
+std::mutex ClientNetObject::priority_sock_mutex;
+std::mutex ClientNetObject::priority_buf_mutex;
+std::mutex ClientNetObject::sock_mutex;
+std::mutex ClientNetObject::buf_mutex;
+
 void ClientNetObject::connect()
 {
 	tcp::resolver resolver(context);

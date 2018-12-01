@@ -21,7 +21,7 @@ public:
 	void send(Serializable *serializable) override;
 	void send_to(Serializable *serializable, int i);
 	std::vector<std::shared_ptr<Serializable>> receive();
-	void work(short player_number);
+	void work(size_t player_number);
 	~ServerNetObject();
 private:
 	
@@ -36,7 +36,7 @@ private:
 	std::string ip;
 	static std::map<std::string,DefaultAbstractFactory*> map;
 	
-	static short player_num;
+	static size_t player_num;
 	
 	std::thread** thread;
 	static tcp::socket* socks; // REDO with separate objects consuming sock, thread and sock_mutex
