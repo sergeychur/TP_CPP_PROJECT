@@ -4,7 +4,7 @@
 
 #include "../include/ServerNetObject.h"
 
-tcp::socket ServerNetObject::connect(const size_t sock_index) //return smth to send to recv func
+tcp::socket ServerNetObject::connect() //return smth to send to recv func
 {
 	static tcp::acceptor acceptor(context,tcp::endpoint(tcp::v4(),port));
 	return acceptor.accept();
@@ -26,6 +26,23 @@ void ServerNetObject::send(Serializable *serializable)
 	{
 		boost::asio::write(socks[i], boost::asio::buffer(send_buf)); // send
 	}
+	priority_sock_mutex.unlock(); // unlock socket mutex
+	sock_mutex.unlock();
+}
+
+void ServerNetObject::send_to(Serializable *serializable, int i)
+{
+	std::stringstream stream;
+	boost::archive::text_oarchive archive(stream);
+	archive << serializable; // serialize
+	std::string send_buf, temp_buf;
+	stream >> temp_buf;
+	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
+	send_buf.append(temp_buf); // write buf
+	send_buf.append("endobj");
+	priority_sock_mutex.lock(); // lock socket mutex
+	sock_mutex.lock();
+	boost::asio::write(socks[i], boost::asio::buffer(send_buf)); // send
 	priority_sock_mutex.unlock(); // unlock socket mutex
 	sock_mutex.unlock();
 }
@@ -94,7 +111,7 @@ void ServerNetObject::work(short player_number = player_num)
 	allocator.allocate(player_num); // REMOVE!
 	for(size_t i = 0; i < player_num; ++i)
 	{
-		socks[i] = connect(i);
+		socks[i] = connect();
 		thread[i] = new std::thread(read_client_socks, i);
 	}
 }
