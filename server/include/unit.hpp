@@ -28,14 +28,14 @@ class Unit : public AbstractUnit, public RealUnit {
     public:
         Unit(const size_t _player_id_, const size_t _unit_id, const int _HP, const int _unit_x,
                 const int _unit_y, const int damage,
-                const int radius, const int speed, const int look_angle, Mediator* mediator);
-        Unit() = delete;
-        Unit(const Unit&&) = delete;
-        Unit(const Unit&) = delete;
-        Unit& operator=(Unit&) = delete;
-        Unit&& operator=(Unit&&) = delete;
+                const int radius, const int speed, const int look_angle, std::shared_ptr<Mediator> mediator);
+        // Unit() = delete;
+        // Unit(const Unit&&) = delete;
+        // Unit(const Unit&) = delete;
+        // Unit& operator=(Unit&) = delete;
+        // Unit&& operator=(Unit&&) = delete;
         ~Unit() override = default;
-        void add(NewsTaker* news_taker) override;
+        void add(std::shared_ptr<NewsTaker> news_taker) override;
         void remove() override;
         void notify() override;
         bool act(Command& order) override;
@@ -53,7 +53,7 @@ class Unit : public AbstractUnit, public RealUnit {
         bool is_alive() const;
 
         std::queue<Command> commands;
-        NewsTaker* updater;
+        std::shared_ptr<NewsTaker> updater;
 
         int damage;
         int radius;

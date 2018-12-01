@@ -11,22 +11,23 @@
 
 #include <vector>
 #include <string>
+#include <memory>
 
 
 class Mediator;
 
 class Colleague {
 protected:
-    Mediator* mediator;
+    std::shared_ptr<Mediator> mediator;
 public:
-    explicit Colleague(Mediator* _mediator) : mediator(_mediator) {}
+    explicit Colleague(const std::shared_ptr<Mediator>& _mediator) : mediator(_mediator) {}
     virtual void interact(const std::string&, std::vector<int>&) = 0;
     virtual ~Colleague() = default;
 };
 
 class Mediator {
     public:
-        virtual void add_colleague(Colleague*,
+        virtual void add_colleague(const std::shared_ptr<Colleague>&,
                 const size_t player_id, const size_t unit_id) = 0;
         virtual bool make_interaction(const size_t, const size_t,
                 const std::string&, std::vector<int>& param_vector) = 0;

@@ -16,7 +16,7 @@
 
 class AbstractUnit : public NewsMaker, public Colleague {
     public:
-        explicit AbstractUnit(Mediator* med) : NewsMaker(), Colleague(med) {}
+        explicit AbstractUnit(std::shared_ptr<Mediator> med) : NewsMaker(), Colleague(med) {}
         virtual bool act(Command& order) = 0;
         ~AbstractUnit() override = default;
         enum states {

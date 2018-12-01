@@ -13,12 +13,12 @@
 
 Unit::Unit(const size_t _player_id, const size_t _unit_id, const int _HP, const int _unit_x,
         const int _unit_y, const int _damage, const int _radius,
-     const int _speed, const int _look_angle, Mediator* mediator) : AbstractUnit(mediator), RealUnit(_player_id,
+     const int _speed, const int _look_angle, std::shared_ptr<Mediator> mediator) : AbstractUnit(mediator), RealUnit(_player_id,
              _unit_id, _HP, _unit_x, _unit_y), damage(_damage), radius(_radius), speed(_speed), look_angle(_look_angle),
              state(NONE) {
 }
 
-void Unit::add(NewsTaker* news_taker) {
+void Unit::add(std::shared_ptr<NewsTaker> news_taker) {
     if(!news_taker) {
         throw std::invalid_argument("No news_taker to add");
     }

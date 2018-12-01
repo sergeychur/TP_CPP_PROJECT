@@ -18,7 +18,7 @@ public:
     MOCK_METHOD0(remove, void());
     MOCK_METHOD0(notify, void());
     MOCK_METHOD2(interact, void(const std::string&, std::vector<int>&));
-    MOCK_METHOD1(add, void(NewsTaker*));
+    MOCK_METHOD1(add, void(std::shared_ptr<NewsTaker>));
 };
 
 #endif //SERVER_MOCK_UNIT_HPP

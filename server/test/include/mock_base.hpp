@@ -18,10 +18,10 @@ class MockBase : public AbstractBase {
         ~MockBase() = default;
         MOCK_METHOD1(start_making, void(std::vector<int>&));
         MOCK_METHOD0(is_ready, bool());
-        MOCK_METHOD0(get_unit, Unit*());
+        MOCK_METHOD0(get_unit, std::shared_ptr<Unit>());
         MOCK_METHOD2(interact, void(const std::string&, std::vector<int>&));
         MOCK_METHOD0(notify, void());
-        MOCK_METHOD1(add, void(NewsTaker*));
+        MOCK_METHOD1(add, void(std::shared_ptr<NewsTaker>));
         MOCK_METHOD0(remove, void());
         MOCK_METHOD1(act, bool(Command&));
     private:

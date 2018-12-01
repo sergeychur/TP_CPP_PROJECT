@@ -13,7 +13,7 @@
 
 class NewsMaker {
     public:
-        virtual void add(NewsTaker* news_taker) = 0;    // add somebody, who this should notify
+        virtual void add(std::shared_ptr<NewsTaker> news_taker) = 0;    // add somebody, who this should notify
         virtual void remove() = 0;      // remove observing smth
         virtual void notify() = 0;      // notify observing smth
         virtual ~NewsMaker() = default;

@@ -23,9 +23,9 @@ enum game_errors {
 
 class Game {
     private:
-        Mediator* map;    // map of the world
-        std::vector<Player*> player_arr;     // the array of the players(the models of clients)
-        NewsTaker* update_maker;       // this gets the updates from all the changing objects
+        std::shared_ptr<Mediator> map;    // map of the world
+        std::vector<std::unique_ptr<Player>> player_arr;     // the array of the players(the models of clients)
+        std::shared_ptr<NewsTaker> update_maker;       // this gets the updates from all the changing objects
         // size_t stat;   // the status of the game, updating every iteration of the loop
         size_t player_num;
         std::vector<int> avaliability;
@@ -42,7 +42,7 @@ class Game {
         void add_player(const std::pair<int, int>& base_coords, const size_t player_id);
         bool is_win() const {return player_num == 1;}
         size_t act(std::vector<std::shared_ptr<Serializable>>&);
-        Update* get_update();    // returns the update to send to clients
+        std::shared_ptr<Update> get_update();    // returns the update to send to clients
 
 };
 

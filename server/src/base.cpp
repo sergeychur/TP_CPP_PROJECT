@@ -8,10 +8,6 @@
 
 #include "base.hpp"
 
-Base::~Base() {
-    delete unit_to_return;
-}
-
 bool Base::is_ready() {
     auto now = std::chrono::system_clock::now();
     if(is_making) {
@@ -48,7 +44,7 @@ void Base::start_making(std::vector<int>& params) {
         }
     }
     try {
-        unit_to_return = new Unit(player_id, ++units_made, params[HP], params[x], params[y], params[damage],
+        unit_to_return = std::make_shared<Unit>(player_id, ++units_made, params[HP], params[x], params[y], params[damage],
                                   params[radius], params[speed], 0, mediator);
     } catch(std::bad_alloc& e) {
         throw e;
@@ -56,7 +52,7 @@ void Base::start_making(std::vector<int>& params) {
     unit_to_return->add(updater);
 }
 
-Unit* Base::get_unit() {
+std::shared_ptr<Unit> Base::get_unit() {
     if(unit_to_return) {
         mediator->add_colleague(unit_to_return, player_id, units_made);
     }
@@ -72,7 +68,7 @@ void Base::notify() {
     updater->handle_event(line);
 }
 
-void Base::add(NewsTaker* news_taker) {
+void Base::add(std::shared_ptr<NewsTaker> news_taker) {
     if(!news_taker) {
         throw(std::invalid_argument("No news_taker"));
     }

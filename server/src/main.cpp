@@ -60,7 +60,7 @@ int main(void) {
         catch (std::exception& e) {
             std::cerr << "Can't act because of "<< e.what() << std::endl;
         }
-        Serializable* update = nullptr;
+        std::shared_ptr<Serializable> update = nullptr;
         try {
             update = game.get_update();
         }
@@ -68,7 +68,7 @@ int main(void) {
             std::cerr << "Can't get update because of " << e.what() << std::endl;
         }
         std::cout << "Update to send is:" << std::endl;
-        std::cout << *(dynamic_cast<Update*>(update)) << std::endl;       // in order to test, remove
+        std::cout << *(std::dynamic_pointer_cast<Update>(update)) << std::endl;       // in order to test, remove
         // server.send(update);
     }
     std::cout << winner << std::endl;

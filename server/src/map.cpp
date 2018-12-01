@@ -23,14 +23,15 @@ bool Map::make_interaction(const size_t player_id, const size_t unit_id,
     if(unit_id >= unit_matrix[player_id].size()) {
         return false;
     }
-    if(unit_matrix[player_id][unit_id]) {
-        unit_matrix[player_id][unit_id]->interact(command_name, param_vector);
-        return true;
+    if(unit_matrix[player_id][unit_id].expired()) {
+        return false;
     }
-    return false;
+    auto interacted_unit = unit_matrix[player_id][unit_id].lock();
+    interacted_unit->interact(command_name, param_vector);
+    return true;
 }
 
-void Map::add_colleague(Colleague* colleague, const size_t player_id,
+void Map::add_colleague(const std::shared_ptr<Colleague>& colleague, const size_t player_id,
                    const size_t unit_id) {
     if(!colleague) {
         throw(std::invalid_argument("No colleague to add"));

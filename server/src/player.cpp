@@ -7,9 +7,9 @@
 #include "player.hpp"
 
 Player::~Player() {
-    delete base;
+    base.reset();
     for(auto& it :unit_arr) {
-        delete it;
+        it.reset();
     }
     unit_arr.clear();
 }
@@ -46,7 +46,7 @@ size_t Player::act(Command& command) {
     return unit_num;
 }
 
-void Player::add_unit(AbstractUnit* unit) {
+void Player::add_unit(std::shared_ptr<AbstractUnit> unit) {
     if(!unit) {
         throw std::invalid_argument("No unit to add");
     }
@@ -55,15 +55,15 @@ void Player::add_unit(AbstractUnit* unit) {
 }
 
 void Player::remove_unit(const size_t id) {
-    if(unit_arr[id - 1]) {
-        delete(unit_arr[id - 1]);
-        unit_arr[id - 1] = nullptr;
-        --unit_num;
-    }
+        if(unit_arr[id]) {
+            --unit_num;
+            unit_arr[id].reset();
+        }
 }
 
-int Player::add_base(NewsTaker* updater, Mediator* map, const int base_x, const int base_y) {
-    if(base != nullptr) {
+int Player::add_base(std::shared_ptr<NewsTaker> updater,
+        std::shared_ptr<Mediator> map, const int base_x, const int base_y) {
+    if(base) {
         return ALREADY_EXISTS;
     }
     if(!map) {
@@ -72,7 +72,7 @@ int Player::add_base(NewsTaker* updater, Mediator* map, const int base_x, const 
     if(!updater) {
         throw std::invalid_argument("No updater given");
     }
-    base = new Base(map, BASE_HP, base_x, base_y, id);
+    base = std::make_shared<Base>(map, BASE_HP, base_x, base_y, id);
     base->add(updater);
     if(!base) {
         return ERR_ALLOC;
@@ -82,7 +82,7 @@ int Player::add_base(NewsTaker* updater, Mediator* map, const int base_x, const 
     return 0;
 }
 
-void Player::add_base(AbstractBase* _base) {
+void Player::add_base(std::shared_ptr<AbstractBase> _base) {
     if(!_base) {
         throw std::invalid_argument("No base given");
     }

@@ -7,24 +7,22 @@
 #include "game.hpp"
 
 Game::Game(const size_t _player_num) : player_num(_player_num) {
-    update_maker = new UpdateMaker();
-    map =  new Map();
+    update_maker = std::make_shared<UpdateMaker>();
+    map =  std::make_shared<Map>();
     avaliability.assign(player_num, NONE);
 }
 
 Game::~Game() {
-    delete update_maker;
-    delete map;
+    update_maker.reset();
+    map.reset();
     for(auto& player : player_arr) {
-        delete player;
+        player.reset();
     }
     player_arr.clear();
 }
 
 void Game::add_player(const std::pair<int, int>& base_coords, const size_t player_id) {
-
-    auto player = new Player(player_id);
-    player_arr.push_back(player);
+    player_arr.push_back(std::make_unique<Player>(player_id));
     try {
         player_arr[player_id]->add_base(update_maker, map, base_coords.first, base_coords.second);
     } catch(std::invalid_argument& e) {
@@ -53,7 +51,7 @@ size_t Game::act(std::vector<std::shared_ptr<Serializable>>& commands_arr) {
     return (player_num == 1) ? stat : player_num;
 }
 
-Update* Game::get_update() {
+std::shared_ptr<Update> Game::get_update() {
     try {
         return update_maker->get_update();
     }

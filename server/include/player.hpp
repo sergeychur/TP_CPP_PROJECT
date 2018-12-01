@@ -31,18 +31,18 @@ enum Units {
 class Player {
     private:
         size_t id;
-        std::vector<AbstractUnit*> unit_arr;     // the array of player's units
+        std::vector<std::shared_ptr<AbstractUnit>> unit_arr;     // the array of player's units
         void remove_unit(const size_t id); // removes unit by id when it is dead
-        AbstractBase* base;
+        std::shared_ptr<AbstractBase> base;
         size_t unit_num;
 
     public:
         explicit Player(const size_t player_id) : id(player_id),
                         base(nullptr), unit_num(0) {}
         size_t act(Command&);
-        int add_base(NewsTaker* updater, Mediator* med, const int base_x, const int base_y);
-        void add_base(AbstractBase*);
-        void add_unit(AbstractUnit*);    // adds new unit after it is made
+        int add_base(std::shared_ptr<NewsTaker> updater, std::shared_ptr<Mediator> med, const int base_x, const int base_y);
+        void add_base(std::shared_ptr<AbstractBase>);
+        void add_unit(std::shared_ptr<AbstractUnit>);    // adds new unit after it is made
 
         ~Player();
 };
