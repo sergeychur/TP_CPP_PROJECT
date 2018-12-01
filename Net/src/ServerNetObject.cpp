@@ -104,7 +104,7 @@ void ServerNetObject::read_client_socks(const size_t thread_index)
 	socks[thread_index].close();
 }
 
-void ServerNetObject::work(short player_number = player_num)
+void ServerNetObject::work(size_t player_number = player_num)
 {
 	player_num = player_number;
 	thread = new std::thread*[player_num];
