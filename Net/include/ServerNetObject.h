@@ -19,12 +19,13 @@ public:
 	// make it singleton
 	ServerNetObject(uint _port, const std::string _ip, std::map<std::string,DefaultAbstractFactory*> _map);
 	void send(Serializable *serializable) override;
+	void send_to(Serializable *serializable, int i);
 	std::vector<std::shared_ptr<Serializable>> receive();
 	void work(short player_number);
 	~ServerNetObject();
 private:
 	
-	tcp::socket connect(size_t sock_index);
+	tcp::socket connect();
 	static void read_client_socks(size_t thread_index);
 	
 	static std::vector<std::shared_ptr<Serializable>> buf;

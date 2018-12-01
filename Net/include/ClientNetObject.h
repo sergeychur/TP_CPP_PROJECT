@@ -29,7 +29,6 @@ private:
 	static void read_sock();
 	static std::map<std::string, DefaultAbstractFactory*> map;
 	static std::vector<std::shared_ptr<Serializable>> buf;
-	static int const MAX_MESSAGE_LENGTH = 5000;
 	static bool stop;
 	uint port;
 	std::string ip;
