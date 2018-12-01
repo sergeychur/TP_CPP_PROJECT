@@ -17,7 +17,7 @@
 #include "command.hpp"
 #include "update_maker.hpp"
 
-enum errors {
+enum game_errors {
     ERR_ADD = -1
 };
 
@@ -39,10 +39,10 @@ class Game {
         Game& operator=(const Game&) = delete;
         Game& operator=(const Game&&) = delete;
 
-        void add_player(const int _x, const int _y, const size_t player_id);
+        void add_player(const std::pair<int, int>& base_coords, const size_t player_id);
         bool is_win() const {return player_num == 1;}
-        size_t act(std::vector<Command>&);
-        Update get_update();    // returns the update to send to clients
+        size_t act(std::vector<std::shared_ptr<Serializable>>&);
+        Update* get_update();    // returns the update to send to clients
 
 };
 

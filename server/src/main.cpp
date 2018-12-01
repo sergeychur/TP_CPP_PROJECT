@@ -3,46 +3,59 @@
 #include <climits>
 
 #include "game.hpp"
-#include "utils.hpp"
+#include "manager.hpp"
+
+#include "ServerNetObject.h"
 
 
 
 int main(void) {
     size_t player_num = 0;
-    std::string greeting("Enter the number of players");
-    input(&player_num, greeting);
-    // std::ifstream input_file();
-    // here should be installing the connection with clients
+    Manager manager;
+    manager.input(&player_num, "Enter the number of players");
     Game game(player_num);
+    std::vector<std::pair<int, int>> bases;
+    try {
+        manager.read_bases_from_file(bases, player_num);
+    } catch(ManagerException& e) {
+        std::cout << e.what() << std::endl;
+        return ERR_READ;
+    }
+    uint port = 0;
+    manager.input(&port, "Enter the port to listen on");
+    std::string ip("");
+    manager.input(&ip, "Enter the ip to listen on");     // WTF, for what do we need to enter IP
+    std::map<std::string,DefaultAbstractFactory*> map;
+    map = manager.get_instance_map();      // fill it with factories, think how
+    ServerNetObject server(port, ip, map);
+    server.work(player_num);
     for(size_t i = 0; i < player_num; ++i) {
-        int x[2] = {0, 100};
-        int y[2] = {0, 100};
-        // here should be getting params from clients
         try {
-            game.add_player(x[i], y[i], i);
+            game.add_player(bases[i], i);
         } catch(std::invalid_argument& e) {
             std::cerr << "Cannot add player, because of" << e.what() << std::endl;
-            return ERR_ADD;
+            throw e;
         }
+        Initialiser init(i, player_num);
+        server.send_to(&init, i);
     }
     size_t winner = player_num;
     while(!game.is_win()) {
-        std::vector<Command> clients_data;
-        // here should be getting params from clients
+        std::vector<std::shared_ptr<Serializable>> clients_data = server.receive();
         try {
             winner = game.act(clients_data);
         }
         catch (std::exception& e) {
             std::cerr << "Can't act because of "<< e.what() << std::endl;
         }
-        Update update;
+        Serializable* update = nullptr;
         try {
             update = game.get_update();
         }
         catch(std::invalid_argument& e) {
             std::cerr << "Can't get update because of " << e.what() << std::endl;
         }
-        // here should be some sending to clients
+        server.send(update);
     }
     std::cout << winner << std::endl;
     // here should be sending the result to clients and destroying the connection

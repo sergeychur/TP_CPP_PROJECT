@@ -15,8 +15,10 @@
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/string.hpp>
 
+#include "Serializable.h"
+
 struct UpdateLine {
-    UpdateLine() {};
+    UpdateLine() = default;
     UpdateLine(const size_t _player_id, const size_t _unit_id, const int _new_HP, const int _new_x, const int _new_y,
             const int _new_angle, const int _state, const bool _is_alive):
                 player_id(_player_id), unit_id(_unit_id), new_HP(_new_HP), new_x(_new_x),
@@ -42,9 +44,9 @@ struct UpdateLine {
 
 bool operator== (const UpdateLine& first, const UpdateLine& second);
 
-struct Update {
+struct Update : Serializable{
     public:
-        Update() {};
+        Update() = default;
         ~Update() = default;
         std::vector<UpdateLine> updates;
         friend class boost::serialization::access;
@@ -52,6 +54,8 @@ struct Update {
         inline void serialize(Archive& ar, const unsigned int file_version) {
             ar & updates;
         }
+        void serialize(boost::archive::text_iarchive &ar, const unsigned int version) override;
+        void serialize(boost::archive::text_oarchive &ar, const unsigned int version) override;
 };
 
 #endif //SERVER_UPDATE_HPP

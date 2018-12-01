@@ -13,4 +13,12 @@ bool operator== (const UpdateLine& first, const UpdateLine& second) {
            first.is_alive == second.is_alive;
 }
 
+void Update::serialize(boost::archive::text_iarchive &ar, const unsigned int version) {
+    serialize<boost::archive::text_iarchive>(ar, version);
+}
+
+void Update::serialize(boost::archive::text_oarchive &ar, const unsigned int version) {
+    serialize<boost::archive::text_oarchive>(ar, version);
+}
+
 

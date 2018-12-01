@@ -17,11 +17,11 @@ void UpdateMaker::handle_event(UpdateLine& line) {
     update->updates.push_back(line);
 }
 
-Update UpdateMaker::get_update() {
+Update* UpdateMaker::get_update() {
     if(!update) {
         throw(std::runtime_error("No update"));
     }
-    return *update;
+    return update;
 }
 
 void UpdateMaker::delete_update() {
