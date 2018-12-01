@@ -43,4 +43,6 @@ struct Command : public Serializable{
 
 bool operator== (const Command& first, const Command& second);
 
+std::istream& operator>> (std::istream& input, Command& com);
+
 #endif //SERVER_COMMAND_HPP

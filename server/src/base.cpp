@@ -41,7 +41,7 @@ void Base::start_making(std::vector<int>& params) {
     time_to_build = (params[if_start]) ? 0 : default_time_to_build;
     params.erase(params.begin() + if_start);
     int sum = 0;
-    if(sum = std::accumulate(params.begin() + damage, params.end(), 0) > max_possible) {
+    if((sum = std::accumulate(params.begin() + damage, params.end(), 0)) > max_possible) {
         params[HP] -= (sum - max_possible);
         if(!params[HP]) {
             params[HP] = 0;

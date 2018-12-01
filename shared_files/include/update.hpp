@@ -58,4 +58,6 @@ struct Update : Serializable{
         void serialize(boost::archive::text_oarchive &ar, const unsigned int version) override;
 };
 
+std::ostream& operator<< (std::ostream& output, const Update& upd);
+
 #endif //SERVER_UPDATE_HPP

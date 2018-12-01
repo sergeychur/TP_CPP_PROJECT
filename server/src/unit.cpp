@@ -135,9 +135,10 @@ void Unit::correct_state(std::vector<int>& parameters) {
     if(abs(unit_y - parameters[y_val]) < ALLOWED_LINEAR_DELTA) {
         unit_y = parameters[y_val];
     }
-    if(abs(look_angle - parameters[angle_val]) < ALLOWED_ALPHA_DELTA) {
+    /*if(abs(look_angle - parameters[angle_val]) < ALLOWED_ALPHA_DELTA) {
         look_angle = parameters[angle_val];
-    }
+    }*/
+    look_angle = parameters[angle_val];
     notify();
 }
 void Unit::interact(const std::string& command, std::vector<int>& params) {

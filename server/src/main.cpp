@@ -7,7 +7,7 @@
 
 #include "ServerNetObject.h"
 
-
+#include <memory>   // remove
 
 int main(void) {
     size_t player_num = 0;
@@ -27,8 +27,9 @@ int main(void) {
     manager.input(&ip, "Enter the ip to listen on");     // WTF, for what do we need to enter IP
     std::map<std::string,DefaultAbstractFactory*> map;
     map = manager.get_instance_map();      // fill it with factories, think how
-    ServerNetObject server(port, ip, map);
-    server.work(player_num);
+    // ServerNetObject server(port, ip, map);
+    // server.work(player_num);
+    std::cout << "Success" << std::endl;
     for(size_t i = 0; i < player_num; ++i) {
         try {
             game.add_player(bases[i], i);
@@ -37,11 +38,22 @@ int main(void) {
             throw e;
         }
         Initialiser init(i, player_num, bases);
-        server.send_to(&init, i);
+        // server.send_to(&init, i);
     }
     size_t winner = player_num;
     while(!game.is_win()) {
-        std::vector<std::shared_ptr<Serializable>> clients_data = server.receive();
+        // std::vector<std::shared_ptr<Serializable>> clients_data = server.receive();
+        std::vector<std::shared_ptr<Serializable>> clients_data;
+        int i = 0;
+        while(i < 2) {
+            Command com;
+            std::cout << "Enter next command" << std::endl;
+            std::cin >> com;
+            std::shared_ptr<Command> ptr(&com);
+            clients_data.push_back(ptr);
+            ++i;
+        }
+        std::cin.clear();
         try {
             winner = game.act(clients_data);
         }
@@ -55,7 +67,9 @@ int main(void) {
         catch(std::invalid_argument& e) {
             std::cerr << "Can't get update because of " << e.what() << std::endl;
         }
-        server.send(update);
+        std::cout << "Update to send is:" << std::endl;
+        std::cout << *(dynamic_cast<Update*>(update)) << std::endl;       // in order to test, remove
+        // server.send(update);
     }
     std::cout << winner << std::endl;
     // here should be sending the result to clients and destroying the connection
