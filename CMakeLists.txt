@@ -28,6 +28,7 @@ add_subdirectory(${GMOCK_DIR} ${CMAKE_BINARY_DIR}/gmock)
 # include directories for project
 include_directories("server/test/include")
 include_directories("server/include/")
+include_directories(shared_files/include)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 include_directories(SYSTEM ${GMOCK_DIR}/include ${GMOCK_DIR}/gtest/include)
 
@@ -38,7 +39,7 @@ add_subdirectory(Net)
 
 # defining the vars for lists of src
 set(SRC_LIST server/src/game.cpp server/src/map.cpp server/src/player.cpp server/src/update_maker.cpp server/src/base.cpp server/src/unit.cpp server/src/real_unit.cpp
-        server/src/command.cpp server/src/update.cpp server/src/initialiser.cpp)
+        shared_files/src/command.cpp shared_files/src/update.cpp shared_files/src/initialiser.cpp)
 set(TEST_SRC server/test/src/map_tests.cpp server/test/src/base_tests.cpp server/test/src/unit_tests.cpp)
 
 # lib for game
