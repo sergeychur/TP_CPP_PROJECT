@@ -4,6 +4,21 @@
 
 #include "../include/ServerNetObject.h"
 
+std::vector<std::shared_ptr<Serializable>> ServerNetObject::buf;
+
+bool ServerNetObject::stop;
+
+std::map<std::string,DefaultAbstractFactory*> ServerNetObject::map;
+
+size_t ServerNetObject::player_num;
+
+tcp::socket* ServerNetObject::socks; // REDO with separate objects consuming sock, thread and sock_mutex
+std::mutex ServerNetObject::sock_mutex;
+std::mutex ServerNetObject::buf_mutex;
+std::mutex ServerNetObject::priority_buf_mutex;
+std::mutex ServerNetObject::priority_sock_mutex;
+boost::asio::io_context ServerNetObject::context;
+
 tcp::socket ServerNetObject::connect() //return smth to send to recv func
 {
 	static tcp::acceptor acceptor(context,tcp::endpoint(tcp::v4(),port));
