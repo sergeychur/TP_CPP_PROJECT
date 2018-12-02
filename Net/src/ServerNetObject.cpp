@@ -22,11 +22,15 @@ void ServerNetObject::send(Serializable *serializable)
 {
 	std::stringstream stream;
 	boost::archive::text_oarchive archive(stream);
-	archive << serializable; // serialize
+//	archive << serializable; // serialize
+	serializable->serialize(archive);
 	std::string send_buf, temp_buf;
-	stream >> temp_buf;
-	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
+//	stream >> temp_buf;
+//	std::cerr << stream.str();
+	temp_buf = stream.str();
+	
 	send_buf.append(temp_buf); // write buf
+	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
 	send_buf.append("endobj");
 	priority_sock_mutex.lock(); // lock socket mutex
 	sock_mutex.lock();
@@ -42,11 +46,13 @@ void ServerNetObject::send_to(Serializable *serializable, int i)
 {
 	std::stringstream stream;
 	boost::archive::text_oarchive archive(stream);
-	archive << serializable; // serialize
+//	archive << serializable; // serialize
 	std::string send_buf, temp_buf;
-	stream >> temp_buf;
-	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
+//	stream >> temp_buf;
+	
+	temp_buf = stream.str();
 	send_buf.append(temp_buf); // write buf
+	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
 	send_buf.append("endobj");
 	priority_sock_mutex.lock(); // lock socket mutex
 	sock_mutex.lock();
@@ -103,34 +109,36 @@ void ServerNetObject::read_client_socks(const size_t socks_index)
 	while(!(socks[socks_index].stop))
 	{
 		std::string recv_buf;
+		
 		try_lock(priority_sock_mutex,sock_mutex); // lock socket mutex
 		priority_sock_mutex.unlock();
 		if(socks[socks_index].socket->available())
 		{
-			boost::asio::read_until(*(socks[socks_index].socket), boost::asio::dynamic_buffer(recv_buf), "endobj"); // read from socket
+			size_t message_length = 0;
+			message_length = boost::asio::read_until(*(socks[socks_index].socket), boost::asio::dynamic_buffer(recv_buf), "endobj"); // read from socket
 			sock_mutex.unlock(); // unlock socket mutex
-			
-			recv_buf.erase(recv_buf.end() - 6, recv_buf.end());
 			
 			std::unique_ptr<Serializable> serializable; // create pointer
 			
-			std::string
-				type = recv_buf.substr(0, TYPE_LENGTH); // read first N bytes to check which class object was sent
-			recv_buf.erase(0, TYPE_LENGTH);
+			std::string type = recv_buf.substr(message_length-9,TYPE_LENGTH); // read first N bytes to check which class object was sent
+			recv_buf.erase(recv_buf.end()-9,recv_buf.end());
 			
 			serializable = map[type]->create(); // create empty object
 			
 			// deserialize
 			std::stringstream stream;
+			recv_buf.resize(message_length-9);
 			stream << recv_buf;
 			boost::archive::text_iarchive archive(stream);
-			archive >> (*serializable);
-			
+//			archive >> (*serializable);
+			serializable->deserialize(archive);
 			try_lock(priority_buf_mutex, buf_mutex);// lock buf mutex
 			priority_buf_mutex.unlock();
 			buf.push_back(std::move(serializable));// write to the buf
 			buf_mutex.unlock(); // unlock buf mutex
 		}
+		else
+			sock_mutex.unlock(); // unlock socket mutex
 	}
 	socks[socks_index].socket->close();
 }
