@@ -9,43 +9,32 @@
 #include <thread>
 #include <boost/asio.hpp>
 #include "AbstractServerNetObject.h"
-#include "../DefaultAbstractFactory.h"
+#include "DefaultAbstractFactory.h"
+#include "SubSock.h"
 
 using boost::asio::ip::tcp;
 
-class ServerNetObject:public AbstractServerNetObject
+class ServerNetObject : public AbstractServerNetObject
 {
 public:
 	// make it singleton
-	ServerNetObject(uint _port, const std::string _ip, std::map<std::string,DefaultAbstractFactory*> _map);
+	ServerNetObject(uint _port, std::string _ip, size_t player_number, std::map<std::string,DefaultAbstractFactory*> _map);
 	void send(Serializable *serializable) override;
-	void send_to(Serializable *serializable, int i);
-	std::vector<std::shared_ptr<Serializable>> receive();
-	void work(size_t player_number);
+	void send_to(Serializable *serializable, int i) override;
+	std::vector<std::unique_ptr<Serializable>> receive() override;
+	void work() override;
 	~ServerNetObject();
 private:
-	
-	tcp::socket connect();
-	static void read_client_socks(size_t thread_index);
-	
-	static std::vector<std::shared_ptr<Serializable>> buf;
-	
-	static bool stop;
-	
-	uint port;
-	std::string ip;
-	static std::map<std::string,DefaultAbstractFactory*> map;
-	
-	static size_t player_num;
-	
-	std::thread** thread;
-	static tcp::socket* socks; // REDO with separate objects consuming sock, thread and sock_mutex
+	void connect(size_t);
+	static void read_client_socks(size_t sub_sock_index);
+//
+	static boost::asio::io_context context;
 	static std::mutex sock_mutex;
 	static std::mutex buf_mutex;
 	static std::mutex priority_buf_mutex;
 	static std::mutex priority_sock_mutex;
-	static boost::asio::io_context context;
-	std::allocator<tcp::socket> allocator; //delete later
+	
+	static SubSock* socks;
 };
 
 

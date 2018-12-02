@@ -14,6 +14,7 @@ struct Serializable
 public:
 	virtual void serialize(boost::archive::text_iarchive& ar, const unsigned int version)=0;
 	virtual void serialize(boost::archive::text_oarchive& ar, const unsigned int version)=0;
+	virtual ~Serializable() = default;
 };
 
 
