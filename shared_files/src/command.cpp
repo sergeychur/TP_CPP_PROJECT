@@ -14,12 +14,13 @@ bool operator== (const Command& first, const Command& second) {
            first.parameters == second.parameters;
 }
 
-void Command::serialize(boost::archive::text_iarchive &ar, const unsigned int version) {
-    serialize<boost::archive::text_iarchive>(ar, version);
+
+void Command::deserialize(boost::archive::text_iarchive& ar) {
+    ar >> *this;
 }
 
-void Command::serialize(boost::archive::text_oarchive &ar, const unsigned int version) {
-    serialize<boost::archive::text_oarchive>(ar, version);
+void Command::serialize(boost::archive::text_oarchive& ar) {
+    ar << *this;
 }
 
 

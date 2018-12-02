@@ -54,8 +54,8 @@ struct Update : Serializable{
         inline void serialize(Archive& ar, const unsigned int file_version) {
             ar & updates;
         }
-        void serialize(boost::archive::text_iarchive &ar, const unsigned int version) override;
-        void serialize(boost::archive::text_oarchive &ar, const unsigned int version) override;
+    void serialize(boost::archive::text_oarchive& ar) final;
+    void deserialize(boost::archive::text_iarchive& ar) final;
 };
 
 std::ostream& operator<< (std::ostream& output, const Update& upd);

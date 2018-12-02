@@ -39,8 +39,8 @@ class Game {
         Game& operator=(const Game&&) = delete;
 
         void add_player(const std::pair<int, int>& base_coords, const size_t player_id);
-        bool is_win() const {return player_num == 1;}
-        size_t act(std::vector<std::shared_ptr<Serializable>>&);
+        bool is_win() const {return player_num <= 1;}
+        size_t act(std::vector<std::unique_ptr<Serializable>>&);
         std::unique_ptr<Update> get_update();    // returns the update to send to clients
 
 };

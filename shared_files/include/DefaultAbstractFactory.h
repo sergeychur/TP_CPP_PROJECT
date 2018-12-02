@@ -5,7 +5,7 @@
 #ifndef NET_DEFAULTABSTRACTFACTORY_H
 #define NET_DEFAULTABSTRACTFACTORY_H
 
-#include "include/Serializable.h"
+// #include "incluSerializable.h"
 
 #include "update.hpp"
 #include "command.hpp"
@@ -16,16 +16,16 @@
 class DefaultAbstractFactory
 {
 public:
-	virtual std::shared_ptr<Serializable> create() = 0;
+	virtual std::unique_ptr<Serializable> create() = 0;
 	virtual ~DefaultAbstractFactory() = default;
 };
 
 class UpdateFactory : public DefaultAbstractFactory
 {
 public:
-	std::shared_ptr<Serializable> create() override
+	std::unique_ptr<Serializable> create() override
 	{
-		return std::static_pointer_cast<Serializable>(std::make_shared<Update>());
+		return (std::make_unique<Update>());
 	}
 	~UpdateFactory() override = default;
 };
@@ -33,9 +33,9 @@ public:
 class CommandFactory : public DefaultAbstractFactory
 {
 public:
-	std::shared_ptr<Serializable> create() override
+	std::unique_ptr<Serializable> create() override
 	{
-		return std::static_pointer_cast<Serializable>(std::make_shared<Command>());
+		return (std::make_unique<Command>());
 	}
     ~CommandFactory() override = default;
 };
@@ -43,9 +43,9 @@ public:
 class InitialiserFactory : public DefaultAbstractFactory
 {
 public:
-    std::shared_ptr<Serializable> create() override
+    std::unique_ptr<Serializable> create() override
     {
-        return std::static_pointer_cast<Serializable>(std::make_shared<Initialiser>());
+        return (std::make_unique<Initialiser>());
     }
     ~InitialiserFactory() override = default;
 };

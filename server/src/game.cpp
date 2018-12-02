@@ -31,10 +31,10 @@ void Game::add_player(const std::pair<int, int>& base_coords, const size_t playe
     avaliability[player_id] = STILL_ACT;
 }
 
-size_t Game::act(std::vector<std::shared_ptr<Serializable>>& commands_arr) {
+size_t Game::act(std::vector<std::unique_ptr<Serializable>>& commands_arr) {
     size_t stat = STILL_ACT;
     for(auto& order : commands_arr) {
-        Command command = *std::static_pointer_cast<Command>(order);
+        Command command = *dynamic_cast<Command*>(order.get());
         if(player_arr.size() > command.player_id) {
             if (avaliability[command.player_id] == STILL_ACT) {
                 try {
@@ -49,6 +49,7 @@ size_t Game::act(std::vector<std::shared_ptr<Serializable>>& commands_arr) {
             }
         }
     }
+    std::cout << "Number of players is " << player_num << std::endl;
     return (player_num == 1) ? stat : player_num;
 }
 

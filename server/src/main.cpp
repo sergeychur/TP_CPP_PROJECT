@@ -25,10 +25,11 @@ int main(void) {
     manager.input(&port, "Enter the port to listen on");
     std::string ip("");
     manager.input(&ip, "Enter the ip to listen on");     // WTF, for what do we need to enter IP
-    std::map<std::string,DefaultAbstractFactory*> map;
+    std::map<std::string, DefaultAbstractFactory*> map;
     map = manager.get_instance_map();      // fill it with factories, think how
-    // ServerNetObject server(port, ip, map);
-    // server.work(player_num);
+    std::cout << "Success entering" << std::endl;
+    ServerNetObject server(port, ip, player_num, map);
+    server.work();
     std::cout << "Success" << std::endl;
     for(size_t i = 0; i < player_num; ++i) {
         try {
@@ -38,13 +39,13 @@ int main(void) {
             throw e;
         }
         Initialiser init(i, player_num, bases);
-        // server.send_to(&init, i);
+        server.send_to(&init, i);
     }
     size_t winner = player_num;
     while(!game.is_win()) {
-        // std::vector<std::shared_ptr<Serializable>> clients_data = server.receive();
-        std::vector<std::shared_ptr<Serializable>> clients_data;
-        int i = 0;
+        std::vector<std::unique_ptr<Serializable>> clients_data = server.receive();
+        // std::vector<std::shared_ptr<Serializable>> clients_data;
+        /*int i = 0;
         while(i < 2) {
             Command com;
             std::cout << "Enter next command" << std::endl;
@@ -52,14 +53,14 @@ int main(void) {
             clients_data.push_back(std::make_shared<Command>(com));
             ++i;
         }
-        std::cin.clear();
+        std::cin.clear();*/
         try {
             winner = game.act(clients_data);
         }
         catch (std::exception& e) {
             std::cerr << "Can't act because of "<< e.what() << std::endl;
         }
-        std::shared_ptr<Serializable> update;
+        std::unique_ptr<Update> update;
         try {
             update = game.get_update();
         }
@@ -68,8 +69,8 @@ int main(void) {
         }
         if(update) {
             std::cout << "Update to send is:" << std::endl;
-            std::cout << *(std::dynamic_pointer_cast<Update>(update)) << std::endl;       // in order to test, remove
-            // server.send(update);
+            std::cout << *(update) << std::endl;       // in order to test, remove
+            server.send(update.get());      // change for std::move
         }
     }
     std::cout << "And the winner iiiiiiiis player nuuuuuuumberrrr " << winner << std::endl;

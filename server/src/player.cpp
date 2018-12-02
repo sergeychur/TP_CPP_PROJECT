@@ -28,7 +28,7 @@ size_t Player::act(Command& command) {
         throw std::invalid_argument("Wrong index");
     }
     if(unit_arr[command.unit_id] && id == command.player_id) {
-        if(unit_arr[command.unit_id]->act(command)) {
+        if(!unit_arr[command.unit_id]->act(command)) {
             remove_unit(command.unit_id);
         }
 

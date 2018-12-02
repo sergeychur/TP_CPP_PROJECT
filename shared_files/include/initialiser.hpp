@@ -24,9 +24,8 @@ struct Initialiser : public Serializable {
                 ar & base.first & base.second;
             }
         }
-
-        void serialize(boost::archive::text_iarchive &ar, const unsigned int version) override;
-        void serialize(boost::archive::text_oarchive &ar, const unsigned int version) override;
+        void serialize(boost::archive::text_oarchive& ar) final;
+        void deserialize(boost::archive::text_iarchive& ar) final;
 
         size_t player_id;
         size_t player_num;

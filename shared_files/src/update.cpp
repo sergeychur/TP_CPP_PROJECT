@@ -14,12 +14,12 @@ bool operator== (const UpdateLine& first, const UpdateLine& second) {
            first.is_alive == second.is_alive;
 }
 
-void Update::serialize(boost::archive::text_iarchive &ar, const unsigned int version) {
-    serialize<boost::archive::text_iarchive>(ar, version);
+void Update::deserialize(boost::archive::text_iarchive& ar) {
+    ar >> *this;
 }
 
-void Update::serialize(boost::archive::text_oarchive &ar, const unsigned int version) {
-    serialize<boost::archive::text_oarchive>(ar, version);
+void Update::serialize(boost::archive::text_oarchive& ar) {
+    ar << *this;
 }
 
 std::ostream& operator<< (std::ostream& output, const UpdateLine& line) {

@@ -37,8 +37,8 @@ struct Command : public Serializable{
             ar & player_id & unit_id & command_name & parameters;
         }
 
-        void serialize(boost::archive::text_iarchive &ar, const unsigned int version) override;
-        void serialize(boost::archive::text_oarchive &ar, const unsigned int version) override;
+        void serialize(boost::archive::text_oarchive& ar) final;
+        void deserialize(boost::archive::text_iarchive& ar) final;
 };
 
 bool operator== (const Command& first, const Command& second);
