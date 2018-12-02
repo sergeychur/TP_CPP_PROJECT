@@ -8,9 +8,14 @@
 
 #include "NetObject.h"
 
-class AbstractClientNetObject:public NetObject
+class AbstractClientNetObject : public NetObject
 {
-
+public:
+	AbstractClientNetObject(uint _port, std::string _ip);
+	void set_parameters(std::string _ip, uint _port);
+protected:
+	uint port;
+	std::string ip;
 };
 
 

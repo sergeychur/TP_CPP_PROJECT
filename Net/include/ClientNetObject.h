@@ -11,35 +11,31 @@
 #include <boost/asio.hpp>
 
 #include "AbstractClientNetObject.h"
-#include "../DefaultAbstractFactory.h"
+#include "DefaultAbstractFactory.h"
+#include "SubSock.h"
 
 using boost::asio::ip::tcp;
 
-class ClientNetObject:public AbstractClientNetObject
+class ClientNetObject : public AbstractClientNetObject
 {
 public:
-	//make it singleton
+//	//make it singleton
 	ClientNetObject(uint _port, std::string _ip, std::map<std::string, DefaultAbstractFactory*> _map);
 	void send(Serializable *serializable) override;
-	std::vector<std::shared_ptr<Serializable>> receive();
-	void work();
+	std::vector<std::unique_ptr<Serializable>> receive();
+	void work() override;
 	~ClientNetObject();
 private:
 	void connect();
 	static void read_sock();
-	static std::map<std::string, DefaultAbstractFactory*> map;
-	static std::vector<std::shared_ptr<Serializable>> buf;
-	static bool stop;
-	uint port;
-	std::string ip;
-	std::thread* thread;
 	
 	static boost::asio::io_context context;
-	static tcp::socket sock;
 	static std::mutex priority_sock_mutex;
 	static std::mutex priority_buf_mutex;
 	static std::mutex sock_mutex;
 	static std::mutex buf_mutex;
+	
+	static SubSock* sock;
 };
 
 
