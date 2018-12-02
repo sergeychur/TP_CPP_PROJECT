@@ -14,14 +14,17 @@ struct Initialiser : public Serializable {
     public:
         Initialiser() = default;
         Initialiser(const size_t _player_id, const size_t _player_num,
-                std::vector<std::pair<int, int>> _bases) :
+                std::vector<std::pair<int, int>>& _bases) :
         player_id(_player_id), player_num(_player_num), bases(_bases){
         }
         template<class Archive>
         inline void serialize(Archive& ar, const unsigned int version) {
             ar & player_id & player_num;
-            for(auto& base : bases) {
-                ar & base.first & base.second;
+            if(bases.size() < player_num) {
+                bases.resize(player_num);
+            }
+            for(auto i = 0; i < player_num; ++i) {
+                ar & bases[i].first & bases[i].second;
             }
         }
         void serialize(boost::archive::text_oarchive& ar) final;

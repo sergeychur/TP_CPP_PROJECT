@@ -23,6 +23,7 @@ size_t Player::act(Command& command) {
         } catch(std::invalid_argument& e) {
             throw e;
         }
+
     }
     if(unit_arr.size() < command.unit_id) {
         throw std::invalid_argument("Wrong index");
@@ -72,7 +73,7 @@ int Player::add_base(std::shared_ptr<NewsTaker> updater,
         return ERR_ALLOC;
     }
     unit_arr.push_back(base);
-    base->notify();
+    // base->notify();
     ++unit_num;
     return 0;
 }

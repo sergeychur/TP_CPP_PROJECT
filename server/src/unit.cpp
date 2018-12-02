@@ -129,10 +129,10 @@ void Unit::correct_state(std::vector<int>& parameters) {
     if(parameters.size() != params_num) {
         return;
     }
-    if(abs(unit_x - parameters[x_val]) < ALLOWED_LINEAR_DELTA) {
+    if(/*abs(unit_x - parameters[x_val]) < ALLOWED_LINEAR_DELTA*/ true) {
         unit_x = parameters[x_val];
     }
-    if(abs(unit_y - parameters[y_val]) < ALLOWED_LINEAR_DELTA) {
+    if(/*abs(*unit_y - parameters[y_val]) < ALLOWED_LINEAR_DELTA*/true) {
         unit_y = parameters[y_val];
     }
     look_angle = parameters[angle_val];

@@ -48,7 +48,11 @@ struct Update : Serializable{
     public:
         Update() = default;
         ~Update() = default;
+
+
         std::vector<UpdateLine> updates;
+
+
         friend class boost::serialization::access;
         template<class Archive>
         inline void serialize(Archive& ar, const unsigned int file_version) {
