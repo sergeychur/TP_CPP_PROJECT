@@ -15,7 +15,7 @@ class NewsTaker {
     // handle with happened event on changing side
 public:
     virtual void handle_event(UpdateLine&) = 0;
-    virtual std::shared_ptr<Update>&& get_update() = 0;
+    virtual std::unique_ptr<Update> get_update() = 0;
     virtual void delete_update() = 0;
     virtual ~NewsTaker() = default;
 };

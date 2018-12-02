@@ -17,11 +17,11 @@ class UpdateMaker : public NewsTaker {
         UpdateMaker&& operator=(UpdateMaker&&) = delete;
 
         void handle_event(UpdateLine&) override;
-        std::shared_ptr<Update>&& get_update() override;
+        std::unique_ptr<Update> get_update() override;
         void delete_update() override;
         ~UpdateMaker() override;
     private:
-        std::shared_ptr<Update> update;
+        std::unique_ptr<Update> update;
 
 };
 

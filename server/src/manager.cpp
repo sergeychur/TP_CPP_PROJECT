@@ -44,6 +44,9 @@ boost::filesystem::path Manager::get_file_path(const size_t player_num) {
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::minstd_rand0 generator(seed);
     folder.str("");
+    if(!file_num) {
+        throw(std::runtime_error("No files in directory"));
+    }
     folder << generator() % file_num << ".xml";
     file_path = file_path / folder.str();
     return file_path;
@@ -65,6 +68,8 @@ void Manager::read_bases_from_file(std::vector<std::pair<int, int>>& base_vector
     try {
         file_name = get_file_path(player_num);
     } catch(const boost::filesystem::filesystem_error& e) {
+        throw ManagerException(e.what());
+    } catch(const std::runtime_error& e) {
         throw ManagerException(e.what());
     }
     try {

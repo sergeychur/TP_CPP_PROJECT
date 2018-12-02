@@ -16,7 +16,7 @@
 #include "base.hpp"
 
 enum Constants {
-    DEAD = 1,
+    DEAD = -3,
     STILL_ACT = 0,
     NONE = 2,
     BASE_HP = 100,

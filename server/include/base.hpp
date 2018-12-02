@@ -39,7 +39,7 @@ private:
     bool is_making;
     const static int max_possible = 1000;
 
-    bool act(Command& order) override { return order.command_name.empty();}
+    bool act(Command& order) override;
 };
 
 #endif //SERVER_BASE_HPP

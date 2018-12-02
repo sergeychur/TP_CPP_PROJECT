@@ -86,3 +86,19 @@ void Base::add(std::shared_ptr<NewsTaker> news_taker) {
 void Base::remove() {
     updater = nullptr;
 }
+
+typedef void (Base::*BaseMethod)(std::vector<int>&);
+
+bool Base::act(Command& order) {
+    std::map<std::string, BaseMethod> funcs = {
+            {"create_unit", &Base::start_making},
+    };
+    auto it = funcs.find(order.command_name);
+    if(it != funcs.end()) {
+        try {
+            (this->*it->second)(order.parameters);
+        } catch(std::bad_alloc& e) {
+            throw(e);
+        }
+    }
+}

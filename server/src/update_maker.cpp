@@ -7,7 +7,7 @@
 #include "update_maker.hpp"
 
 UpdateMaker::UpdateMaker() {
-    update = std::make_shared<Update>();
+    update = std::make_unique<Update>();
 }
 
 UpdateMaker::~UpdateMaker() {
@@ -16,12 +16,12 @@ UpdateMaker::~UpdateMaker() {
 
 void UpdateMaker::handle_event(UpdateLine& line) {
     if(!update) {
-        update = std::make_shared<Update>();
+        update = std::make_unique<Update>();
     }
     update->updates.push_back(line);
 }
 
-std::shared_ptr<Update>&& UpdateMaker::get_update() {
+std::unique_ptr<Update> UpdateMaker::get_update() {
     if(!update) {
         throw(std::runtime_error("No update"));
     }
