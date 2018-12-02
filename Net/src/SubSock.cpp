@@ -20,7 +20,7 @@ SubSock::SubSock(boost::asio::io_context& context)
 SubSock::~SubSock()
 {
 	stop = true;
-	delete socket;
 	thread->join();
+	delete socket;
 	delete thread;
 }
