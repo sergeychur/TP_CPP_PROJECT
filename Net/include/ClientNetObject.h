@@ -19,6 +19,7 @@ class ClientNetObject:public AbstractClientNetObject
 {
 public:
 	//make it singleton
+	ClientNetObject();
 	ClientNetObject(uint _port, std::string _ip, std::map<std::string, DefaultAbstractFactory*> _map);
 	void send(Serializable *serializable) override;
 	std::vector<std::shared_ptr<Serializable>> receive();

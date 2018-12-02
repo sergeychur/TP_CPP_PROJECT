@@ -9,7 +9,8 @@
 #include "MyUnit.hpp"
 #include "EnemyUnit.hpp"
 #include "Globals.h"
-#include "ClientNetObject.h"
+#include "DefaultAbstractFactory.h"
+
 //#include "ClientNetObject.h"
 
 USING_NS_CC;
@@ -28,12 +29,17 @@ Scene* GameScene::createScene()
 
 bool GameScene::init()
 {
-    
+
+
     if ( !Layer::init() )
     {
         return false;
     }
-
+    std::map<std::string,DefaultAbstractFactory*> map = {
+            {"upd", new UpdateFactory()},
+            {"com", new CommandFactory()},
+            {"ini", new InitialiserFactory()}
+        };
     auto listener = EventListenerKeyboard::create();
     listener->onKeyPressed = CC_CALLBACK_2(GameScene::onKeyPressed, this);
     listener->onKeyReleased = CC_CALLBACK_2(GameScene::onKeyReleased, this);
@@ -43,7 +49,8 @@ bool GameScene::init()
     sendInitInfoToServer();
     startButton->setTitleText("Start Game");
     startButton->setPosition(Vec2(Director::getInstance()->getWinSize().width / 2, Director::getInstance()->getWinSize().height / 2));
-
+//    net = ClientNetObject(50000, "10.42.0.1", map);
+//    net.work();
     startButton->addClickEventListener([&](Ref* sender){
         sendInitInfoToServer();
         level = new Level();
@@ -66,6 +73,7 @@ void GameScene::update(float delta)
 
 bool GameScene::sendInitInfoToServer()
 {
+
     return true;
 }
 
@@ -125,7 +133,4 @@ void GameScene::initGame()
     player = new Player(0, Vec2(1200, 1200));
     level->map->addChild(player);
     Globals::get_instance()->player = player;
-}
-GameScene::~GameScene()
-{
 }

@@ -2,7 +2,8 @@
 // Created by alex on 12.11.18.
 //
 
-#include "../include/ServerNetObject.h"
+#include "ServerNetObject.h"
+
 
 std::vector<std::shared_ptr<Serializable>> ServerNetObject::buf;
 

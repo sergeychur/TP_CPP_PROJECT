@@ -15,6 +15,7 @@
 #include "ui/CocosGUI.h"
 #include <vector>
 #include <map>
+#include "ClientNetObject.h"
 
 
 class GameScene : public cocos2d::Layer
@@ -25,7 +26,6 @@ public:
     static cocos2d::Scene* createScene();
     CREATE_FUNC(GameScene);
     Scene scene;
-    ~GameScene();
 private:
     Level* level;
     Player* player;
@@ -40,6 +40,7 @@ private:
     void moveCamera(float delta);
     void update(float time) override;
     void dispatch();
+    ClientNetObject net;
 };
 
 #endif /* GameScene_hpp */

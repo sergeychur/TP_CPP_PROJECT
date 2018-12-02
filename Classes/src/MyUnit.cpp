@@ -73,7 +73,7 @@ void MyUnit::updatePosition(float time)
         if (distanceToTarget > minDistance)
         {
             newPos += (speed * time * velocity);
-            Vec2 checkPos = newPos + (14 * speed * time * velocity);
+            Vec2 checkPos = newPos + (35 * speed * time * velocity);
             if (checkCollisionWithMap(checkPos))
             {
                 return;

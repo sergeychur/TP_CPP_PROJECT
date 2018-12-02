@@ -16,6 +16,8 @@ std::mutex ClientNetObject::priority_buf_mutex;
 std::mutex ClientNetObject::sock_mutex;
 std::mutex ClientNetObject::buf_mutex;
 
+ClientNetObject::ClientNetObject() {}
+
 void ClientNetObject::connect()
 {
 	tcp::resolver resolver(context);

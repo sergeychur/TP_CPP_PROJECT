@@ -88,6 +88,9 @@ list(APPEND GAME_SOURCE
         Classes/src/MyUnit.cpp
         Classes/src/MenuScene.cpp
         Classes/src/EnemyUnit.cpp
+        shared_files/src/command.cpp
+        shared_files/src/initialiser.cpp
+        shared_files/src/update.cpp
      )
 
 if(ANDROID)
@@ -189,11 +192,12 @@ if(LINUX OR WINDOWS)
     cocos_copy_target_res(${APP_NAME} COPY_TO ${APP_RES_DIR} FOLDERS ${GAME_RES_FOLDER})
 endif()
 
-#include_directories(server/include)
-#find_package(Boost COMPONENTS REQUIRED system)
-include_directories(Net/include Net)
+
+find_package(Boost COMPONENTS REQUIRED system serialization)
+include_directories(Net/include)
 add_subdirectory(Net)
-#add_subdirectory(server)
+include_directories(${BOOST_INCLUDE_DIRS})
+target_include_directories(RTSGame PUBLIC shared_files/include)
 target_link_libraries(RTSGame Net)
-target_include_directories(RTSGame PUBLIC ${BOOST_INCLUDE_DIRS})
+target_link_libraries(RTSGame ${Boost_LIBRARIES})
 target_link_libraries(RTSGame system)
