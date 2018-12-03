@@ -24,7 +24,7 @@
 
 Manager::Manager() {
     map = {
-            {std::string(typeid(Update).name()).substr(0,3), new UpdateFactory()},
+            {std::string(typeid(Update).name()).substr(0,3), new UpdateFactory()},      // TODO(Me): take constant from net
             {std::string(typeid(Command).name()).substr(0,3), new CommandFactory()},
             {std::string(typeid(Initialiser).name()).substr(0,3), new InitialiserFactory()}
     };

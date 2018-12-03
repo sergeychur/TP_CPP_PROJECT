@@ -25,7 +25,6 @@ bool RealUnit::get_kicked(std::vector<int>& params) {
         HP -= params[damage];
         return true;
     }
-    std::cout << "HP: " << HP << std::endl;
     return false;
 
 }

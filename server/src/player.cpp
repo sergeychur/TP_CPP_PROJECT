@@ -73,7 +73,6 @@ int Player::add_base(std::shared_ptr<NewsTaker> updater,
         return ERR_ALLOC;
     }
     unit_arr.push_back(base);
-    // base->notify();
     ++unit_num;
     return 0;
 }

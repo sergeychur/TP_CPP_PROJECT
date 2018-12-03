@@ -25,9 +25,9 @@ int main(void) {
     uint port = 0;
     manager.input(&port, "Enter the port to listen on");
     std::string ip("");
-    manager.input(&ip, "Enter the ip to listen on");     // WTF, for what do we need to enter IP
+    manager.input(&ip, "Enter the ip to listen on");
     std::map<std::string, DefaultAbstractFactory*> map;
-    map = manager.get_instance_map();      // fill it with factories, think how
+    map = manager.get_instance_map();
     std::cout << "Success entering" << std::endl;
     ServerNetObject server(port, ip, player_num, map);
     server.work();
@@ -53,7 +53,7 @@ int main(void) {
         do {
             clients_data = server.receive();
         } while(clients_data.empty());
-        /*// here test begins
+        /*// here test begins, remove in prod, made for tests without clients, not safe
         int i = 0;
         while(i < 2) {
             Command com;
@@ -81,7 +81,7 @@ int main(void) {
             std::cout << "Update to send is:" << std::endl;
             std::cout << *(update) << std::endl;       // in order to test, remove
             try {
-                server.send(update.get());      // change for std::move
+                server.send(update.get());
             } catch(std::exception& e) {
                 std::cerr << "Cannot send, cause of " << e.what() << std::endl;
             }

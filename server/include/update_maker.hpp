@@ -11,10 +11,6 @@
 class UpdateMaker : public NewsTaker {
     public:
         UpdateMaker();
-        UpdateMaker(const UpdateMaker&) = delete;
-        UpdateMaker(const UpdateMaker&&) = delete;
-        UpdateMaker& operator=(UpdateMaker&) = delete;
-        UpdateMaker&& operator=(UpdateMaker&&) = delete;
 
         void handle_event(UpdateLine&) override;
         std::unique_ptr<Update> get_update() override;

@@ -33,6 +33,9 @@ class Manager {
         ~Manager();
     template <class T>
         inline void input(T* value, const std::string& greeting) {
+            if(!value) {
+                throw(std::invalid_argument("I dunno, where to enter"));
+            }
             bool success = false;
             do {
                 std::cout << greeting << std::endl;

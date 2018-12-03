@@ -35,7 +35,7 @@ size_t Game::act(std::vector<Serializable*>& commands_arr) {
     size_t stat = STILL_ACT;
     for (int i = 0; i < commands_arr.size(); ++i) {
         if (!commands_arr[i])
-            throw std::invalid_argument("FUCKED UP");
+            throw std::invalid_argument("No valid command");
         std::shared_ptr<Command> command_ptr(dynamic_cast<Command*>(commands_arr[i]));
         Command command = *command_ptr;
         if(player_arr.size() > command.player_id) {
