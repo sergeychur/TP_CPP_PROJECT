@@ -82,7 +82,7 @@ void ServerNetObject::connect(size_t socks_index) //return smth to send to recv 
 	static tcp::acceptor acceptor(context,tcp::endpoint(tcp::v4(),port));
 	tcp::endpoint endpoint;
 	acceptor.accept(*(socks[socks_index].socket), endpoint);
-	BOOST_LOG_TRIVIAL(info) << endpoint.address() << ' ' << endpoint.port() << std::endl;
+	BOOST_LOG_TRIVIAL(info) << endpoint.address().to_string() << ' ' << endpoint.port() << std::endl;
 }
 
 void ServerNetObject::work()
