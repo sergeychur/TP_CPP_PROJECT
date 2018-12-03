@@ -15,7 +15,8 @@
 
 
 enum manager_errors {
-    ERR_READ = -2
+    ERR_READ = -2,
+    ERR_SEND = -3
 };
 
 class ManagerException : public std::exception {

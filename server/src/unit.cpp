@@ -72,7 +72,7 @@ bool Unit::move_for_time(std::vector<int>& dest, const double time_passed) {
         unit_x = result_x;
         unit_y = result_y;
     }
-    return (unit_x - dest[x]) < ALLOWED_LINEAR_DELTA && (unit_y - dest[y]) < ALLOWED_LINEAR_DELTA;
+    return false;//(unit_x - dest[x]) < ALLOWED_LINEAR_DELTA && (unit_y - dest[y]) < ALLOWED_LINEAR_DELTA; // TODO(Me):change
 }
 
 bool Unit::move(std::vector<int>& dest) {
@@ -118,6 +118,7 @@ void Unit::perform_existing_commands() {
         bool finished = (this->*it->second)(commands.front().parameters);
         if(finished) {
             commands.pop();
+            state = NONE;
         }
     }
 }
@@ -125,8 +126,9 @@ void Unit::perform_existing_commands() {
 bool Unit::act(Command& order) {
     if(order.command_name == "pop_command") {
         commands.pop();
+        state = NONE;
     }
-    state = NONE;       // mb bugs, checkout
+    // state = NONE;
     perform_existing_commands();
     if(order.command_name == "check") {
         correct_state(order.parameters);
@@ -159,6 +161,7 @@ void Unit::correct_state(std::vector<int>& parameters) {
         unit_y = parameters[y_val];
     }
     look_angle = parameters[angle_val];
+
     notify();
 }
 bool Unit::interact(const std::string& command, std::vector<int>& params) {

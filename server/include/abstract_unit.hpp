@@ -20,9 +20,10 @@ class AbstractUnit : public NewsMaker, public Colleague {
         virtual bool act(Command& order) = 0;
         ~AbstractUnit() override = default;
         enum states {
-            NONE = 0,
-            MOVING = 1,
-            FIGHTING = 2
+            NONE = 3,
+            MOVING = 0,
+            FIGHTING = 1,
+            DEATH = 2
         };
 };
 

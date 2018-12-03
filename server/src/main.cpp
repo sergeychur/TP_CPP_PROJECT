@@ -29,8 +29,8 @@ int main(void) {
     std::map<std::string, DefaultAbstractFactory*> map;
     map = manager.get_instance_map();      // fill it with factories, think how
     std::cout << "Success entering" << std::endl;
-    // ServerNetObject server(port, ip, player_num, map);
-    // server.work();
+    ServerNetObject server(port, ip, player_num, map);
+    server.work();
     std::cout << "Success" << std::endl;
     for(size_t i = 0; i < player_num; ++i) {
         try {
@@ -40,15 +40,20 @@ int main(void) {
             throw e;
         }
         Initialiser init(i, player_num, bases);
-       //  server.send_to(&init, i);
+        try {
+            server.send_to(&init, i);
+        } catch(std::exception& e) {
+            std::cerr << "Cannot send cause of" << e.what() << std::endl;
+            return ERR_SEND;
+        }
     }
     size_t winner = player_num;
     while(!game.is_win()) {
-        std::vector<std::unique_ptr<Serializable>> clients_data;
-        /*do {
+        std::vector<Serializable*> clients_data;
+        do {
             clients_data = server.receive();
-        } while(clients_data.empty());*/
-        // here test begins
+        } while(clients_data.empty());
+        /*// here test begins
         int i = 0;
         while(i < 2) {
             Command com;
@@ -58,7 +63,7 @@ int main(void) {
             ++i;
         }
         std::cin.clear();
-        // here test ends
+        // here test ends*/
         try {
             winner = game.act(clients_data);
         }
@@ -75,7 +80,11 @@ int main(void) {
         if(update) {
             std::cout << "Update to send is:" << std::endl;
             std::cout << *(update) << std::endl;       // in order to test, remove
-            // server.send(update.get());      // change for std::move
+            try {
+                server.send(update.get());      // change for std::move
+            } catch(std::exception& e) {
+                std::cerr << "Cannot send, cause of " << e.what() << std::endl;
+            }
         }
     }
     std::cout << "And the winner iiiiiiiis player nuuuuuuumberrrr " << winner << std::endl;

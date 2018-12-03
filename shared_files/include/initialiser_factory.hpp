@@ -10,9 +10,9 @@
 class InitialiserFactory : public DefaultAbstractFactory
 {
 public:
-    std::unique_ptr<Serializable> create() override
+    Serializable* create() override
     {
-        return (std::make_unique<Initialiser>());
+        return (new Initialiser());
     }
     ~InitialiserFactory() override = default;
 };

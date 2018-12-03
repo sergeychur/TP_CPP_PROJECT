@@ -17,11 +17,6 @@
 class Map : public Mediator {
     public:
         Map() : Mediator() {}
-        // Map(const Map&) = delete;
-        // Map(const Map&&) = delete;
-        // Map& operator=(const Map&) = delete;
-        // Map&& operator=(const Map&&) = delete;
-
         void add_colleague(const std::shared_ptr<Colleague>&, const size_t player_id,
                 const size_t unit_id) override;
         bool make_interaction(const size_t, const size_t,

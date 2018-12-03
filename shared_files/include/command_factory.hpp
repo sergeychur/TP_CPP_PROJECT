@@ -12,9 +12,9 @@
 class CommandFactory : public DefaultAbstractFactory
 {
 public:
-    std::unique_ptr<Serializable> create() override
+    Serializable* create() override
     {
-        return (std::make_unique<Command>());
+        return (new Command());
     }
     ~CommandFactory() override = default;
 };

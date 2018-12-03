@@ -10,9 +10,7 @@
 
 Base::Base(std::shared_ptr<Mediator> med, const int& HP, const int _x,
     const int _y, const size_t player_id) : AbstractBase(med), RealUnit(player_id, 0, HP, _x, _y),
-    time_to_build(default_time_to_build),/*
-    updater(nullptr),
-    unit_to_return(nullptr), */ units_made(0), is_making(false) {
+    time_to_build(default_time_to_build), units_made(0), is_making(false) {
 };
 
 bool Base::is_ready() {

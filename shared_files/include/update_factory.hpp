@@ -10,9 +10,9 @@
 class UpdateFactory : public DefaultAbstractFactory
 {
 public:
-    std::unique_ptr<Serializable> create() override
+    Serializable* create() override
     {
-        return (std::make_unique<Update>());
+        return (new Update());
     }
     ~UpdateFactory() override = default;
 };
