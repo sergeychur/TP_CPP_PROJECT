@@ -8,6 +8,7 @@
 
 #include <vector>
 #include <boost/any.hpp>
+#include <boost/log/trivial.hpp>
 #include "Serializable.h"
 #include "DefaultAbstractFactory.h"
 

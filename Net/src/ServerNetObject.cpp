@@ -82,7 +82,7 @@ void ServerNetObject::connect(size_t socks_index) //return smth to send to recv 
 	static tcp::acceptor acceptor(context,tcp::endpoint(tcp::v4(),port));
 	tcp::endpoint endpoint;
 	acceptor.accept(*(socks[socks_index].socket), endpoint);
-	std::cerr << endpoint.address() << ' ' << endpoint.port() << std::endl;
+	BOOST_LOG_TRIVIAL(info) << endpoint.address() << ' ' << endpoint.port() << std::endl;
 }
 
 void ServerNetObject::work()
@@ -116,7 +116,8 @@ void ServerNetObject::read_client_socks(const size_t socks_index)
 				sock_mutex.unlock(); // unlock socket mutex
 				
 				Serializable* serializable; // create pointer
-				
+				if(message_length < 9)
+					throw std::invalid_argument("BAD INET MESSAGE");
 				std::string type = recv_buf.substr(
 					message_length - 9, TYPE_LENGTH); // read first N bytes to check which class object was sent
 				recv_buf.erase(recv_buf.end() - 9, recv_buf.end());
@@ -136,7 +137,7 @@ void ServerNetObject::read_client_socks(const size_t socks_index)
 			}
 			catch(std::exception e)
 			{
-				std::cerr << e.what() << "RECV_BUF IS " << recv_buf << std::endl;
+				BOOST_LOG_TRIVIAL(error) << e.what() << "RECV_BUF IS " << recv_buf << std::endl;
 			}
 		}
 		else
