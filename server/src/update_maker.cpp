@@ -28,7 +28,3 @@ std::unique_ptr<Update> UpdateMaker::get_update() {
     return std::move(update);
 }
 
-void UpdateMaker::delete_update() {
-    update->updates.clear();
-    update.reset();
-}

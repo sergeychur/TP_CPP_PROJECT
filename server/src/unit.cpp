@@ -42,22 +42,42 @@ bool Unit::is_alive() const {
 
 }
 
+double Unit::ruling_cos(const int source_x, const int source_y, const int dest_x, const int dest_y) {
+    return static_cast<double>(dest_x - source_x) /
+        diff(dest_x, dest_y, source_x, source_y);
+}
+
+double Unit::ruling_sin(const int source_x, const int source_y, const int dest_x, const int dest_y) {
+    return  static_cast<double>(dest_y - source_y) /
+            diff(dest_x, dest_y, source_x, source_y);
+}
+
+double Unit::diff(const int dest_x, const int dest_y, const int source_x,  const int source_y) {
+    return sqrt((dest_x - source_x) * (dest_x - source_x)  + (dest_y - source_y) * (dest_y - source_y));
+}
+
 bool Unit::move_for_time(std::vector<int>& dest, const double time_passed) {
     enum {
         x = 0,
         y
     };
-    unit_x += speed * static_cast<int>((dest[x] - unit_x) / sqrt((dest[x] - unit_x) *
-            (dest[x] - unit_x) + (dest[y] - unit_y)
-            * (dest[y] - unit_y)) * time_passed);
-    unit_y += speed * static_cast<int>((dest[y] - unit_y) / sqrt((dest[x] - unit_x) *
-                                                                 (dest[x] - unit_x) + (dest[y] - unit_y) * (dest[y] - unit_y)) * time_passed);
+    double cos = ruling_cos(unit_x, unit_y, dest[x], dest[y]);
+    double sin = ruling_sin(unit_x, unit_y, dest[x], dest[y]);
+    int result_x = static_cast<int>(speed * cos * time_passed / dissipation);
+    int result_y = static_cast<int>(speed * sin * time_passed / dissipation);
+    if(diff(result_x, result_y, dest[x], dest[y]) > diff(unit_x, unit_y, dest[x], dest[y])) {
+        unit_x = dest[x];
+        unit_y = dest[y];
+    } else {
+        unit_x = result_x;
+        unit_y = result_y;
+    }
     return (unit_x - dest[x]) < ALLOWED_LINEAR_DELTA && (unit_y - dest[y]) < ALLOWED_LINEAR_DELTA;
 }
 
 bool Unit::move(std::vector<int>& dest) {
     auto now = std::chrono::system_clock::now();
-    const double time_passed = (now - prev_time).count();
+    const double time_passed = std::chrono::duration_cast<std::chrono::milliseconds>(now - prev_time).count();
     state = MOVING;
     return move_for_time(dest, time_passed);
 }
@@ -76,8 +96,10 @@ bool Unit::kick(std::vector<int>& target_params) {
     kick_params.push_back(radius);
     kick_params.push_back(unit_x);
     kick_params.push_back(unit_y);
-    mediator->make_interaction(static_cast<size_t >(target_params[player_id]), static_cast<size_t>(target_params[unit_id]), "get_kicked", kick_params);
-    state = FIGHTING;
+    bool success = mediator->make_interaction(static_cast<size_t >(target_params[player_id]), static_cast<size_t>(target_params[unit_id]), "get_kicked", kick_params);
+    if(success) {
+        state = FIGHTING;
+    }
     return true;
 }
 
@@ -116,6 +138,7 @@ bool Unit::act(Command& order) {
 
 void Unit::add_command(Command& command) {
     commands.push(command);
+    prev_time = std::chrono::system_clock::now();
 }
 
 void Unit::correct_state(std::vector<int>& parameters) {
@@ -138,8 +161,10 @@ void Unit::correct_state(std::vector<int>& parameters) {
     look_angle = parameters[angle_val];
     notify();
 }
-void Unit::interact(const std::string& command, std::vector<int>& params) {
-    react_on_command(command, params);
+bool Unit::interact(const std::string& command, std::vector<int>& params) {
+    bool success = react_on_command(command, params);
+    notify();
+    return success;
 }
 
 size_t Unit::hash_self() const {

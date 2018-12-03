@@ -29,11 +29,6 @@ class Unit : public AbstractUnit, public RealUnit {
         Unit(const size_t _player_id_, const size_t _unit_id, const int _HP, const int _unit_x,
                 const int _unit_y, const int damage,
                 const int radius, const int speed, const int look_angle, std::shared_ptr<Mediator> mediator);
-        // Unit() = delete;
-        // Unit(const Unit&&) = delete;
-        // Unit(const Unit&) = delete;
-        // Unit& operator=(Unit&) = delete;
-        // Unit&& operator=(Unit&&) = delete;
         ~Unit() override = default;
         void add(std::shared_ptr<NewsTaker> news_taker) override;
         void remove() override;
@@ -48,9 +43,12 @@ class Unit : public AbstractUnit, public RealUnit {
     private:
         void add_command(Command&);
         void correct_state(std::vector<int>&);
-        void interact(const std::string&, std::vector<int>&) override;
+        bool interact(const std::string&, std::vector<int>&) override;
         void perform_existing_commands();
         bool is_alive() const;
+        double ruling_cos(const int source_x, const int source_y, const int dest_x, const int dest_y);
+        double ruling_sin(const int source_x, const int source_y, const int dest_x, const int dest_y);
+        double diff(const int dest_x, const int dest_y, const int source_x,  const int source_y);
 
         std::queue<Command> commands;
         std::shared_ptr<NewsTaker> updater;
@@ -62,6 +60,7 @@ class Unit : public AbstractUnit, public RealUnit {
 
         int state;
 
+        static constexpr double dissipation = 1000;
         std::chrono::time_point<std::chrono::system_clock> prev_time;
 };
 

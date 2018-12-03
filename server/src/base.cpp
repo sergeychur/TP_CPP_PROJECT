@@ -68,9 +68,10 @@ std::shared_ptr<Unit> Base::get_unit() {
     return unit_to_return;
 }
 
-void Base::interact(const std::string& command, std::vector<int>& params) {
-    react_on_command(command, params);
+bool Base::interact(const std::string& command, std::vector<int>& params) {
+    bool success = react_on_command(command, params);
     notify();
+    return success;
 }
 
 void Base::notify() {

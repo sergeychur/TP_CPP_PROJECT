@@ -7,7 +7,7 @@
 
 #include "real_unit.hpp"
 
-void RealUnit::get_kicked(std::vector<int>& params) {
+bool RealUnit::get_kicked(std::vector<int>& params) {
     enum indices {
         damage = 0,
         radius,
@@ -23,19 +23,22 @@ void RealUnit::get_kicked(std::vector<int>& params) {
         (params[y] * params[y] - unit_y * unit_y)) <=
         params[radius] * params[radius]) {
         HP -= params[damage];
+        return true;
     }
     std::cout << "HP: " << HP << std::endl;
+    return false;
 
 }
 
-typedef void (RealUnit::*UnitMethod)(std::vector<int>&);
+typedef bool (RealUnit::*UnitMethod)(std::vector<int>&);
 
-void RealUnit::react_on_command(const std::string& func_name, std::vector<int>& params) {
+bool RealUnit::react_on_command(const std::string& func_name, std::vector<int>& params) {
     std::map<std::string, UnitMethod> funcs = {
             {"get_kicked", &RealUnit::get_kicked}
     };
     auto it = funcs.find(func_name);
     if(it != funcs.end()) {
-        (this->*it->second)(params);
+       return (this->*it->second)(params);
     }
+    return false;
 }

@@ -17,8 +17,7 @@ class MockNewsTaker : public NewsTaker {
         MockNewsTaker() = default;
         ~MockNewsTaker() override = default;
         MOCK_METHOD1(handle_event, void(UpdateLine&));
-        MOCK_METHOD0(get_update, std::shared_ptr<Update>());
-        MOCK_METHOD0(delete_update, void());
+        MOCK_METHOD0(get_update, std::unique_ptr<Update>());
 };
 
 

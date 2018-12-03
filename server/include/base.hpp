@@ -22,7 +22,7 @@ public:
     /*const int& x, const int& y, const int& HP, const int& damage,
                       const int& speed, const bool& if_start*/
     std::shared_ptr<Unit> get_unit() override;
-    void interact(const std::string&, std::vector<int>&) override;   // to get kicked
+    bool interact(const std::string&, std::vector<int>&) override;   // to get kicked
     void notify() override;
     void add(std::shared_ptr<NewsTaker> news_taker) override;
     void remove() override;

@@ -21,7 +21,7 @@ protected:
     std::shared_ptr<Mediator> mediator;
 public:
     explicit Colleague(const std::shared_ptr<Mediator>& _mediator) : mediator(_mediator) {}
-    virtual void interact(const std::string&, std::vector<int>&) = 0;
+    virtual bool interact(const std::string&, std::vector<int>&) = 0;
     virtual ~Colleague() = default;
 };
 
