@@ -10,10 +10,8 @@
 #include "MyBuilding.hpp"
 #include "command.hpp"
 
-Player::Player(unsigned int id, Vec2 pos) : spawnPoint(pos), id(id)
+Player::Player(size_t id, Vec2 pos) : spawnPoint(pos), id(id)
 {
-    //auto object = new MyUnit(spawnPoint - Vec2(100, 400), 0, WarriorPlist ,WarriorFormat);
-    //auto object2 = new MyUnit(spawnPoint -  Vec2(0, 400), 1, WarriorPlist, WarriorFormat);
     auto mainLayer = Globals::get_instance()->map->getLayer("Background");
     auto mapPos = Globals::get_instance()->positionToTileCoordinate(spawnPoint);
     mainLayer->getTileAt(mapPos)->setColor(Color3B::RED);
@@ -23,7 +21,7 @@ Player::Player(unsigned int id, Vec2 pos) : spawnPoint(pos), id(id)
 
 void Player::addUnit(GameObject *unit)
 {
-    std::vector<int> a = {(int)spawnPoint.x , (int)spawnPoint.y , 75 , 100 , 1, 75, 1};
+    std::vector<int> a = {(int)spawnPoint.x - 100 , (int)spawnPoint.y , 75 , 100 , 1, 75, 1};
     Command com(this->id, 0,"create_unit", a);
     Globals::get_instance()->net->send(&com);
 //    addChild(unit);

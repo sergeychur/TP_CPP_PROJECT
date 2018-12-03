@@ -41,6 +41,7 @@ void EnemyUnit::update(float time)
     {
         sprite->setSpriteFrame(Sprite::createWithSpriteFrameName("s_w_torso_move_0004.tga")->getSpriteFrame());
     }
+    sprite->setPosition(position);
 }
 
 bool EnemyUnit::recieveUnitUnfoUDP()

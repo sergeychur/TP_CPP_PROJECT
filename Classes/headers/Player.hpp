@@ -18,13 +18,13 @@ USING_NS_CC;
 class Player : public cocos2d::Node
 {
 public:
-    Player(unsigned int id, Vec2 pos);
+    Player(size_t id, Vec2 pos);
     
     void addUnit(GameObject* unit);
     
     std::map<unsigned int, GameObject *>& getUnits();
 
-    unsigned int id;
+    size_t id;
 protected:
     bool isAlive;
     Vec2 spawnPoint;

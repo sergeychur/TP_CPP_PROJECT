@@ -58,6 +58,9 @@ void MyUnit::update(float time)
     updateSprite(time);
     updatePosition(time);
     updateAttack(time);
+    std::vector<int> a = {hp , (int)position.x , (int)position.y , (int)sprite->getRotation()};
+    Command com(Globals::get_instance()->player->id, id,"check", a);
+    Globals::get_instance()->net->send(&com);
 }
 
 void MyUnit::updatePosition(float time)

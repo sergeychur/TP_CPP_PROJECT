@@ -37,6 +37,7 @@ private:
     bool sendInitInfoToServer();
     bool getInitInfoFromServer();
     void initGame();
+    void initNet();
     void moveCamera(float delta);
     void update(float time) override;
     void dispatch();

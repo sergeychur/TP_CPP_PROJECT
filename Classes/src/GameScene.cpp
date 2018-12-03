@@ -12,7 +12,6 @@
 #include "DefaultAbstractFactory.h"
 #include "initialiser.hpp"
 #include "EnemyPlayer.hpp"
-//#include "ClientNetObject.h"
 
 USING_NS_CC;
 
@@ -30,45 +29,12 @@ Scene* GameScene::createScene()
 
 bool GameScene::init()
 {
-
-
     if ( !Layer::init() )
     {
         return false;
     }
-    std::map<std::string,DefaultAbstractFactory*> map = {
-            {std::string(typeid(Update).name()).substr(0,3), new UpdateFactory()},
-            {std::string(typeid(Command).name()).substr(0,3), new CommandFactory()},
-            {std::string(typeid(Initialiser).name()).substr(0,3), new InitialiserFactory()}
-        };
-    auto listener = EventListenerKeyboard::create();
-    listener->onKeyPressed = CC_CALLBACK_2(GameScene::onKeyPressed, this);
-    listener->onKeyReleased = CC_CALLBACK_2(GameScene::onKeyReleased, this);
-    getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-    auto startButton = ui::Button::create();
-    sendInitInfoToServer();
-    startButton->setTitleText("Start Game");
-    startButton->setPosition(Vec2(Director::getInstance()->getWinSize().width / 2, Director::getInstance()->getWinSize().height / 2));
-    net = new ClientNetObject(50000, "10.42.0.1", map);
-    Globals::get_instance()->net = net;
-    startButton->addClickEventListener([&](Ref* sender){
-        net->work();
-        scheduleUpdate();
-        //getInitInfoFromServer();
-        CCLOG("Net.work");
-        removeChild(startButton);
-        //sendInitInfoToServer();
-//        level = new Level();
-//        level->loadMap("TileMap.tmx");
-//        addChild(level->map);
-//        player = new Player(0, Vec2(1200, 1200));
-//        level->map->addChild(player);
-//        Globals::get_instance()->player = player;
-//        auto obstacles = Globals::get_instance()->map->getLayer("Walls");
-//        if (obstacles)
-//            obstacles->setVisible(false);
-    });
-    addChild(startButton);
+    initNet();
+    initGame();
     return true;
 }
 
@@ -89,28 +55,28 @@ bool GameScene::sendInitInfoToServer()
 bool GameScene::getInitInfoFromServer()
 {
     if (!gameStarted) {
-        std::vector<std::unique_ptr<Serializable>> ini;
-        ini = net->receive();
-        if (ini.size() < 1)
+        std::vector<std::unique_ptr<Serializable>> rawInfo;
+        rawInfo = net->receive();
+        if (rawInfo.empty())
             return false;
         gameStarted = true;
-        Initialiser ini2;
-        ini2 = *dynamic_cast<Initialiser *>(ini[0].get());
+        Initialiser info;
+        info = *dynamic_cast<Initialiser *>(rawInfo[0].get());
         level = new Level();
         level->loadMap("TileMap.tmx");
         addChild(level->map);
-        player = new Player(ini2.player_id, Vec2(ini2.bases[ini2.player_id].first, ini2.bases[ini2.player_id].second));
+        player = new Player(info.player_id, Vec2(info.bases[info.player_id].first, info.bases[info.player_id].second));
         std::vector<int> a = {0 , 0 , 75 , 100};
-        Command com(ini2.player_id, 0,"check", a);
+        Command com(info.player_id, 0,"check", a);
         net->send(&com);
-        CCLOG("player1 %d", ini2.player_id);
-        for (int i = 0; i < ini2.player_num; ++i) {
-            if (i != ini2.player_id)
+        CCLOG("player %d", info.player_id);
+        for (int i = 0; i < info.player_num; ++i) {
+            if (i != info.player_id)
             {
-                auto enemy = new EnemyPlayer(i, Vec2(ini2.bases[i].first, ini2.bases[i].second));
+                auto enemy = new EnemyPlayer(i, Vec2(info.bases[i].first, info.bases[i].second));
                 Globals::get_instance()->enemies[i] = enemy;
                 level->map->addChild(enemy);
-                CCLOG("player2 %d", i);
+                CCLOG("player %d", i);
             }
         }
         level->map->addChild(player);
@@ -161,15 +127,15 @@ void GameScene::moveCamera(float delta)
 
 void GameScene::dispatch()
 {
-    std::vector<std::unique_ptr<Serializable>> ini;
-    ini = net->receive();
-    if (!ini.size())
+    std::vector<std::unique_ptr<Serializable>> rawInfo;
+    rawInfo = net->receive();
+    if (rawInfo.empty())
         return;
-    CCLOG("Got unit");
-    for (int i = 0; i < ini.size(); ++i)
+    CCLOG("Got Info");
+    for (int i = 0; i < rawInfo.size(); ++i)
     {
-        Update ini2 = *dynamic_cast<Update *>(ini[i].get());
-        for (auto j : ini2.updates) {
+        Update info = *dynamic_cast<Update *>(rawInfo[i].get());
+        for (auto j : info.updates) {
             if (j.player_id == player->id)
             {
                 CCLOG("Players unit");
@@ -183,11 +149,13 @@ void GameScene::dispatch()
                 }
                 else
                 {
+                    CCLOG("Players unit updated");
                     player->getUnits()[j.unit_id]->position.x = j.new_x; //проверить элем
                     player->getUnits()[j.unit_id]->position.y = j.new_y;
                 }
             } else
             {
+                CCLOG("Enemy unit");
                 auto enemy = Globals::get_instance()->enemies[j.player_id];
                 if (enemy->units.empty())
                 {
@@ -198,8 +166,9 @@ void GameScene::dispatch()
                 }
                 else
                 {
-                    player->getUnits()[j.unit_id]->position.x = j.new_x; //проверить элем
-                    player->getUnits()[j.unit_id]->position.y = j.new_y;
+                    CCLOG("unit enemy updated");
+                    enemy->units[j.unit_id]->position.x = j.new_x; //проверить элем
+                    enemy->units[j.unit_id]->position.y = j.new_y;
                 }
             }
         }
@@ -209,11 +178,31 @@ void GameScene::dispatch()
 
 void GameScene::initGame()
 {
-    removeAllChildren();
-    level = new Level();
-    level->loadMap("TileMap.tmx");
-    addChild(level->map);
-    player = new Player(0, Vec2(1200, 1200));
-    level->map->addChild(player);
-    Globals::get_instance()->player = player;
+    auto listener = EventListenerKeyboard::create();
+    listener->onKeyPressed = CC_CALLBACK_2(GameScene::onKeyPressed, this);
+    listener->onKeyReleased = CC_CALLBACK_2(GameScene::onKeyReleased, this);
+    getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+    auto startButton = ui::Button::create();
+    startButton->setTitleText("Start Game");
+    startButton->setPosition(Vec2(Director::getInstance()->getWinSize().width / 2, Director::getInstance()->getWinSize().height / 2));
+    startButton->addClickEventListener([&](Ref* sender){
+        CCLOG("Подключение сети");
+        net->work();
+        CCLOG("Сеть подключена");
+        scheduleUpdate();
+        removeChild(startButton);
+        //delete(startButton);
+    });
+    addChild(startButton);
+}
+
+void GameScene::initNet()
+{
+    std::map<std::string,DefaultAbstractFactory*> map = {
+            {std::string(typeid(Update).name()).substr(0,3), new UpdateFactory()},
+            {std::string(typeid(Command).name()).substr(0,3), new CommandFactory()},
+            {std::string(typeid(Initialiser).name()).substr(0,3), new InitialiserFactory()}
+    };
+    net = new ClientNetObject(50000, "10.42.0.1", map);
+    Globals::get_instance()->net = net;
 }
