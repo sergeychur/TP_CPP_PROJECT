@@ -5,7 +5,7 @@
 #include <iostream>
 #include "../include/ServerNetObject.h"
 
-std::vector<std::unique_ptr<Serializable>> NetObject::buf;
+std::vector<std::shared_ptr<Serializable>> NetObject::buf;
 std::map<std::string, DefaultAbstractFactory*> NetObject::map;
 
 boost::asio::io_context ServerNetObject::context;
@@ -22,8 +22,10 @@ void ServerNetObject::send(Serializable *serializable)
 {
 	std::stringstream stream;
 	boost::archive::text_oarchive archive(stream);
+
 //	archive << serializable; // serialize
 	serializable->serialize(archive);
+	
 	std::string send_buf, temp_buf;
 //	stream >> temp_buf;
 //	std::cerr << stream.str();
@@ -47,10 +49,13 @@ void ServerNetObject::send_to(Serializable *serializable, int i)
 	std::stringstream stream;
 	boost::archive::text_oarchive archive(stream);
 //	archive << serializable; // serialize
+	serializable->serialize(archive);
+	
 	std::string send_buf, temp_buf;
 //	stream >> temp_buf;
 	
 	temp_buf = stream.str();
+
 	send_buf.append(temp_buf); // write buf
 	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
 	send_buf.append("endobj");
@@ -61,7 +66,7 @@ void ServerNetObject::send_to(Serializable *serializable, int i)
 	sock_mutex.unlock();
 }
 
-std::vector<std::unique_ptr<Serializable>> ServerNetObject::receive()
+std::vector<std::shared_ptr<Serializable>> ServerNetObject::receive()
 {
 	priority_buf_mutex.lock(); // lock buf mutex
 	buf_mutex.lock();
@@ -85,7 +90,7 @@ void ServerNetObject::connect(size_t socks_index) //return smth to send to recv 
 	static tcp::acceptor acceptor(context,tcp::endpoint(tcp::v4(),port));
 	tcp::endpoint endpoint;
 	acceptor.accept(*(socks[socks_index].socket), endpoint);
-	std::cerr << endpoint.address() << endpoint.port() << std::endl;
+	std::cerr << endpoint.address() << ' ' << endpoint.port() << std::endl;
 }
 
 void ServerNetObject::work()
@@ -108,26 +113,30 @@ void ServerNetObject::read_client_socks(const size_t socks_index)
 {
 	while(!(socks[socks_index].stop))
 	{
+		
+		
 		std::string recv_buf;
 		
 		try_lock(priority_sock_mutex,sock_mutex); // lock socket mutex
 		priority_sock_mutex.unlock();
-		if(socks[socks_index].socket->available())
-		{
-			size_t message_length = 0;
-			message_length = boost::asio::read_until(*(socks[socks_index].socket), boost::asio::dynamic_buffer(recv_buf), "endobj"); // read from socket
+		if(socks[socks_index].socket->available()) {
+			try {
+				size_t message_length = 0;
+			message_length =
+				boost::asio::read_until(*(socks[socks_index].socket), boost::asio::dynamic_buffer(recv_buf), "endobj"); // read from socket
 			sock_mutex.unlock(); // unlock socket mutex
 			
-			std::unique_ptr<Serializable> serializable; // create pointer
+			std::shared_ptr<Serializable> serializable; // create pointer
 			
-			std::string type = recv_buf.substr(message_length-9,TYPE_LENGTH); // read first N bytes to check which class object was sent
-			recv_buf.erase(recv_buf.end()-9,recv_buf.end());
+			std::string type = recv_buf.substr(
+				message_length - 9, TYPE_LENGTH); // read first N bytes to check which class object was sent
+			recv_buf.erase(recv_buf.end() - 9, recv_buf.end());
 			
 			serializable = map[type]->create(); // create empty object
 			
 			// deserialize
 			std::stringstream stream;
-			recv_buf.resize(message_length-9);
+			recv_buf.resize(message_length - 9);
 			stream << recv_buf;
 			boost::archive::text_iarchive archive(stream);
 //			archive >> (*serializable);
@@ -136,6 +145,11 @@ void ServerNetObject::read_client_socks(const size_t socks_index)
 			priority_buf_mutex.unlock();
 			buf.push_back(std::move(serializable));// write to the buf
 			buf_mutex.unlock(); // unlock buf mutex
+			}
+			catch(std::exception e)
+			{
+				std::cerr << e.what() << "RECV_BUF IS " << recv_buf << std::endl;
+			}
 		}
 		else
 			sock_mutex.unlock(); // unlock socket mutex

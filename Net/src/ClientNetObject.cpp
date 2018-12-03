@@ -5,7 +5,7 @@
 #include <iostream>
 #include "../include/ClientNetObject.h"
 
-std::vector<std::unique_ptr<Serializable>> NetObject::buf;
+std::vector<std::shared_ptr<Serializable>> NetObject::buf;
 std::map<std::string, DefaultAbstractFactory*> NetObject::map;
 
 boost::asio::io_context ClientNetObject::context;
@@ -38,7 +38,7 @@ void ClientNetObject::send(Serializable *serializable)
 	sock_mutex.unlock();
 }
 
-std::vector<std::unique_ptr<Serializable>> ClientNetObject::receive()
+std::vector<std::shared_ptr<Serializable>> ClientNetObject::receive()
 {
 	priority_buf_mutex.lock(); // lock buf mutex
 	buf_mutex.lock();
@@ -86,12 +86,13 @@ void ClientNetObject::read_sock()
 		priority_sock_mutex.unlock();
 		if(sock->socket->available())
 		{
+			try {
 			size_t message_length = 0;
 			message_length = boost::asio::read_until(*(sock->socket), boost::asio::dynamic_buffer(recv_buf),"endobj"); // read from socket
 			sock_mutex.unlock(); // unlock socket mutex
 			
 			
-			std::unique_ptr<Serializable> serializable; // create pointer
+			std::shared_ptr<Serializable> serializable; // create pointer
 			
 			std::string type = recv_buf.substr(message_length-9,TYPE_LENGTH); // read first N bytes to check which class object was sent
 			recv_buf.erase(recv_buf.end()-9,recv_buf.end());
@@ -109,6 +110,11 @@ void ClientNetObject::read_sock()
 			priority_buf_mutex.unlock();
 			buf.push_back(std::move(serializable));// write to the buf
 			buf_mutex.unlock(); // unlock buf mutex
+			}
+			catch(std::exception e)
+			{
+				std::cerr << e.what() << "RECV_BUF IS " << recv_buf << std::endl;
+			}
 		}
 		else
 			sock_mutex.unlock();

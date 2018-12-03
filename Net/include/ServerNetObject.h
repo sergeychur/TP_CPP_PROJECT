@@ -21,7 +21,7 @@ public:
 	ServerNetObject(uint _port, std::string _ip, size_t player_number, std::map<std::string,DefaultAbstractFactory*> _map);
 	void send(Serializable *serializable) override;
 	void send_to(Serializable *serializable, int i) override;
-	std::vector<std::unique_ptr<Serializable>> receive() override;
+	std::vector<std::shared_ptr<Serializable>> receive() override;
 	void work() override;
 	~ServerNetObject();
 private:
