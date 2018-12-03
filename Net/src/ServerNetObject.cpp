@@ -82,7 +82,7 @@ void ServerNetObject::connect(size_t socks_index) //return smth to send to recv 
 	static tcp::acceptor acceptor(context,tcp::endpoint(tcp::v4(),port));
 	tcp::endpoint endpoint;
 	acceptor.accept(*(socks[socks_index].socket), endpoint);
-	BOOST_LOG_TRIVIAL(info) << endpoint.address().to_string() << ' ' << endpoint.port() << std::endl;
+	std::cerr << endpoint.address() << ' ' << endpoint.port() << std::endl;
 }
 
 void ServerNetObject::work()
@@ -137,7 +137,7 @@ void ServerNetObject::read_client_socks(const size_t socks_index)
 			}
 			catch(std::exception e)
 			{
-				BOOST_LOG_TRIVIAL(error) << e.what() << "RECV_BUF IS " << recv_buf << std::endl;
+				std::cerr << e.what() << "RECV_BUF IS " << recv_buf << std::endl;
 			}
 		}
 		else

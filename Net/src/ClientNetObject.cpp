@@ -67,7 +67,7 @@ void ClientNetObject::connect()
 	}
 	catch(std::exception& e)
 	{
-		BOOST_LOG_TRIVIAL(error) << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 		throw;
 	}
 }
@@ -111,7 +111,7 @@ void ClientNetObject::read_sock()
 			}
 			catch(std::exception& e)
 			{
-				BOOST_LOG_TRIVIAL(error) << e.what() << "RECV_BUF IS " << recv_buf << std::endl;
+				std::cerr << e.what() << "RECV_BUF IS " << recv_buf << std::endl;
 			}
 		}
 		else
