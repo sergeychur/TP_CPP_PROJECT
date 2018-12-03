@@ -7,6 +7,9 @@
 //
 
 #include "manager.hpp"
+#include "command_factory.hpp"
+#include "update_factory.hpp"
+#include "initialiser_factory.hpp"
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/xml_parser.hpp>
