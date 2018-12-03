@@ -35,7 +35,7 @@
 class DefaultAbstractFactory
 {
 public:
-	virtual std::shared_ptr<Serializable> create() = 0;
+	virtual Serializable* create() = 0;
 	virtual ~DefaultAbstractFactory() = default;
 };
 

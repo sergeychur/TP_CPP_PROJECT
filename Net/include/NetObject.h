@@ -17,11 +17,11 @@ class NetObject : boost::noncopyable
 {
 public:
 	virtual void send(Serializable*)=0;
-	virtual std::vector<std::shared_ptr<Serializable>> receive() = 0;
+	virtual std::vector<Serializable*> receive() = 0;
 	virtual void work() = 0;
 	virtual ~NetObject() = default;
 protected:
-	static std::vector<std::shared_ptr<Serializable>> buf;
+	static std::vector<Serializable*> buf;
 	static std::map<std::string, DefaultAbstractFactory*> map;
 };
 
