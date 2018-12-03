@@ -20,7 +20,7 @@ class Player : public cocos2d::Node
 public:
     Player(size_t id, Vec2 pos);
     
-    void addUnit(GameObject* unit);
+    void addUnit(int x, int y);
     
     std::map<unsigned int, GameObject *>& getUnits();
 

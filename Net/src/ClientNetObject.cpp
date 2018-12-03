@@ -5,7 +5,7 @@
 #include <iostream>
 #include "../include/ClientNetObject.h"
 
-std::vector<std::shared_ptr<Serializable>> NetObject::buf;
+std::vector<Serializable*> NetObject::buf;
 std::map<std::string, DefaultAbstractFactory*> NetObject::map;
 
 boost::asio::io_context ClientNetObject::context;
@@ -38,7 +38,7 @@ void ClientNetObject::send(Serializable *serializable)
 	sock_mutex.unlock();
 }
 
-std::vector<std::shared_ptr<Serializable>> ClientNetObject::receive()
+std::vector<Serializable*> ClientNetObject::receive()
 {
 	priority_buf_mutex.lock(); // lock buf mutex
 	buf_mutex.lock();
@@ -92,7 +92,7 @@ void ClientNetObject::read_sock()
 			sock_mutex.unlock(); // unlock socket mutex
 			
 			
-			std::shared_ptr<Serializable> serializable; // create pointer
+			Serializable* serializable; // create pointer
 			
 			std::string type = recv_buf.substr(message_length-9,TYPE_LENGTH); // read first N bytes to check which class object was sent
 			recv_buf.erase(recv_buf.end()-9,recv_buf.end());

@@ -55,13 +55,13 @@ bool GameScene::sendInitInfoToServer()
 bool GameScene::getInitInfoFromServer()
 {
     if (!gameStarted) {
-        std::vector<std::unique_ptr<Serializable>> rawInfo;
+        std::vector<Serializable*> rawInfo;
         rawInfo = net->receive();
         if (rawInfo.empty())
             return false;
         gameStarted = true;
         Initialiser info;
-        info = *dynamic_cast<Initialiser *>(rawInfo[0].get());
+        info = *dynamic_cast<Initialiser *>(rawInfo[0]);
         level = new Level();
         level->loadMap("TileMap.tmx");
         addChild(level->map);
@@ -84,6 +84,7 @@ bool GameScene::getInitInfoFromServer()
         auto obstacles = Globals::get_instance()->map->getLayer("Walls");
         if (obstacles)
             obstacles->setVisible(false);
+        delete(info);
         return true;
     }
     return false;
@@ -127,51 +128,51 @@ void GameScene::moveCamera(float delta)
 
 void GameScene::dispatch()
 {
-    std::vector<std::unique_ptr<Serializable>> rawInfo;
+    std::vector<Serializable*> rawInfo;
     rawInfo = net->receive();
     if (rawInfo.empty())
         return;
     CCLOG("Got Info");
     for (int i = 0; i < rawInfo.size(); ++i)
     {
-        Update info = *dynamic_cast<Update *>(rawInfo[i].get());
-        for (auto j : info.updates) {
-            if (j.player_id == player->id)
+        Update info = *dynamic_cast<Update *>(rawInfo[i]);
+        for (auto update : info.updates) {
+            if (update.player_id == player->id)
             {
                 CCLOG("Players unit");
-                //if ( player->getUnits().find(j.unit_id) != player->getUnits().end())
                 if (player->getUnits().empty())
+                //if ( player->getUnits().find(update.unit_id) == player->getUnits().end())
                 {
                     CCLOG("unit created");
-                    player->getUnits()[j.unit_id] = new MyUnit(Vec2(j.new_x, j.new_y), j.unit_id, WarriorPlist ,WarriorFormat);
-                    Globals::get_instance()->map->addChild(player->getUnits()[j.unit_id]);
-
+                    player->getUnits()[update.unit_id] = new MyUnit(Vec2(update.new_x, update.new_y), update.unit_id, WarriorPlist ,WarriorFormat);
+                    Globals::get_instance()->map->addChild(player->getUnits()[update.unit_id]);
                 }
                 else
                 {
                     CCLOG("Players unit updated");
-                    player->getUnits()[j.unit_id]->position.x = j.new_x; //проверить элем
-                    player->getUnits()[j.unit_id]->position.y = j.new_y;
+                    player->getUnits()[update.unit_id]->position.x = update.new_x; //проверить элем
+                    player->getUnits()[update.unit_id]->position.y = update.new_y;
                 }
             } else
             {
                 CCLOG("Enemy unit");
-                auto enemy = Globals::get_instance()->enemies[j.player_id];
+                auto enemy = Globals::get_instance()->enemies[update.player_id];
                 if (enemy->units.empty())
+                //if (enemy->units.find(update.unit_id) == enemy->units.end())
                 {
                     CCLOG("unit enemy created");
-                    enemy->units[j.unit_id] = new EnemyUnit(Vec2(j.new_x, j.new_y), j.unit_id, WarriorPlist ,WarriorFormat);
-                    Globals::get_instance()->map->addChild(enemy->units[j.unit_id]);
-
+                    enemy->units[update.unit_id] = new EnemyUnit(Vec2(update.new_x, update.new_y), update.unit_id, WarriorPlist ,WarriorFormat);
+                    Globals::get_instance()->map->addChild(enemy->units[update.unit_id]);
                 }
                 else
                 {
                     CCLOG("unit enemy updated");
-                    enemy->units[j.unit_id]->position.x = j.new_x; //проверить элем
-                    enemy->units[j.unit_id]->position.y = j.new_y;
+                    enemy->units[update.unit_id]->position.x = update.new_x; //проверить элем
+                    enemy->units[update.unit_id]->position.y = update.new_y;
                 }
             }
         }
+        delete(info);
     }
 
 }
