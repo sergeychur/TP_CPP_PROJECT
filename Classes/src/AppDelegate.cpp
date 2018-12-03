@@ -66,18 +66,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto glview = director->getOpenGLView();
     if(!glview) {
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_MAC) || (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-        glview = GLViewImpl::createWithRect("MyGame", cocos2d::Rect(0, 0, 1400, 800));
+        glview = GLViewImpl::createWithRect("MyGame", cocos2d::Rect(0, 0, 650, 850));
 #else
         glview = GLViewImpl::create("MyGame");
 #endif
         director->setOpenGLView(glview);
     }
-//    auto director = Director::getInstance();
-//    auto glview = director->getOpenGLView();
-//    if(!glview) {
-//        glview = GLViewImpl::create("My Game");
-//        director->setOpenGLView(glview);
-//    }
     // set FPS. the default value is 1.0/60 if you don't call this
     
     director->setAnimationInterval(1.0f / 60);

@@ -59,12 +59,12 @@ bool GameScene::getInitInfoFromServer()
         rawInfo = net->receive();
         if (rawInfo.empty())
             return false;
-        gameStarted = true;
-        Initialiser info;
-        info = *dynamic_cast<Initialiser *>(rawInfo[0]);
         level = new Level();
         level->loadMap("TileMap.tmx");
         addChild(level->map);
+        gameStarted = true;
+        Initialiser info;
+        info = *dynamic_cast<Initialiser *>(rawInfo[0]);
         player = new Player(info.player_id, Vec2(info.bases[info.player_id].first, info.bases[info.player_id].second));
         std::vector<int> a = {0 , 0 , 75 , 100};
         Command com(info.player_id, 0,"check", a);
@@ -84,8 +84,8 @@ bool GameScene::getInitInfoFromServer()
         auto obstacles = Globals::get_instance()->map->getLayer("Walls");
         if (obstacles)
             obstacles->setVisible(false);
-        delete(info);
         return true;
+        delete rawInfo[0];
     }
     return false;
 }
@@ -147,12 +147,12 @@ void GameScene::dispatch()
                     player->getUnits()[update.unit_id] = new MyUnit(Vec2(update.new_x, update.new_y), update.unit_id, WarriorPlist ,WarriorFormat);
                     Globals::get_instance()->map->addChild(player->getUnits()[update.unit_id]);
                 }
-                else
-                {
-                    CCLOG("Players unit updated");
-                    player->getUnits()[update.unit_id]->position.x = update.new_x; //проверить элем
-                    player->getUnits()[update.unit_id]->position.y = update.new_y;
-                }
+//                else
+//                {
+//                    CCLOG("Players unit updated");
+//                    player->getUnits()[update.unit_id]->position.x = update.new_x; //проверить элем
+//                    player->getUnits()[update.unit_id]->position.y = update.new_y;
+//                }
             } else
             {
                 CCLOG("Enemy unit");
@@ -169,10 +169,13 @@ void GameScene::dispatch()
                     CCLOG("unit enemy updated");
                     enemy->units[update.unit_id]->position.x = update.new_x; //проверить элем
                     enemy->units[update.unit_id]->position.y = update.new_y;
+                    enemy->units[update.unit_id]->state = (GameObject::State)update.state;
+                    CCLOG("%d", update.state);
+                    enemy->units[update.unit_id]->sprite->setRotation(update.new_angle);
                 }
             }
         }
-        delete(info);
+        delete rawInfo[i];
     }
 
 }

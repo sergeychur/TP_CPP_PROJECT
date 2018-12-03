@@ -120,12 +120,19 @@ void MyUnit::updateSprite(float time)
 
 void MyUnit::startMoving()
 {
+    std::vector<int> a = {(int)target.x , (int)target.y};
+    Command com(Globals::get_instance()->player->id, id, "move", a);
+    Globals::get_instance()->net->send(&com);
     mainLayer->getTileAt(onMap)->setColor(Color3B::WHITE);
     state = Move;
+
 }
 
 void MyUnit::stopMoving()
 {
+    std::vector<int> a = {};
+    Command com(Globals::get_instance()->player->id, id, "pop_command", a);
+    Globals::get_instance()->net->send(&com);
     mainLayer->getTileAt(onMap)->setColor(Color3B::GREEN);
     state = None;
 }

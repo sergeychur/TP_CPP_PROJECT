@@ -21,7 +21,7 @@ public:
     Player(size_t id, Vec2 pos);
     
     void addUnit(int x, int y);
-    
+
     std::map<unsigned int, GameObject *>& getUnits();
 
     size_t id;

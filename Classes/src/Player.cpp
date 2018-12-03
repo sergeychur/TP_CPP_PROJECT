@@ -16,7 +16,6 @@ Player::Player(size_t id, Vec2 pos) : spawnPoint(pos), id(id)
     auto mapPos = Globals::get_instance()->positionToTileCoordinate(spawnPoint);
     mainLayer->getTileAt(mapPos)->setColor(Color3B::RED);
     addUnit(spawnPoint.x - 100, spawnPoint.y);
-    //addUnit(nullptr);
 }
 
 void Player::addUnit(int x, int y)
