@@ -9,8 +9,6 @@ std::vector<Serializable*> NetObject::buf;
 std::map<std::string, DefaultAbstractFactory*> NetObject::map;
 
 boost::asio::io_context ClientNetObject::context;
-std::mutex ClientNetObject::priority_sock_mutex;
-std::mutex ClientNetObject::priority_buf_mutex;
 std::mutex ClientNetObject::sock_mutex;
 std::mutex ClientNetObject::buf_mutex;
 
@@ -31,20 +29,16 @@ void ClientNetObject::send(Serializable *serializable)
 	send_buf.append(temp_buf); // write buf
 	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
 	send_buf.append("endobj");
-	priority_sock_mutex.lock(); // lock socket mutex
 	sock_mutex.lock();
 	boost::asio::write(*(sock->socket),boost::asio::buffer(send_buf)); // send
-	priority_sock_mutex.unlock(); // unlock socket mutex
 	sock_mutex.unlock();
 }
 
 std::vector<Serializable*> ClientNetObject::receive()
 {
-	priority_buf_mutex.lock(); // lock buf mutex
 	buf_mutex.lock();
 	auto temp = std::move(buf);
 	buf.clear();
-	priority_buf_mutex.unlock(); // unlock buf mutex
 	buf_mutex.unlock();
 	return temp;
 }
@@ -66,11 +60,17 @@ void ClientNetObject::work()
 
 void ClientNetObject::connect()
 {
-	tcp::resolver resolver(context);
-	boost::asio::connect(*(sock->socket), resolver.resolve(ip, std::to_string(port)));
+	try {
+		tcp::resolver resolver(context);
+		boost::asio::connect(*(sock->socket), resolver.resolve(ip, std::to_string(port)));
 //	boost::asio::connect(sock, tcp::endpoint(boost::asio::ip::address::from_string(ip),port));
+	}
+	catch(std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+		throw;
+	}
 }
-
 ClientNetObject::~ClientNetObject()
 {
 	delete sock;
@@ -82,8 +82,7 @@ void ClientNetObject::read_sock()
 	{
 		std::string recv_buf;
 		
-		try_lock(sock_mutex, priority_sock_mutex); // lock socket mutex
-		priority_sock_mutex.unlock();
+		sock_mutex.lock(); // lock socket mutex
 		if(sock->socket->available())
 		{
 			try {
@@ -106,12 +105,11 @@ void ClientNetObject::read_sock()
 			boost::archive::text_iarchive archive(stream);
 //			archive >> (*serializable);
 			serializable->deserialize(archive);
-			try_lock(priority_buf_mutex,buf_mutex);// lock buf mutex
-			priority_buf_mutex.unlock();
-			buf.push_back(std::move(serializable));// write to the buf
+			buf_mutex.lock();// lock buf mutex
+			buf.push_back(serializable);// write to the buf
 			buf_mutex.unlock(); // unlock buf mutex
 			}
-			catch(std::exception e)
+			catch(std::exception& e)
 			{
 				std::cerr << e.what() << "RECV_BUF IS " << recv_buf << std::endl;
 			}
