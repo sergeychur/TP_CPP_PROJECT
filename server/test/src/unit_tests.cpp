@@ -33,15 +33,5 @@ TEST(Unit, moving) {
     unit.act(order);
 }
 
-TEST(Unit, kicking) {
-    auto med = std::make_shared<MockMediator>();
-    Unit unit(0, 0, 100, 0, 0, 20, 5, 30, 0, med);
-    auto test_news_taker = std::make_shared<MockNewsTaker>();
-    unit.add(test_news_taker);
-    std::vector<int> kick_vector = {1, 1};
-    unit.kick(kick_vector);
-    std::vector<int> get_kicked_vector = {20, 5, 0, 0};
-    std::string action_string("get_kicked");
-    EXPECT_CALL(*med, make_interaction(1, 1, action_string, get_kicked_vector));
-}
+
 

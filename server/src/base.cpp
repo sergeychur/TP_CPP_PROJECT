@@ -76,6 +76,7 @@ bool Base::interact(const std::string& command, std::vector<int>& params) {
 
 void Base::notify() {
     UpdateLine line(player_id, unit_id, HP, unit_x, unit_y, 0, NONE, is_alive());
+
     updater->handle_event(line);
 }
 

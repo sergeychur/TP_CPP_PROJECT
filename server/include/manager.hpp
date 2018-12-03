@@ -46,11 +46,13 @@ class Manager {
         }
         void read_bases_from_file(std::vector<std::pair<int, int>>&, const size_t);
         std::map<std::string, DefaultAbstractFactory*> get_instance_map();
-    private:
         void parse_file_for_bases(const boost::filesystem::path& file,
-                std::vector<std::pair<int, int>>& base_vector,
-                const size_t player_num);
+                              std::vector<std::pair<int, int>>& base_vector,
+                              const size_t player_num);
         boost::filesystem::path get_file_path(const size_t player_num);
+    private:
+
+
 
         std::map<std::string, DefaultAbstractFactory*> map;
 };

@@ -17,7 +17,7 @@ public:
     MOCK_METHOD1(act, bool(Command&));
     MOCK_METHOD0(remove, void());
     MOCK_METHOD0(notify, void());
-    MOCK_METHOD2(interact, void(const std::string&, std::vector<int>&));
+    MOCK_METHOD2(interact, bool(const std::string&, std::vector<int>&));
     MOCK_METHOD1(add, void(std::shared_ptr<NewsTaker>));
 };
 

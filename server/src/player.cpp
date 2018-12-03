@@ -83,6 +83,7 @@ void Player::add_base(std::shared_ptr<AbstractBase> _base) {
         throw std::invalid_argument("No base given");
     }
     base = _base;
+    unit_arr.push_back(base);
     base->notify();
     ++unit_num;
 }

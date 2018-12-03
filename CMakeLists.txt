@@ -40,7 +40,7 @@ add_subdirectory(Net)
 # defining the vars for lists of src
 set(SRC_LIST server/src/game.cpp server/src/map.cpp server/src/player.cpp server/src/update_maker.cpp server/src/base.cpp server/src/unit.cpp server/src/real_unit.cpp
         shared_files/src/command.cpp shared_files/src/update.cpp shared_files/src/initialiser.cpp)
-set(TEST_SRC server/test/src/map_tests.cpp server/test/src/base_tests.cpp server/test/src/unit_tests.cpp)
+set(TEST_SRC server/test/src/map_tests.cpp server/test/src/base_tests.cpp server/test/src/unit_tests.cpp server/test/src/player_tests.cpp server/test/src/manager_tests.cpp)
 
 # lib for game
 add_library(game_lib STATIC ${SRC_LIST})

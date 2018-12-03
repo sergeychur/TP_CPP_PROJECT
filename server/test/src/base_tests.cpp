@@ -47,6 +47,8 @@ TEST(Base, building_new_unit2) {
 TEST(Base, get_kicked1) {
     auto mediator = std::make_shared<MockMediator>();
     Base base(mediator, 100, 0, 0, 0);
+    auto upd_taker = std::make_shared<MockNewsTaker>();
+    base.add(upd_taker);
     std::vector<int> params = {100, 5, 1, 1};
     const std::string line_to_pass = "get_kicked";
     base.interact(line_to_pass, params);
@@ -57,6 +59,8 @@ TEST(Base, get_kicked1) {
 TEST(Base, get_kicked2) {
     auto mediator = std::make_shared<MockMediator>();
     Base base(mediator, 100, 0, 0, 0);
+    auto upd_taker = std::make_shared<MockNewsTaker>();
+    base.add(upd_taker);
     std::vector<int> params = {10, 5, 10, 9};
     const std::string line_to_pass = "get_kicked";
     base.interact(line_to_pass, params);
