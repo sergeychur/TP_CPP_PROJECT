@@ -40,7 +40,7 @@ private:
     void moveCamera(float delta);
     void update(float time) override;
     void dispatch();
-    ClientNetObject net;
+    ClientNetObject *net;
 };
 
 #endif /* GameScene_hpp */

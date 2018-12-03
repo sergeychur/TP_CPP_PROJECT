@@ -10,7 +10,7 @@
 #include "GameObject.hpp"
 #include "Player.hpp"
 #include "EnemyPlayer.hpp"
-
+#include "ClientNetObject.h"
 const EventKeyboard::KeyCode ENTER = EventKeyboard::KeyCode::KEY_KP_ENTER;
 const EventKeyboard::KeyCode UP_ARROW = EventKeyboard::KeyCode::KEY_UP_ARROW;
 const EventKeyboard::KeyCode DOWN_ARROW = EventKeyboard::KeyCode::KEY_DOWN_ARROW;
@@ -33,6 +33,7 @@ public:
     Point mapOffset;
     unsigned int mapMoveSpeed;
     Player* player;
+    ClientNetObject *net;
     std::map<unsigned int, EnemyPlayer*> enemies;
     static Globals * get_instance()
     {

@@ -57,3 +57,8 @@ const Vec2& GameObject::getPos()
 {
     return position;
 }
+
+void GameObject::setPos(Point newPos)
+{
+    position = newPos;
+}

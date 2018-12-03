@@ -21,23 +21,24 @@ public:
             int count = 23);
     Vector<SpriteFrame*> getAnimation(std::string format, int count);
     const Vec2& getPos();
+    void setPos(Point);
     Sprite* sprite;
     Vec2 onMap;
     enum State { Move, Fight, Death, None};
     unsigned int id;
     GameObject* AttackedBy;
     GameObject* attackedObj;
-    unsigned int hp;
-    unsigned int dmg;
+    int hp;
+    int dmg;
     State state;
+    Vec2 position;
 protected:
     Animate* runAnim;
     Animate* fightAnim;
     Animate* deathAnim;
-    Vec2 position;
     Vec2 newPos;
     int initRotation;
-    unsigned int speed;
+    int speed;
     Vec2 velocity;
     Vec2 target;
     float distanceToTarget;

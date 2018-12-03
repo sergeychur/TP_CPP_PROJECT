@@ -22,11 +22,10 @@ public:
     
     void addUnit(GameObject* unit);
     
-    const std::map<unsigned int, GameObject *> getUnits();
-    
-    
-protected:
+    std::map<unsigned int, GameObject *>& getUnits();
+
     unsigned int id;
+protected:
     bool isAlive;
     Vec2 spawnPoint;
     std::map<unsigned int, GameObject*> units;

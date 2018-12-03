@@ -19,8 +19,6 @@ MyUnit::MyUnit(Vec2 pos, unsigned int id, std::string plist, std::string format)
     mainLayer = Globals::get_instance()->map->getLayer("Background");
     obstacles = Globals::get_instance()->map->getLayer("Walls");
     mainLayer->getTileAt(onMap)->setColor(Color3B::GREEN);
-    if (obstacles)
-        obstacles->setVisible(false);
     scheduleUpdate();
 }
 

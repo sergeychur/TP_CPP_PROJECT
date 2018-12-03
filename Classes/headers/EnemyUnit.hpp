@@ -12,7 +12,7 @@
 class EnemyUnit : public GameObject
 {
 public:
-    EnemyUnit(Vec2 pos);
+    EnemyUnit(Vec2 pos, unsigned int id, std::string plist, std::string format);
 private:
     void update(float time);
     void onMouseDown(Event *event);
