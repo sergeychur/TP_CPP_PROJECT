@@ -19,6 +19,4 @@ EnemyPlayer::EnemyPlayer(unsigned int id, Vec2 spawnPoint):
 
 void EnemyPlayer::addUnit(GameObject *unit)
 {
-    units[unit->id] = unit;
-    addChild(unit);
 }

@@ -15,9 +15,9 @@ class EnemyPlayer : public Node
 {
 public:
     EnemyPlayer(unsigned int id, Vec2 spawnPoint);
-    std::map<unsigned int, GameObject*> units;
+    std::map<unsigned int, std::unique_ptr<GameObject>> units;
     void addUnit(GameObject *unit);
-    unsigned int id;
+    size_t id;
     Point spawnPoint;
 
 };

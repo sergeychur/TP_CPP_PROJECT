@@ -114,7 +114,7 @@ void MyUnit::updateSprite(float time)
     }
     else
     {
-        sprite->setSpriteFrame(Sprite::createWithSpriteFrameName("s_w_torso_move_0004.tga")->getSpriteFrame());
+        sprite->setSpriteFrame(Sprite::createWithSpriteFrameName(DefaultSprite)->getSpriteFrame());
     }
 }
 
@@ -149,7 +149,7 @@ bool MyUnit::checkCollisionWithMap(Vec2 checkPos)
 
 bool MyUnit::checkCollisionWithObject(Vec2 checkPos)
 {
-    for (auto object : Globals::get_instance()->player->getUnits()) {
+    for (auto& object : Globals::get_instance()->player->getUnits()) {
         Point checkOnmap = Globals::get_instance()->positionToTileCoordinate(checkPos);
         Point objOnmap = Globals::get_instance()->positionToTileCoordinate(object.second->getPos());
         if (id != object.second->id && checkOnmap == objOnmap) {
@@ -158,15 +158,14 @@ bool MyUnit::checkCollisionWithObject(Vec2 checkPos)
         }
     }
 
-    for (auto enemy : Globals::get_instance()->enemies)
+    for (auto& enemy : Globals::get_instance()->enemies)
     {
-        for (auto object : enemy.second->units)
+        for (auto& object : enemy.second->units)
         {
             Point checkOnmap = Globals::get_instance()->positionToTileCoordinate(checkPos);
             Point objOnmap = Globals::get_instance()->positionToTileCoordinate(object.second->getPos());
             if (id != object.second->id && checkOnmap == objOnmap) {
                 stopMoving();
-                attackedObj = object.second;
                 state = Fight;
                 return true;
             }
@@ -177,30 +176,7 @@ bool MyUnit::checkCollisionWithObject(Vec2 checkPos)
 
 void MyUnit::updateAttack(float time)
 {
-    //CCLOG("%d %d", hp, id);
-    if (state == Move)
-    {
-        attackedObj = nullptr;
-    }
-    if (attackedObj && attackedObj->state == Move)
-    {
-        attackedObj = nullptr;
-        state = None;
-    }
-    if (attackedObj != nullptr)
-    {
-        attackedObj->hp -= dmg * time;
-    }
-    if (attackedObj && attackedObj->hp <= 0)
-    {
-        attackedObj = nullptr;
-        state = None;
-    }
-    if (hp <= 0)
-    {
-        mainLayer->getTileAt(onMap)->setColor(Color3B::WHITE);
-        Globals::get_instance()->player->removeChild(this);
-    }
+
 }
 
 bool MyUnit::sendUnitInfoUDP()

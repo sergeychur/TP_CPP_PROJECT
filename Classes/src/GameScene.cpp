@@ -65,27 +65,25 @@ bool GameScene::getInitInfoFromServer()
         gameStarted = true;
         Initialiser info;
         info = *dynamic_cast<Initialiser *>(rawInfo[0]);
-        player = new Player(info.player_id, Vec2(info.bases[info.player_id].first, info.bases[info.player_id].second));
+        Globals::get_instance()->player =
+                std::make_unique<Player>(info.player_id, Vec2(info.bases[info.player_id].first, info.bases[info.player_id].second));
         std::vector<int> a = {0 , 0 , 75 , 100};
         Command com(info.player_id, 0,"check", a);
         net->send(&com);
-        CCLOG("player %d", info.player_id);
         for (int i = 0; i < info.player_num; ++i) {
             if (i != info.player_id)
             {
-                auto enemy = new EnemyPlayer(i, Vec2(info.bases[i].first, info.bases[i].second));
-                Globals::get_instance()->enemies[i] = enemy;
-                level->map->addChild(enemy);
+                Globals::get_instance()->enemies[i] = std::make_unique<EnemyPlayer>(i, Vec2(info.bases[i].first, info.bases[i].second));
+                level->map->addChild(Globals::get_instance()->enemies[i].get());
                 CCLOG("player %d", i);
             }
         }
-        level->map->addChild(player);
-        Globals::get_instance()->player = player;
+        level->map->addChild(Globals::get_instance()->player.get());
         auto obstacles = Globals::get_instance()->map->getLayer("Walls");
         if (obstacles)
             obstacles->setVisible(false);
-        return true;
         delete rawInfo[0];
+        return true;
     }
     return false;
 }
@@ -137,32 +135,27 @@ void GameScene::dispatch()
     {
         Update info = *dynamic_cast<Update *>(rawInfo[i]);
         for (auto update : info.updates) {
-            if (update.player_id == player->id)
+            if (update.player_id == Globals::get_instance()->player->id)
             {
                 CCLOG("Players unit");
-                if (player->getUnits().empty())
+                if (Globals::get_instance()->player->getUnits().empty())
                 //if ( player->getUnits().find(update.unit_id) == player->getUnits().end())
                 {
                     CCLOG("unit created");
-                    player->getUnits()[update.unit_id] = new MyUnit(Vec2(update.new_x, update.new_y), update.unit_id, WarriorPlist ,WarriorFormat);
-                    Globals::get_instance()->map->addChild(player->getUnits()[update.unit_id]);
+                    Globals::get_instance()->player->getUnits()[update.unit_id] =
+                            std::make_unique<MyUnit>(Vec2(update.new_x, update.new_y), update.unit_id, WarriorPlist ,WarriorFormat);
+                    Globals::get_instance()->map->addChild(Globals::get_instance()->player->getUnits()[update.unit_id].get());
                 }
-//                else
-//                {
-//                    CCLOG("Players unit updated");
-//                    player->getUnits()[update.unit_id]->position.x = update.new_x; //проверить элем
-//                    player->getUnits()[update.unit_id]->position.y = update.new_y;
-//                }
             } else
             {
                 CCLOG("Enemy unit");
-                auto enemy = Globals::get_instance()->enemies[update.player_id];
+                auto enemy = Globals::get_instance()->enemies[update.player_id].get();
                 if (enemy->units.empty())
                 //if (enemy->units.find(update.unit_id) == enemy->units.end())
                 {
                     CCLOG("unit enemy created");
-                    enemy->units[update.unit_id] = new EnemyUnit(Vec2(update.new_x, update.new_y), update.unit_id, WarriorPlist ,WarriorFormat);
-                    Globals::get_instance()->map->addChild(enemy->units[update.unit_id]);
+                    enemy->units[update.unit_id] = std::make_unique<EnemyUnit>(Vec2(update.new_x, update.new_y), update.unit_id, WarriorPlist ,WarriorFormat);
+                    Globals::get_instance()->map->addChild(enemy->units[update.unit_id].get());
                 }
                 else
                 {
@@ -207,6 +200,6 @@ void GameScene::initNet()
             {std::string(typeid(Command).name()).substr(0,3), new CommandFactory()},
             {std::string(typeid(Initialiser).name()).substr(0,3), new InitialiserFactory()}
     };
-    net = new ClientNetObject(50000, "10.42.0.1", map);
+    net = new ClientNetObject(50000, "192.168.43.44", map);
     Globals::get_instance()->net = net;
 }

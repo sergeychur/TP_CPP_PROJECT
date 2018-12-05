@@ -28,8 +28,6 @@ public:
     Scene scene;
 private:
     Level* level;
-    Player* player;
-    Point spawnPos;
     std::vector<EventKeyboard::KeyCode> heldKeys;
     bool gameStarted;
     void onKeyPressed(EventKeyboard::KeyCode keyCode, Event* event) override ;

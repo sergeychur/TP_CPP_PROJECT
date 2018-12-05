@@ -19,18 +19,14 @@ class Player : public cocos2d::Node
 {
 public:
     Player(size_t id, Vec2 pos);
-    
     void addUnit(int x, int y);
-
-    std::map<unsigned int, GameObject *>& getUnits();
-
+    std::map<unsigned int, std::unique_ptr<GameObject>>& getUnits();
     size_t id;
 protected:
     bool isAlive;
     Vec2 spawnPoint;
-    std::map<unsigned int, GameObject*> units;
+    std::map<unsigned int, std::unique_ptr<GameObject>> units;
     void update(float time);
-    bool sendNewUnitTCP();
 };
 
 #endif /* Player_hpp */

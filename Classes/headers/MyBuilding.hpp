@@ -13,7 +13,7 @@
 class MyBuilding : public GameObject
 {
 public:
-    explicit MyBuilding(Vec2 pos,std::string img, unsigned int id = 3);
+    explicit MyBuilding(Vec2 pos,std::string img, unsigned int id);
 };
 
 #endif /* MyBuilding_hpp */

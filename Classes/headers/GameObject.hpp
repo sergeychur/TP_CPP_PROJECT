@@ -20,14 +20,12 @@ public:
             std::string format,
             int count = 23);
     Vector<SpriteFrame*> getAnimation(std::string format, int count);
+    enum State { Move, Fight, Death, None};
     const Vec2& getPos();
     void setPos(Point);
     Sprite* sprite;
     Vec2 onMap;
-    enum State { Move, Fight, Death, None};
     unsigned int id;
-    GameObject* AttackedBy;
-    GameObject* attackedObj;
     int hp;
     int dmg;
     State state;

@@ -11,6 +11,7 @@
 #include "Player.hpp"
 #include "EnemyPlayer.hpp"
 #include "ClientNetObject.h"
+#include <memory>
 
 const EventKeyboard::KeyCode ENTER = EventKeyboard::KeyCode::KEY_KP_ENTER;
 const EventKeyboard::KeyCode UP_ARROW = EventKeyboard::KeyCode::KEY_UP_ARROW;
@@ -21,6 +22,7 @@ const EventKeyboard::KeyCode RIGHT_ARROW = EventKeyboard::KeyCode::KEY_RIGHT_ARR
 
 #define WarriorPlist "warriorAnim.plist"
 #define WarriorFormat "s_w_torso_move_%04d.tga"
+#define DefaultSprite "s_w_torso_move_0004.tga"
 
 
 class Globals
@@ -28,14 +30,13 @@ class Globals
 public:
     Globals();
     static Globals * instance;
-    std::vector<GameObject*> objects;
     TMXTiledMap* map;
     Point positionToTileCoordinate(Point point);
     Point mapOffset;
     unsigned int mapMoveSpeed;
-    Player* player;
+    std::unique_ptr<Player> player;
     ClientNetObject *net;
-    std::map<unsigned int, EnemyPlayer*> enemies;
+    std::map<unsigned int, std::unique_ptr<EnemyPlayer>> enemies;
     static Globals * get_instance()
     {
         if (!instance)

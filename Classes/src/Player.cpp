@@ -25,7 +25,7 @@ void Player::addUnit(int x, int y)
     Globals::get_instance()->net->send(&com);
 }
 
-std::map<unsigned int, GameObject *>& Player::getUnits()
+std::map<unsigned int, std::unique_ptr<GameObject>>& Player::getUnits()
 {
     return units;
 }

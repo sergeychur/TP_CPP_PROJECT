@@ -6,7 +6,7 @@
 //
 
 #include "EnemyUnit.hpp"
-
+#include "Globals.h"
 
 EnemyUnit::EnemyUnit(Vec2 pos, unsigned int id, std::string plist, std::string format) : GameObject(pos, plist, format, 23)
 {
@@ -39,7 +39,7 @@ void EnemyUnit::update(float time)
     }
     else
     {
-        sprite->setSpriteFrame(Sprite::createWithSpriteFrameName("s_w_torso_move_0004.tga")->getSpriteFrame());
+        sprite->setSpriteFrame(Sprite::createWithSpriteFrameName(DefaultSprite)->getSpriteFrame());
     }
     sprite->setPosition(position);
 }

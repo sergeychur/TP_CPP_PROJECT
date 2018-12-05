@@ -12,8 +12,6 @@ GameObject::GameObject(Vec2 pos, std::string plist, std::string format, int coun
     speed(75),
     isSelect(false),
     state(None),
-    AttackedBy(nullptr),
-    attackedObj(nullptr),
     minDistance(2),
     initRotation(-90),
     newPos(pos),
