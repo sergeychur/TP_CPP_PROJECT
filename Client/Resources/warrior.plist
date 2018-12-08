@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>frames</key>
+	<dict>
+		<key>s_w_torso_move_0000.tga</key>
+		<dict>
+			<key>aliases</key>
+			<array/>
+			<key>spriteOffset</key>
+			<string>{1,-6}</string>
+			<key>spriteSize</key>
+			<string>{52,72}</string>
+			<key>spriteSourceSize</key>
+			<string>{52,72}</string>
+			<key>textureRect</key>
+			<string>{{1,1},{45,65}}</string>
+			<key>textureRotated</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>metadata</key>
+	<dict>
+		<key>format</key>
+		<integer>3</integer>
+		<key>pixelFormat</key>
+		<string>RGBA8888</string>
+		<key>premultiplyAlpha</key>
+		<false/>
+		<key>realTextureFileName</key>
+		<string>warrior.png</string>
+		<key>size</key>
+		<string>{54,74}</string>
+		<key>smartupdate</key>
+		<string>$TexturePacker:SmartUpdate:5d70011d65c006450020920b5d325dc5:8649a9b0e8dd82c70e531309d26d083e:188ae85edb3cd8dbb6d82bb15bf7b8ab$</string>
+		<key>textureFileName</key>
+		<string>warrior.png</string>
+	</dict>
+</dict>
+</plist>
