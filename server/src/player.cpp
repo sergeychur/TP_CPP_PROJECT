@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "player.hpp"
+#include "handler.hpp"
 
 Player::~Player() {
     base.reset();
@@ -23,7 +24,6 @@ size_t Player::act(Command& command) {
         } catch(std::invalid_argument& e) {
             throw e;
         }
-
     }
     if(unit_arr.size() < command.unit_id) {
         throw std::invalid_argument("Wrong index");
@@ -67,11 +67,21 @@ int Player::add_base(std::shared_ptr<NewsTaker> updater,
     if(!updater) {
         throw std::invalid_argument("No updater given");
     }
-    base = std::make_shared<Base>(map, BASE_HP, base_x, base_y, id);
+    auto temp_base = std::make_shared<Base>(map, BASE_HP, base_x, base_y, id);
+    base = temp_base;
     base->add(updater);
     if(!base) {
         return ERR_ALLOC;
     }
+
+    std::function<bool(Command&)> get_kicked_func = std::bind(&Base::get_kicked, temp_base.get(), std::placeholders::_1);
+    std::shared_ptr<AbstractHandler> kick_handler = std::make_shared<Handler<Base>>(temp_base, "get_kicked", get_kicked_func);
+    base->add_act_handler(kick_handler);
+
+    std::function<bool(Command&)> create_func = std::bind(&Base::start_making, temp_base.get(), std::placeholders::_1);
+    std::shared_ptr<AbstractHandler> create_handler = std::make_shared<Handler<Base>>(temp_base, "create_unit", create_func);
+    base->add_act_handler(create_handler);
+
     unit_arr.push_back(base);
     ++unit_num;
     return 0;

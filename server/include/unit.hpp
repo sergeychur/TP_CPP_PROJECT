@@ -18,6 +18,7 @@
 #include "abstract_unit.hpp"
 #include "real_unit.hpp"
 #include "command.hpp"
+#include "abstract_handler.hpp"
 
 enum {
     ALLOWED_LINEAR_DELTA = 5,
@@ -36,14 +37,17 @@ class Unit : public AbstractUnit, public RealUnit {
         bool act(Command& order) override;
         size_t hash_self() const;
 
-        bool move(std::vector<int>&);
+        bool move(/*std::vector<int>&*/Command&);
         bool move_for_time(std::vector<int>&, const double);
-        bool kick(std::vector<int>&);
+        bool kick(Command&/*std::vector<int>&*/);
+        void add_act_handler(std::shared_ptr<AbstractHandler>&) override;
+        void add_distrib_handler(std::shared_ptr<AbstractHandler>&) override;
+        bool correct_state(Command&);
+        bool pop_command(Command&);
 
     private:
         void add_command(Command&);
-        void correct_state(std::vector<int>&);
-        bool interact(const std::string&, std::vector<int>&) override;
+        bool interact(/*const std::string&, std::vector<int>&*/Command&) override;
         void perform_existing_commands();
         bool is_alive() const;
         double ruling_cos(const int source_x, const int source_y, const int dest_x, const int dest_y);
@@ -52,6 +56,8 @@ class Unit : public AbstractUnit, public RealUnit {
 
         std::queue<Command> commands;
         std::shared_ptr<NewsTaker> updater;
+        std::vector<std::shared_ptr<AbstractHandler>> act_handlers;
+        std::vector<std::shared_ptr<AbstractHandler>> distrib_handlers;
 
         int damage;
         int radius;

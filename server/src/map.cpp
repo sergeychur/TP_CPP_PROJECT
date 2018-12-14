@@ -15,19 +15,18 @@ Map::~Map() {
     unit_matrix.clear();
 }
 
-bool Map::make_interaction(const size_t player_id, const size_t unit_id,
-        const std::string& command_name, std::vector<int>& param_vector) {
-    if(player_id >= unit_matrix.size()) {
+bool Map::make_interaction(Command& com) {
+    if(com.player_id >= unit_matrix.size()) {
         return false;
     }
-    if(unit_id >= unit_matrix[player_id].size()) {
+    if(com.unit_id >= unit_matrix[com.player_id].size()) {
         return false;
     }
-    if(unit_matrix[player_id][unit_id].expired()) {
+    if(unit_matrix[com.player_id][com.unit_id].expired()) {
         return false;
     }
-    auto interacted_unit = unit_matrix[player_id][unit_id].lock();
-    interacted_unit->interact(command_name, param_vector);
+    auto interacted_unit = unit_matrix[com.player_id][com.unit_id].lock();
+    interacted_unit->interact(com);
     return true;
 }
 

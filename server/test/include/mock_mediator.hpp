@@ -15,7 +15,7 @@ public:
     MockMediator() = default;
     ~MockMediator() = default;
     MOCK_METHOD3(add_colleague, void(const std::shared_ptr<Colleague>&, const size_t, const size_t));
-    MOCK_METHOD4(make_interaction, bool(const size_t, const size_t, const std::string&, std::vector<int>&));
+    MOCK_METHOD1(make_interaction, bool(Command&));
 };
 
 #endif //SERVER_MOCK_MEDIATOR_HPP

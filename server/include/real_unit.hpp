@@ -15,13 +15,15 @@
 #include <string>
 
 
+#include "command.hpp"
+
 class RealUnit {
     public:
         RealUnit(const size_t _player_id, const size_t _unit_id, const int _HP, const int _unit_x,
                 const int _unit_y): player_id(_player_id), unit_id(_unit_id), HP(_HP),
                 unit_x(_unit_x), unit_y(_unit_y) {}
-        bool react_on_command(const std::string&, std::vector<int>&);
         virtual ~RealUnit() = default;
+        bool get_kicked(Command&);
     protected:
         size_t player_id;
         size_t unit_id;
@@ -29,7 +31,7 @@ class RealUnit {
         int unit_x;
         int unit_y;
 
-        bool get_kicked(std::vector<int>&);
+
 };
 
 #endif //SERVER_REAL_UNIT_HPP

@@ -19,8 +19,7 @@ class Map : public Mediator {
         Map() : Mediator() {}
         void add_colleague(const std::shared_ptr<Colleague>&, const size_t player_id,
                 const size_t unit_id) override;
-        bool make_interaction(const size_t, const size_t,
-                            const std::string&, std::vector<int>& param_vector) override;
+        bool make_interaction(Command&) override;
         ~Map() override;
 
     private:

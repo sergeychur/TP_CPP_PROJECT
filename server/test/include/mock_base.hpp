@@ -16,14 +16,16 @@ class MockBase : public AbstractBase {
     public:
         MockBase() : AbstractBase(nullptr) {};
         ~MockBase() = default;
-        MOCK_METHOD1(start_making, void(std::vector<int>&));
+        MOCK_METHOD1(start_making, bool(Command&));
         MOCK_METHOD0(is_ready, bool());
         MOCK_METHOD0(get_unit, std::shared_ptr<Unit>());
-        MOCK_METHOD2(interact, bool(const std::string&, std::vector<int>&));
+        MOCK_METHOD1(interact, bool(Command&));
         MOCK_METHOD0(notify, void());
         MOCK_METHOD1(add, void(std::shared_ptr<NewsTaker>));
         MOCK_METHOD0(remove, void());
         MOCK_METHOD1(act, bool(Command&));
+        MOCK_METHOD1(add_act_handler, void(std::shared_ptr<AbstractHandler>&));
+        MOCK_METHOD1(add_distrib_handler, void(std::shared_ptr<AbstractHandler>&));
     private:
         MOCK_METHOD0(is_alive, bool());
 

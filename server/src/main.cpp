@@ -29,8 +29,8 @@ int main(void) {
     std::map<std::string, DefaultAbstractFactory*> map;
     map = manager.get_instance_map();
     std::cout << "Success entering" << std::endl;
-    ServerNetObject server(port, ip, player_num, map);
-    server.work();
+    // ServerNetObject server(port, ip, player_num, map);
+    // server.work();
     std::cout << "Success" << std::endl;
     for(size_t i = 0; i < player_num; ++i) {
         try {
@@ -41,7 +41,7 @@ int main(void) {
         }
         Initialiser init(i, player_num, bases);
         try {
-            server.send_to(&init, i);
+       //      server.send_to(&init, i);
         } catch(std::exception& e) {
             std::cerr << "Cannot send cause of" << e.what() << std::endl;
             return ERR_SEND;
@@ -50,20 +50,20 @@ int main(void) {
     size_t winner = player_num;
     while(!game.is_win()) {
         std::vector<Serializable*> clients_data;
-        do {
-            clients_data = server.receive();
-        } while(clients_data.empty());
-        /*// here test begins, remove in prod, made for tests without clients, not safe
+        /*do {
+          clients_data = server.receive();
+        } while(clients_data.empty());*/
+        // here test begins, remove in prod, made for tests without clients, not safe
         int i = 0;
         while(i < 2) {
-            Command com;
+            auto com = new Command;
             std::cout << "Enter next command" << std::endl;
-            std::cin >> com;
-            clients_data.push_back(std::make_unique<Command>(com));
+            std::cin >> *com;
+            clients_data.emplace_back(com);
             ++i;
         }
         std::cin.clear();
-        // here test ends*/
+        // here test ends
         try {
             winner = game.act(clients_data);
         }
@@ -81,7 +81,7 @@ int main(void) {
             std::cout << "Update to send is:" << std::endl;
             std::cout << *(update) << std::endl;       // in order to test, remove
             try {
-                server.send(update.get());
+                // server.send(update.get());
             } catch(std::exception& e) {
                 std::cerr << "Cannot send, cause of " << e.what() << std::endl;
             }
