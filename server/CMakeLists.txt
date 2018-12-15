@@ -39,7 +39,7 @@ add_subdirectory("../Net" Net)
 
 # defining the vars for lists of src
 set(SRC_LIST ./src/game.cpp ./src/map.cpp ./src/player.cpp ./src/update_maker.cpp ./src/base.cpp ./src/unit.cpp ./src/real_unit.cpp
-        ../shared_files/src/command.cpp ../shared_files/src/update.cpp ../shared_files/src/initialiser.cpp)
+        ../shared_files/src/command.cpp ../shared_files/src/update.cpp ../shared_files/src/initialiser.cpp src/manager_impl.cpp)
 set(TEST_SRC ./test/src/map_tests.cpp ./test/src/base_tests.cpp ./test/src/unit_tests.cpp ./test/src/player_tests.cpp)
 
 # lib for game

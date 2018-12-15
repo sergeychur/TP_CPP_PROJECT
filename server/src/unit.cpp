@@ -17,7 +17,8 @@ Unit::Unit(const size_t _player_id, const size_t _unit_id, const int _HP, const 
         const int _unit_y, const int _damage, const int _radius,
      const int _speed, const int _look_angle, std::shared_ptr<Mediator> mediator) : AbstractUnit(mediator), RealUnit(_player_id,
              _unit_id, _HP, _unit_x, _unit_y), damage(_damage), radius(_radius), speed(_speed), look_angle(_look_angle),
-             state(NONE) {}
+             theor_dist(0) {
+}
 
 void Unit::add(std::shared_ptr<NewsTaker> news_taker) {
     if(!news_taker) {
@@ -31,7 +32,7 @@ void Unit::remove() {
 }
 
 void Unit::notify() {
-    UpdateLine line(player_id, unit_id, HP, unit_x, unit_y, look_angle, state, is_alive());
+    UpdateLine line(player_id, unit_id, HP, unit_x, unit_y, look_angle, state.get_state(), is_alive());
     if(updater) {
         updater->handle_event(line);
     }
@@ -40,16 +41,6 @@ void Unit::notify() {
 bool Unit::is_alive() const {
     return HP > 0;
 
-}
-
-double Unit::ruling_cos(const int source_x, const int source_y, const int dest_x, const int dest_y) {
-    return static_cast<double>(dest_x - source_x) /
-        diff(dest_x, dest_y, source_x, source_y);
-}
-
-double Unit::ruling_sin(const int source_x, const int source_y, const int dest_x, const int dest_y) {
-    return  static_cast<double>(dest_y - source_y) /
-            diff(dest_x, dest_y, source_x, source_y);
 }
 
 double Unit::diff(const int dest_x, const int dest_y, const int source_x,  const int source_y) {
@@ -65,24 +56,15 @@ bool Unit::move_for_time(std::vector<int>& dest, const double time_passed) {
     if(dest.size() != 2) {
         throw std::invalid_argument("Wrong number of params in move unit func");
     }
-    double cos = ruling_cos(unit_x, unit_y, dest[x], dest[y]);
-    double sin = ruling_sin(unit_x, unit_y, dest[x], dest[y]);
-    int result_x = static_cast<int>(speed * cos * time_passed / dissipation);
-    int result_y = static_cast<int>(speed * sin * time_passed / dissipation);
-    if(diff(result_x, result_y, dest[x], dest[y]) > diff(unit_x, unit_y, dest[x], dest[y])) {
-        unit_x = dest[x];
-        unit_y = dest[y];
-    } else {
-        unit_x = result_x;
-        unit_y = result_y;
-    }
-    return false;//(unit_x - dest[x]) < ALLOWED_LINEAR_DELTA && (unit_y - dest[y]) < ALLOWED_LINEAR_DELTA; // TODO(Me):change
+    theor_dist += speed * time_passed;
+    return diff(dest[x], dest[y], unit_x, unit_y)  < allowed_linear_delta;
 }
 
 bool Unit::move(Command& com) {
+    theor_dist = 0;
     auto now = std::chrono::system_clock::now();
-    const double time_passed = std::chrono::duration_cast<std::chrono::milliseconds>(now - prev_time).count();
-    state = MOVING;
+    const double time_passed = std::chrono::duration_cast<std::chrono::seconds>(now - prev_time).count();
+    state.make_moving();
     return move_for_time(com.parameters, time_passed);
 }
 
@@ -103,43 +85,40 @@ bool Unit::kick(Command& com) {
     Command com_to_pass(static_cast<size_t >(com.parameters[player_id]), static_cast<size_t>(com.parameters[unit_id]), "get_kicked", kick_params);
     bool success = mediator->make_interaction(com_to_pass);
     if(success) {
-        state = FIGHTING;
+        state.make_fighting();
     }
     return true;
 }
 
 void Unit::perform_existing_commands() {
-    if(commands.empty()) {
+    if(!command) {
         return;
     }
+
     bool handled = false;
     auto it = act_handlers.begin();
     while(it != act_handlers.end()) {
-        if((*it)->can_handle(commands.front().command_name)) {
-            bool finished = (*it)->handle(commands.front());
+        if((*it)->can_handle(command->command_name)) {
+            (*it)->handle(*command);
             handled = true;
-            if(finished) {
-                commands.pop();
-                state = NONE;
-            }
             it = act_handlers.end();
         } else {
             ++it;
         }
     }
     if(!handled) {
-        commands.pop();
+        command.reset();
     }
 }
 
-bool Unit::pop_command(Command& command) {
-    commands.pop();
-    state = NONE;
+bool Unit::pop_command(Command& com) {
+    command.reset();
+    state.make_none();
     return true;
 }
 
 bool Unit::act(Command& order) {
-    perform_existing_commands();
+
     auto it = distrib_handlers.begin();
     bool handled = false;
     while(it != distrib_handlers.end() && !handled) {
@@ -154,11 +133,15 @@ bool Unit::act(Command& order) {
     if(!handled) {
         add_command(order);
     }
+    perform_existing_commands();
     return is_alive();
 }
 
-void Unit::add_command(Command& command) {
-    commands.push(command);
+void Unit::add_command(Command& com) {
+    if(command) {
+        command.reset();
+    }
+    command = std::make_unique<Command>(com);
     prev_time = std::chrono::system_clock::now();
 }
 
@@ -181,16 +164,19 @@ bool Unit::correct_state(Command& com) {
     if(com.parameters.size() != params_num) {
         return false;
     }
-    if(/*abs(unit_x - parameters[x_val]) < ALLOWED_LINEAR_DELTA*/ true) {
+    double dist = diff(com.parameters[x_val], com.parameters[y_val], unit_x, unit_y);
+    if(dist < (theor_dist + allowed_linear_delta)) {
         unit_x = com.parameters[x_val];
-    }
-    if(/*abs(*unit_y - parameters[y_val]) < ALLOWED_LINEAR_DELTA*/true) {
         unit_y = com.parameters[y_val];
+    } else {
+        double koef = dist / theor_dist;
+        unit_x += static_cast<int>(koef * (com.parameters[x_val] - unit_x));
+        unit_y += static_cast<int>(koef * (com.parameters[y_val] - unit_y));
     }
     look_angle = com.parameters[angle_val];
 
     notify();
-    return true;
+    return false;
 }
 bool Unit::interact(Command& com) {
     bool success = false;

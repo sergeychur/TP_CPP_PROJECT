@@ -5,11 +5,10 @@
 #ifndef SERVER_MANAGER_HPP
 #define SERVER_MANAGER_HPP
 
-#include <iostream>
 #include <string>
 #include <vector>
 #include <map>
-#include <boost/filesystem.hpp>
+
 
 #include "DefaultAbstractFactory.h"
 
@@ -27,38 +26,16 @@ class ManagerException : public std::exception {
         std::string message;
 };
 
+class ManagerImpl;
+
 class Manager {
     public:
         Manager();
         ~Manager();
-    template <class T>
-        inline void input(T* value, const std::string& greeting) {
-            if(!value) {
-                throw(std::invalid_argument("I dunno, where to enter"));
-            }
-            bool success = false;
-            do {
-                std::cout << greeting << std::endl;
-                std::cin >> *value;
-                if(std::cin.fail()) {
-                    std::cin.clear();
-                    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-                } else {
-                    success = true;
-                }
-            } while (!success);
-        }
         void read_bases_from_file(std::vector<std::pair<int, int>>&, const size_t);
         std::map<std::string, DefaultAbstractFactory*> get_instance_map();
-        void parse_file_for_bases(const boost::filesystem::path& file,
-                              std::vector<std::pair<int, int>>& base_vector,
-                              const size_t player_num);
-        boost::filesystem::path get_file_path(const size_t player_num);
     private:
-
-
-
-        std::map<std::string, DefaultAbstractFactory*> map;
+        std::unique_ptr<ManagerImpl> impl;
 };
 
 #endif //SERVER_MANAGER_HPP

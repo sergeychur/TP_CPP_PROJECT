@@ -20,7 +20,7 @@
 
 struct Command : public Serializable{
     public:
-        Command(const size_t _player_id, const size_t _unit_id,
+        Command(size_t _player_id, size_t _unit_id,
                 const std::string& _command_name, std::vector<int>& _parameters) :
                 player_id(_player_id),
                 unit_id(_unit_id), command_name(_command_name), parameters(_parameters) {};
@@ -44,5 +44,6 @@ struct Command : public Serializable{
 bool operator== (const Command& first, const Command& second);
 
 std::istream& operator>> (std::istream& input, Command& com);
+std::ostream& operator<< (std::ostream& output, const Command& com);
 
 #endif //SERVER_COMMAND_HPP

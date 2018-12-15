@@ -12,7 +12,7 @@ class UpdateMaker : public NewsTaker {
     public:
         UpdateMaker();
 
-        void handle_event(UpdateLine&) override;
+        void handle_event(const UpdateLine&) override;
         std::unique_ptr<Update> get_update() override;
         ~UpdateMaker() override;
     private:

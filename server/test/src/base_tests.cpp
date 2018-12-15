@@ -20,7 +20,7 @@ TEST(Base, building_new_unit1) {
     base.start_making(com);
     std::shared_ptr<Unit> new_unit;
     if(base.is_ready_for_time(time)) {
-         new_unit = base.get_unit();
+         new_unit = std::dynamic_pointer_cast<Unit>(base.get_unit());
     }
     Unit new_real_unit(0, 0, 100, 0, 0, 78, 5, 23, 0, nullptr);
     EXPECT_EQ(*new_unit, new_real_unit);
@@ -40,10 +40,10 @@ TEST(Base, building_new_unit2) {
     base.start_making(com);
     std::shared_ptr<Unit> new_unit;
     if(base.is_ready_for_time(time)) {
-        new_unit = base.get_unit();
+        new_unit = std::dynamic_pointer_cast<Unit>(base.get_unit());
     }
     ASSERT_EQ(new_unit.get(), nullptr);
-    new_unit = base.get_unit();
+    new_unit = std::dynamic_pointer_cast<Unit>(base.get_unit());
     new_unit.reset();
     mediator.reset();
 }

@@ -23,6 +23,7 @@ bool RealUnit::get_kicked(Command& com) {
         (com.parameters[y] * com.parameters[y] - unit_y * unit_y)) <=
         com.parameters[radius] * com.parameters[radius]) {
         HP -= com.parameters[damage];
+        state.make_fighting();
         return true;
     }
     return false;

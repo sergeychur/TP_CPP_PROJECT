@@ -5,11 +5,12 @@
 #include <iostream>
 
 #include "game.hpp"
+#include "map.hpp"
 
 Game::Game(const size_t _player_num) : player_num(_player_num) {
     update_maker = std::make_shared<UpdateMaker>();
     map =  std::make_shared<Map>();
-    avaliability.assign(player_num, NONE);
+    avaliability.assign(player_num, SIMPLE);
 }
 
 Game::~Game() {
@@ -38,6 +39,8 @@ size_t Game::act(std::vector<Serializable*>& commands_arr) {
             throw std::invalid_argument("No valid command");
         std::shared_ptr<Command> command_ptr(dynamic_cast<Command*>(commands_arr[i]));
         Command command = *command_ptr;
+        std::cout << "Got command" << std::endl;
+        std::cout << command << std::endl;
         if(player_arr.size() > command.player_id) {
             if (avaliability[command.player_id] == STILL_ACT) {
                 try {
@@ -52,7 +55,7 @@ size_t Game::act(std::vector<Serializable*>& commands_arr) {
             }
         }
     }
-    std::cout << "Number of players is " << player_num << std::endl;
+    // std::cout << "Number of players is " << player_num << std::endl;
     return (player_num == 1) ? stat : player_num;
 }
 

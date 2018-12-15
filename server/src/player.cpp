@@ -6,6 +6,7 @@
 
 #include "player.hpp"
 #include "handler.hpp"
+#include "base.hpp"
 
 Player::~Player() {
     base.reset();

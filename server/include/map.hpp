@@ -12,13 +12,12 @@
 #include <vector>
 
 #include "mediator.hpp"
-#include "unit.hpp"
 
 class Map : public Mediator {
     public:
         Map() : Mediator() {}
-        void add_colleague(const std::shared_ptr<Colleague>&, const size_t player_id,
-                const size_t unit_id) override;
+        void add_colleague(const std::shared_ptr<Colleague>&, size_t player_id,
+                size_t unit_id) override;
         bool make_interaction(Command&) override;
         ~Map() override;
 

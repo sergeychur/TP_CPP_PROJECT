@@ -18,7 +18,7 @@ class Handler : public AbstractHandler {
         bool handle(Command& command) override {
             return callable(command);
         }
-        bool can_handle(const std::string& name) {
+        bool can_handle(const std::string& name) override {
             return name == command_name;
         }
     private:

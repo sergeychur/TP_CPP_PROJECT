@@ -16,6 +16,7 @@
 
 
 #include "command.hpp"
+#include "state.hpp"
 
 class RealUnit {
     public:
@@ -25,6 +26,7 @@ class RealUnit {
         virtual ~RealUnit() = default;
         bool get_kicked(Command&);
     protected:
+        State state;
         size_t player_id;
         size_t unit_id;
         int HP;

@@ -14,7 +14,7 @@ UpdateMaker::~UpdateMaker() {
     update.reset();
 }
 
-void UpdateMaker::handle_event(UpdateLine& line) {
+void UpdateMaker::handle_event(const UpdateLine& line) {
     if(!update) {
         update = std::make_unique<Update>();
     }

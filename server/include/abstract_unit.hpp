@@ -22,12 +22,6 @@ class AbstractUnit : public NewsMaker, public Colleague {
         virtual void add_act_handler(std::shared_ptr<AbstractHandler>&) = 0;
         virtual void add_distrib_handler(std::shared_ptr<AbstractHandler>&) = 0;
         ~AbstractUnit() override = default;
-        enum states {
-            NONE = 3,
-            MOVING = 0,
-            FIGHTING = 1,
-            DEATH = 2
-        };
 };
 
 #endif //SERVER_ABSTRACT_UNIT_HPP

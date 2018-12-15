@@ -5,11 +5,13 @@
 #include <iostream>
 #include <map>
 #include <numeric>
+
+
 #include "handler.hpp"
-
 #include "base.hpp"
+#include "state.hpp"
 
-Base::Base(std::shared_ptr<Mediator> med, const int& HP, const int _x,
+Base::Base(std::shared_ptr<Mediator> med, const int HP, const int _x,
     const int _y, const size_t player_id) : AbstractBase(med), RealUnit(player_id, 0, HP, _x, _y),
     time_to_build(default_time_to_build), units_made(0), is_making(false) {
 };
@@ -69,7 +71,7 @@ bool Base::start_making(Command& com) {
     add_get_kicked_handler(unit_to_return);
 }
 
-std::shared_ptr<Unit> Base::get_unit() {
+std::shared_ptr<AbstractUnit> Base::get_unit() {
     if(unit_to_return) {
         mediator->add_colleague(unit_to_return, player_id, units_made);
     }

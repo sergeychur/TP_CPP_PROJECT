@@ -5,6 +5,7 @@
 
 #include "game.hpp"
 #include "manager.hpp"
+#include "input.hpp"
 
 #include "ServerNetObject.h"
 
@@ -13,7 +14,7 @@
 int main(void) {
     size_t player_num = 0;
     Manager manager;
-    manager.input(&player_num, "Enter the number of players");
+    input(&player_num, "Enter the number of players");
     Game game(player_num);
     std::vector<std::pair<int, int>> bases;
     try {
@@ -23,14 +24,14 @@ int main(void) {
         return ERR_READ;
     }
     uint port = 0;
-    manager.input(&port, "Enter the port to listen on");
+    input(&port, "Enter the port to listen on");
     std::string ip("");
-    manager.input(&ip, "Enter the ip to listen on");
+    input(&ip, "Enter the ip to listen on");
     std::map<std::string, DefaultAbstractFactory*> map;
     map = manager.get_instance_map();
     std::cout << "Success entering" << std::endl;
-    // ServerNetObject server(port, ip, player_num, map);
-    // server.work();
+    ServerNetObject server(port, ip, player_num, map);
+    server.work();
     std::cout << "Success" << std::endl;
     for(size_t i = 0; i < player_num; ++i) {
         try {
@@ -41,7 +42,7 @@ int main(void) {
         }
         Initialiser init(i, player_num, bases);
         try {
-       //      server.send_to(&init, i);
+             server.send_to(&init, i);
         } catch(std::exception& e) {
             std::cerr << "Cannot send cause of" << e.what() << std::endl;
             return ERR_SEND;
@@ -50,10 +51,10 @@ int main(void) {
     size_t winner = player_num;
     while(!game.is_win()) {
         std::vector<Serializable*> clients_data;
-        /*do {
+        do {
           clients_data = server.receive();
-        } while(clients_data.empty());*/
-        // here test begins, remove in prod, made for tests without clients, not safe
+        } while(clients_data.empty());
+        /*// here test begins, remove in prod, made for tests without clients, not safe
         int i = 0;
         while(i < 2) {
             auto com = new Command;
@@ -63,7 +64,7 @@ int main(void) {
             ++i;
         }
         std::cin.clear();
-        // here test ends
+        // here test ends*/
         try {
             winner = game.act(clients_data);
         }
@@ -81,7 +82,7 @@ int main(void) {
             std::cout << "Update to send is:" << std::endl;
             std::cout << *(update) << std::endl;       // in order to test, remove
             try {
-                // server.send(update.get());
+                server.send(update.get());
             } catch(std::exception& e) {
                 std::cerr << "Cannot send, cause of " << e.what() << std::endl;
             }

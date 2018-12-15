@@ -30,7 +30,7 @@ public:
 class Mediator {
     public:
         virtual void add_colleague(const std::shared_ptr<Colleague>&,
-                const size_t player_id, const size_t unit_id) = 0;
+                size_t player_id, size_t unit_id) = 0;
         virtual bool make_interaction(Command&) = 0;
         virtual ~Mediator() = default;
 };

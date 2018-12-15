@@ -13,7 +13,7 @@
 struct Initialiser : public Serializable {
     public:
         Initialiser() = default;
-        Initialiser(const size_t _player_id, const size_t _player_num,
+        Initialiser(size_t _player_id, size_t _player_num,
                 std::vector<std::pair<int, int>>& _bases) :
         player_id(_player_id), player_num(_player_num), bases(_bases){
         }

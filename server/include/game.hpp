@@ -11,7 +11,7 @@
 
 #include <vector>
 
-#include "map.hpp"
+#include "mediator.hpp"
 #include "player.hpp"
 #include "update.hpp"
 #include "command.hpp"
@@ -30,7 +30,7 @@ class Game {
         std::vector<int> avaliability;
 
     public:
-        explicit Game(const size_t _player_num);
+        explicit Game(size_t _player_num);
         ~Game();
         Game() = delete;
         Game(const Game&) = delete;
@@ -38,7 +38,7 @@ class Game {
         Game& operator=(const Game&) = delete;
         Game& operator=(const Game&&) = delete;
 
-        void add_player(const std::pair<int, int>& base_coords, const size_t player_id);
+        void add_player(const std::pair<int, int>& base_coords, size_t player_id);
         bool is_win() const {return player_num <= 1;}
         size_t act(std::vector<Serializable*>&);
         std::unique_ptr<Update> get_update();    // returns the update to send to clients

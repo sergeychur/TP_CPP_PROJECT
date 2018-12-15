@@ -41,3 +41,12 @@ std::istream& operator>> (std::istream& input, Command& com) {
     }
     return input;
 }
+
+std::ostream& operator<< (std::ostream& output, const Command& com) {
+    output << com.player_id << " " << com.unit_id << " " << com.command_name << " ";
+    for(auto& it : com.parameters) {
+        output << it << " ";
+    }
+    output << std::endl;
+    return output;
+}
