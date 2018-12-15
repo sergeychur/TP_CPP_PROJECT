@@ -31,7 +31,8 @@ private:
 	static boost::asio::io_context context;
 	static std::mutex sock_mutex;
 	static std::mutex buf_mutex;
-	
+	static std::string STARTOBJ;
+	static std::string ENDOBJ;
 	static SubSock* socks;
 };
 

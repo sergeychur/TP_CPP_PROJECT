@@ -11,6 +11,8 @@ std::map<std::string, DefaultAbstractFactory*> NetObject::map;
 boost::asio::io_context ServerNetObject::context;
 std::mutex ServerNetObject::sock_mutex;
 std::mutex ServerNetObject::buf_mutex;
+std::string ServerNetObject::STARTOBJ = "startobj";
+std::string ServerNetObject::ENDOBJ = "endobj";
 
 SubSock* ServerNetObject::socks;
 
@@ -28,10 +30,11 @@ void ServerNetObject::send(Serializable *serializable)
 //	stream >> temp_buf;
 //	std::cerr << stream.str();
 	temp_buf = stream.str();
+	send_buf.append(STARTOBJ);
 	
 	send_buf.append(temp_buf); // write buf
 	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
-	send_buf.append("endobj");
+	send_buf.append(ENDOBJ);
 	sock_mutex.lock();
 	for(int i = 0; i < player_num; ++i)
 	{
@@ -51,10 +54,11 @@ void ServerNetObject::send_to(Serializable *serializable, int i)
 //	stream >> temp_buf;
 	
 	temp_buf = stream.str();
-
+	send_buf.append(STARTOBJ);
+	
 	send_buf.append(temp_buf); // write buf
 	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
-	send_buf.append("endobj");
+	send_buf.append(ENDOBJ);
 	sock_mutex.lock();
 	boost::asio::write(*(socks[i].socket), boost::asio::buffer(send_buf)); // send
 	sock_mutex.unlock();
@@ -103,41 +107,62 @@ ServerNetObject::~ServerNetObject()
 
 void ServerNetObject::read_client_socks(const size_t socks_index)
 {
+	std::string wrong_data_recv_buf; // in case of unsuccessful parse this will be used as a buf to prevent data loss
 	while(!(socks[socks_index].stop))
 	{
-		std::string recv_buf;
+		std::string temp_recv_buf ,recv_buf;
 		
 		sock_mutex.lock(); // lock socket mutex
-		if(socks[socks_index].socket->available()) {
-			try {
-				size_t message_length = 0;
-				message_length =
-					boost::asio::read_until(*(socks[socks_index].socket), boost::asio::dynamic_buffer(recv_buf), "endobj"); // read from socket
-				sock_mutex.unlock(); // unlock socket mutex
+		
+		if(socks[socks_index].socket->available())
+		{
+			boost::asio::read_until(*(socks[socks_index].socket), boost::asio::dynamic_buffer(temp_recv_buf), ENDOBJ); // read from socket
+			sock_mutex.unlock(); // unlock socket mutex
+			try
+			{
+				if(!wrong_data_recv_buf.empty())
+					recv_buf.append(wrong_data_recv_buf);
+				
+				recv_buf.append(temp_recv_buf);
+				
+				size_t object_start;
+				if((object_start = recv_buf.find(STARTOBJ)) == std::string::npos)
+					throw std::invalid_argument("BAD INET MESSAGE: NO OBJECT START");
+				
+				size_t object_end;
+				if((object_end = recv_buf.find(ENDOBJ, object_start)) == std::string::npos)
+					throw std::invalid_argument("BAD INET MESSAGE: NO OBJECT END");
+				
+				std::string type = recv_buf.substr(
+					object_end - TYPE_LENGTH, TYPE_LENGTH); // read first N bytes to check which class object was sent
+				
+				if(object_end + ENDOBJ.size() != recv_buf.size())
+					wrong_data_recv_buf = recv_buf.substr(object_end);
+				else
+					wrong_data_recv_buf.clear();
+				
+				recv_buf.erase(object_end); // clear TYPE and ENDOBJ from message
+				recv_buf.erase(0, object_start + STARTOBJ.size()); // clear STARTOBJ
+				
 				
 				Serializable* serializable; // create pointer
-				if(message_length < 9)
-					throw std::invalid_argument("BAD INET MESSAGE");
-				std::string type = recv_buf.substr(
-					message_length - 9, TYPE_LENGTH); // read first N bytes to check which class object was sent
-				recv_buf.erase(recv_buf.end() - 9, recv_buf.end());
 				
 				serializable = map[type]->create(); // create empty object
 				
 				// deserialize
 				std::stringstream stream;
-				recv_buf.resize(message_length - 9);
 				stream << recv_buf;
 				boost::archive::text_iarchive archive(stream);
-	//			archive >> (*serializable);
 				serializable->deserialize(archive);
+				
 				buf_mutex.lock();// lock buf mutex
 				buf.push_back(serializable);// write to the buf
 				buf_mutex.unlock(); // unlock buf mutex
 			}
-			catch(std::exception e)
+			catch(std::invalid_argument& e)
 			{
-				std::cerr << e.what() << "RECV_BUF IS " << recv_buf << std::endl;
+				wrong_data_recv_buf.append(temp_recv_buf);
+				std::cerr << e.what() << "RECV_BUF IS " << temp_recv_buf << std::endl;
 			}
 		}
 		else

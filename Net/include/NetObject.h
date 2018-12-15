@@ -14,10 +14,10 @@
 
 const short TYPE_LENGTH=3;
 
-class NetObject : boost::noncopyable
+class NetObject
 {
 public:
-	virtual void send(Serializable*)=0;
+	virtual void send(Serializable*) = 0;
 	virtual std::vector<Serializable*> receive() = 0;
 	virtual void work() = 0;
 	virtual ~NetObject() = default;
