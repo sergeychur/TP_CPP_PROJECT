@@ -32,12 +32,12 @@ void Game::add_player(const std::pair<int, int> &base_coords, const size_t playe
 	avaliability[player_id] = STILL_ACT;
 }
 
-size_t Game::act(std::vector<Serializable *> &commands_arr) {
+size_t Game::act(std::vector<std::shared_ptr<Serializable>> &commands_arr) {
 	size_t stat = STILL_ACT;
 	for (int i = 0; i < commands_arr.size(); ++i) {
 		if (!commands_arr[i])
 			throw std::invalid_argument("No valid command");
-		std::shared_ptr<Command> command_ptr(dynamic_cast<Command *>(commands_arr[i]));
+		std::shared_ptr<Command> command_ptr = std::dynamic_pointer_cast<Command>(commands_arr[i]);
 		Command command = *command_ptr;
 		std::cout << "Got command" << std::endl;
 		std::cout << command << std::endl;

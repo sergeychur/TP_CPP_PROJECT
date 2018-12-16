@@ -6,6 +6,7 @@
 #include "game.hpp"
 #include "manager.hpp"
 #include "input.hpp"
+#include "initialiser.hpp"
 
 #include "ServerNetObject.h"
 
@@ -50,7 +51,7 @@ int main(void) {
     }
     size_t winner = player_num;
     while(!game.is_win()) {
-        std::vector<Serializable*> clients_data;
+        std::vector<std::shared_ptr<Serializable>> clients_data;
         do {
           clients_data = server.receive();
         } while(clients_data.empty());

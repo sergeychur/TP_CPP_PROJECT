@@ -6,15 +6,15 @@
 #define SERVER_COMMAND_FACTORY_HPP
 
 #include "DefaultAbstractFactory.h"
-
+#include "command.hpp"
 
 
 class CommandFactory : public DefaultAbstractFactory
 {
 public:
-    Serializable* create() override
+    std::shared_ptr<Serializable> create() override
     {
-        return (new Command());
+        return (std::make_shared<Command>());
     }
     ~CommandFactory() override = default;
 };

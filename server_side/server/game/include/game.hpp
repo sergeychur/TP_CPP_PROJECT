@@ -48,7 +48,7 @@ class Game {
 
 	bool is_win() const { return player_num <= 1; }
 
-	size_t act(std::vector<Serializable *> &);
+	size_t act(std::vector<std::shared_ptr<Serializable>> &);
 
 	std::unique_ptr<Update> get_update();    // returns the update to send to clients
 };
