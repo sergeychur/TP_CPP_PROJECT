@@ -9,9 +9,10 @@
 #include "string"
 
 class AbstractHandler {
-    public:
-        virtual bool handle(Command& command) = 0;
-        virtual bool can_handle(const std::string& command_name) = 0;
+ public:
+	virtual bool handle(Command &command) = 0;
+
+	virtual bool can_handle(const std::string &command_name) = 0;
 };
 
-#endif //SERVER_ABSTRACT_HANDLER_HPP
+#endif 		//  SERVER_ABSTRACT_HANDLER_HPP

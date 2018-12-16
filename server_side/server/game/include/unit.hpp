@@ -21,47 +21,63 @@
 #include "abstract_handler.hpp"
 
 class Unit : public AbstractUnit, public RealUnit {
-    public:
-        Unit(size_t _player_id_, size_t _unit_id, int _HP, int _unit_x,
-                int _unit_y, int damage,
-                int radius, int speed, int look_angle, std::shared_ptr<Mediator> mediator);
-        ~Unit() override = default;
-        void add(std::shared_ptr<NewsTaker> news_taker) override;
-        void remove() override;
-        void notify() override;
-        bool act(Command& order) override;
-        size_t hash_self() const;
+ public:
+	Unit(size_t _player_id_, size_t _unit_id, int _HP, int _unit_x,
+		 int _unit_y, int damage,
+		 int radius, int speed, int look_angle, std::shared_ptr<Mediator> mediator);
 
-        bool move(Command&);
-        bool move_for_time(std::vector<int>&, double);
-        bool kick(Command&);
-        void add_act_handler(std::shared_ptr<AbstractHandler>&) override;
-        void add_distrib_handler(std::shared_ptr<AbstractHandler>&) override;
-        bool correct_state(Command&);
-        bool pop_command(Command&);
+	~Unit() override = default;
 
-    private:
-        void add_command(Command&);
-        bool interact(Command&) override;
-        void perform_existing_commands();
-        bool is_alive() const;
-        double diff(int dest_x, int dest_y, int source_x, int source_y);
+	void add(std::shared_ptr<NewsTaker> news_taker) override;
 
-        std::unique_ptr<Command> command;
-        std::shared_ptr<NewsTaker> updater;
-        std::vector<std::shared_ptr<AbstractHandler>> act_handlers;
-        std::vector<std::shared_ptr<AbstractHandler>> distrib_handlers;
+	void remove() override;
 
-        int damage;
-        int radius;
-        int speed;
-        int look_angle;
-        double theor_dist;
-        constexpr static double allowed_linear_delta = 50;
-        std::chrono::time_point<std::chrono::system_clock> prev_time;
+	void notify() override;
+
+	bool act(Command &order) override;
+
+	size_t hash_self() const;
+
+	bool move(Command &);
+
+	bool move_for_time(std::vector<int> &, double);
+
+	bool kick(Command &);
+
+	void add_act_handler(std::shared_ptr<AbstractHandler> &) override;
+
+	void add_distrib_handler(std::shared_ptr<AbstractHandler> &) override;
+
+	bool correct_state(Command &);
+
+	bool pop_command(Command &);
+
+ private:
+	void add_command(Command &);
+
+	bool interact(Command &) override;
+
+	void perform_existing_commands();
+
+	bool is_alive() const;
+
+	double diff(int dest_x, int dest_y, int source_x, int source_y);
+
+	std::unique_ptr<Command> command;
+	std::shared_ptr<NewsTaker> updater;
+	std::vector<std::shared_ptr<AbstractHandler>> act_handlers;
+	std::vector<std::shared_ptr<AbstractHandler>> distrib_handlers;
+
+	int damage;
+	int radius;
+	int speed;
+	int look_angle;
+	double theor_dist;
+	constexpr static double allowed_linear_delta = 50;
+	std::chrono::time_point<std::chrono::system_clock> prev_time;
 };
 
 
-bool operator== (const Unit&, const Unit&);
+bool operator==(const Unit &, const Unit &);
 
-#endif //SERVER_UNIT_HPP
+#endif 		//  SERVER_UNIT_HPP

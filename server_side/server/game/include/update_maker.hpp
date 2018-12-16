@@ -9,15 +9,17 @@
 #include "update.hpp"
 
 class UpdateMaker : public NewsTaker {
-    public:
-        UpdateMaker();
+ public:
+	UpdateMaker();
 
-        void handle_event(const UpdateLine&) override;
-        std::unique_ptr<Update> get_update() override;
-        ~UpdateMaker() override;
-    private:
-        std::unique_ptr<Update> update;
+	void handle_event(const UpdateLine &) override;
 
+	std::unique_ptr<Update> get_update() override;
+
+	~UpdateMaker() override;
+
+ private:
+	std::unique_ptr<Update> update;
 };
 
-#endif //SERVER_UPDATE_MAKER_HPP
+#endif 		//  SERVER_UPDATE_MAKER_HPP

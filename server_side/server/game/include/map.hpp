@@ -14,15 +14,18 @@
 #include "mediator.hpp"
 
 class Map : public Mediator {
-    public:
-        Map() : Mediator() {}
-        void add_colleague(const std::shared_ptr<Colleague>&, size_t player_id,
-                size_t unit_id) override;
-        bool make_interaction(Command&) override;
-        ~Map() override;
+ public:
+	Map() : Mediator() {}
 
-    private:
-        std::vector<std::vector<std::weak_ptr<Colleague>>> unit_matrix;
+	void add_colleague(const std::shared_ptr<Colleague> &, size_t player_id,
+					   size_t unit_id) override;
+
+	bool make_interaction(Command &) override;
+
+	~Map() override;
+
+ private:
+	std::vector<std::vector<std::weak_ptr<Colleague>>> unit_matrix;
 };
 
-#endif //SERVER_MAP_HPP
+#endif 		//  SERVER_MAP_HPP

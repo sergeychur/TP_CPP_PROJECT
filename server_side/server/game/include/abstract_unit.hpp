@@ -16,12 +16,16 @@
 #include "abstract_handler.hpp"
 
 class AbstractUnit : public NewsMaker, public Colleague {
-    public:
-        explicit AbstractUnit(std::shared_ptr<Mediator> med) : NewsMaker(), Colleague(med) {}
-        virtual bool act(Command& order) = 0;
-        virtual void add_act_handler(std::shared_ptr<AbstractHandler>&) = 0;
-        virtual void add_distrib_handler(std::shared_ptr<AbstractHandler>&) = 0;
-        ~AbstractUnit() override = default;
+ public:
+	explicit AbstractUnit(std::shared_ptr<Mediator> med) : NewsMaker(), Colleague(med) {}
+
+	virtual bool act(Command &order) = 0;
+
+	virtual void add_act_handler(std::shared_ptr<AbstractHandler> &) = 0;
+
+	virtual void add_distrib_handler(std::shared_ptr<AbstractHandler> &) = 0;
+
+	~AbstractUnit() override = default;
 };
 
-#endif //SERVER_ABSTRACT_UNIT_HPP
+#endif 		//  SERVER_ABSTRACT_UNIT_HPP

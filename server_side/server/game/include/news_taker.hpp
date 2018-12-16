@@ -12,11 +12,13 @@
 #include "update.hpp"
 
 class NewsTaker {
-    // handle with happened event on changing side
-public:
-    virtual void handle_event(const UpdateLine&) = 0;
-    virtual std::unique_ptr<Update> get_update() = 0;
-    virtual ~NewsTaker() = default;
+	// handle with happened event on changing side
+ public:
+	virtual void handle_event(const UpdateLine &) = 0;
+
+	virtual std::unique_ptr<Update> get_update() = 0;
+
+	virtual ~NewsTaker() = default;
 };
 
-#endif //SERVER_NEWS_TAKER_HPP
+#endif 		//  SERVER_NEWS_TAKER_HPP
