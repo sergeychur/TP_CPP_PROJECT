@@ -27,6 +27,8 @@ protected:
     Vec2 spawnPoint;
     std::map<unsigned int, std::unique_ptr<GameObject>> units;
     void update(float time);
+    void onMouseDown(Event *event) ;
+    int unitsOffset;
 };
 
 #endif /* Player_hpp */

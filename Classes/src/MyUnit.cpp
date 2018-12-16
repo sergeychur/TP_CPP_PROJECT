@@ -25,6 +25,7 @@ MyUnit::MyUnit(Vec2 pos, unsigned int id, std::string plist, std::string format)
 
 void MyUnit::onMouseDown(cocos2d::Event *event)
 {
+    CCLOG("CLICK ON                 ghhhhhhhhhhhh");
     EventMouse* mouseEvent = dynamic_cast<EventMouse*>(event);
     Point clickPos = Point(mouseEvent->getLocationInView().x,
             Director::getInstance()->getWinSize().height + mouseEvent->getLocationInView().y);
@@ -45,6 +46,15 @@ void MyUnit::onMouseDown(cocos2d::Event *event)
     }
     if (isSelect && mouseEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_RIGHT)
     {
+//        if (state == Move)
+////        {
+////            stopMoving();
+////            isSelect = false;
+////            startMoving();
+////            sprite->setColor(Color3B::WHITE);
+////            target = clickPos;
+////            velocity = (target - position).getNormalized();
+////        }
         isSelect = false;
         startMoving();
         sprite->setColor(Color3B::WHITE);
@@ -162,9 +172,14 @@ bool MyUnit::checkCollisionWithObject(Vec2 checkPos)
     {
         for (auto& object : enemy.second->units)
         {
+            CCLOG("%f %f", object.second->getPos().x, object.second->getPos().y);
             Point checkOnmap = Globals::get_instance()->positionToTileCoordinate(checkPos);
             Point objOnmap = Globals::get_instance()->positionToTileCoordinate(object.second->getPos());
-            if (id != object.second->id && checkOnmap == objOnmap) {
+            CCLOG("%f %f", objOnmap.x, objOnmap.y);
+            if (checkOnmap == objOnmap) {
+                std::vector<int> a = {(int)enemy.second->id, (int)object.second->id};
+                Command com(Globals::get_instance()->player->id, id,"kick", a);
+                Globals::get_instance()->net->send(&com);
                 stopMoving();
                 state = Fight;
                 return true;

@@ -10,8 +10,11 @@
 #include "MyBuilding.hpp"
 #include "command.hpp"
 
-Player::Player(size_t id, Vec2 pos) : spawnPoint(pos), id(id)
+Player::Player(size_t id, Vec2 pos) : spawnPoint(pos), id(id), unitsOffset(-50)
 {
+    auto eventListener = EventListenerMouse::create();
+    eventListener->onMouseDown = CC_CALLBACK_1(Player::onMouseDown, this);
+    getEventDispatcher()->addEventListenerWithSceneGraphPriority(eventListener, this);
     auto mainLayer = Globals::get_instance()->map->getLayer("Background");
     auto mapPos = Globals::get_instance()->positionToTileCoordinate(spawnPoint);
     mainLayer->getTileAt(mapPos)->setColor(Color3B::RED);
@@ -35,7 +38,20 @@ void Player::update(float delta)
     
 }
 
-bool Player::sendNewUnitTCP()
+void Player::onMouseDown(cocos2d::Event *event)
 {
-    return true;
+
+    EventMouse* mouseEvent = dynamic_cast<EventMouse*>(event);
+    Point clickPos = Point(mouseEvent->getLocationInView().x,
+                           Director::getInstance()->getWinSize().height + mouseEvent->getLocationInView().y);
+    clickPos -= Globals::get_instance()->mapOffset;
+    auto mapPos = Globals::get_instance()->positionToTileCoordinate(spawnPoint);
+    auto mainLayer = Globals::get_instance()->map->getLayer("Background");
+    CCLOG("CLICK ON                                                  BASE");
+    if (mainLayer->getTileAt(mapPos)->getBoundingBox().containsPoint(clickPos))
+    {CCLOG("CLICK ON                                                  BASE");
+        CCLOG("CREATE UNIT");
+        addUnit(spawnPoint.x, spawnPoint.y + unitsOffset);
+        unitsOffset -= 50;
+    }
 }

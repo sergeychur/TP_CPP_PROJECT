@@ -129,7 +129,10 @@ void GameScene::dispatch()
     std::vector<Serializable*> rawInfo;
     rawInfo = net->receive();
     if (rawInfo.empty())
+    {
+        CCLOG("empty");
         return;
+    }
     CCLOG("Got Info");
     for (int i = 0; i < rawInfo.size(); ++i)
     {
@@ -138,20 +141,28 @@ void GameScene::dispatch()
             if (update.player_id == Globals::get_instance()->player->id)
             {
                 CCLOG("Players unit");
-                if (Globals::get_instance()->player->getUnits().empty())
-                //if ( player->getUnits().find(update.unit_id) == player->getUnits().end())
+                //if (Globals::get_instance()->player->getUnits().empty())
+                if (Globals::get_instance()->player->getUnits().find(update.unit_id) == Globals::get_instance()->player->getUnits().end())
                 {
                     CCLOG("unit created");
                     Globals::get_instance()->player->getUnits()[update.unit_id] =
                             std::make_unique<MyUnit>(Vec2(update.new_x, update.new_y), update.unit_id, WarriorPlist ,WarriorFormat);
                     Globals::get_instance()->map->addChild(Globals::get_instance()->player->getUnits()[update.unit_id].get());
+//                } else
+//                {
+//                    if (Globals::get_instance()->player->getUnits()[update.unit_id]->state != (GameObject::State)update.state)
+//                    {
+//                        std::vector<int> a = {};
+//                        Command com(Globals::get_instance()->player->id, update.unit_id, "pop_command", a);
+//                        Globals::get_instance()->net->send(&com);
+//                    }
                 }
             } else
             {
                 CCLOG("Enemy unit");
                 auto enemy = Globals::get_instance()->enemies[update.player_id].get();
-                if (enemy->units.empty())
-                //if (enemy->units.find(update.unit_id) == enemy->units.end())
+                //if (enemy->units.empty())
+                if (enemy->units.find(update.unit_id) == enemy->units.end())
                 {
                     CCLOG("unit enemy created");
                     enemy->units[update.unit_id] = std::make_unique<EnemyUnit>(Vec2(update.new_x, update.new_y), update.unit_id, WarriorPlist ,WarriorFormat);
@@ -179,7 +190,8 @@ void GameScene::initGame()
     listener->onKeyPressed = CC_CALLBACK_2(GameScene::onKeyPressed, this);
     listener->onKeyReleased = CC_CALLBACK_2(GameScene::onKeyReleased, this);
     getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
-    auto startButton = ui::Button::create();
+    auto startButton = ui::Button::create("Button-Free-PNG-Image.png");
+    startButton->setScale(0.5);
     startButton->setTitleText("Start Game");
     startButton->setPosition(Vec2(Director::getInstance()->getWinSize().width / 2, Director::getInstance()->getWinSize().height / 2));
     startButton->addClickEventListener([&](Ref* sender){
@@ -187,9 +199,14 @@ void GameScene::initGame()
         net->work();
         CCLOG("Сеть подключена");
         scheduleUpdate();
-        removeChild(startButton);
+        //startButton->setPosition(Vec2(2000, 2000));
+        //sender->release();
+        removeAllChildren();
         //delete(startButton);
     });
+    auto bg = Sprite::create("BG.jpg");
+    bg->setPosition(Vec2(Director::getInstance()->getWinSize().width / 2, Director::getInstance()->getWinSize().height / 2));
+    addChild(bg, 0);
     addChild(startButton);
 }
 
