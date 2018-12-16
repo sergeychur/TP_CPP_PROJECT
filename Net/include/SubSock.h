@@ -16,7 +16,7 @@ struct SubSock
 	explicit SubSock(boost::asio::io_context& context);
 	std::thread* thread;
 	tcp::socket* socket;
-	static bool stop;
+	bool stop;
 	~SubSock();
 };
 

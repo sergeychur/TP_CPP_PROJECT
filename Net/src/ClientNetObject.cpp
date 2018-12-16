@@ -5,7 +5,7 @@
 #include <iostream>
 #include "../include/ClientNetObject.h"
 
-std::vector<Serializable*> NetObject::buf;
+std::vector<std::shared_ptr<Serializable>> NetObject::buf;
 std::map<std::string, DefaultAbstractFactory*> NetObject::map;
 
 boost::asio::io_context ClientNetObject::context;
@@ -17,28 +17,35 @@ std::string ClientNetObject::ENDOBJ = "endobj";
 
 SubSock* ClientNetObject::sock;
 
-bool SubSock::stop;
+//bool SubSock::stop;
 
 void ClientNetObject::send(Serializable *serializable)
 {
+	using std::chrono_literals::operator""ms;
+	static std::chrono::steady_clock::time_point send_time = std::chrono::steady_clock::now();
+	while(std::chrono::steady_clock::now() < send_time + 500ms)
+		;
+	send_time = std::chrono::steady_clock::now();
+	
 	std::stringstream stream;
 	boost::archive::text_oarchive archive(stream);
-//	archive << serializable; // serialize
 	serializable->serialize(archive);
+	
 	std::string send_buf, temp_buf;
-//	stream >> temp_buf;
+	
 	temp_buf = stream.str();
 	send_buf.append(STARTOBJ);
 	
 	send_buf.append(temp_buf); // write buf
 	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
 	send_buf.append(ENDOBJ);
+	
 	sock_mutex.lock();
 	boost::asio::write(*(sock->socket),boost::asio::buffer(send_buf)); // send
 	sock_mutex.unlock();
 }
 
-std::vector<Serializable*> ClientNetObject::receive()
+std::vector<std::shared_ptr<Serializable>> ClientNetObject::receive()
 {
 	buf_mutex.lock();
 	auto temp = std::move(buf);
@@ -65,14 +72,19 @@ void ClientNetObject::work()
 void ClientNetObject::connect()
 {
 	try {
-		tcp::resolver resolver(context);
-		boost::asio::connect(*(sock->socket), resolver.resolve(ip, std::to_string(port)));
+		while(true)
+		{
+			tcp::resolver resolver(context);
+			boost::system::error_code ec;
+			boost::asio::connect(*(sock->socket), resolver.resolve(ip, std::to_string(port)), ec);
+			if(!ec)
+				break;
+		}
 //	boost::asio::connect(sock, tcp::endpoint(boost::asio::ip::address::from_string(ip),port));
 	}
 	catch(std::exception& e)
 	{
 		std::cerr << e.what() << std::endl;
-		throw;
 	}
 }
 ClientNetObject::~ClientNetObject()
@@ -118,10 +130,10 @@ void ClientNetObject::read_sock()
 				else
 					wrong_data_recv_buf.clear();
 				
-				recv_buf.erase(object_end); // clear TYPE and ENDOBJ from message
+				recv_buf.erase(object_end - TYPE_LENGTH); // clear TYPE and ENDOBJ from message
 				recv_buf.erase(0, object_start + STARTOBJ.size()); // clear STARTOBJ
 				
-				Serializable* serializable; // create pointer
+				std::shared_ptr<Serializable> serializable; // create pointer
 				serializable = map[type]->create(); // create empty object
 				
 				// deserialize

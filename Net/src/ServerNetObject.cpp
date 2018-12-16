@@ -5,7 +5,7 @@
 #include <iostream>
 #include "../include/ServerNetObject.h"
 
-std::vector<Serializable*> NetObject::buf;
+std::vector<std::shared_ptr<Serializable>> NetObject::buf;
 std::map<std::string, DefaultAbstractFactory*> NetObject::map;
 
 boost::asio::io_context ServerNetObject::context;
@@ -16,25 +16,29 @@ std::string ServerNetObject::ENDOBJ = "endobj";
 
 SubSock* ServerNetObject::socks;
 
-bool SubSock::stop;
+//bool SubSock::stop;
 
 void ServerNetObject::send(Serializable *serializable)
 {
+	using std::chrono_literals::operator""ms;
+	static std::chrono::steady_clock::time_point send_time = std::chrono::steady_clock::now();
+	while(std::chrono::steady_clock::now() < send_time + 500ms)
+		;
+	send_time = std::chrono::steady_clock::now();
+	
 	std::stringstream stream;
 	boost::archive::text_oarchive archive(stream);
-
-//	archive << serializable; // serialize
 	serializable->serialize(archive);
 	
 	std::string send_buf, temp_buf;
-//	stream >> temp_buf;
-//	std::cerr << stream.str();
+	
 	temp_buf = stream.str();
 	send_buf.append(STARTOBJ);
 	
 	send_buf.append(temp_buf); // write buf
 	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
 	send_buf.append(ENDOBJ);
+	
 	sock_mutex.lock();
 	for(int i = 0; i < player_num; ++i)
 	{
@@ -47,11 +51,9 @@ void ServerNetObject::send_to(Serializable *serializable, int i)
 {
 	std::stringstream stream;
 	boost::archive::text_oarchive archive(stream);
-//	archive << serializable; // serialize
 	serializable->serialize(archive);
 	
 	std::string send_buf, temp_buf;
-//	stream >> temp_buf;
 	
 	temp_buf = stream.str();
 	send_buf.append(STARTOBJ);
@@ -59,12 +61,13 @@ void ServerNetObject::send_to(Serializable *serializable, int i)
 	send_buf.append(temp_buf); // write buf
 	send_buf.append(std::string(typeid(*serializable).name()).substr(0,TYPE_LENGTH)); // write object type
 	send_buf.append(ENDOBJ);
+	
 	sock_mutex.lock();
 	boost::asio::write(*(socks[i].socket), boost::asio::buffer(send_buf)); // send
 	sock_mutex.unlock();
 }
 
-std::vector<Serializable*> ServerNetObject::receive()
+std::vector<std::shared_ptr<Serializable>> ServerNetObject::receive()
 {
 	buf_mutex.lock();
 	auto temp=std::move(buf);
@@ -110,7 +113,7 @@ void ServerNetObject::read_client_socks(const size_t socks_index)
 	std::string wrong_data_recv_buf; // in case of unsuccessful parse this will be used as a buf to prevent data loss
 	while(!(socks[socks_index].stop))
 	{
-		std::string temp_recv_buf ,recv_buf;
+		std::string temp_recv_buf, recv_buf;
 		
 		sock_mutex.lock(); // lock socket mutex
 		
@@ -141,11 +144,11 @@ void ServerNetObject::read_client_socks(const size_t socks_index)
 				else
 					wrong_data_recv_buf.clear();
 				
-				recv_buf.erase(object_end); // clear TYPE and ENDOBJ from message
+				recv_buf.erase(object_end - TYPE_LENGTH); // clear TYPE and ENDOBJ from message
 				recv_buf.erase(0, object_start + STARTOBJ.size()); // clear STARTOBJ
 				
 				
-				Serializable* serializable; // create pointer
+				std::shared_ptr<Serializable> serializable; // create pointer
 				
 				serializable = map[type]->create(); // create empty object
 				

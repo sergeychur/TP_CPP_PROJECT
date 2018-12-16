@@ -21,7 +21,7 @@ public:
 	ServerNetObject(uint _port, std::string _ip, size_t player_number, std::map<std::string,DefaultAbstractFactory*> _map);
 	void send(Serializable *serializable) override;
 	void send_to(Serializable *serializable, int i) override;
-	std::vector<Serializable*> receive() override;
+	std::vector<std::shared_ptr<Serializable>> receive() override;
 	void work() override;
 	~ServerNetObject();
 private:
@@ -33,7 +33,7 @@ private:
 	static std::mutex buf_mutex;
 	static std::string STARTOBJ;
 	static std::string ENDOBJ;
-	static SubSock* socks;
+	static SubSock* socks; // TODO(Me): unordered_map
 };
 
 
