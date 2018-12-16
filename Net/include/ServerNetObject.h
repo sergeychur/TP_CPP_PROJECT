@@ -31,9 +31,11 @@ private:
 	static boost::asio::io_context context;
 	static std::mutex sock_mutex;
 	static std::mutex buf_mutex;
+	static SubSock* socks; // TODO(Me): unordered_map
+	
+	const int WAIT_TIME_BETWEEN_SEND;
 	static std::string STARTOBJ;
 	static std::string ENDOBJ;
-	static SubSock* socks; // TODO(Me): unordered_map
 };
 
 

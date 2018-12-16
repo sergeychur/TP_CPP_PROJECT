@@ -21,9 +21,8 @@ SubSock* ClientNetObject::sock;
 
 void ClientNetObject::send(Serializable *serializable)
 {
-	using std::chrono_literals::operator""ms;
 	static std::chrono::steady_clock::time_point send_time = std::chrono::steady_clock::now();
-	while(std::chrono::steady_clock::now() < send_time + 500ms)
+	while(std::chrono::steady_clock::now() < send_time + std::chrono_literals::operator""ms(WAIT_TIME_BETWEEN_SEND))
 		;
 	send_time = std::chrono::steady_clock::now();
 	
@@ -56,7 +55,8 @@ std::vector<std::shared_ptr<Serializable>> ClientNetObject::receive()
 
 ClientNetObject::ClientNetObject(uint _port, std::string _ip, std::map<std::string,DefaultAbstractFactory*> _map)
 	:
-	AbstractClientNetObject(_port,_ip)
+	AbstractClientNetObject(_port,_ip),
+	WAIT_TIME_BETWEEN_SEND(1)
 {
 	map=std::move(_map);
 	sock = nullptr;

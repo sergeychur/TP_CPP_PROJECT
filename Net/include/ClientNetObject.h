@@ -33,6 +33,7 @@ private:
 	static std::mutex sock_mutex;
 	static std::mutex buf_mutex;
 	
+	const int WAIT_TIME_BETWEEN_SEND;
 	static std::string STARTOBJ;
 	static std::string ENDOBJ;
 	
