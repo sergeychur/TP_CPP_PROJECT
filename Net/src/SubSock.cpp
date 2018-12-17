@@ -1,8 +1,21 @@
 //
-// Created by alex on 02.12.18.
+// Created by alex on 17.12.18.
 //
 
-#include "../include/SubSock.h"
+#include <thread>
+#include <boost/asio.hpp>
+
+using boost::asio::ip::tcp;
+
+struct SubSock
+{
+	SubSock();
+	explicit SubSock(boost::asio::io_context& context);
+	std::thread* thread;
+	tcp::socket* socket;
+	bool stop;
+	~SubSock();
+};
 
 SubSock::SubSock()
 {

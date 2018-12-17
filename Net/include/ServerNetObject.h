@@ -1,41 +1,33 @@
 //
-// Created by alex on 12.11.18.
+// Created by alex on 17.12.18.
 //
 
 #ifndef NET_SERVERNETOBJECT_H
 #define NET_SERVERNETOBJECT_H
 
 
-#include <thread>
-#include <boost/asio.hpp>
+#include <map>
 #include "AbstractServerNetObject.h"
 #include "DefaultAbstractFactory.h"
-#include "SubSock.h"
+#include "noncopyable.h"
 
-using boost::asio::ip::tcp;
+class ServerNetObjectImpl;
 
-class ServerNetObject : public AbstractServerNetObject
+class ServerNetObject : public AbstractServerNetObject, public noncopyable
 {
 public:
-	// make it singleton
-	ServerNetObject(uint _port, std::string _ip, size_t player_number, std::map<std::string,DefaultAbstractFactory*> _map);
+	ServerNetObject(std::string ip, uint port, int player_num, std::map<std::string, DefaultAbstractFactory*> _map,
+		std::string startobj_string,
+		std::string endobj_string,
+		size_t type_length, int wait_time);
+	~ServerNetObject();
+	
 	void send(Serializable *serializable) override;
-	void send_to(Serializable *serializable, int i) override;
 	std::vector<std::shared_ptr<Serializable>> receive() override;
 	void work() override;
-	~ServerNetObject();
+	void send(Serializable *serializable, int player_number) override;
 private:
-	void connect(size_t);
-	static void read_client_socks(size_t sub_sock_index);
-//
-	static boost::asio::io_context context;
-	static std::mutex sock_mutex;
-	static std::mutex buf_mutex;
-	static SubSock* socks; // TODO(Me): unordered_map
-	
-	const int WAIT_TIME_BETWEEN_SEND;
-	static std::string STARTOBJ;
-	static std::string ENDOBJ;
+	ServerNetObjectImpl* impl;
 };
 
 

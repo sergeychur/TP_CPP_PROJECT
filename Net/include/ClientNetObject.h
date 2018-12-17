@@ -1,43 +1,32 @@
 //
-// Created by alex on 12.11.18.
+// Created by alex on 17.12.18.
 //
 
 #ifndef NET_CLIENTNETOBJECT_H
 #define NET_CLIENTNETOBJECT_H
 
-
-#include <thread>
-#include <mutex>
-#include <boost/asio.hpp>
-
+#include <map>
 #include "AbstractClientNetObject.h"
 #include "DefaultAbstractFactory.h"
-#include "SubSock.h"
+#include "noncopyable.h"
 
-using boost::asio::ip::tcp;
+class ClientNetObjectImpl;
 
-class ClientNetObject : public AbstractClientNetObject
+class ClientNetObject : public AbstractClientNetObject, public noncopyable
 {
 public:
-//	//make it singleton
-	ClientNetObject(uint _port, std::string _ip, std::map<std::string, DefaultAbstractFactory*> _map);
-	void send(Serializable *serializable) override;
-	std::vector<std::shared_ptr<Serializable>> receive();
-	void work() override;
+	ClientNetObject(std::string ip, uint port, std::map<std::string, DefaultAbstractFactory*> _map,
+		std::string startobj_string,
+		std::string endobj_string,
+		size_t type_length, int wait_time);
 	~ClientNetObject();
+	
+	void send(Serializable *serializable) override;
+	std::vector<std::shared_ptr<Serializable>> receive() override;
+	void work() override;
+	
 private:
-	void connect();
-	static void read_sock();
-	
-	static boost::asio::io_context context;
-	static std::mutex sock_mutex;
-	static std::mutex buf_mutex;
-	
-	const int WAIT_TIME_BETWEEN_SEND;
-	static std::string STARTOBJ;
-	static std::string ENDOBJ;
-	
-	static SubSock* sock;
+	ClientNetObjectImpl *impl;
 };
 
 

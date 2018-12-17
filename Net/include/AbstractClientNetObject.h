@@ -1,21 +1,15 @@
 //
-// Created by alex on 12.11.18.
+// Created by alex on 17.12.18.
 //
 
 #ifndef NET_ABSTRACTCLIENTNETOBJECT_H
 #define NET_ABSTRACTCLIENTNETOBJECT_H
 
+#include "AbstractNetObject.h"
 
-#include "NetObject.h"
-
-class AbstractClientNetObject : public NetObject
+class AbstractClientNetObject : public AbstractNetObject
 {
-public:
-	AbstractClientNetObject(uint _port, std::string _ip);
-	void set_parameters(std::string _ip, uint _port);
-protected:
-	uint port;
-	std::string ip;
+
 };
 
 
