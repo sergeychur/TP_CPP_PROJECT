@@ -1,0 +1,18 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: "serega753/cpp_project:cpp1"
+    working_directory: /app/TP_CPP_PROJECT
+    steps:
+      - checkout
+      - run:
+          name: Linters
+          command: '/app/TP_CPP_PROJECT/linters/run.sh --local'
+      - run:
+          name: Creating Build Files
+          command: 'cmake /app/TP_CPP_PROJECT/server_side/CMakeLists.txt'
+      - run:
+          name: Unit Testing
+          command: '/app/TP_CPP_PROJECT/server_side/test/tests'
