@@ -18,6 +18,8 @@ class MockBase : public AbstractBase {
         ~MockBase() = default;
         MOCK_METHOD1(start_making, bool(Command&));
         MOCK_METHOD0(is_ready, bool());
+        MOCK_METHOD0(is_alive, bool());
+		MOCK_METHOD0(die, void());
         MOCK_METHOD0(get_unit, std::shared_ptr<AbstractUnit>());
         MOCK_METHOD1(interact, bool(Command&));
         MOCK_METHOD0(notify, void());
@@ -27,7 +29,6 @@ class MockBase : public AbstractBase {
         MOCK_METHOD1(add_act_handler, void(std::shared_ptr<AbstractHandler>&));
         MOCK_METHOD1(add_distrib_handler, void(std::shared_ptr<AbstractHandler>&));
     private:
-        MOCK_METHOD0(is_alive, bool());
 
 
 };

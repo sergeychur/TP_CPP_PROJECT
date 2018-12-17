@@ -28,7 +28,7 @@ class Player {
  private:
 	size_t id;
 	std::vector<std::shared_ptr<AbstractUnit>> unit_arr;     // the array of player's units
-	void remove_unit(size_t id);		// removes unit by id when it is dead
+	void remove_unit(size_t id);        // removes unit by id when it is dead
 	std::shared_ptr<AbstractBase> base;
 	size_t unit_num;
 
@@ -47,4 +47,4 @@ class Player {
 	~Player();
 };
 
-#endif 		//  SERVER_PLAYER_HPP
+#endif        //  SERVER_PLAYER_HPP

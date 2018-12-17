@@ -21,6 +21,8 @@ class AbstractUnit : public NewsMaker, public Colleague {
 
 	virtual bool act(Command &order) = 0;
 
+	virtual bool is_alive() = 0;
+
 	virtual void add_act_handler(std::shared_ptr<AbstractHandler> &) = 0;
 
 	virtual void add_distrib_handler(std::shared_ptr<AbstractHandler> &) = 0;
@@ -28,4 +30,4 @@ class AbstractUnit : public NewsMaker, public Colleague {
 	~AbstractUnit() override = default;
 };
 
-#endif 		//  SERVER_ABSTRACT_UNIT_HPP
+#endif        //  SERVER_ABSTRACT_UNIT_HPP

@@ -5,12 +5,14 @@
 #ifndef SERVER_UPDATE_MAKER_HPP
 #define SERVER_UPDATE_MAKER_HPP
 
+#include <map>
+
 #include "news_taker.hpp"
 #include "update.hpp"
 
 class UpdateMaker : public NewsTaker {
  public:
-	UpdateMaker();
+	UpdateMaker() = default;
 
 	void handle_event(const UpdateLine &) override;
 
@@ -19,7 +21,7 @@ class UpdateMaker : public NewsTaker {
 	~UpdateMaker() override;
 
  private:
-	std::unique_ptr<Update> update;
+	std::map<std::pair<size_t, size_t>, UpdateLine> update;
 };
 
-#endif 		//  SERVER_UPDATE_MAKER_HPP
+#endif        //  SERVER_UPDATE_MAKER_HPP

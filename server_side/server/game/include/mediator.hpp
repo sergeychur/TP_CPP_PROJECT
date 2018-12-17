@@ -26,6 +26,8 @@ class Colleague {
 
 	virtual bool interact(Command &) = 0;
 
+	virtual void die() = 0;
+
 	virtual ~Colleague() = default;
 };
 
@@ -36,8 +38,10 @@ class Mediator {
 
 	virtual bool make_interaction(Command &) = 0;
 
+	virtual void delete_colleague(size_t player_id, size_t unit_id) = 0;
+
 	virtual ~Mediator() = default;
 };
 
 
-#endif 		//  SERVER_MEDIATOR_HPP
+#endif        //  SERVER_MEDIATOR_HPP

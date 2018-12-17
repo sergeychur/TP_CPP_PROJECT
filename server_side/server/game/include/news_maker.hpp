@@ -19,4 +19,4 @@ class NewsMaker {
 	virtual ~NewsMaker() = default;
 };
 
-#endif 		//  SERVER_NEWS_MAKER_HPP
+#endif        //  SERVER_NEWS_MAKER_HPP

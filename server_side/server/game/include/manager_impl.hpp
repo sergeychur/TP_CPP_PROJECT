@@ -32,4 +32,4 @@ class ManagerImpl {
 	std::map<std::string, DefaultAbstractFactory *> map;
 };
 
-#endif 		//  SERVER_MANAGER_IMPL_HPP
+#endif        //  SERVER_MANAGER_IMPL_HPP

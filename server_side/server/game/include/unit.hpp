@@ -34,6 +34,10 @@ class Unit : public AbstractUnit, public RealUnit {
 
 	void notify() override;
 
+	void set_notify_need(bool need);
+
+	bool if_notify_need();
+
 	bool act(Command &order) override;
 
 	size_t hash_self() const;
@@ -52,14 +56,16 @@ class Unit : public AbstractUnit, public RealUnit {
 
 	bool pop_command(Command &);
 
+	bool is_alive() override;
+
+	void die() override;
+
  private:
 	void add_command(Command &);
 
 	bool interact(Command &) override;
 
 	void perform_existing_commands();
-
-	bool is_alive() const;
 
 	double diff(int dest_x, int dest_y, int source_x, int source_y);
 
@@ -73,11 +79,11 @@ class Unit : public AbstractUnit, public RealUnit {
 	int speed;
 	int look_angle;
 	double theor_dist;
-	constexpr static double allowed_linear_delta = 50;
+
 	std::chrono::time_point<std::chrono::system_clock> prev_time;
 };
 
 
 bool operator==(const Unit &, const Unit &);
 
-#endif 		//  SERVER_UNIT_HPP
+#endif        //  SERVER_UNIT_HPP

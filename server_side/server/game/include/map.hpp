@@ -22,10 +22,12 @@ class Map : public Mediator {
 
 	bool make_interaction(Command &) override;
 
+	void delete_colleague(size_t, size_t) override;
+
 	~Map() override;
 
  private:
 	std::vector<std::vector<std::weak_ptr<Colleague>>> unit_matrix;
 };
 
-#endif 		//  SERVER_MAP_HPP
+#endif        //  SERVER_MAP_HPP

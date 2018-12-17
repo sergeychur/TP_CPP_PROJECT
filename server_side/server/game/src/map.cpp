@@ -42,3 +42,13 @@ void Map::add_colleague(const std::shared_ptr<Colleague> &colleague, const size_
 	}
 	unit_matrix[player_id][unit_id] = colleague;
 }
+
+void Map::delete_colleague(const size_t player_id, const size_t unit_id) {
+	if(player_id > unit_matrix.size()) {
+		return;
+	}
+	if(unit_id > unit_matrix[player_id].size()) {
+		return;
+	}
+	unit_matrix[player_id][unit_id].reset();
+}

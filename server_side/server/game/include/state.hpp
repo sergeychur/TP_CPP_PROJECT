@@ -16,7 +16,7 @@ enum {
 
 class State {
  public:
-	State() : value(NONE) {}
+	State() : value(NONE), needed_notify(true) {}
 
 	void make_moving() { value = MOVING; }
 
@@ -28,8 +28,13 @@ class State {
 
 	int get_state() const { return value; }
 
+	void set_notify_need(bool need) { needed_notify = need; }
+
+	bool if_notify_need() { return needed_notify; }
+
  private:
 	int value;
+	bool needed_notify;
 };
 
-#endif 		//  SERVER_STATE_HPP
+#endif        //  SERVER_STATE_HPP

@@ -23,7 +23,9 @@ Unit::Unit(const size_t _player_id, const size_t _unit_id, const int _HP, const 
 																						  radius(_radius),
 																						  speed(_speed),
 																						  look_angle(_look_angle),
-																						  theor_dist(0) {}
+																						  theor_dist(0) {
+	state.set_notify_need(true);
+}
 
 void Unit::add(std::shared_ptr<NewsTaker> news_taker) {
 	if (!news_taker) {
@@ -37,14 +39,28 @@ void Unit::remove() {
 }
 
 void Unit::notify() {
-	UpdateLine line(player_id, unit_id, HP, unit_x, unit_y, look_angle, state.get_state(), is_alive());
-	if (updater) {
-		updater->handle_event(line);
+	if (if_notify_need()) {
+		UpdateLine line(player_id, unit_id, HP, unit_x, unit_y, look_angle, state.get_state(), is_alive());
+		if (updater) {
+			updater->handle_event(line);
+		}
 	}
 }
 
-bool Unit::is_alive() const {
+void Unit::set_notify_need(bool need) {
+	state.set_notify_need(need);
+}
+
+bool Unit::if_notify_need() {
+	return state.if_notify_need();
+}
+
+bool Unit::is_alive() {
 	return HP > 0;
+}
+
+void Unit::die() {
+	mediator->delete_colleague(player_id, unit_id);
 }
 
 double Unit::diff(const int dest_x, const int dest_y, const int source_x, const int source_y) {
@@ -100,7 +116,7 @@ void Unit::perform_existing_commands() {
 	if (!command) {
 		return;
 	}
-
+	set_notify_need(true);
 	bool handled = false;
 	auto it = act_handlers.begin();
 	while (it != act_handlers.end()) {
@@ -120,6 +136,8 @@ void Unit::perform_existing_commands() {
 bool Unit::pop_command(Command &com) {
 	command.reset();
 	state.make_none();
+	notify();
+	set_notify_need(false);
 	return true;
 }
 
@@ -146,6 +164,7 @@ void Unit::add_command(Command &com) {
 	if (command) {
 		command.reset();
 	}
+	set_notify_need(true);
 	command = std::make_unique<Command>(com);
 	prev_time = std::chrono::system_clock::now();
 }
@@ -179,7 +198,10 @@ bool Unit::correct_state(Command &com) {
 		unit_y += static_cast<int>(koef * (com.parameters[y_val] - unit_y));
 	}
 	look_angle = com.parameters[angle_val];
-
+	if(!is_alive()) {
+		state.make_dead();
+		// mediator->delete_colleague(player_id, unit_id);
+	}
 	notify();
 	return false;
 }
@@ -195,6 +217,7 @@ bool Unit::interact(Command &com) {
 			++it;
 		}
 	}
+	set_notify_need(true);
 	notify();
 	return success;
 }

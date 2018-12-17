@@ -15,6 +15,7 @@ public:
     explicit MockColleague(std::shared_ptr<Mediator> mediator1) : Colleague(mediator1) {}
     ~MockColleague() override = default;
     MOCK_METHOD1(interact, bool(Command&));
+    MOCK_METHOD0(die, void());
 };
 
 #endif //SERVER_MOCK_COLLEAGUE_HPP

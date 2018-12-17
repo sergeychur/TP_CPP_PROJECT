@@ -30,4 +30,4 @@ class Handler : public AbstractHandler {
 	std::function<bool(Command &)> callable;
 };
 
-#endif 		//  SERVER_HANDLER_HPP
+#endif        //  SERVER_HANDLER_HPP

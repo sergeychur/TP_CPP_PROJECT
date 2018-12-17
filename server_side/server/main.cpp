@@ -1,18 +1,17 @@
 #include <iostream>
-#include <fstream>
-#include <climits>
-#include <memory>
+#include <unordered_set>
 
 #include "game.hpp"
 #include "manager.hpp"
 #include "input.hpp"
 #include "initialiser.hpp"
+#include "adapter.hpp"
 
-#include "ServerNetObject.h"
+// #include "ServerNetObject.h"
 
 
 
-int main(void) {
+int main() {
     size_t player_num = 0;
     Manager manager;
     input(&player_num, "Enter the number of players");
@@ -26,13 +25,14 @@ int main(void) {
     }
     uint port = 0;
     input(&port, "Enter the port to listen on");
-    std::string ip("");
+    std::string ip;
     input(&ip, "Enter the ip to listen on");
     std::map<std::string, DefaultAbstractFactory*> map;
     map = manager.get_instance_map();
     std::cout << "Success entering" << std::endl;
-    ServerNetObject server(port, ip, player_num, map);
-    server.work();
+    // ServerNetObject server_obj(port, ip, player_num, map);
+    std::unique_ptr<Server> server = std::make_unique<Adapter>(port, ip, player_num, map);
+    server->work();
     std::cout << "Success" << std::endl;
     for(size_t i = 0; i < player_num; ++i) {
         try {
@@ -43,7 +43,7 @@ int main(void) {
         }
         Initialiser init(i, player_num, bases);
         try {
-             server.send_to(&init, i);
+             server->send_to(&init, i);
         } catch(std::exception& e) {
             std::cerr << "Cannot send cause of" << e.what() << std::endl;
             return ERR_SEND;
@@ -51,39 +51,33 @@ int main(void) {
     }
     size_t winner = player_num;
     while(!game.is_win()) {
-        std::vector<std::shared_ptr<Serializable>> clients_data;
+		/*std::vector<std::shared_ptr<Serializable>> clients_data;
         do {
           clients_data = server.receive();
-        } while(clients_data.empty());
-        /*// here test begins, remove in prod, made for tests without clients, not safe
-        int i = 0;
-        while(i < 2) {
-            auto com = new Command;
-            std::cout << "Enter next command" << std::endl;
-            std::cin >> *com;
-            clients_data.emplace_back(com);
-            ++i;
-        }
-        std::cin.clear();
-        // here test ends*/
+        } while(clients_data.empty());*/
+        std::vector<Command> commands;
+		do {
+			commands = server->receive();
+		} while(commands.empty());
+
         try {
-            winner = game.act(clients_data);
+            winner = game.act(commands);
         }
         catch (std::exception& e) {
             std::cerr << "Can't act because of "<< e.what() << std::endl;
         }
         std::unique_ptr<Update> update;
-        try {
-            update = game.get_update();
-        }
-        catch(std::exception& e) {
-            std::cerr << "Can't get update because of " << e.what() << std::endl;
-        }
+			try {
+				update = game.get_update();
+			} catch(std::exception& e) {
+			 	std::cerr << "Can't get update because of " << e.what() << std::endl;
+			}
         if(update) {
             std::cout << "Update to send is:" << std::endl;
             std::cout << *(update) << std::endl;       // in order to test, remove
+
             try {
-                server.send(update.get());
+                server->send(update.get());
             } catch(std::exception& e) {
                 std::cerr << "Cannot send, cause of " << e.what() << std::endl;
             }

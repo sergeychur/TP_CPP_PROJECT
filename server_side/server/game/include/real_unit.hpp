@@ -35,6 +35,8 @@ class RealUnit {
 	int HP;
 	int unit_x;
 	int unit_y;
+
+	constexpr static double allowed_linear_delta = 50;
 };
 
 #endif        //  SERVER_REAL_UNIT_HPP

@@ -32,6 +32,10 @@ bool Base::is_ready_for_time(const double elapsed_time) {
 	return elapsed_time > time_to_build;
 }
 
+void Base::die() {
+	mediator->delete_colleague(player_id, unit_id);
+}
+
 bool Base::start_making(Command &com) {
 	enum indices {
 		x = 0,
@@ -76,6 +80,8 @@ std::shared_ptr<AbstractUnit> Base::get_unit() {
 		mediator->add_colleague(unit_to_return, player_id, units_made);
 	}
 	is_making = false;
+	unit_to_return->notify();
+	unit_to_return->set_notify_need(false);
 	return unit_to_return;
 }
 

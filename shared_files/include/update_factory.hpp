@@ -8,16 +8,14 @@
 #include "DefaultAbstractFactory.h"
 #include "update.hpp"
 
-class UpdateFactory : public DefaultAbstractFactory
-{
-public:
-    std::shared_ptr<Serializable> create() override
-    {
-        return (std::make_shared<Update>());
-    }
-    ~UpdateFactory() override = default;
+class UpdateFactory : public DefaultAbstractFactory {
+ public:
+	std::shared_ptr<Serializable> create() override {
+		return (std::make_shared<Update>());
+	}
+
+	~UpdateFactory() override = default;
 };
 
 
-
-#endif //SERVER_UPDATE_FACTORY_HPP
+#endif 		//  SERVER_UPDATE_FACTORY_HPP

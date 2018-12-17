@@ -8,15 +8,14 @@
 #include "DefaultAbstractFactory.h"
 #include "initialiser.hpp"
 
-class InitialiserFactory : public DefaultAbstractFactory
-{
-public:
-    std::shared_ptr<Serializable> create() override
-    {
-        return (std::make_shared<Initialiser>());
-    }
-    ~InitialiserFactory() override = default;
+class InitialiserFactory : public DefaultAbstractFactory {
+ public:
+	std::shared_ptr<Serializable> create() override {
+		return (std::make_shared<Initialiser>());
+	}
+
+	~InitialiserFactory() override = default;
 };
 
 
-#endif //SERVER_INITIALISER_FACTORY_HPP
+#endif		 //  SERVER_INITIALISER_FACTORY_HPP

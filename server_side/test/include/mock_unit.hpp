@@ -15,6 +15,8 @@ public:
     MockUnit() : AbstractUnit(nullptr){};
     ~MockUnit() override = default;
     MOCK_METHOD1(act, bool(Command&));
+    MOCK_METHOD0(is_alive, bool());
+	MOCK_METHOD0(die, void());
     MOCK_METHOD0(remove, void());
     MOCK_METHOD0(notify, void());
     MOCK_METHOD1(interact, bool(Command&));

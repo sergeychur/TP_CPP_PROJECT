@@ -44,4 +44,4 @@ class Manager {
 	std::unique_ptr<ManagerImpl> impl;
 };
 
-#endif 		//  SERVER_MANAGER_HPP
+#endif        //  SERVER_MANAGER_HPP

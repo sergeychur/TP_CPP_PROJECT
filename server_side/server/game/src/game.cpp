@@ -32,30 +32,27 @@ void Game::add_player(const std::pair<int, int> &base_coords, const size_t playe
 	avaliability[player_id] = STILL_ACT;
 }
 
-size_t Game::act(std::vector<std::shared_ptr<Serializable>> &commands_arr) {
+size_t Game::act(std::vector<Command> &commands_arr) {
 	size_t stat = STILL_ACT;
-	for (int i = 0; i < commands_arr.size(); ++i) {
-		if (!commands_arr[i])
-			throw std::invalid_argument("No valid command");
-		std::shared_ptr<Command> command_ptr = std::dynamic_pointer_cast<Command>(commands_arr[i]);
-		Command command = *command_ptr;
-		std::cout << "Got command" << std::endl;
-		std::cout << command << std::endl;
-		if (player_arr.size() > command.player_id) {
-			if (avaliability[command.player_id] == STILL_ACT) {
+	for (auto& it : commands_arr) {
+		if(it.command_name != "check") {
+			std::cout << "Got command" << std::endl;
+			std::cout << it << std::endl;
+		}
+		if (player_arr.size() > it.player_id) {
+			if (avaliability[it.player_id] == STILL_ACT) {
 				try {
-					stat = player_arr[command.player_id]->act(command);
+					stat = player_arr[it.player_id]->act(it);
 				} catch (std::exception &e) {
 					throw e;
 				}
 				if (stat == DEAD) {
-					avaliability[command.player_id] = DEAD;
+					avaliability[it.player_id] = DEAD;
 					--player_num;
 				}
 			}
 		}
 	}
-	// std::cout << "Number of players is " << player_num << std::endl;
 	return (player_num == 1) ? stat : player_num;
 }
 

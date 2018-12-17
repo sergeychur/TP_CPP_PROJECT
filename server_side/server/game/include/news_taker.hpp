@@ -21,4 +21,4 @@ class NewsTaker {
 	virtual ~NewsTaker() = default;
 };
 
-#endif 		//  SERVER_NEWS_TAKER_HPP
+#endif        //  SERVER_NEWS_TAKER_HPP

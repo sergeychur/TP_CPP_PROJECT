@@ -9,16 +9,14 @@
 #include "command.hpp"
 
 
-class CommandFactory : public DefaultAbstractFactory
-{
-public:
-    std::shared_ptr<Serializable> create() override
-    {
-        return (std::make_shared<Command>());
-    }
-    ~CommandFactory() override = default;
+class CommandFactory : public DefaultAbstractFactory {
+ public:
+	std::shared_ptr<Serializable> create() override {
+		return (std::make_shared<Command>());
+	}
+
+	~CommandFactory() override = default;
 };
 
 
-
-#endif //SERVER_COMMAND_FACTORY_HPP
+#endif 		//  SERVER_COMMAND_FACTORY_HPP

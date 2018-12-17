@@ -25,4 +25,4 @@ void input(T *value, const std::string &greeting) {
 	} while (!success);
 }
 
-#endif 		//  SERVER_INPUT_HPP
+#endif        //  SERVER_INPUT_HPP

@@ -19,14 +19,18 @@ class Base : public AbstractBase, public RealUnit {
 
 	bool is_alive() override { return HP > 0; }
 
+	void die() override;
+
 	bool is_ready() override;
 
 	bool is_ready_for_time(double elapsed_time);
 
 	bool start_making(Command &) override;    // init the making process
+
 	std::shared_ptr<AbstractUnit> get_unit() override;
 
 	bool interact(Command &) override;   // to get kicked
+
 	void notify() override;
 
 	void add(std::shared_ptr<NewsTaker> news_taker) override;
@@ -56,11 +60,11 @@ class Base : public AbstractBase, public RealUnit {
 	std::shared_ptr<Unit> unit_to_return;
 	size_t units_made;
 	bool is_making;
-	static const int max_possible = 1000;
+	static const int max_possible = 100000;
 
 	bool act(Command &order) override;
 
 	void add_distrib_handler(std::shared_ptr<AbstractHandler> &) override {}
 };
 
-#endif 		//  SERVER_BASE_HPP
+#endif        //  SERVER_BASE_HPP

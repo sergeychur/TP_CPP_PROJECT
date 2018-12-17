@@ -29,10 +29,15 @@ size_t Player::act(Command &command) {
 	if (unit_arr.size() < command.unit_id) {
 		throw std::invalid_argument("Wrong index");
 	}
-	if (unit_arr[command.unit_id] && id == command.player_id) {
-		if (!unit_arr[command.unit_id]->act(command)) {
-			remove_unit(command.unit_id);
+	for (size_t i = 0; i < unit_arr.size(); ++i) {
+		if(unit_arr[i]) {
+			if (!unit_arr[i]->is_alive()) {
+				remove_unit(i);
+			}
 		}
+	}
+	if (unit_arr[command.unit_id] && id == command.player_id) {
+		unit_arr[command.unit_id]->act(command);
 	}
 	if (!unit_num) {
 		return DEAD;
@@ -52,6 +57,7 @@ void Player::add_unit(std::shared_ptr<AbstractUnit> unit) {
 void Player::remove_unit(const size_t id) {
 	if (unit_arr[id]) {
 		--unit_num;
+		unit_arr[id]->die();
 		unit_arr[id].reset();
 	}
 }

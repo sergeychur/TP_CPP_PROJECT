@@ -13,8 +13,6 @@ class AbstractBase : public AbstractUnit {
  public:
 	explicit AbstractBase(std::shared_ptr<Mediator> med) : AbstractUnit(med) {}
 
-	virtual bool is_alive() = 0;
-
 	virtual bool is_ready() = 0;
 
 	// init the making process
@@ -26,4 +24,4 @@ class AbstractBase : public AbstractUnit {
 	~AbstractBase() override = default;
 };
 
-#endif		//  SERVER_ABSTRACT_BASE_HPP
+#endif        //  SERVER_ABSTRACT_BASE_HPP
