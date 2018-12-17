@@ -7,9 +7,9 @@
 #include "SubSock.cpp"
 #include "SerializationOperation.cpp"
 
-//class ServerNetObjectImpl;
-//
-//void read_client_socks(ServerNetObjectImpl* impl, int socks_index);
+class ServerNetObjectImpl;
+
+void read_client_socks(ServerNetObjectImpl* impl, int socks_index);
 
 class ServerNetObjectImpl : public AbstractServerNetObject
 {
