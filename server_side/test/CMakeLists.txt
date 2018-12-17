@@ -12,6 +12,8 @@ set(PROJECT_ROOT ../../)
 
 set(GMOCK_DIR ${PROJECT_ROOT}/shared_files/googletest/googlemock/)
 
+set(GTEST_DIR ${PROJECT_ROOT}/shared_files/googletest/googletest/)
+
 # Boost magic
 set(BOOST_DIR ../../shared_files/boost_1_67_0)
 set(Boost_USE_MULTITHREADED ON)
@@ -32,7 +34,7 @@ include_directories("${PROJECT_ROOT}/server_side/server/game/include")
 include_directories("include/")
 include_directories(${PROJECT_ROOT}/shared_files/include)
 include_directories(${PROJECT_ROOT}/Net/include)
-include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
+include_directories(SYSTEM ${GTEST_DIR}/include ${GTEST_DIR})
 include_directories(SYSTEM ${GMOCK_DIR}/include ${GMOCK_DIR}/gtest/include)
 
 # add_subdirectory("${PROJECT_ROOT}/server_side/server/game" game_lib)
