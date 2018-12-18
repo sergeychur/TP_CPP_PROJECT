@@ -20,5 +20,5 @@ jobs:
           name: Unit Testing
           command: '/app/TP_CPP_PROJECT/server_side/test/tests'
       - run:
-      name: valgrind
-      command: 'valgrind /app/TP_CPP_PROJECT/server_side/test/tests'
+          name: valgrind
+          command: 'valgrind /app/TP_CPP_PROJECT/server_side/test/tests'
