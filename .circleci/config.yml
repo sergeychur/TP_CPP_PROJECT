@@ -20,7 +20,7 @@ jobs:
           command: 'cp /app/test_cmake/CMakeLists.txt /app/TP_CPP_PROJECT/server_side/test'
       - run:
           name: Creating Build Files
-          command: 'cmake server_side/server/game/CMakeLists.txt && cd server_side/server/game && make && cd ../../'
+          command: 'cmake server_side/CMakeLists.txt && cmake server_side/server/game/CMakeLists.txt cd server_side/server/game && make && cd ../../'
       - run:
           name: Creating tests
           command: 'cmake server_side/test/CMakeLists.txt && cd server_side/test/ && make'
