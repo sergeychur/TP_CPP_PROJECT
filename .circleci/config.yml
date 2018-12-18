@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: "serega753/cpp_project:cpp1"
+      - image: "serega753/cpp_project:actual"
     working_directory: /app/TP_CPP_PROJECT
     steps:
       - checkout
