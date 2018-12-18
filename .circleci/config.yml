@@ -20,13 +20,7 @@ jobs:
           command: 'cp /app/test_cmake/CMakeLists.txt /app/TP_CPP_PROJECT/server_side/test'
       - run:
           name: Creating Build Files
-          command: 'cmake server_side/CMakeLists.txt && cmake server_side/server/game/CMakeLists.txt'
-      - run:
-          name: Creating tests
-          command: 'cmake server_side/test/CMakeLists.txt && cd server_side/test/ && make'
+          command: 'cmake server_side/CMakeLists.txt && cd server_side/ && make'
       - run:
           name: Unit Testing
-          command: 'tests'
-      - run:
-          name: valgrind
-          command: 'valgrind tests'
+          command: './test/tests'
