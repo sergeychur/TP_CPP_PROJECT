@@ -23,7 +23,7 @@ jobs:
           command: 'cmake server_side/CMakeLists.txt'
       - run:
           name: Creating tests
-          command: 'cmake server_side/test/CMakeLists.txt && server_side/test/make'
+          command: 'cmake server_side/test/CMakeLists.txt && make -f server_side/test/Makefile'
       - run:
           name: Unit Testing
           command: '/app/TP_CPP_PROJECT/server_side/test/tests'
