@@ -78,11 +78,12 @@ bool Base::start_making(Command &com) {
 std::shared_ptr<AbstractUnit> Base::get_unit() {
 	if (unit_to_return) {
 		mediator->add_colleague(unit_to_return, player_id, units_made);
+		is_making = false;
+		unit_to_return->notify();
+		unit_to_return->set_notify_need(false);
+		return unit_to_return;
 	}
-	is_making = false;
-	unit_to_return->notify();
-	unit_to_return->set_notify_need(false);
-	return unit_to_return;
+	throw std::runtime_error("No unit to return");
 }
 
 bool Base::interact(Command &com) {
