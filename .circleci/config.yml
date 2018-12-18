@@ -8,11 +8,17 @@ jobs:
     steps:
       - checkout
       - run:
+          name: cd
+          command: 'cd /app/TP_CPP_PROJECT'
+      - run:
           name: Linters
-          command: '/app/TP_CPP_PROJECT/linters/run.sh --local'
+          command: './linters/run.sh --local'
       - run:
           name: Creating Build Files
-          command: 'cmake /app/TP_CPP_PROJECT/server_side/CMakeLists.txt'
+          command: 'cmake server_side/test/CMakeLists.txt'
       - run:
           name: Unit Testing
           command: '/app/TP_CPP_PROJECT/server_side/test/tests'
+      - run:
+      name: valgrind
+      command: 'valgrind /app/TP_CPP_PROJECT/server_side/test/tests'
