@@ -20,7 +20,10 @@ jobs:
           command: 'cp /app/test_cmake/CMakeLists.txt /app/TP_CPP_PROJECT/server_side/test'
       - run:
           name: Creating Build Files
-          command: 'cmake server_side/test/CMakeLists.txt'
+          command: 'cmake server_side/CMakeLists.txt'
+      - run:
+          name: Creating tests
+          command: 'server_side/test/make'
       - run:
           name: Unit Testing
           command: '/app/TP_CPP_PROJECT/server_side/test/tests'
