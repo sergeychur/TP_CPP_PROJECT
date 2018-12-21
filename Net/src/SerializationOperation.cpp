@@ -84,7 +84,8 @@ public:
 		catch(std::invalid_argument& e)
 		{
 			wrong_data_recv_buf.append(temp_recv_buf);
-			std::cerr << e.what() << "RECV_BUF IS " << temp_recv_buf << std::endl;
+			std::cerr << "RECV_BUF IS " << temp_recv_buf << std::endl;
+			throw;
 		}
 	}
 	

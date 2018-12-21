@@ -119,14 +119,37 @@ void ClientNetObjectImpl::read_sock()
 		{
 			boost::asio::read_until(*(sock->socket), boost::asio::dynamic_buffer(temp_recv_buf), ENDOBJ); // read from socket
 			sock_mutex.unlock(); // unlock socket mutex
-			auto serializable = serializer.deserialize(wrong_data_recv_buf,temp_recv_buf);
-			
-			buf_mutex.lock();// lock buf mutex
-			buf.push_back(serializable);// write to the buf
-			buf_mutex.unlock(); // unlock buf mutex
+			try
+			{
+				auto serializable = serializer.deserialize(wrong_data_recv_buf,temp_recv_buf);
+				
+				buf_mutex.lock(); // lock buf mutex
+				buf.push_back(serializable); // write to the buf
+				buf_mutex.unlock(); // unlock buf mutex
+				
+			}
+			catch(std::invalid_argument& e)
+			{
+				std::cerr << e.what() << std::endl;
+			}
 		}
 		else
+		{
 			sock_mutex.unlock();
+			try
+			{
+				auto serializable = serializer.deserialize(wrong_data_recv_buf,temp_recv_buf);
+				
+				buf_mutex.lock(); // lock buf mutex
+				buf.push_back(serializable); // write to the buf
+				buf_mutex.unlock(); // unlock buf mutex
+				
+			}
+			catch(std::invalid_argument& e)
+			{
+				std::cerr << e.what() << std::endl;
+			}
+		}
 	}
 	sock->socket->close();
 }
