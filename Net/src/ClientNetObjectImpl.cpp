@@ -62,7 +62,9 @@ public:
 	{
 		sock = new SubSock(context);
 		connect();
-		sock->thread = new std::thread(read_sock, this);
+		tcp::no_delay option(true);
+		sock->socket->set_option(option);
+		sock->thread = new std::thread(std::bind(&ClientNetObjectImpl::read_sock, this));
 	}
 	
 	void connect()
@@ -84,7 +86,7 @@ public:
 		}
 	}
 	
-	friend void read_sock(ClientNetObjectImpl* impl);
+	void read_sock();
 private:
 	const SerializationOperation serializer;
 	
@@ -103,28 +105,28 @@ private:
 };
 
 
-void read_sock(ClientNetObjectImpl* impl)
+void ClientNetObjectImpl::read_sock()
 {
 	std::string wrong_data_recv_buf; // in case of unsuccessful parse this will be used as a buf to prevent data loss
-	while(!(impl->sock->stop))
+	while(!(sock->stop))
 	{
 		std::string temp_recv_buf;
-		static std::string ENDOBJ = impl->serializer.get_endobj();
+		static std::string ENDOBJ = serializer.get_endobj();
 		
-		impl->sock_mutex.lock(); // lock socket mutex
+		sock_mutex.lock(); // lock socket mutex
 		
-		if(impl->sock->socket->available())
+		if(sock->socket->available())
 		{
-			boost::asio::read_until(*(impl->sock->socket), boost::asio::dynamic_buffer(temp_recv_buf), ENDOBJ); // read from socket
-			impl->sock_mutex.unlock(); // unlock socket mutex
-			auto serializable = impl->serializer.deserialize(wrong_data_recv_buf,temp_recv_buf);
+			boost::asio::read_until(*(sock->socket), boost::asio::dynamic_buffer(temp_recv_buf), ENDOBJ); // read from socket
+			sock_mutex.unlock(); // unlock socket mutex
+			auto serializable = serializer.deserialize(wrong_data_recv_buf,temp_recv_buf);
 			
-			impl->buf_mutex.lock();// lock buf mutex
-			impl->buf.push_back(serializable);// write to the buf
-			impl->buf_mutex.unlock(); // unlock buf mutex
+			buf_mutex.lock();// lock buf mutex
+			buf.push_back(serializable);// write to the buf
+			buf_mutex.unlock(); // unlock buf mutex
 		}
 		else
-			impl->sock_mutex.unlock();
+			sock_mutex.unlock();
 	}
-	impl->sock->socket->close();
+	sock->socket->close();
 }
