@@ -7,9 +7,6 @@
 #include "SubSock.cpp"
 #include "SerializationOperation.cpp"
 
-class ClientNetObjectImpl;
-
-void read_sock(ClientNetObjectImpl* impl);
 
 class ClientNetObjectImpl : public AbstractClientNetObject
 {
@@ -40,7 +37,7 @@ public:
 		std::string send_buf = serializer.serialize(serializable);
 		
 		static std::chrono::steady_clock::time_point send_time = std::chrono::steady_clock::now();
-		while(std::chrono::steady_clock::now() < send_time + std::chrono_literals::operator""ms(WAIT_TIME_BETWEEN_SEND))
+		while(std::chrono::steady_clock::now() < send_time + std::chrono::milliseconds(WAIT_TIME_BETWEEN_SEND))
 			;
 		send_time = std::chrono::steady_clock::now();
 		
@@ -136,18 +133,21 @@ void ClientNetObjectImpl::read_sock()
 		else
 		{
 			sock_mutex.unlock();
-			try
+			if(!wrong_data_recv_buf.empty())
 			{
-				auto serializable = serializer.deserialize(wrong_data_recv_buf,temp_recv_buf);
-				
-				buf_mutex.lock(); // lock buf mutex
-				buf.push_back(serializable); // write to the buf
-				buf_mutex.unlock(); // unlock buf mutex
-				
-			}
-			catch(std::invalid_argument& e)
-			{
-				std::cerr << e.what() << std::endl;
+				try
+				{
+					auto serializable = serializer.deserialize(wrong_data_recv_buf,temp_recv_buf);
+					
+					buf_mutex.lock(); // lock buf mutex
+					buf.push_back(serializable); // write to the buf
+					buf_mutex.unlock(); // unlock buf mutex
+					
+				}
+				catch(std::invalid_argument& e)
+				{
+					std::cerr << e.what() << std::endl;
+				}
 			}
 		}
 	}

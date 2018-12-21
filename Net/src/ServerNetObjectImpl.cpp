@@ -40,7 +40,7 @@ public:
 		std::string send_buf = serializer.serialize(serializable);
 		
 		static std::chrono::steady_clock::time_point send_time = std::chrono::steady_clock::now();
-		while(std::chrono::steady_clock::now() < send_time + std::chrono_literals::operator""ms(WAIT_TIME_BETWEEN_SEND))
+		while(std::chrono::steady_clock::now() < send_time + std::chrono::milliseconds(WAIT_TIME_BETWEEN_SEND))
 			;
 		send_time = std::chrono::steady_clock::now();
 		

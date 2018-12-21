@@ -43,6 +43,7 @@ public:
 	
 	std::shared_ptr<Serializable> deserialize(std::string& wrong_data_recv_buf, std::string& temp_recv_buf) const
 	{
+		std::shared_ptr<Serializable> serializable; // create pointer
 		try
 		{
 			std::string recv_buf;
@@ -71,7 +72,7 @@ public:
 			recv_buf.erase(0, object_start + STARTOBJ.size()); // clear STARTOBJ
 			
 			
-			std::shared_ptr<Serializable> serializable; // create pointer
+			
 			
 			serializable = map.at(type)->create(); // create empty object
 			
@@ -87,6 +88,7 @@ public:
 			std::cerr << "RECV_BUF IS " << temp_recv_buf << std::endl;
 			throw;
 		}
+		return serializable;
 	}
 	
 	std::string get_endobj() const
