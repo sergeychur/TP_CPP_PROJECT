@@ -12,7 +12,7 @@ class Adapter : public Server {
  public:
 	explicit Adapter(uint _port, std::string _ip, size_t player_number,
 					 std::map<std::string, DefaultAbstractFactory *> _map) :
-			server(std::make_unique<ServerNetObject>(_port, _ip, player_number, _map)) {}
+			server(std::make_unique<ServerNetObject>(_ip, _port, player_number, _map, "startobj", "endobj", 3, 1)) {}
 
 	~Adapter() override = default;
 

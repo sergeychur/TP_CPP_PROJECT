@@ -21,7 +21,7 @@ class UpdateMaker : public NewsTaker {
 	~UpdateMaker() override;
 
  private:
-	std::map<std::pair<size_t, size_t>, UpdateLine> update;
+	std::unique_ptr<Update> update;
 };
 
 #endif        //  SERVER_UPDATE_MAKER_HPP

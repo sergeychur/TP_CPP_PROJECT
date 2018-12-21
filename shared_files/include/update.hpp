@@ -65,6 +65,8 @@ struct Update : Serializable {
 		ar & updates;
 	}
 
+	bool is_empty() {return updates.empty();}
+
 	void serialize(boost::archive::text_oarchive &ar) final;
 
 	void deserialize(boost::archive::text_iarchive &ar) final;

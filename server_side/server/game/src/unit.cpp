@@ -219,7 +219,7 @@ bool Unit::interact(Command &com) {
 	}
 	set_notify_need(true);
 	notify();
-	return success;
+	return is_alive();
 }
 
 size_t Unit::hash_self() const {

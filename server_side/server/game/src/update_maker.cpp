@@ -8,24 +8,26 @@
 #include "update_maker.hpp"
 
 UpdateMaker::~UpdateMaker() {
-	update.clear();
+	update.reset();
 }
 
 void UpdateMaker::handle_event(const UpdateLine &line) {
-	if(update.find({line.player_id, line.unit_id}) != update.end()) {
-		update.erase({line.player_id, line.unit_id});
+	if (!update) {
+		update = std::make_unique<Update>();
 	}
-	update[{line.player_id, line.unit_id}] = line;
+	for(int i = 0; i < update->updates.size(); ++i) {
+		if(update->updates[i].player_id == line.player_id && update->updates[i].unit_id == line.unit_id) {
+			update->updates[i] = line;
+			return;
+		}
+	}
+	update->updates.push_back(line);
 }
 
 std::unique_ptr<Update> UpdateMaker::get_update() {
-	if(update.empty()) {
+	if(!update) {
 		throw(std::runtime_error("No update"));
 	}
-	std::unique_ptr<Update> update_to_return;
-	for(auto& it : update) {
-		update_to_return->updates.push_back(it.second);
-	}
-	return update_to_return;
+	return std::move(update);
 }
 

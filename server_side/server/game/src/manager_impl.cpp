@@ -13,7 +13,6 @@
 #include <fstream>
 #include <chrono>
 #include <random>
-#include <NetObject.h>
 
 #include "manager_impl.hpp"
 #include "manager.hpp"
@@ -21,12 +20,14 @@
 #include "update_factory.hpp"
 #include "initialiser_factory.hpp"
 
+#include "ServerNetObject.h"
+
 ManagerImpl::ManagerImpl() {
 	map = {
 			{std::string(typeid(Update).name()).substr(0,
-													   TYPE_LENGTH),         new UpdateFactory()},
-			{std::string(typeid(Command).name()).substr(0, TYPE_LENGTH),     new CommandFactory()},
-			{std::string(typeid(Initialiser).name()).substr(0, TYPE_LENGTH), new InitialiserFactory()}
+													   3),         new UpdateFactory()},
+			{std::string(typeid(Command).name()).substr(0, 3),     new CommandFactory()},
+			{std::string(typeid(Initialiser).name()).substr(0, 3), new InitialiserFactory()}
 	};
 }
 

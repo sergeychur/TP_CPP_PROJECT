@@ -35,10 +35,10 @@ void Game::add_player(const std::pair<int, int> &base_coords, const size_t playe
 size_t Game::act(std::vector<Command> &commands_arr) {
 	size_t stat = STILL_ACT;
 	for (auto& it : commands_arr) {
-		if(it.command_name != "check") {
+		// if(it.command_name != "check") {
 			std::cout << "Got command" << std::endl;
 			std::cout << it << std::endl;
-		}
+		// }
 		if (player_arr.size() > it.player_id) {
 			if (avaliability[it.player_id] == STILL_ACT) {
 				try {

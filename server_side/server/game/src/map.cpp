@@ -25,7 +25,9 @@ bool Map::make_interaction(Command &com) {
 		return false;
 	}
 	auto interacted_unit = unit_matrix[com.player_id][com.unit_id].lock();
-	interacted_unit->interact(com);
+	if(!interacted_unit->interact(com)) {
+		interacted_unit->die();
+	}
 	return true;
 }
 
