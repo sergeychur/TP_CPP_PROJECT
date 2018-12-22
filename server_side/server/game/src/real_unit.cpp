@@ -7,7 +7,7 @@
 
 #include "real_unit.hpp"
 
-bool RealUnit::get_kicked(Command &com) {
+bool RealUnit::decrease_hp(Command &com) {
 	enum indices {
 		damage = 0,
 		radius,

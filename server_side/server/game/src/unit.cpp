@@ -109,11 +109,13 @@ bool Unit::kick(Command &com) {
 	if (success) {
 		state.make_fighting();
 	}
+	command.reset();
 	return true;
 }
 
 void Unit::perform_existing_commands() {
 	if (!command) {
+		state.make_none();
 		return;
 	}
 	set_notify_need(true);
@@ -131,6 +133,10 @@ void Unit::perform_existing_commands() {
 	if (!handled) {
 		command.reset();
 	}
+}
+
+bool RealUnit::get_kicked(Command &com) {
+
 }
 
 bool Unit::pop_command(Command &com) {

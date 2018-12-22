@@ -55,11 +55,12 @@ class Base : public AbstractBase, public RealUnit {
 	std::chrono::time_point<std::chrono::system_clock> start;
 	std::vector<std::shared_ptr<AbstractHandler>> act_handlers;
 	double time_to_build;
-	static constexpr double default_time_to_build = 8.0;
+	static constexpr double default_time_to_build = 4.0;
 	std::shared_ptr<NewsTaker> updater;
 	std::shared_ptr<Unit> unit_to_return;
 	size_t units_made;
 	bool is_making;
+	bool is_start;
 	static const int max_possible = 100000;
 
 	bool act(Command &order) override;
