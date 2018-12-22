@@ -135,10 +135,6 @@ void Unit::perform_existing_commands() {
 	}
 }
 
-bool RealUnit::get_kicked(Command &com) {
-
-}
-
 bool Unit::pop_command(Command &com) {
 	command.reset();
 	state.make_none();
