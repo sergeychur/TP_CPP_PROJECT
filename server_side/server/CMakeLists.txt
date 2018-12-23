@@ -38,7 +38,7 @@ add_subdirectory("game" )
 add_subdirectory(xml_make)
 
 # main executable
-add_executable(${PROJECT_NAME}_main main.cpp)
+add_executable(${PROJECT_NAME}_main main.cpp game/src/adapter.cpp)
 
 # linking libs with executables
 target_link_libraries(${PROJECT_NAME}_main game)

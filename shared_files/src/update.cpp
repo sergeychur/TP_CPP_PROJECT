@@ -2,7 +2,6 @@
 // Created by sergey on 22.11.18.
 //
 
-#include <update.hpp>
 #include "update.hpp"
 
 bool operator==(const UpdateLine &first, const UpdateLine &second) {

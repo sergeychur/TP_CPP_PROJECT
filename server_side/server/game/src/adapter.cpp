@@ -18,12 +18,6 @@ void Adapter::send(Serializable* data) {
 }
 
 std::vector<Command> Adapter::receive() {
-//	std::vector<std::shared_ptr<Serializable>> clients_data = server->receive();
-//	std::vector<Command> commands;
-//	for(const auto& it : clients_data) {
-//		std::shared_ptr<Command> command = std::dynamic_pointer_cast<Command>(it);
-//		commands.push_back(*command);
-//	}
 	std::vector<std::shared_ptr<Serializable>> clients_data = server->receive();
 	std::map<std::pair<int, int>, Command> checks;
 	std::vector<Command> commands;
@@ -35,10 +29,6 @@ std::vector<Command> Adapter::receive() {
 			}
 			checks[{command->player_id, command->unit_id}] = *command;
 		} else {
-			if(command->command_name == "pop_command")
-			{
-				std::cout << "DAROVA" << std::endl;
-			}
 			commands.push_back(*command);
 		}
 	}

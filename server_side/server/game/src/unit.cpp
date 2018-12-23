@@ -209,11 +209,10 @@ bool Unit::correct_state(Command &com) {
 }
 
 bool Unit::interact(Command &com) {
-	bool success = false;
 	auto it = act_handlers.begin();
 	while (it != act_handlers.end()) {
 		if ((*it)->can_handle(com.command_name)) {
-			success = (*it)->handle(com);
+			(*it)->handle(com);
 			it = act_handlers.end();
 		} else {
 			++it;

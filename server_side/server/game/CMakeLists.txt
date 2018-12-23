@@ -27,7 +27,7 @@ include_directories(${PROJECT_ROOT}/shared_files/include)
 
 set(SRC_LIST ./src/game.cpp ./src/map.cpp ./src/player.cpp ./src/update_maker.cpp ./src/base.cpp ./src/unit.cpp ./src/real_unit.cpp
         ./src/manager.cpp ./src/manager_impl.cpp
-        ${PROJECT_ROOT}/shared_files/src/command.cpp ${PROJECT_ROOT}/shared_files/src/update.cpp ${PROJECT_ROOT}/shared_files/src/initialiser.cpp src/manager_impl.cpp src/adapter.cpp)
+        ${PROJECT_ROOT}/shared_files/src/command.cpp ${PROJECT_ROOT}/shared_files/src/update.cpp ${PROJECT_ROOT}/shared_files/src/initialiser.cpp src/manager_impl.cpp)
 
 add_library(game SHARED ${SRC_LIST})
 
