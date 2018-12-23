@@ -5,14 +5,17 @@
 #include "serialized_stub.h"
 #include "../non_public_include/SerializationOperation.h"
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
 
 
 TEST(SerializationOperation, serialize_deserialize_stuff)
 {
 	const int TYPE_LENGTH = 3;
 	std::map<std::string, DefaultAbstractFactory*> map;
-	map.emplace(std::pair(std::string(typeid(Stuff).name()).substr(0, 3), new StuffFactory()));
+	map = {
+		{
+			{std::string(typeid(Stuff).name()).substr(0, 3), new StuffFactory()}
+		}
+	};
 	SerializationOperation serializer(map, "startobj", "endobj", TYPE_LENGTH);
 	Stuff stuff;
 	stuff.int_field = 4;
