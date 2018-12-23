@@ -12,7 +12,9 @@ include_directories(include)
 add_library(Net src/ClientNetObject.cpp src/ClientNetObjectImpl.cpp src/SerializationOperation.cpp src/ServerNetObject.cpp src/ServerNetObjectImpl.cpp src/SubSock.cpp)
 target_link_libraries(Net ${Boost_LIBRARIES} Threads::Threads)
 
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
 
 #include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-
-#add_executable(tests test/gtest.cpp)
+add_executable(tests test/gtest.cpp test/serialization_operation_test.cpp)
+target_link_libraries(tests ${Boost_LIBRARIES} Threads::Threads ${GTEST_LIBRARIES} Net)

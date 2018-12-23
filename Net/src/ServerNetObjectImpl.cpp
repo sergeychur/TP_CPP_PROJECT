@@ -5,7 +5,7 @@
 #include <mutex>
 #include "../include/AbstractServerNetObject.h"
 #include "SubSock.cpp"
-#include "SerializationOperation.cpp"
+#include "../non_public_include/SerializationOperation.h"
 
 
 class ServerNetObjectImpl : public AbstractServerNetObject
