@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>frames</key>
+        <dict>
+            <key>s_w_sw_attack_02_0000.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{2.5,-9}</string>
+                <key>spriteSize</key>
+                <string>{53,90}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{547,1},{53,90}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 3 4 2 4 5 2 5 6 0 1 2 0 2 6 0 6 7</string>
+                <key>vertices</key>
+                <string>124 90 127 125 85 111 85 152 81 152 74 93 114 83 117 62</string>
+                <key>verticesUV</key>
+                <string>597 29 600 64 558 50 558 91 554 91 547 32 587 22 590 1</string>
+            </dict>
+            <key>s_w_sw_attack_02_0001.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-1,-11.5}</string>
+                <key>spriteSize</key>
+                <string>{54,79}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{631,125},{54,79}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>3 4 5 3 5 6 2 6 7 2 3 6 0 1 2 0 2 7 0 7 8</string>
+                <key>vertices</key>
+                <string>124 88 124 131 102 113 82 120 75 149 70 149 75 91 117 84 120 70</string>
+                <key>verticesUV</key>
+                <string>685 143 685 186 663 168 643 175 636 204 631 204 636 146 678 139 681 125</string>
+            </dict>
+            <key>s_w_sw_attack_02_0002.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-9,-15}</string>
+                <key>spriteSize</key>
+                <string>{86,56}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{31,237},{86,56}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>3 5 6 3 4 5 0 2 3 0 1 2 0 3 6</string>
+                <key>vertices</key>
+                <string>132 86 112 141 107 123 80 102 53 133 46 132 79 85</string>
+                <key>verticesUV</key>
+                <string>117 238 97 293 92 275 65 254 38 285 31 284 64 237</string>
+            </dict>
+            <key>s_w_sw_attack_02_0003.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-12,-14.5}</string>
+                <key>spriteSize</key>
+                <string>{100,73}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{269,168},{100,73}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>4 6 7 4 5 6 3 4 7 2 3 7 0 1 2 7 0 2</string>
+                <key>vertices</key>
+                <string>136 102 86 149 104 117 91 111 80 89 37 96 36 90 90 76</string>
+                <key>verticesUV</key>
+                <string>369 194 319 241 337 209 324 203 313 181 270 188 269 182 323 168</string>
+            </dict>
+            <key>s_w_sw_attack_02_0004.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-4.5,7.5}</string>
+                <key>spriteSize</key>
+                <string>{81,91}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{49,130},{81,91}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>4 5 6 1 2 3 0 1 3 0 3 4 0 4 6</string>
+                <key>vertices</key>
+                <string>99 71 134 115 82 136 89 112 86 75 53 53 53 45</string>
+                <key>verticesUV</key>
+                <string>95 156 130 200 78 221 85 197 82 160 49 138 49 130</string>
+            </dict>
+            <key>s_w_sw_attack_02_0005.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-1,22}</string>
+                <key>spriteSize</key>
+                <string>{50,100}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{503,1},{50,100}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>3 4 5 1 2 3 0 1 3 0 3 5</string>
+                <key>vertices</key>
+                <string>114 74 122 126 72 125 103 71 94 27 100 26</string>
+                <key>verticesUV</key>
+                <string>545 49 553 101 503 100 534 46 525 2 531 1</string>
+            </dict>
+            <key>s_w_sw_attack_02_0006.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{4,16}</string>
+                <key>spriteSize</key>
+                <string>{72,100}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{414,120},{72,100}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>4 5 6 0 3 4 0 1 2 4 6 0 0 2 3</string>
+                <key>vertices</key>
+                <string>115 117 115 132 66 120 92 90 115 70 132 32 138 32</string>
+                <key>verticesUV</key>
+                <string>463 205 463 220 414 208 440 178 463 158 480 120 486 120</string>
+            </dict>
+            <key>s_w_sw_attack_02_0007.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{13,8.5}</string>
+                <key>spriteSize</key>
+                <string>{108,87}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{161,1},{108,87}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>5 6 7 0 4 5 0 5 7 1 2 3 0 1 3 0 3 4</string>
+                <key>vertices</key>
+                <string>113 111 113 133 57 115 85 106 92 90 132 69 157 46 165 46</string>
+                <key>verticesUV</key>
+                <string>217 66 217 88 161 70 189 61 196 45 236 24 261 1 269 1</string>
+            </dict>
+            <key>s_w_sw_attack_02_0008.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{20.5,3}</string>
+                <key>spriteSize</key>
+                <string>{109,74}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{368,1},{109,74}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 7 8 4 5 6 6 2 4 2 3 4 7 1 2 6 7 2 0 1 8</string>
+                <key>vertices</key>
+                <string>173 65 134 91 108 121 119 132 80 123 64 111 76 108 94 90 173 58</string>
+                <key>verticesUV</key>
+                <string>477 8 438 34 412 64 423 75 384 66 368 54 380 51 398 33 477 1</string>
+            </dict>
+            <key>s_w_sw_attack_02_0009.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{22,6}</string>
+                <key>spriteSize</key>
+                <string>{106,68}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{214,148},{106,68}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 5 6 2 3 4 1 2 4 1 4 5 0 1 5</string>
+                <key>vertices</key>
+                <string>173 64 119 91 119 126 67 126 91 91 117 71 173 58</string>
+                <key>verticesUV</key>
+                <string>320 154 266 181 266 216 214 216 238 181 264 161 320 148</string>
+            </dict>
+            <key>s_w_sw_attack_02_0010.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{16.5,16.5}</string>
+                <key>spriteSize</key>
+                <string>{53,105}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{465,1},{53,105}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 4 5 2 3 4 1 2 5 1 5 6 0 6 7 0 1 6</string>
+                <key>vertices</key>
+                <string>141 36 107 73 123 104 135 104 101 134 89 134 88 66 141 29</string>
+                <key>verticesUV</key>
+                <string>518 8 484 45 500 76 512 76 478 106 466 106 465 38 518 1</string>
+            </dict>
+            <key>s_w_sw_attack_02_0011.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-17,10}</string>
+                <key>spriteSize</key>
+                <string>{96,92}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{274,1},{96,92}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>6 7 8 0 5 6 2 3 4 1 2 4 1 4 5 0 1 5 0 6 8</string>
+                <key>vertices</key>
+                <string>72 79 107 85 123 77 129 134 108 114 91 110 58 88 33 43 40 42</string>
+                <key>verticesUV</key>
+                <string>313 38 348 44 364 36 370 93 349 73 332 69 299 47 274 2 281 1</string>
+            </dict>
+            <key>s_w_sw_attack_02_0012.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-10,-22}</string>
+                <key>spriteSize</key>
+                <string>{102,104}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{1,1},{102,104}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 3 4 1 2 3 0 1 4</string>
+                <key>vertices</key>
+                <string>139 94 86 122 46 171 37 172 95 68</string>
+                <key>verticesUV</key>
+                <string>103 27 50 55 10 104 1 105 59 1</string>
+            </dict>
+            <key>s_w_sw_attack_02_0013.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{9.5,-28}</string>
+                <key>spriteSize</key>
+                <string>{69,110}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{301,81},{69,110}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 3 7 4 5 6 3 4 6 3 6 7 1 2 7 1 7 8 0 1 8</string>
+                <key>vertices</key>
+                <string>129 74 110 83 110 107 105 126 142 173 142 181 99 149 73 81 103 71</string>
+                <key>verticesUV</key>
+                <string>357 84 338 93 338 117 333 136 370 183 370 191 327 159 301 91 331 81</string>
+            </dict>
+            <key>s_w_sw_attack_02_0014.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{21,-3.5}</string>
+                <key>spriteSize</key>
+                <string>{108,79}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{1,156},{108,79}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 7 8 4 5 6 1 3 4 1 2 3 0 1 4 0 4 6 0 6 7</string>
+                <key>vertices</key>
+                <string>113 117 140 129 173 129 173 134 125 137 125 141 103 130 65 92 110 62</string>
+                <key>verticesUV</key>
+                <string>49 211 76 223 109 223 109 228 61 231 61 235 39 224 1 186 46 156</string>
+            </dict>
+            <key>s_w_sw_attack_02_0015.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{19.5,1}</string>
+                <key>spriteSize</key>
+                <string>{99,74}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{168,117},{99,74}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 6 7 1 2 3 1 3 4 1 4 5 0 1 5 0 5 6</string>
+                <key>vertices</key>
+                <string>108 93 122 113 167 90 167 97 122 134 93 121 68 93 107 60</string>
+                <key>verticesUV</key>
+                <string>208 150 222 170 267 147 267 154 222 191 193 178 168 150 207 117</string>
+            </dict>
+            <key>s_w_sw_attack_02_0016.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{8,8}</string>
+                <key>spriteSize</key>
+                <string>{76,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{560,220},{76,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 6 7 1 2 3 1 3 4 1 4 5 0 1 5 0 5 6</string>
+                <key>vertices</key>
+                <string>108 93 118 103 138 62 144 62 130 120 97 122 68 97 104 58</string>
+                <key>verticesUV</key>
+                <string>600 255 610 265 630 224 636 224 622 282 589 284 560 259 596 220</string>
+            </dict>
+            <key>s_w_sw_attack_02_0017.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{1.5,20.5}</string>
+                <key>spriteSize</key>
+                <string>{65,93}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{428,188},{65,93}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>3 4 5 2 3 5 1 5 6 1 2 5 0 1 6 7 0 6</string>
+                <key>vertices</key>
+                <string>132 111 100 124 67 98 91 67 108 66 97 84 112 93 109 31</string>
+                <key>verticesUV</key>
+                <string>493 268 461 281 428 255 452 224 469 223 458 241 473 250 470 188</string>
+            </dict>
+            <key>s_w_sw_attack_02_0018.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{2,9}</string>
+                <key>spriteSize</key>
+                <string>{64,72}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{615,1},{64,72}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 3 4 1 2 4 0 1 4 0 4 5</string>
+                <key>vertices</key>
+                <string>98 54 132 103 101 125 68 98 97 65 91 53</string>
+                <key>verticesUV</key>
+                <string>645 2 679 51 648 73 615 46 644 13 638 1</string>
+            </dict>
+            <key>s_w_sw_attack_02_0019.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{1,8}</string>
+                <key>spriteSize</key>
+                <string>{62,70}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{640,171},{62,70}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 2 3 0 1 2 0 3 4 0 4 5</string>
+                <key>vertices</key>
+                <string>115 76 130 105 100 125 68 97 88 66 89 55</string>
+                <key>verticesUV</key>
+                <string>687 192 702 221 672 241 640 213 660 182 661 171</string>
+            </dict>
+            <key>s_w_sw_attack_02_0020.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{4,4.5}</string>
+                <key>spriteSize</key>
+                <string>{64,67}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{628,233},{64,67}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 1 2 0 2 3 0 3 4</string>
+                <key>vertices</key>
+                <string>109 68 134 107 95 127 70 93 89 60</string>
+                <key>verticesUV</key>
+                <string>667 241 692 280 653 300 628 266 647 233</string>
+            </dict>
+            <key>s_w_sw_attack_02_0021.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{5,4}</string>
+                <key>spriteSize</key>
+                <string>{64,62}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{678,227},{64,62}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 3 4 1 2 3 1 4 5 0 1 5</string>
+                <key>vertices</key>
+                <string>113 70 113 87 135 109 93 125 71 89 90 63</string>
+                <key>verticesUV</key>
+                <string>720 234 720 251 742 273 700 289 678 253 697 227</string>
+            </dict>
+            <key>s_w_sw_attack_02_0022.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{6,2.5}</string>
+                <key>spriteSize</key>
+                <string>{64,59}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{686,116},{64,59}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 3 4 1 2 3 1 4 5 0 1 5</string>
+                <key>vertices</key>
+                <string>121 71 108 82 136 110 92 125 72 88 91 66</string>
+                <key>verticesUV</key>
+                <string>735 121 722 132 750 160 706 175 686 138 705 116</string>
+            </dict>
+            <key>s_w_sw_attack_02_0023.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{6,2}</string>
+                <key>spriteSize</key>
+                <string>{64,58}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{730,223},{64,58}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 3 4 1 2 3 1 4 5 0 1 5</string>
+                <key>vertices</key>
+                <string>115 70 115 89 136 110 91 125 72 87 91 67</string>
+                <key>verticesUV</key>
+                <string>773 226 773 245 794 266 749 281 730 243 749 223</string>
+            </dict>
+            <key>s_w_sw_attack_02_0024.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{6,2}</string>
+                <key>spriteSize</key>
+                <string>{64,58}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{704,171},{64,58}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 4 5 1 2 3 1 3 4 0 1 5</string>
+                <key>vertices</key>
+                <string>116 71 116 89 136 110 91 125 72 87 94 67</string>
+                <key>verticesUV</key>
+                <string>748 175 748 193 768 214 723 229 704 191 726 171</string>
+            </dict>
+            <key>s_w_sw_attack_02_0025.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{9.5,3}</string>
+                <key>spriteSize</key>
+                <string>{73,60}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{623,72},{73,60}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 4 5 3 0 2 0 1 2 3 4 0</string>
+                <key>vertices</key>
+                <string>123 100 144 112 91 125 71 85 103 65 118 65</string>
+                <key>verticesUV</key>
+                <string>675 107 696 119 643 132 623 92 655 72 670 72</string>
+            </dict>
+            <key>s_w_sw_attack_02_0026.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{5,3.5}</string>
+                <key>spriteSize</key>
+                <string>{48,63}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{738,1},{48,63}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 2 3 0 1 2</string>
+                <key>vertices</key>
+                <string>127 126 84 124 79 74 127 63</string>
+                <key>verticesUV</key>
+                <string>786 64 743 62 738 12 786 1</string>
+            </dict>
+            <key>s_w_sw_attack_02_0027.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{15.5,-2.5}</string>
+                <key>spriteSize</key>
+                <string>{71,69}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{561,147},{71,69}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 3 4 1 2 3 0 1 3 5 0 4</string>
+                <key>vertices</key>
+                <string>117 135 78 125 90 68 113 72 132 83 149 66</string>
+                <key>verticesUV</key>
+                <string>600 216 561 206 573 149 596 153 615 164 632 147</string>
+            </dict>
+            <key>s_w_sw_attack_02_0028.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{18.5,-1}</string>
+                <key>spriteSize</key>
+                <string>{83,82}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{339,195},{83,82}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 3 4 0 4 5 0 1 2 0 2 4</string>
+                <key>vertices</key>
+                <string>138 103 158 103 92 140 75 110 96 93 107 58</string>
+                <key>verticesUV</key>
+                <string>402 240 422 240 356 277 339 247 360 230 371 195</string>
+            </dict>
+            <key>s_w_sw_attack_02_0029.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{12,-4}</string>
+                <key>spriteSize</key>
+                <string>{62,62}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{290,234},{62,62}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 3 4 0 1 2 0 2 3</string>
+                <key>vertices</key>
+                <string>126 118 141 133 80 133 79 104 126 71</string>
+                <key>verticesUV</key>
+                <string>337 281 352 296 291 296 290 267 337 234</string>
+            </dict>
+            <key>s_w_sw_attack_02_0030.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-1.5,-21.5}</string>
+                <key>spriteSize</key>
+                <string>{73,71}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{498,221},{73,71}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 7 8 3 4 5 3 5 6 3 6 7 2 3 7 0 8 9 2 0 1 2 8 0</string>
+                <key>vertices</key>
+                <string>120 121 106 135 94 118 82 117 99 155 92 155 60 110 92 89 114 98 133 84</string>
+                <key>verticesUV</key>
+                <string>558 258 544 272 532 255 520 254 537 292 530 292 498 247 530 226 552 235 571 221</string>
+            </dict>
+            <key>s_w_sw_attack_02_0031.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-17.5,-12}</string>
+                <key>spriteSize</key>
+                <string>{95,64}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{204,218},{95,64}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>4 5 6 1 2 3 0 1 3 0 3 4 0 4 6</string>
+                <key>vertices</key>
+                <string>108 81 128 117 73 135 92 114 82 93 33 142 66 78</string>
+                <key>verticesUV</key>
+                <string>279 221 299 257 244 275 263 254 253 233 204 282 237 218</string>
+            </dict>
+            <key>s_w_sw_attack_02_0032.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-22.5,4}</string>
+                <key>spriteSize</key>
+                <string>{87,70}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{472,157},{87,70}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>4 6 7 4 5 6 3 4 7 1 2 3 0 1 3 0 3 7</string>
+                <key>vertices</key>
+                <string>119 87 116 129 66 123 96 84 81 79 32 85 33 79 85 59</string>
+                <key>verticesUV</key>
+                <string>559 185 556 227 506 221 536 182 521 177 472 183 473 177 525 157</string>
+            </dict>
+            <key>s_w_sw_attack_02_0033.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-26.5,7.5}</string>
+                <key>spriteSize</key>
+                <string>{97,81}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{371,74},{97,81}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 3 4 1 2 4 0 1 4 5 0 4</string>
+                <key>vertices</key>
+                <string>97 56 120 89 114 131 65 118 99 80 23 50</string>
+                <key>verticesUV</key>
+                <string>445 80 468 113 462 155 413 142 447 104 371 74</string>
+            </dict>
+            <key>s_w_sw_attack_02_0034.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-23,17.5}</string>
+                <key>spriteSize</key>
+                <string>{92,109}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{67,1},{92,109}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 3 4 1 2 4 1 4 5 0 1 5 0 5 6 7 0 6</string>
+                <key>vertices</key>
+                <string>104 55 121 93 110 135 62 111 84 105 97 79 75 56 29 26</string>
+                <key>verticesUV</key>
+                <string>142 30 159 68 148 110 100 86 122 80 135 54 113 31 67 1</string>
+            </dict>
+            <key>s_w_sw_attack_02_0035.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-5.5,22}</string>
+                <key>spriteSize</key>
+                <string>{57,110}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{160,166},{57,110}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 7 8 1 6 7 3 4 5 2 3 5 1 2 5 1 5 6 0 1 7 0 8 9</string>
+                <key>vertices</key>
+                <string>109 55 121 94 108 131 74 119 64 107 86 106 90 92 104 82 69 30 69 21</string>
+                <key>verticesUV</key>
+                <string>205 200 217 239 204 276 170 264 160 252 182 251 186 237 200 227 165 175 165 166</string>
+            </dict>
+            <key>s_w_sw_attack_02_0036.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-7,31}</string>
+                <key>spriteSize</key>
+                <string>{62,128}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{237,23},{62,128}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>5 1 2 3 4 5 5 6 1 2 3 5 1 6 7 0 1 7 0 7 8</string>
+                <key>vertices</key>
+                <string>122 63 119 99 107 131 81 121 60 106 86 106 91 92 106 80 96 3</string>
+                <key>verticesUV</key>
+                <string>299 83 296 119 284 151 258 141 237 126 263 126 268 112 283 100 273 23</string>
+            </dict>
+            <key>s_w_sw_attack_02_0037.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{2,28.5}</string>
+                <key>spriteSize</key>
+                <string>{72,123}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{200,1},{72,123}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 6 7 3 4 5 1 5 6 1 2 3 1 3 5 0 7 8 0 1 7</string>
+                <key>vertices</key>
+                <string>131 74 110 121 118 131 81 123 64 111 85 105 93 89 108 82 136 8</string>
+                <key>verticesUV</key>
+                <string>267 67 246 114 254 124 217 116 200 104 221 98 229 82 244 75 272 1</string>
+            </dict>
+            <key>s_w_sw_attack_02_0038.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{13,28}</string>
+                <key>spriteSize</key>
+                <string>{82,118}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{1,40},{82,118}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 6 7 4 5 6 2 3 4 2 4 6 1 2 6 0 7 8 0 1 7</string>
+                <key>vertices</key>
+                <string>133 73 117 87 114 118 126 121 101 129 70 123 91 92 116 65 152 11</string>
+                <key>verticesUV</key>
+                <string>64 102 48 116 45 147 57 150 32 158 1 152 22 121 47 94 83 40</string>
+            </dict>
+            <key>s_w_sw_attack_02_0039.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{9,23.5}</string>
+                <key>spriteSize</key>
+                <string>{48,121}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{119,134},{48,121}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 9 10 1 10 11 6 7 8 5 6 8 3 4 5 3 5 8 9 2 3 9 3 8 1 2 10 0 1 11</string>
+                <key>vertices</key>
+                <string>131 15 124 65 112 83 119 111 131 111 115 122 83 135 84 126 91 120 87 92 99 79 125 14</string>
+                <key>verticesUV</key>
+                <string>167 135 160 185 148 203 155 231 167 231 151 242 119 255 120 246 127 240 123 212 135 199 161 134</string>
+            </dict>
+            <key>s_w_sw_attack_02_0040.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{8,21.5}</string>
+                <key>spriteSize</key>
+                <string>{48,121}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{388,86},{48,121}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 7 8 6 4 5 2 6 7 6 3 4 6 2 3 0 2 7 0 1 2 0 8 9</string>
+                <key>vertices</key>
+                <string>100 57 105 57 103 75 130 102 117 123 96 137 87 101 89 75 82 16 88 16</string>
+                <key>verticesUV</key>
+                <string>406 127 411 127 409 145 436 172 423 193 402 207 393 171 395 145 388 86 394 86</string>
+            </dict>
+            <key>s_w_sw_attack_02_0041.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-11,0}</string>
+                <key>spriteSize</key>
+                <string>{90,98}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{73,77},{90,98}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>0 6 7 1 4 5 2 3 4 1 2 4 1 5 6 0 1 6 0 7 8</string>
+                <key>vertices</key>
+                <string>84 68 111 89 132 92 106 147 103 116 89 109 72 79 42 56 43 49</string>
+                <key>verticesUV</key>
+                <string>115 96 142 117 163 120 137 175 134 144 120 137 103 107 73 84 74 77</string>
+            </dict>
+            <key>s_w_sw_attack_02_0042.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-16.5,-11.5}</string>
+                <key>spriteSize</key>
+                <string>{93,51}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{479,134},{93,51}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>1 5 6 2 3 4 2 4 5 1 2 5 0 1 6</string>
+                <key>vertices</key>
+                <string>119 135 91 109 72 98 36 111 35 105 77 84 128 84</string>
+                <key>verticesUV</key>
+                <string>563 185 535 159 516 148 480 161 479 155 521 134 572 134</string>
+            </dict>
+            <key>s_w_sw_attack_02_0043.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{-6,-13}</string>
+                <key>spriteSize</key>
+                <string>{62,66}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{674,17},{62,66}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>3 5 6 3 4 5 2 6 7 2 3 6 1 2 7 0 1 7</string>
+                <key>vertices</key>
+                <string>123 142 114 113 95 113 82 106 67 144 61 144 75 89 123 78</string>
+                <key>verticesUV</key>
+                <string>736 81 727 52 708 52 695 45 680 83 674 83 688 28 736 17</string>
+            </dict>
+            <key>s_w_sw_attack_02_0044.tga</key>
+            <dict>
+                <key>aliases</key>
+                <array/>
+                <key>spriteOffset</key>
+                <string>{2.5,-9}</string>
+                <key>spriteSize</key>
+                <string>{53,90}</string>
+                <key>spriteSourceSize</key>
+                <string>{196,196}</string>
+                <key>textureRect</key>
+                <string>{{568,47},{53,90}}</string>
+                <key>textureRotated</key>
+                <false/>
+                <key>triangles</key>
+                <string>2 3 4 2 4 5 2 5 6 0 1 2 0 2 6 0 6 7</string>
+                <key>vertices</key>
+                <string>124 90 127 125 85 111 85 152 81 152 74 93 114 83 117 62</string>
+                <key>verticesUV</key>
+                <string>618 75 621 110 579 96 579 137 575 137 568 78 608 68 611 47</string>
+            </dict>
+        </dict>
+        <key>metadata</key>
+        <dict>
+            <key>format</key>
+            <integer>3</integer>
+            <key>pixelFormat</key>
+            <string>RGBA8888</string>
+            <key>premultiplyAlpha</key>
+            <false/>
+            <key>realTextureFileName</key>
+            <string>f.png</string>
+            <key>size</key>
+            <string>{795,301}</string>
+            <key>smartupdate</key>
+            <string>$TexturePacker:SmartUpdate:e8106ee1efb792e87dd2775b62d43f02:ad4ab7cab2401b7aaba675f0f5c8af9a:3611d21bad2ebcca8508aae2b43ba02f$</string>
+            <key>textureFileName</key>
+            <string>f.png</string>
+        </dict>
+    </dict>
+</plist>

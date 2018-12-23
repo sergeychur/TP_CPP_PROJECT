@@ -22,10 +22,8 @@ MyUnit::MyUnit(Vec2 pos, unsigned int id, std::string plist, std::string format)
     scheduleUpdate();
 }
 
-
 void MyUnit::onMouseDown(cocos2d::Event *event)
 {
-    CCLOG("CLICK ON                 ghhhhhhhhhhhh");
     EventMouse* mouseEvent = dynamic_cast<EventMouse*>(event);
     Point clickPos = Point(mouseEvent->getLocationInView().x,
             Director::getInstance()->getWinSize().height + mouseEvent->getLocationInView().y);
@@ -46,15 +44,6 @@ void MyUnit::onMouseDown(cocos2d::Event *event)
     }
     if (isSelect && mouseEvent->getMouseButton() == EventMouse::MouseButton::BUTTON_RIGHT)
     {
-//        if (state == Move)
-////        {
-////            stopMoving();
-////            isSelect = false;
-////            startMoving();
-////            sprite->setColor(Color3B::WHITE);
-////            target = clickPos;
-////            velocity = (target - position).getNormalized();
-////        }
         isSelect = false;
         startMoving();
         sprite->setColor(Color3B::WHITE);
@@ -68,14 +57,18 @@ void MyUnit::update(float time)
     updateSprite(time);
     updatePosition(time);
     updateAttack(time);
-    std::vector<int> a = {hp , (int)position.x , (int)position.y , (int)sprite->getRotation()};
-    Command com(Globals::get_instance()->player->id, id,"check", a);
-    Globals::get_instance()->net->send(&com);
+    auto percent = (static_cast<double>(hp) / static_cast<double>(max_hp)) * 100;
+    loadingBar->setPercent(percent);
+   if (state != None) {
+        std::vector<int> a = {hp, (int) position.x, (int) position.y, (int) sprite->getRotation()};
+        Command com(Globals::get_instance()->player->id, id, "check", a);
+        Globals::get_instance()->net->send(&com);
+   }
 }
 
 void MyUnit::updatePosition(float time)
 {
-    if (state == Move)
+    //if (state == Move || state == None)
     {
         sprite->setRotation((target - position).getAngle() * (-57) + initRotation);
         distanceToTarget = position.distance(target);
@@ -84,7 +77,7 @@ void MyUnit::updatePosition(float time)
         if (distanceToTarget > minDistance)
         {
             newPos += (speed * time * velocity);
-            Vec2 checkPos = newPos + (35 * speed * time * velocity);
+            Vec2 checkPos = newPos + (30 * speed * time * velocity);
             if (checkCollisionWithMap(checkPos))
             {
                 return;
@@ -97,7 +90,7 @@ void MyUnit::updatePosition(float time)
             onMap = Globals::get_instance()->positionToTileCoordinate(sprite->getPosition());
             position = newPos;
         }
-        else
+        else if (state == Move)
         {
             stopMoving();
         }
@@ -114,7 +107,7 @@ void MyUnit::updateSprite(float time)
         }
         runAnim->step(time);
     }
-    else if (state == Fight)
+    else if (state == Fight || remoteFight)
     {
         if (fightAnim->isDone())
         {
@@ -143,6 +136,7 @@ void MyUnit::stopMoving()
     std::vector<int> a = {};
     Command com(Globals::get_instance()->player->id, id, "pop_command", a);
     Globals::get_instance()->net->send(&com);
+    CCLOG("POP    COMMAND    SENT");
     mainLayer->getTileAt(onMap)->setColor(Color3B::GREEN);
     state = None;
 }
@@ -172,11 +166,11 @@ bool MyUnit::checkCollisionWithObject(Vec2 checkPos)
     {
         for (auto& object : enemy.second->units)
         {
-            CCLOG("%f %f", object.second->getPos().x, object.second->getPos().y);
             Point checkOnmap = Globals::get_instance()->positionToTileCoordinate(checkPos);
             Point objOnmap = Globals::get_instance()->positionToTileCoordinate(object.second->getPos());
-            CCLOG("%f %f", objOnmap.x, objOnmap.y);
-            if (checkOnmap == objOnmap) {
+            if (onMap == (objOnmap + Point(0, 1)) || onMap == (objOnmap + Point(0, -1)) || onMap == (objOnmap + Point(1, 0)) || onMap == (objOnmap + Point(-1, 0)) || onMap == (objOnmap + Point(1, 1)) ||onMap == (objOnmap + Point(-1, -1)) || onMap == (objOnmap + Point(1, -1)) || onMap == (objOnmap + Point(-1, 1))) {
+                attackedPlayer = (int)enemy.second->id;
+                attackedUnit = (int)object.second->id;
                 std::vector<int> a = {(int)enemy.second->id, (int)object.second->id};
                 Command com(Globals::get_instance()->player->id, id,"kick", a);
                 Globals::get_instance()->net->send(&com);
@@ -191,7 +185,12 @@ bool MyUnit::checkCollisionWithObject(Vec2 checkPos)
 
 void MyUnit::updateAttack(float time)
 {
-
+    if (state == Fight)
+    {
+        std::vector<int> a = {attackedPlayer, attackedUnit};
+        Command com(Globals::get_instance()->player->id, id,"kick", a);
+        Globals::get_instance()->net->send(&com);
+    }
 }
 
 bool MyUnit::sendUnitInfoUDP()

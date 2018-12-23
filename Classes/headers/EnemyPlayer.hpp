@@ -9,6 +9,7 @@
 #define EnemyPlayer_hpp
 
 #include "GameObject.hpp"
+
 USING_NS_CC;
 
 class EnemyPlayer : public Node

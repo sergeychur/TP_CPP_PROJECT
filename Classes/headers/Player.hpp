@@ -19,7 +19,7 @@ class Player : public cocos2d::Node
 {
 public:
     Player(size_t id, Vec2 pos);
-    void addUnit(int x, int y);
+    void addUnit(int x, int y, int h);
     std::map<unsigned int, std::unique_ptr<GameObject>>& getUnits();
     size_t id;
 protected:
@@ -29,6 +29,8 @@ protected:
     void update(float time);
     void onMouseDown(Event *event) ;
     int unitsOffset;
+    bool addedUnit = false;
+    float timeSinceAdd = 0;
 };
 
 #endif /* Player_hpp */

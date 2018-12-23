@@ -25,6 +25,8 @@ private:
     bool checkCollisionWithMap(Vec2 checkPos);
     bool checkCollisionWithObject(Vec2 checkPos);
     bool sendUnitInfoUDP();
+    int attackedPlayer;
+    int attackedUnit;
 };
 
 #endif /* MyUnit_hpp */

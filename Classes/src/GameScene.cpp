@@ -10,8 +10,15 @@
 #include "EnemyUnit.hpp"
 #include "Globals.h"
 #include "DefaultAbstractFactory.h"
-#include "initialiser.hpp"
 #include "EnemyPlayer.hpp"
+#include "../../shared_files/include/initialiser.hpp"
+#include "../../shared_files/include/update_factory.hpp"
+#include "../../shared_files/include/command_factory.hpp"
+#include "../../shared_files/include/initialiser_factory.hpp"
+#include <vector>
+#include <iostream>
+
+
 
 USING_NS_CC;
 
@@ -43,6 +50,13 @@ void GameScene::update(float delta)
     getInitInfoFromServer();
     dispatch();
     moveCamera(delta);
+   // std::cerr << Globals::get_instance()->sendCheck << std::endl;
+//    if (Globals::get_instance()->sendCheck)
+//    {
+//        std::vector<int> a = {0};
+//        Command com(0, 0, "check", a);
+//        Globals::get_instance()->net->send(&com);
+//    }
 
 }
 
@@ -55,7 +69,7 @@ bool GameScene::sendInitInfoToServer()
 bool GameScene::getInitInfoFromServer()
 {
     if (!gameStarted) {
-        std::vector<Serializable*> rawInfo;
+        std::vector<std::shared_ptr<Serializable>> rawInfo;
         rawInfo = net->receive();
         if (rawInfo.empty())
             return false;
@@ -64,7 +78,7 @@ bool GameScene::getInitInfoFromServer()
         addChild(level->map);
         gameStarted = true;
         Initialiser info;
-        info = *dynamic_cast<Initialiser *>(rawInfo[0]);
+        info = *std::dynamic_pointer_cast<Initialiser>(rawInfo[0]);
         Globals::get_instance()->player =
                 std::make_unique<Player>(info.player_id, Vec2(info.bases[info.player_id].first, info.bases[info.player_id].second));
         std::vector<int> a = {0 , 0 , 75 , 100};
@@ -82,7 +96,6 @@ bool GameScene::getInitInfoFromServer()
         auto obstacles = Globals::get_instance()->map->getLayer("Walls");
         if (obstacles)
             obstacles->setVisible(false);
-        delete rawInfo[0];
         return true;
     }
     return false;
@@ -126,36 +139,35 @@ void GameScene::moveCamera(float delta)
 
 void GameScene::dispatch()
 {
-    std::vector<Serializable*> rawInfo;
+    std::vector<std::shared_ptr<Serializable>> rawInfo;
+
     rawInfo = net->receive();
     if (rawInfo.empty())
-    {
-        CCLOG("empty");
         return;
-    }
     CCLOG("Got Info");
     for (int i = 0; i < rawInfo.size(); ++i)
     {
-        Update info = *dynamic_cast<Update *>(rawInfo[i]);
-        for (auto update : info.updates) {
+        Update info = *std::dynamic_pointer_cast<Update>(rawInfo[i]);;
+        for (auto update : info.updates){
+//            std::cout << update.new_x << " " << update.new_y << " " <<  update.new_angle << " " << update.state << "\n";
             if (update.player_id == Globals::get_instance()->player->id)
             {
                 CCLOG("Players unit");
-                //if (Globals::get_instance()->player->getUnits().empty())
                 if (Globals::get_instance()->player->getUnits().find(update.unit_id) == Globals::get_instance()->player->getUnits().end())
                 {
                     CCLOG("unit created");
+                    Globals::get_instance()->sendCheck = false;
                     Globals::get_instance()->player->getUnits()[update.unit_id] =
                             std::make_unique<MyUnit>(Vec2(update.new_x, update.new_y), update.unit_id, WarriorPlist ,WarriorFormat);
                     Globals::get_instance()->map->addChild(Globals::get_instance()->player->getUnits()[update.unit_id].get());
-//                } else
-//                {
-//                    if (Globals::get_instance()->player->getUnits()[update.unit_id]->state != (GameObject::State)update.state)
-//                    {
-//                        std::vector<int> a = {};
-//                        Command com(Globals::get_instance()->player->id, update.unit_id, "pop_command", a);
-//                        Globals::get_instance()->net->send(&com);
-//                    }
+                } else{
+                    Globals::get_instance()->player->getUnits()[update.unit_id]->state = (GameObject::State)update.state;
+                    Globals::get_instance()->player->getUnits()[update.unit_id]->hp = update.new_HP;
+                    if (update.new_HP <= 0)
+                    {
+                        Globals::get_instance()->player->getUnits()[update.unit_id]->kill();
+                        Globals::get_instance()->player->getUnits().erase(update.unit_id);
+                    }
                 }
             } else
             {
@@ -174,12 +186,18 @@ void GameScene::dispatch()
                     enemy->units[update.unit_id]->position.x = update.new_x; //проверить элем
                     enemy->units[update.unit_id]->position.y = update.new_y;
                     enemy->units[update.unit_id]->state = (GameObject::State)update.state;
-                    CCLOG("%d", update.state);
+                    CCLOG("        units         state         %d", update.state);
                     enemy->units[update.unit_id]->sprite->setRotation(update.new_angle);
+                    enemy->units[update.unit_id]->hp = update.new_HP;
+                    if (update.new_HP <= 0)
+                    {
+                        enemy->units[update.unit_id]->kill();
+                        enemy->units.erase(update.unit_id);
+                    }
+                    CCLOG("        HP       %d", update.new_HP);
                 }
             }
         }
-        delete rawInfo[i];
     }
 
 }
@@ -199,10 +217,7 @@ void GameScene::initGame()
         net->work();
         CCLOG("Сеть подключена");
         scheduleUpdate();
-        //startButton->setPosition(Vec2(2000, 2000));
-        //sender->release();
         removeAllChildren();
-        //delete(startButton);
     });
     auto bg = Sprite::create("BG.jpg");
     bg->setPosition(Vec2(Director::getInstance()->getWinSize().width / 2, Director::getInstance()->getWinSize().height / 2));
@@ -217,6 +232,6 @@ void GameScene::initNet()
             {std::string(typeid(Command).name()).substr(0,3), new CommandFactory()},
             {std::string(typeid(Initialiser).name()).substr(0,3), new InitialiserFactory()}
     };
-    net = new ClientNetObject(50000, "192.168.43.44", map);
+    net = new ClientNetObject("172.20.10.7", 50000, map, "startobj", "endobj", 3, 1);
     Globals::get_instance()->net = net;
 }

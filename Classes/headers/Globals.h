@@ -12,6 +12,9 @@
 #include "EnemyPlayer.hpp"
 #include "ClientNetObject.h"
 #include <memory>
+#include "../../shared_files/include/command.hpp"
+#include "../../shared_files/include/update.hpp"
+
 
 const EventKeyboard::KeyCode ENTER = EventKeyboard::KeyCode::KEY_KP_ENTER;
 const EventKeyboard::KeyCode UP_ARROW = EventKeyboard::KeyCode::KEY_UP_ARROW;
@@ -37,6 +40,8 @@ public:
     std::unique_ptr<Player> player;
     ClientNetObject *net;
     std::map<unsigned int, std::unique_ptr<EnemyPlayer>> enemies;
+    bool sendCheck;
+    bool sendPop;
     static Globals * get_instance()
     {
         if (!instance)

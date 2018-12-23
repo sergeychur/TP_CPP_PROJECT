@@ -74,6 +74,7 @@ list(APPEND GAME_HEADER
         Classes/headers/Globals.h
         Classes/headers/MyUnit.hpp
         Classes/headers/MenuScene.hpp
+        Classes/headers/EnemyUnit.hpp
      )
 list(APPEND GAME_SOURCE
         Classes/src/AppDelegate.cpp
@@ -196,6 +197,7 @@ endif()
 
 find_package(Boost COMPONENTS REQUIRED system serialization)
 include_directories(Net/include)
+include_directories(Classes/headers)
 add_subdirectory(Net)
 include_directories(${BOOST_INCLUDE_DIRS})
 target_include_directories(RTSGame PUBLIC shared_files/include)

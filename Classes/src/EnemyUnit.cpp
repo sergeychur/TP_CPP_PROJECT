@@ -21,27 +21,24 @@ void EnemyUnit::onMouseDown(Event *event)
 
 void EnemyUnit::update(float time)
 {
-    if (state == Move)
-    {
-        if(runAnim->isDone())
-        {
-            runAnim->startWithTarget(sprite);
+    if (isAlive) {
+        if (state == Move) {
+            if (runAnim->isDone()) {
+                runAnim->startWithTarget(sprite);
+            }
+            runAnim->step(time);
+        } else if (state == Fight) {
+            if (fightAnim->isDone()) {
+                fightAnim->startWithTarget(sprite);
+            }
+            fightAnim->step(time);
+        } else {
+            sprite->setSpriteFrame(Sprite::createWithSpriteFrameName(DefaultSprite)->getSpriteFrame());
         }
-        runAnim->step(time);
+        sprite->setPosition(position);
+        auto percent = (static_cast<double>(hp) / static_cast<double>(max_hp)) * 100;
+        loadingBar->setPercent(percent);
     }
-    else if (state == Fight)
-    {
-        if (fightAnim->isDone())
-        {
-            fightAnim->startWithTarget(sprite);
-        }
-        fightAnim->step(time);
-    }
-    else
-    {
-        sprite->setSpriteFrame(Sprite::createWithSpriteFrameName(DefaultSprite)->getSpriteFrame());
-    }
-    sprite->setPosition(position);
 }
 
 bool EnemyUnit::recieveUnitUnfoUDP()

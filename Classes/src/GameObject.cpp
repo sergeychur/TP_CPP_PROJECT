@@ -6,7 +6,7 @@
 //
 #include <iostream>
 #include "GameObject.hpp"
-
+#include "Globals.h"
 GameObject::GameObject(Vec2 pos, std::string plist, std::string format, int count) :
     position(pos),
     speed(75),
@@ -15,13 +15,22 @@ GameObject::GameObject(Vec2 pos, std::string plist, std::string format, int coun
     minDistance(2),
     initRotation(-90),
     newPos(pos),
-    hp(100),
-    dmg(4)
+    hp(1000),
+    max_hp(1000),
+    dmg(1),
+    remoteFight(false)
 {
     animationInit(runAnim, plist, format, count, true);
     animationInit(fightAnim, "f.plist", "s_w_sw_attack_02_%04d.tga", 22, false);
     sprite->setPosition(position);
     sprite->setAnchorPoint(Vec2(0.5, 0.75));
+    loadingBar = ui::LoadingBar::create("lb.png");
+    loadingBar->setScale(0.2);
+    loadingBar->setDirection(ui::LoadingBar::Direction::RIGHT);
+    loadingBar->setPercent((hp / max_hp) * 100);
+    loadingBar->setPosition(Vec2(70, 0));
+    loadingBar->setColor(Color3B::RED);
+    sprite->addChild(loadingBar);
     addChild(sprite);
 }
 
@@ -59,4 +68,13 @@ const Vec2& GameObject::getPos()
 void GameObject::setPos(Point newPos)
 {
     position = newPos;
+}
+
+void GameObject::kill() {
+    if (hp <= 0) {
+        onMap = Globals::get_instance()->positionToTileCoordinate(sprite->getPosition());
+        Globals::get_instance()->map->getLayer("Background")->getTileAt(onMap)->setColor(Color3B::WHITE);
+        Globals::get_instance()->map->removeChild(this);
+        isAlive = false;
+    }
 }

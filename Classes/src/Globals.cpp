@@ -10,7 +10,9 @@
 Globals* Globals::instance = 0;
 
 Globals::Globals():
-        mapMoveSpeed(250)
+        mapMoveSpeed(250),
+        sendCheck(false),
+        sendPop(false)
 {
     mapOffset = Point(0, 0);
 }
