@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+Net/CMakeLists.txt
+Net/cmake-build-debug*
+Net/.idea*
