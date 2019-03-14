@@ -1,0 +1,26 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: "serega753/cpp_project:actual"
+    working_directory: /app/TP_CPP_PROJECT
+    steps:
+      - checkout
+      - setup_remote_docker: 
+         docker_layer_caching: true
+      - run:
+          name: cd
+          command: 'cd /app/TP_CPP_PROJECT'
+      - run:
+          name: Linters
+          command: './linters/run.sh --local'
+      - run:
+          name: cp cmake
+          command: 'cp /app/test_cmake/CMakeLists.txt /app/TP_CPP_PROJECT/server_side/test'
+      - run:
+          name: Creating Build Files
+          command: 'cmake server_side/CMakeLists.txt && cd server_side/ && make'
+      - run:
+          name: Unit Testing
+          command: '/app/TP_CPP_PROJECT/server_side/test/tests'
